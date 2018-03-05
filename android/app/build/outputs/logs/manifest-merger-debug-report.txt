@@ -1,12 +1,17 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:2:1-15:12
-MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/1b30a2ff88eac330510a6498fd078c79/AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:support-v4:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.1.aar/1e2e17c9a1b6a1a063802ebeae381260/AndroidManifest.xml:17:1-24:12
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:appcompat-v7:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/33573be8ecf3b42aae990d065c7ed3c7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/69cb2f1116dd1d1d14c3edb2ddc2489b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/50b30849b74a8b4581fddbe19f0bd905/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/6fecabcaaeef771ae892d98daeaf01bb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/d76d833f5da116f464d50e50c796a3c6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/348b3e894cf17110645b5f5afcf7fdee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/52144bad4de215187a8573ff2948cb72/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:10:1-18:12
 MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:2:1-9:12
@@ -16,43 +21,57 @@ MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:2:1-9:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2610d695d04a496559eaead68d1bbd6c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/b7658f7961f50c47b4fdbf90072ea25e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c9373180ff131eaf714bd5b67a010c4d/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d439c22b1e5c8b1fde717a1b86401453/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
 	package
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:2:5-23
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:2:5-23
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:4:5-30
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:11-69
 	android:versionCode
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:3:5-28
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:6:5-67
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:7:5-77
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:11:5-78
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:5-77
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:7:22-75
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-sdk
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/1b30a2ff88eac330510a6498fd078c79/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/1b30a2ff88eac330510a6498fd078c79/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.1.aar/1e2e17c9a1b6a1a063802ebeae381260/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.1.aar/1e2e17c9a1b6a1a063802ebeae381260/AndroidManifest.xml:20:5-43
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/33573be8ecf3b42aae990d065c7ed3c7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/33573be8ecf3b42aae990d065c7ed3c7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/69cb2f1116dd1d1d14c3edb2ddc2489b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/69cb2f1116dd1d1d14c3edb2ddc2489b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/50b30849b74a8b4581fddbe19f0bd905/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/50b30849b74a8b4581fddbe19f0bd905/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/6fecabcaaeef771ae892d98daeaf01bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/6fecabcaaeef771ae892d98daeaf01bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/d76d833f5da116f464d50e50c796a3c6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/d76d833f5da116f464d50e50c796a3c6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/348b3e894cf17110645b5f5afcf7fdee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/348b3e894cf17110645b5f5afcf7fdee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/52144bad4de215187a8573ff2948cb72/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/52144bad4de215187a8573ff2948cb72/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
 MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
@@ -69,65 +88,69 @@ MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.g
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
-INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2610d695d04a496559eaead68d1bbd6c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/2610d695d04a496559eaead68d1bbd6c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/b7658f7961f50c47b4fdbf90072ea25e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/b7658f7961f50c47b4fdbf90072ea25e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c9373180ff131eaf714bd5b67a010c4d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/c9373180ff131eaf714bd5b67a010c4d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d439c22b1e5c8b1fde717a1b86401453/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/d439c22b1e5c8b1fde717a1b86401453/AndroidManifest.xml:20:5-44
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
 	android:targetSdkVersion
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:11:9-38
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:11:9-38
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:10:9-35
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:9-35
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:13:5-30:19
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/1228f6a2014d7ae95cc3bc5e0f305bb1/AndroidManifest.xml:13:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/1b30a2ff88eac330510a6498fd078c79/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.0.1.aar/1b30a2ff88eac330510a6498fd078c79/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.1.aar/1e2e17c9a1b6a1a063802ebeae381260/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-23.0.1.aar/1e2e17c9a1b6a1a063802ebeae381260/AndroidManifest.xml:22:5-20
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:13:5-30:19
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:13:5-20
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:2:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:2:3-17
 	android:label
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:16:7-39
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:16:7-39
 	android:icon
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:17:7-41
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:7-41
 	android:allowBackup
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:15:7-33
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:15:7-33
 	android:theme
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:18:7-38
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:18:7-38
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:14:7-38
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:14:7-38
 activity#com.moov.MainActivity
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:19:7-28:18
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:19:7-28:18
 	android:label
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:21:9-41
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:21:9-41
 	android:windowSoftInputMode
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:23:9-51
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:23:9-51
 	android:configChanges
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:22:9-79
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:22:9-79
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:20:9-37
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:20:9-37
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:24:9-27:25
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:24:9-27:25
 action#android.intent.action.MAIN
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:25:13-65
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:25:13-65
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:25:21-62
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:25:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:26:13-73
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:26:13-73
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:26:23-70
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:26:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:29:7-84
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:29:7-84
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:29:17-81
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:29:17-81
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/chineduofor/Desktop/moov/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
