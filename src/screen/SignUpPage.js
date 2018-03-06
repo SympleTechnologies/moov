@@ -7,7 +7,9 @@ import { SignUpFormA, SignUpFormB, SignUpFormC } from "../component";
 
 class SignUpPage extends React.Component {
   state= {
-    userToken: '',
+    countryName: '',
+    callingCode: '',
+    phoneNo:'',
   };
 
   /**
@@ -20,12 +22,17 @@ class SignUpPage extends React.Component {
 
   }
 
+  PhoneNumberPickerChanged = (country, callingCode, phoneNumber) => {
+    this.setState({countryName: country.name, callingCode: callingCode, phoneNo:phoneNumber});
+  };
+
   render() {
+    console.log(this.state);
     const { container } = styles;
     console.log(this.state);
 
     return (
-        <SignUpFormA />
+        <SignUpFormA onChange={this.PhoneNumberPickerChanged}/>
     );
   }
 }

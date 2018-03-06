@@ -4,11 +4,15 @@ import React from 'react';
 // react-native libraries
 import { StyleSheet, View, Dimensions, Text, Image } from 'react-native';
 
+// third-party libraries
+// import PhoneNumberPicker from '../country-picker/react-native-country-code-telephone-input';
+import PhoneNumberPicker from 'react-native-country-code-telephone-input';
+
 // common
-import { StatusBarComponent } from "../common";
+// import { StatusBarComponent } from "../common";
 
 const SignUpFormA =
-  ({ }) => {
+  ({ onChange }) => {
     const { container, progressBar } = styles;
     let { height, width } = Dimensions.get('window');
 
@@ -19,11 +23,16 @@ const SignUpFormA =
           source={require('../../assets/formA.png')}
         />
         <View>
-          <View style={{ height: height / 10}}>
-            <Text>Phone Number</Text>
-          </View>
-          <View style={{ height: height / 10}}>
-            <Text>Next</Text>
+          <View>
+            <View style={{ height: height / 5}}>
+              <PhoneNumberPicker
+                style={{ width: 10, height: 10}}
+                countryHint={{name: 'Nigeria', cca2: 'NG', callingCode:"234"}}
+                onChange={onChange} />
+            </View>
+            <View style={{ height: height / 5, alignItems: 'center'}}>
+              <Text>Email</Text>
+            </View>
           </View>
         </View>
       </View>
