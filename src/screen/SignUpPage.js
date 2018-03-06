@@ -3,6 +3,7 @@ import React from 'react';
 
 // react-native libraries
 import { StyleSheet, Text, View } from 'react-native';
+import { SignUpFormA, SignUpFormB, SignUpFormC } from "../component";
 
 class SignUpPage extends React.Component {
   state= {
@@ -24,19 +25,17 @@ class SignUpPage extends React.Component {
     console.log(this.state);
 
     return (
-      <View style={container}>
-        <Text>Sign Up Page</Text>
-      </View>
+        <SignUpFormA />
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
 

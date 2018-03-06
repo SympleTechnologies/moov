@@ -67,7 +67,7 @@ class LandingPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent />
+        <StatusBarComponent backgroundColor='white' />
         <View style={{ alignItems: 'center'}}>
           <TouchableOpacity onPress={this.spring.bind(this)}>
             <Animated.Image
