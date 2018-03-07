@@ -7,6 +7,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from 'reac
 // third-part library
 import PhoneInput from "react-native-phone-input";
 import { Heading, Subtitle, Button, Icon } from '@shoutem/ui';
+import Toast from 'react-native-simple-toast';
 
 // common
 import { StatusBarComponent, ButtonComponent } from "../common";
@@ -71,6 +72,10 @@ class SignUpPage extends React.Component {
     let { height, width } = Dimensions.get('window');
     console.log(this.state);
 
+    if(this.state.isValidPhoneNumber === false) {
+      Toast.show('You have entered an invalid phone number.', Toast.LONG);
+    }
+
     if(this.state.isValidUserDetails) {
       return (
         <View style={container1}>
@@ -91,12 +96,6 @@ class SignUpPage extends React.Component {
                       this.phone = ref;
                     }}
                   />
-
-                  <TouchableOpacity onPress={this.updateInfo} style={button}>
-                    <Text>Get Info</Text>
-                  </TouchableOpacity>
-
-                  {this.renderInfo()}
                 </View>
               </View>
               <View style={{ height: height / 5, alignItems: 'center'}}>
@@ -169,7 +168,7 @@ class SignUpPage extends React.Component {
                     }}
                     autoFocus
                   />
-                  {this.renderInfo()}
+                  {/*{this.renderInfo()}*/}
                 </View>
               </View>
 
