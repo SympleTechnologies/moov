@@ -15,7 +15,7 @@ import { StatusBarComponent, ButtonComponent } from "../common";
 class SignUpPage extends React.Component {
   state= {
     stage: '1',
-    isValidPhoneNumber: '',
+    isValidPhoneNumber: true,
     type: "",
     phoneNumber: "",
     isValidUserDetails: ''
@@ -76,75 +76,7 @@ class SignUpPage extends React.Component {
       Toast.show('You have entered an invalid phone number.', Toast.LONG);
     }
 
-    if(this.state.isValidUserDetails) {
-      return (
-        <View style={container1}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-          <View style={{ height: height / 10}}>
-            <Heading>One click away.</Heading>
-          </View>
-          <Image
-            style={progressBar}
-            source={require('../../assets/formC.png')}
-          />
-          <View>
-            <View>
-              <View style={{ height: height / 5, width: width / 1.5}}>
-                <View style={stageOneStyle}>
-                  <PhoneInput
-                    ref={ref => {
-                      this.phone = ref;
-                    }}
-                  />
-                </View>
-              </View>
-              <View style={{ height: height / 5, alignItems: 'center'}}>
-                <Text>Email</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      )
-    }
-
-    if(this.state.isValidPhoneNumber) {
-      return (
-        <View style={container1}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-          <View style={{ height: height / 10}}>
-            <Heading>Some more details.</Heading>
-          </View>
-          <Image
-            style={progressBar}
-            source={require('../../assets/formB.png')}
-          />
-          <View>
-            <View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      )
-    }
-
-    if(this.state.stage === '1') {
+    if(!this.state.isValidPhoneNumber === true) {
       return (
         <View style={container1}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
@@ -171,9 +103,76 @@ class SignUpPage extends React.Component {
                   {/*{this.renderInfo()}*/}
                 </View>
               </View>
-
               <View style={{ height: height / 15, alignItems: 'center'}}>
                 <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
+              </View>
+            </View>
+          </View>
+        </View>
+      )
+    }
+
+    if(this.state.isValidPhoneNumber) {
+      return (
+        <View style={container1}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <View style={{ height: height / 10}}>
+            <Heading>Some more details.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formB.png')}
+          />
+          <View>
+            <View>
+              <View style={{ height: height / 10, alignItems: 'center'}}>
+                <Text>First Name</Text>
+              </View>
+              <View style={{ height: height / 10, alignItems: 'center'}}>
+                <Text>Last Name</Text>
+              </View>
+              <View style={{ height: height / 10, alignItems: 'center'}}>
+                <Text>Email:</Text>
+              </View>
+              <View style={{ height: height / 10, alignItems: 'center'}}>
+                <Text>Password</Text>
+              </View>
+              <View style={{ height: height / 10, alignItems: 'center'}}>
+                <Text>Profile Picture</Text>
+              </View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
+              </View>
+            </View>
+          </View>
+        </View>
+      )
+    }
+
+    if(this.state.isValidUserDetails) {
+      return (
+        <View style={container1}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <View style={{ height: height / 10}}>
+            <Heading>One click away.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formC.png')}
+          />
+          <View>
+            <View>
+              <View style={{ height: height / 5, width: width / 1.5}}>
+                <View style={stageOneStyle}>
+                  <PhoneInput
+                    ref={ref => {
+                      this.phone = ref;
+                    }}
+                  />
+                </View>
+              </View>
+              <View style={{ height: height / 5, alignItems: 'center'}}>
+                <Text>Email</Text>
               </View>
             </View>
           </View>
