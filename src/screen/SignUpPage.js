@@ -6,7 +6,10 @@ import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from 'reac
 
 // third-part library
 import PhoneInput from "react-native-phone-input";
-import {StatusBarComponent} from "../common";
+import { Heading, Subtitle, Button, Icon } from '@shoutem/ui';
+
+// common
+import { StatusBarComponent, ButtonComponent } from "../common";
 
 class SignUpPage extends React.Component {
   state= {
@@ -71,11 +74,9 @@ class SignUpPage extends React.Component {
     if(this.state.isValidUserDetails) {
       return (
         <View style={container1}>
-          <StatusBarComponent backgroundColor='white'/>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
-            <Text style={{ height: height / 10, fontSize: width / 16, color: '#333333' }}>
-              One click away.
-            </Text>
+            <Heading>One click away.</Heading>
           </View>
           <Image
             style={progressBar}
@@ -110,11 +111,9 @@ class SignUpPage extends React.Component {
     if(this.state.isValidPhoneNumber) {
       return (
         <View style={container1}>
-          <StatusBarComponent backgroundColor='white'/>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
-            <Text style={{ height: height / 10, fontSize: width / 16, color: '#333333' }}>
-              Some more details.
-            </Text>
+            <Heading>Some more details.</Heading>
           </View>
           <Image
             style={progressBar}
@@ -149,11 +148,9 @@ class SignUpPage extends React.Component {
     if(this.state.stage === '1') {
       return (
         <View style={container1}>
-          <StatusBarComponent backgroundColor='white'/>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
-            <Text style={{ height: height / 10, fontSize: width / 16, color: '#333333' }}>
-              Get MOOVING.
-            </Text>
+            <Heading>Get MOOVING.</Heading>
           </View>
           <Image
             style={progressBar}
@@ -161,23 +158,23 @@ class SignUpPage extends React.Component {
           />
           <View>
             <View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <Subtitle>Enter your phone number:</Subtitle>
+              </View>
               <View style={{ height: height / 5, width: width / 1.5}}>
                 <View style={stageOneStyle}>
                   <PhoneInput
                     ref={ref => {
                       this.phone = ref;
                     }}
+                    autoFocus
                   />
-
-                  <TouchableOpacity onPress={this.updateInfo} style={button}>
-                    <Text>Get Info</Text>
-                  </TouchableOpacity>
-
                   {this.renderInfo()}
                 </View>
               </View>
-              <View style={{ height: height / 5, alignItems: 'center'}}>
-                <Text>Email</Text>
+
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
               </View>
             </View>
           </View>
@@ -199,7 +196,6 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   container1: {
-    // flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -216,7 +212,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   info: {
-    // width: 200,
     borderRadius: 5,
     backgroundColor: "#f0f0f0",
     padding: 10,

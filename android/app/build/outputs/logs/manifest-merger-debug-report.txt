@@ -4,8 +4,13 @@ ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/5b3da991a9a8227773b703752c45610a/AndroidManifest.xml:2:1-15:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:2:1-9:12
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/0cc176eec24e96f0cb0d8e5f116b6228/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/b97cd2c8fdb598806f756e919514a864/AndroidManifest.xml:17:1-22:12
@@ -13,13 +18,12 @@ MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduo
 MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/5ef44397c7f29305fccb096931a65d0a/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:10:1-18:12
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:1:1-4:12
 MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:1:1-3:12
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:2:1-9:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/617c0327cd8e8d9477931af64f6dfa9e/AndroidManifest.xml:17:1-24:12
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-32:12
@@ -53,10 +57,20 @@ uses-sdk
 ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
 INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:9:5-11:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/5b3da991a9a8227773b703752c45610a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/5b3da991a9a8227773b703752c45610a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:7:5-44
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:7:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/0cc176eec24e96f0cb0d8e5f116b6228/AndroidManifest.xml:20:5-44
@@ -71,18 +85,16 @@ MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.grad
 MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:2:3-70
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:2:3-70
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/617c0327cd8e8d9477931af64f6dfa9e/AndroidManifest.xml:20:5-22:41
@@ -99,8 +111,12 @@ INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManife
 		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:13:5-30:19
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/5b3da991a9a8227773b703752c45610a/AndroidManifest.xml:13:5-20
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/5b3da991a9a8227773b703752c45610a/AndroidManifest.xml:13:5-20
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:9:5-12:19
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:9:5-12:19
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:2:3-17
