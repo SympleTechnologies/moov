@@ -121,13 +121,12 @@ class SignUpPage extends React.Component {
   onSubmit = () => {
     if(this.validateFields()) {
       this.setState({ errorMessage: '' });
-      // this.saveUserToServer();
       this.setState({ isValidUserDetails: true })
     }
   };
 
   render() {
-    const { container, container1, stageOneStyle, button, progressBar, landingPageBody, landingPageBodyText, signInStyle, TextShadowStyle, signUpStyle } = styles;
+    const { container, stageOneStyle, button, progressBar, landingPageBody, landingPageBodyText, signInStyle, TextShadowStyle } = styles;
     let { height, width } = Dimensions.get('window');
     console.log(this.state);
 
@@ -137,7 +136,7 @@ class SignUpPage extends React.Component {
 
     if(this.state.isValidUserDetails) {
       return (
-        <View style={container1}>
+        <View style={container}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 20}}>
             <Heading>One click away.</Heading>
@@ -165,8 +164,9 @@ class SignUpPage extends React.Component {
                 </View>
               </View>
               <View style={{ height: height / 15, alignItems: 'center'}}>
-                {/*<ButtonComponent backgroundColor='#f68d65' text='NO THANKS' />*/}
-                <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
+                <TouchableOpacity>
+                  <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -176,7 +176,7 @@ class SignUpPage extends React.Component {
 
     if(!this.state.isValidPhoneNumber === true) {
       return (
-        <View style={container1}>
+        <View style={container}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
             <Heading>Get MOOVING.</Heading>
@@ -212,7 +212,7 @@ class SignUpPage extends React.Component {
 
     if(this.state.isValidPhoneNumber) {
       return (
-        <View style={container1}>
+        <View style={container}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
             <Heading>Some more details.</Heading>
@@ -248,12 +248,6 @@ class SignUpPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  container1: {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -281,15 +275,12 @@ const styles = StyleSheet.create({
   },
   landingPageBody: {
     flexDirection: 'column',
-    // justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '20%',
   },
   landingPageBodyText: {
     color: '#b3b4b4',
     fontSize: 20,
-    // borderWidth: 1,
-    // borderColor: '#333',
     borderRadius: 15,
     padding: 8,
     overflow: 'hidden',
@@ -306,21 +297,9 @@ const styles = StyleSheet.create({
     {
       textAlign: 'center',
       fontSize: 20,
-      // textShadowColor: '#ed1768',
       textShadowOffset: { width: 1, height: 1 },
       textShadowRadius: 5,
-
     },
-  signUpStyle: {
-    textAlign: 'center',
-    color: '#333',
-    fontSize: 15,
-    borderWidth: 1,
-    borderColor: 'white',
-    overflow: 'hidden',
-    height: Dimensions.get('window').height / 10
-    // width: Dimensions.get('window').width / 3,
-  },
 });
 
 export { SignUpPage };
