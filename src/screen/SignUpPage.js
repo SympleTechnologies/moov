@@ -6,20 +6,20 @@ import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Linking } f
 
 // third-part library
 import PhoneInput from "react-native-phone-input";
-import { Heading, Subtitle, Button, Icon } from '@shoutem/ui';
+import { Heading, Subtitle, Button, Icon, Title } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 
 // common
-import {StatusBarComponent, ButtonComponent, Input} from "../common";
+import {StatusBarComponent, ButtonComponent, Input, ButtonIconComponent} from "../common";
 import {SignUpForm} from "../component";
 
 class SignUpPage extends React.Component {
   state= {
     stage: '1',
-    isValidPhoneNumber: true,
+    isValidPhoneNumber: '',
     type: "",
     phoneNumber: "",
-    isValidUserDetails: '',
+    isValidUserDetails: true,
 
     firstName: '',
     lastName: '',
@@ -122,6 +122,7 @@ class SignUpPage extends React.Component {
     if(this.validateFields()) {
       this.setState({ errorMessage: '' });
       // this.saveUserToServer();
+      this.setState({ isValidUserDetails: true })
     }
   };
 
@@ -132,6 +133,42 @@ class SignUpPage extends React.Component {
 
     if(this.state.isValidPhoneNumber === false) {
       Toast.show('You have entered an invalid phone number.', Toast.LONG);
+    }
+
+    if(this.state.isValidUserDetails) {
+      return (
+        <View style={container1}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <View style={{ height: height / 20}}>
+            <Heading>One click away.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formC.png')}
+          />
+          <View>
+            <View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+              </View>
+              <View style={{ height: height / 5, width: width / 1.5}}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Icon style={{ color: '#333'}} name="share-android" />
+                  <Text style={{ fontSize: 20, color: '#f47e68' }}>FOR A FREE RIDE!</Text>
+                  <TouchableOpacity>
+                    <Icon style={{ color: '#1ea1f2'}} name="tweet" />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <ButtonComponent backgroundColor='#f68d65' text='NO THANKS' />
+              </View>
+            </View>
+          </View>
+        </View>
+      )
     }
 
     if(!this.state.isValidPhoneNumber === true) {
@@ -195,37 +232,6 @@ class SignUpPage extends React.Component {
               onChangeConfirmPasswordText={confirmPassword => this.setState({ confirmPassword })}
               onSubmit={() => this.onSubmit()}
             />
-          </View>
-        </View>
-      )
-    }
-
-    if(this.state.isValidUserDetails) {
-      return (
-        <View style={container1}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-          <View style={{ height: height / 10}}>
-            <Heading>One click away.</Heading>
-          </View>
-          <Image
-            style={progressBar}
-            source={require('../../assets/formC.png')}
-          />
-          <View>
-            <View>
-              <View style={{ height: height / 5, width: width / 1.5}}>
-                <View style={stageOneStyle}>
-                  <PhoneInput
-                    ref={ref => {
-                      this.phone = ref;
-                    }}
-                  />
-                </View>
-              </View>
-              <View style={{ height: height / 5, alignItems: 'center'}}>
-                <Text>Email</Text>
-              </View>
-            </View>
           </View>
         </View>
       )

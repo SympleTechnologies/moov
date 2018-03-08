@@ -18,8 +18,8 @@ const Input = ({ onChangeText, value, errorMessage, autoFocus, secureTextEntry, 
       keyboardType={keyboardType}
       onChangeText={onChangeText}
       placeholder={placeholder}
-      style={{ width: width / 1.5, lineHeight: 50, color: '#333333' }}
-      // style={{ width: width / 1.5, lineHeight: 50, color: '#333333', borderBottomColor: '#b3b4b4', borderBottomWidth: 1, borderTopWidth: 1, borderTopColor: 'white'}}
+      // style={{ width: width / 1.5, color: '#333333' }}
+      style={{ width: width / 1.5, color: '#333333', borderBottomColor: '#b3b4b4', borderBottomWidth: 1, borderTopWidth: 1, borderTopColor: 'white'}}
       value={value}
       secureTextEntry={secureTextEntry}
     />
