@@ -10,7 +10,8 @@ import { Heading, Subtitle, Button, Icon } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 
 // common
-import { StatusBarComponent, ButtonComponent } from "../common";
+import {StatusBarComponent, ButtonComponent, Input} from "../common";
+import {SignUpForm} from "../component";
 
 class SignUpPage extends React.Component {
   state= {
@@ -18,7 +19,13 @@ class SignUpPage extends React.Component {
     isValidPhoneNumber: true,
     type: "",
     phoneNumber: "",
-    isValidUserDetails: ''
+    isValidUserDetails: '',
+
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   };
 
   /**
@@ -124,26 +131,18 @@ class SignUpPage extends React.Component {
             source={require('../../assets/formB.png')}
           />
           <View>
-            <View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>First Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>Last Name</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>Email:</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>Password</Text>
-              </View>
-              <View style={{ height: height / 10, alignItems: 'center'}}>
-                <Text>Profile Picture</Text>
-              </View>
-              <View style={{ height: height / 15, alignItems: 'center'}}>
-                <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
-              </View>
-            </View>
+            <SignUpForm
+              firstNameValue={this.state.firstName}
+              lastNameValue={this.state.lastName}
+              emailValue={this.state.email}
+              passwordValue={this.state.password}
+              confirmPasswordValue={this.state.confirmPassword}
+              onChangeFirstNameText={firstName => this.setState({ firstName })}
+              onChangeLastNameText={lastName => this.setState({ lastName })}
+              onChangeEmailText={email => this.setState({ email })}
+              onChangePasswordText={password => this.setState({ password })}
+              onChangeConfirmPasswordText={confirmPassword => this.setState({ confirmPassword })}
+            />
           </View>
         </View>
       )

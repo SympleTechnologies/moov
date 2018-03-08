@@ -11,7 +11,7 @@ const ButtonComponent = ({ backgroundColor, text, onPress}) => {
   let { height, width } = Dimensions.get('window');
 
   return (
-    <Button onPress={onPress} style={{ width: width / 3, backgroundColor: backgroundColor, borderRadius: 15}} styleName="confirmation dark">
+    <Button onPress={onPress} style={{ width: width / 3, backgroundColor: backgroundColor, borderRadius: 30}} styleName="confirmation dark">
       <Text>{text}</Text>
     </Button>
   )
