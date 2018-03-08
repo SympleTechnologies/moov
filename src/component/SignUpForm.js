@@ -2,7 +2,10 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, TouchableOpacity, Linking } from 'react-native';
+
+// third-part library
+import { Caption } from '@shoutem/ui';
 
 // common
 import { ButtonComponent, Input, StatusBarComponent } from "../common";
@@ -43,8 +46,17 @@ const SignUpForm =
         <View style={{ height: height / 10, alignItems: 'center'}}>
           <Input autoCapitalize='none' onChangeText={onChangeConfirmPasswordText} placeholder={'Confirm Password'} secureTextEntry value={confirmPasswordValue} />
         </View>
-        <View style={{ height: height / 15, alignItems: 'center'}}>
-          <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
+        <View style={{ height: height / 15, alignItems: 'center', flexDirection: 'column'}}>
+          <View>
+            <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='Sign Up' />
+          </View>
+          <View style={{ width: width / 1.5, marginTop: 10, flexDirection: 'column' }}>
+            <Caption style={{ textAlign: 'center', color: '#333333', fontSize: 10 }}>By clicking on "Sign up", you accept the</Caption>
+            <TouchableOpacity onPress={() => Linking.openURL('http://google.com')}>
+              <Caption style={{ textAlign: 'center', color: '#ed1768', fontSize: 10 }}>Terms and Conditions</Caption>
+            </TouchableOpacity>
+            <Caption style={{ textAlign: 'center', color: '#333333', fontSize: 10 }}>of Use.</Caption>
+          </View>
         </View>
       </View>
     );

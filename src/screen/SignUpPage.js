@@ -2,7 +2,7 @@
 import React from 'react';
 
 // react-native libraries
-import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Linking } from 'react-native';
 
 // third-part library
 import PhoneInput from "react-native-phone-input";
