@@ -19,7 +19,7 @@ class SignUpPage extends React.Component {
     isValidPhoneNumber: '',
     type: "",
     phoneNumber: "",
-    isValidUserDetails: true,
+    isValidUserDetails: '',
 
     firstName: '',
     lastName: '',
@@ -127,7 +127,7 @@ class SignUpPage extends React.Component {
   };
 
   render() {
-    const { container, container1, stageOneStyle, button, progressBar } = styles;
+    const { container, container1, stageOneStyle, button, progressBar, landingPageBody, landingPageBodyText, signInStyle, TextShadowStyle, signUpStyle } = styles;
     let { height, width } = Dimensions.get('window');
     console.log(this.state);
 
@@ -152,8 +152,10 @@ class SignUpPage extends React.Component {
               </View>
               <View style={{ height: height / 5, width: width / 1.5}}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Icon style={{ color: '#333'}} name="share-android" />
-                  <Text style={{ fontSize: 20, color: '#f47e68' }}>FOR A FREE RIDE!</Text>
+                  <Icon name="share-android" />
+                  {/*<Icon style={{ color: '#333'}} name="share-android" />*/}
+                  <Text style={{ fontSize: 20 }}>For a free ride</Text>
+                  {/*<Text style={{ fontSize: 20, color: '#ed1768' }}>for a free ride</Text>*/}
                   <TouchableOpacity>
                     <Icon style={{ color: '#1ea1f2'}} name="tweet" />
                   </TouchableOpacity>
@@ -163,7 +165,8 @@ class SignUpPage extends React.Component {
                 </View>
               </View>
               <View style={{ height: height / 15, alignItems: 'center'}}>
-                <ButtonComponent backgroundColor='#f68d65' text='NO THANKS' />
+                {/*<ButtonComponent backgroundColor='#f68d65' text='NO THANKS' />*/}
+                <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
               </View>
             </View>
           </View>
@@ -275,7 +278,49 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10
-  }
+  },
+  landingPageBody: {
+    flexDirection: 'column',
+    // justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '20%',
+  },
+  landingPageBodyText: {
+    color: '#b3b4b4',
+    fontSize: 20,
+    // borderWidth: 1,
+    // borderColor: '#333',
+    borderRadius: 15,
+    padding: 8,
+    overflow: 'hidden',
+    width: Dimensions.get('window').width / 3,
+  },
+  signInStyle: {
+    color: '#333',
+    textAlign: 'center',
+    marginBottom: 20,
+    backgroundColor: 'white',
+    textDecorationLine: 'underline',
+  },
+  TextShadowStyle:
+    {
+      textAlign: 'center',
+      fontSize: 20,
+      // textShadowColor: '#ed1768',
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 5,
+
+    },
+  signUpStyle: {
+    textAlign: 'center',
+    color: '#333',
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: 'white',
+    overflow: 'hidden',
+    height: Dimensions.get('window').height / 10
+    // width: Dimensions.get('window').width / 3,
+  },
 });
 
 export { SignUpPage };
