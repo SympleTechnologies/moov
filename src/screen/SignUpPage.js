@@ -25,7 +25,8 @@ class SignUpPage extends React.Component {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    errorMessage: ''
   };
 
   /**
@@ -73,6 +74,56 @@ class SignUpPage extends React.Component {
       );
     }
   }
+
+  /**
+   * validateFields
+   *
+   * validates user input fields
+   * @return {boolean}
+   */
+  validateFields = () => {
+    let hasNumber = /\d/;
+    let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    let format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    if ( this.state.firstName === '') {
+      Toast.show('First Name field cannot be empty', Toast.LONG);
+    } else if(format.test(this.state.firstName)){
+      Toast.show('First Name field cannot special characters', Toast.LONG);
+    } else if(hasNumber.test(this.state.firstName)) {
+      Toast.show('First Name field cannot contains numbers', Toast.LONG);
+    } else if ( this.state.lastName === '') {
+      Toast.show('Last Name field cannot be empty', Toast.LONG);
+    } else if(format.test(this.state.lastName)){
+      Toast.show('Last Name field cannot special characters', Toast.LONG);
+    } else if(hasNumber.test(this.state.lastName)) {
+      Toast.show('Last Name field cannot contains numbers', Toast.LONG);
+    } else if ( this.state.email === '') {
+      Toast.show('Email field cannot be empty', Toast.LONG);
+    } else if(this.state.email.match(pattern) === null) {
+      Toast.show('Email address is badly formatted', Toast.LONG);
+    } else if ( this.state.password === '' ) {
+      Toast.show('Password field cannot be empty', Toast.LONG);
+    } else if(this.state.password.length < 6) {
+      Toast.show('Password cannot be less than 6 characters', Toast.LONG);
+    } else if ( this.state.confirmPassword === '' ) {
+      Toast.show('Confirm Password cannot be empty', Toast.LONG);
+    } else if ( this.state.confirmPassword !== this.state.password ) {
+      Toast.show('Password does not match the confirm password field', Toast.LONG);
+    } else {
+      return true
+    }
+  };
+
+  /**
+   * onSubmit
+   */
+  onSubmit = () => {
+    if(this.validateFields()) {
+      this.setState({ errorMessage: '' });
+      // this.saveUserToServer();
+    }
+  };
 
   render() {
     const { container, container1, stageOneStyle, button, progressBar } = styles;
@@ -142,6 +193,7 @@ class SignUpPage extends React.Component {
               onChangeEmailText={email => this.setState({ email })}
               onChangePasswordText={password => this.setState({ password })}
               onChangeConfirmPasswordText={confirmPassword => this.setState({ confirmPassword })}
+              onSubmit={() => this.onSubmit()}
             />
           </View>
         </View>

@@ -48,7 +48,7 @@ const SignUpForm =
         </View>
         <View style={{ height: height / 15, alignItems: 'center', flexDirection: 'column'}}>
           <View>
-            <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='Sign Up' />
+            <ButtonComponent onPress={onSubmit} backgroundColor='#f68d65' text='Sign Up' />
           </View>
           <View style={{ width: width / 1.5, marginTop: 10, flexDirection: 'column' }}>
             <Caption style={{ textAlign: 'center', color: '#333333', fontSize: 10 }}>By clicking on "Sign up", you accept the</Caption>
