@@ -8,6 +8,11 @@ import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Linking } f
 import PhoneInput from "react-native-phone-input";
 import { Heading, Subtitle, Button, Icon, Title } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
+import FBSDK from 'react-native-fbsdk';
+
+const {
+  ShareDialog,
+} = FBSDK;
 
 // common
 import {StatusBarComponent, ButtonComponent, Input, ButtonIconComponent} from "../common";
@@ -19,14 +24,20 @@ class SignUpPage extends React.Component {
     isValidPhoneNumber: '',
     type: "",
     phoneNumber: "",
-    isValidUserDetails: '',
+    isValidUserDetails: true,
 
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
-    errorMessage: ''
+    errorMessage: '',
+
+    shareLinkContent: {
+      contentType: 'link',
+      contentUrl: "https://facebook.com",
+      contentDescription: 'Wow, check out this great site!',
+    },
   };
 
   /**
@@ -125,6 +136,30 @@ class SignUpPage extends React.Component {
     }
   };
 
+  // Share the link using the share dialog.
+  shareLinkWithShareDialog = () => {
+    var tmp = this;
+    ShareDialog.canShow(this.state.shareLinkContent).then(
+      function(canShow) {
+        if (canShow) {
+          return ShareDialog.show(tmp.state.shareLinkContent);
+        }
+      }
+    ).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Share cancelled');
+        } else {
+          alert('Share success with postId: '
+            + result.postId);
+        }
+      },
+      function(error) {
+        alert('Share fail with error: ' + error);
+      }
+    );
+  }
+
   render() {
     const { container, stageOneStyle, button, progressBar, landingPageBody, landingPageBodyText, signInStyle, TextShadowStyle } = styles;
     let { height, width } = Dimensions.get('window');
@@ -158,7 +193,7 @@ class SignUpPage extends React.Component {
                   <TouchableOpacity>
                     <Icon style={{ color: '#1ea1f2'}} name="tweet" />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={this.shareLinkWithShareDialog}>
                     <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
                   </TouchableOpacity>
                 </View>

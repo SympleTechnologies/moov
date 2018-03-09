@@ -2,160 +2,113 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec931006-9a66-455b-9220-ea297fd5e107" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_fade_in.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_fade_in.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_fade_out.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_fade_out.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_in.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_in.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_out.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_out.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_slide_down.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_slide_down.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_slide_up.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/anim_catalyst_slide_up.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_fps_view.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_fps_view.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_item_frame.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_item_frame.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_item_title.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_item_title.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_view.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_redbox_view.xml.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-af_values-af.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-af_values-af.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-am_values-am.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-am_values-am.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ar_values-ar.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ar_values-ar.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-bg_values-bg.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-bg_values-bg.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ca_values-ca.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ca_values-ca.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-cs_values-cs.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-cs_values-cs.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-da_values-da.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-da_values-da.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-de_values-de.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-de_values-de.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-el_values-el.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-el_values-el.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rGB_values-en-rGB.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rGB_values-en-rGB.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rIN_values-en-rIN.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-en-rIN_values-en-rIN.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-es-rUS_values-es-rUS.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-es-rUS_values-es-rUS.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-es_values-es.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-es_values-es.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fi_values-fi.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fi_values-fi.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fr-rCA_values-fr-rCA.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fr-rCA_values-fr-rCA.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fr_values-fr.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-fr_values-fr.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-h720dp-v13_values-h720dp-v13.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-h720dp-v13_values-h720dp-v13.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hdpi-v4_values-hdpi-v4.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hdpi-v4_values-hdpi-v4.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hi_values-hi.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hr_values-hr.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hr_values-hr.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hu_values-hu.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-hu_values-hu.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-in_values-in.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-in_values-in.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-it_values-it.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-it_values-it.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-iw_values-iw.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-iw_values-iw.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ja_values-ja.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ja_values-ja.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ko_values-ko.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ko_values-ko.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-land_values-land.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-land_values-land.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-large-v4_values-large-v4.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-large-v4_values-large-v4.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-lt_values-lt.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-lt_values-lt.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-lv_values-lv.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-lv_values-lv.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-nb_values-nb.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-nb_values-nb.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-nl_values-nl.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-nl_values-nl.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pl_values-pl.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pl_values-pl.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-port_values-port.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-port_values-port.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pt-rPT_values-pt-rPT.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pt-rPT_values-pt-rPT.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pt_values-pt.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-pt_values-pt.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ro_values-ro.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ro_values-ro.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ru_values-ru.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-ru_values-ru.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sk_values-sk.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sk_values-sk.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sl_values-sl.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sl_values-sl.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sr_values-sr.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sr_values-sr.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sv_values-sv.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sv_values-sv.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw_values-sw.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw_values-sw.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-th_values-th.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-th_values-th.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tl_values-tl.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tl_values-tl.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tr_values-tr.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-tr_values-tr.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-uk_values-uk.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-uk_values-uk.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v17_values-v17.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v17_values-v17.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v18_values-v18.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v18_values-v18.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v21_values-v21.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v21_values-v21.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v22_values-v22.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v22_values-v22.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23_values-v23.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-v23_values-v23.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-vi_values-vi.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-vi_values-vi.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-xlarge-v4_values-xlarge-v4.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-xlarge-v4_values-xlarge-v4.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rCN_values-zh-rCN.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rCN_values-zh-rCN.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rHK_values-zh-rHK.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rHK_values-zh-rHK.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rTW_values-zh-rTW.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zh-rTW_values-zh-rTW.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zu_values-zu.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-zu_values-zu.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Bolts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/FBSDKCoreKit" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/FBSDKLoginKit" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/FBSDKShareKit" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLink.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLinkNavigation.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLinkResolving.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLinkReturnToRefererController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLinkReturnToRefererView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFAppLinkTarget.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFCancellationToken.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFCancellationTokenRegistration.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFCancellationTokenSource.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFExecutor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFMeasurementEvent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFTask+Exceptions.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFTask.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFTaskCompletionSource.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFURL.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/BFWebViewAppLinkResolver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Headers/Bolts.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/Bolts.framework/Modules/module.modulemap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKAccessToken.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKAppEvents.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKAppLinkResolver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKAppLinkUtility.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKApplicationDelegate.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKConstants.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKCopying.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKGraphErrorRecoveryProcessor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequest.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestConnection.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestDataAttachment.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKMacros.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKMutableCopying.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKProfile.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKSettings.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKTestUsersManager.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Headers/FBSDKUtility.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKCoreKit.framework/Modules/module.modulemap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginConstants.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginManager.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginManagerLoginResult.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKLoginTooltipView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Headers/FBSDKTooltipView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKLoginKit.framework/Modules/module.modulemap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKAppGroupAddDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKAppGroupContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKAppGroupJoinDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKAppInviteContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKAppInviteDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKCameraEffectArguments.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKCameraEffectTextures.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKGameRequestContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKGameRequestDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKHashtag.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKLikeButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKLikeControl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKLikeObjectType.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKLiking.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKMessageDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSendButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareAPI.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareCameraEffectContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareConstants.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareDialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareDialogMode.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareKit.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareLinkContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMediaContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerActionButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerGenericTemplateContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerGenericTemplateElement.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerMediaTemplateContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerOpenGraphMusicTemplateContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareMessengerURLActionButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareOpenGraphAction.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareOpenGraphContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareOpenGraphObject.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareOpenGraphValueContainer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSharePhoto.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSharePhotoContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareVideo.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKShareVideoContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSharing.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSharingButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Headers/FBSDKSharingContent.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ios/FBSDKShareKit.framework/Modules/module.modulemap" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/moov.xcodeproj/project.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../ios/moov.xcodeproj/project.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_facebook_react_react_native_0_52_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_facebook_react_react_native_0_52_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-af.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-af.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-am.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-am.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ar.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ar.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-bg.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-bg.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ca.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ca.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-cs.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-cs.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-da.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-da.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-de.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-de.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-el.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-el.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rAU.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rAU.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rGB.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rGB.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rIN.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-en-rIN.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-es-rUS.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-es-rUS.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-es.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-es.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fa.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fa.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fi.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fr-rCA.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fr-rCA.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fr.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-fr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-h720dp-v13.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-h720dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hdpi-v4.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hi.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hr.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hu.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-hu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-in.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-in.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-it.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-it.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-iw.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-iw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ja.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ja.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ko.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ko.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-land.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-land.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-large-v4.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-large-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-lt.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-lt.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-lv.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-lv.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-nb.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-nb.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-nl.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-nl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pl.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-port.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-port.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pt-rPT.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pt-rPT.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pt.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-pt.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ro.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ro.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ru.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-ru.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sk.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sk.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sl.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sr.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sv.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sv.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw600dp-v13.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw600dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-th.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-th.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-tl.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-tl.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-tr.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-tr.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-uk.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-uk.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v17.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v17.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v18.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v18.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v21.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v21.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v22.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v22.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v23.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-v23.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-vi.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-vi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-xlarge-v4.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-xlarge-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rCN.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rCN.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rHK.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rHK.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rTW.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zh-rTW.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zu.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-zu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moov/MainApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moov/MainApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/moov.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../ios/moov.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/moov/AppDelegate.m" afterPath="$PROJECT_DIR$/../ios/moov/AppDelegate.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/moov/Info.plist" afterPath="$PROJECT_DIR$/../ios/moov/Info.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../package.json" afterPath="$PROJECT_DIR$/../package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../yarn.lock" afterPath="$PROJECT_DIR$/../yarn.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/app/.gradle/" />
@@ -203,7 +156,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-              <folding />
+              <folding>
+                <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -222,7 +177,7 @@
         <entry file="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -242,8 +197,11 @@
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2175">
-              <caret line="145" column="1" lean-forward="false" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
-              <folding />
+              <caret line="146" column="1" lean-forward="false" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
+              <folding>
+                <marker date="1520557174186" expanded="true" signature="5438:5855" ph="{...}" />
+                <marker date="1520557174186" expanded="true" signature="5857:5983" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -4528,7 +4486,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520556904817" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520558069261" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -4575,7 +4533,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520556904817" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520558069261" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4736,7 +4694,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520556904819" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1520558069264" />
       </method>
     </configuration>
     <list size="1">
@@ -4830,7 +4788,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4854,7 +4814,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4922,7 +4884,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4982,7 +4946,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -5161,8 +5127,11 @@
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2175">
-          <caret line="145" column="1" lean-forward="false" selection-start-line="145" selection-start-column="1" selection-end-line="145" selection-end-column="1" />
-          <folding />
+          <caret line="146" column="1" lean-forward="false" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
+          <folding>
+            <marker date="1520557174186" expanded="true" signature="5438:5855" ph="{...}" />
+            <marker date="1520557174186" expanded="true" signature="5857:5983" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -5170,7 +5139,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding />
+          <folding>
+            <marker date="1490875535000" expanded="true" signature="490:492" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -5185,7 +5156,7 @@
     <entry file="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
