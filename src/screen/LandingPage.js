@@ -4,6 +4,9 @@ import React from 'react';
 // react-native libraries
 import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity } from 'react-native';
 
+// third-part library
+import { Icon } from '@shoutem/ui';
+
 // commom
 import { StatusBarComponent } from "../common";
 
@@ -62,7 +65,15 @@ class LandingPage extends React.Component {
   };
 
   render() {
-    const { container, landingPageBody, landingPageBodyText, signUpStyle, signInStyle, TextShadowStyle} = styles;
+    const {
+      container,
+      landingPageBody,
+      landingPageBodyText,
+      signUpStyle,
+      signInStyle,
+      TextShadowStyle,
+      emailText
+    } = styles;
     let { height, width } = Dimensions.get('window');
 
     return (
@@ -86,9 +97,20 @@ class LandingPage extends React.Component {
           <TouchableOpacity onPress={() => this.appNavigation('signIn')} >
             <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Sign In</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.appNavigation('signup')}>
-            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign Up Now!</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign up with</Text>
+            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}> </Text>
+
+            <TouchableOpacity onPress={() => this.appNavigation('signup')}>
+              <Text style={[ signUpStyle, emailText]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Email</Text>
+            </TouchableOpacity>
+
+            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}> or </Text>
+
+            <TouchableOpacity onPress={this.shareLinkWithShareDialog}>
+              <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -144,6 +166,9 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 10
     // width: Dimensions.get('window').width / 3,
   },
+  emailText: {
+    fontWeight: '700',
+  }
 });
 
 export { LandingPage };

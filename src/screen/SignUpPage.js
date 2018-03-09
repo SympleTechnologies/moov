@@ -24,7 +24,7 @@ class SignUpPage extends React.Component {
     isValidPhoneNumber: '',
     type: "",
     phoneNumber: "",
-    isValidUserDetails: true,
+    isValidUserDetails: '',
 
     firstName: '',
     lastName: '',
@@ -138,7 +138,7 @@ class SignUpPage extends React.Component {
 
   // Share the link using the share dialog.
   shareLinkWithShareDialog = () => {
-    var tmp = this;
+    let tmp = this;
     ShareDialog.canShow(this.state.shareLinkContent).then(
       function(canShow) {
         if (canShow) {
