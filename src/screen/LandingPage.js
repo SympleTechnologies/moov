@@ -196,7 +196,7 @@ class LandingPage extends React.Component {
           </View>
           <View>
             <LoginButton
-              publishPermissions={["publish_actions"]}
+              publishPermissions={["publish_actions email public_profile"]}
               onLoginFinished={
                 (error, result) => {
                   if (error) {
