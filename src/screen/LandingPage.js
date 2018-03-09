@@ -1,14 +1,28 @@
 // react libraries
 import React from 'react';
+var PropTypes = require('prop-types');
 
 // react-native libraries
 import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity } from 'react-native';
 
 // third-part library
 import { Icon } from '@shoutem/ui';
+import FBSDK from 'react-native-fbsdk';
+import { LoginManager } from 'react-native-fbsdk'
+import Toast from 'react-native-simple-toast';
 
 // commom
 import { StatusBarComponent } from "../common";
+
+const {
+  LoginButton,
+  AccessToken,
+} = FBSDK;
+
+const {
+  GraphRequest,
+  GraphRequestManager,
+} = FBSDK;
 
 class LandingPage extends React.Component {
   /**
@@ -17,6 +31,13 @@ class LandingPage extends React.Component {
   constructor () {
     super();
     this.springValue = new Animated.Value(0.3);
+    state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      imgURL: '',
+
+    }
   }
 
   /**
@@ -64,7 +85,74 @@ class LandingPage extends React.Component {
     }
   };
 
+  /**
+   * _responseInfoCallback
+   *
+   * GraphRequest call back handler
+   * @param {object} error - error containing error message
+   * @param {object} result - object containg user information
+   * @private
+   * @return {void}
+   */
+  //Create response callback.
+  _responseInfoCallback = (error: ?Object, result: ?Object) => {
+    if (error) {
+      console.log(error.toString(), 'Error from fb');
+      console.log(error, 'Error from fb');
+      Toast.show('The operation couldn’t be completed.', Toast.LONG);
+      LoginManager.logOut()
+    } else {
+      console.log(result.toString(), 'Success from fb');
+      console.log(result, 'Success from fb');
+      this.facebookLoginSucces(result);
+    }
+  };
+
+  /**
+   * facebookLoginSucces
+   *
+   * Sets the state with the user's details
+   * @param {object} userDetails - User's information
+   * @return {void}
+   */
+  facebookLoginSucces = (userDetails) => {
+    Toast.show('Success.', Toast.LONG);
+    console.log(userDetails);
+    this.setState({
+      firstName: userDetails.first_name,
+      lastName: userDetails.last_name,
+      email: userDetails.email,
+      imgURL: userDetails.picture.data['url'],
+    })
+  };
+
+  /**
+   * getFacebookUser
+   *
+   * Get facebook user information
+   * @param {string} token - user's access token
+   * @return {void}
+   */
+  getFacebookUser = (token) => {
+    const infoRequest = new GraphRequest(
+      '/me',
+      {
+        accessToken: token,
+        parameters: {
+          fields: {
+            string: 'name,first_name,middle_name,last_name,picture,email'
+          }
+        }
+      },
+      this._responseInfoCallback
+    );
+
+    new GraphRequestManager().addRequest(infoRequest).start()
+
+  };
+
   render() {
+    console.log(this.state, 'Entire state');
     const {
       container,
       landingPageBody,
@@ -98,18 +186,33 @@ class LandingPage extends React.Component {
             <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Sign In</Text>
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
-            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign up with</Text>
-            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}> </Text>
-
+            <TouchableOpacity onPress={() => this.appNavigation('signup')}>
+              <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign up with</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => this.appNavigation('signup')}>
               <Text style={[ signUpStyle, emailText]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Email</Text>
             </TouchableOpacity>
 
-            <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}> or </Text>
-
-            <TouchableOpacity onPress={this.shareLinkWithShareDialog}>
-              <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
-            </TouchableOpacity>
+          </View>
+          <View>
+            <LoginButton
+              publishPermissions={["publish_actions"]}
+              onLoginFinished={
+                (error, result) => {
+                  if (error) {
+                    alert("login has error: " + result.error);
+                  } else if (result.isCancelled) {
+                    alert("login is cancelled.");
+                  } else {
+                    AccessToken.getCurrentAccessToken().then(
+                      (data) => {
+                        this.getFacebookUser(data.accessToken);
+                      }
+                    )
+                  }
+                }
+              }
+              onLogoutFinished={() => alert("logout.")}/>
           </View>
         </View>
       </View>
