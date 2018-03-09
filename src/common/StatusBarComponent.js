@@ -4,10 +4,12 @@ import React from 'react';
 // react-native libraries
 import { StatusBar } from 'react-native'
 
-const StatusBarComponent = () => {
+const StatusBarComponent = ({ backgroundColor, barStyle}) => {
   return (
     <StatusBar
-      backgroundColor="white"
+      // translucent
+      barStyle={barStyle}
+      backgroundColor={backgroundColor}
       hidden = {false}
     />
   )

@@ -16,6 +16,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
 android/.idea/
 android/app/build/
 ios/build/Build/Intermediates
@@ -44,3 +45,4 @@ Builds/
 
 .idea/
 .idea
+
