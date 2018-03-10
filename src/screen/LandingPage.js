@@ -1,12 +1,11 @@
 // react libraries
 import React from 'react';
-var PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 
 // react-native libraries
 import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity } from 'react-native';
 
 // third-part library
-import { Icon } from '@shoutem/ui';
 import FBSDK from 'react-native-fbsdk';
 import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
