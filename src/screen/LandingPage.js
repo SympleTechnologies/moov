@@ -3,12 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // react-native libraries
-import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 // third-part library
 import FBSDK from 'react-native-fbsdk';
 import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
+import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // commom
 import { StatusBarComponent } from "../common";
@@ -30,14 +31,15 @@ class LandingPage extends React.Component {
   constructor () {
     super();
     this.springValue = new Animated.Value(0.3);
-    state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      imgURL: '',
-
-    }
   }
+
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    imgURL: '',
+    loading: false,
+  };
 
   /**
    * componentDidMount
@@ -47,6 +49,32 @@ class LandingPage extends React.Component {
    */
   componentDidMount() {
     this.spring();
+    this.setupGoogleSignin();
+    this.googleSignOut();
+  }
+
+  /**
+   * setupGoogleSignin
+   *
+   * Initialize google auth
+   * @return {Promise<void>}
+   */
+  async setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+
+      await GoogleSignin.configure({
+        iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
+        webClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
+        offlineAccess: false
+      });
+
+      const user = await GoogleSignin.currentUserAsync();
+      console.log(user);
+    }
+    catch (err) {
+      console.log("Google signin error", err.code, err.message);
+    }
   }
 
   /**
@@ -73,10 +101,12 @@ class LandingPage extends React.Component {
    * @return {void}
    */
   appNavigation = (page) => {
+    this.setState({ loading: true })
     const { navigate } = this.props.navigation;
 
     if (page === 'signup') {
       navigate('SignUpPage');
+      this.setState({ loading: false })
     }
 
     if (page === 'signIn') {
@@ -150,6 +180,50 @@ class LandingPage extends React.Component {
 
   };
 
+  /**
+   * googleSignIn
+   *
+   * Signs user in using google login interface
+   * @return {void}
+   */
+  googleSignIn = () => {
+    GoogleSignin.signIn()
+      .then((user) => {
+        console.log(user);
+        this.setState({
+          firstName: user.givenName,
+          lastName: user.familyName,
+          email: user.email,
+          imgURL: user.photo,
+        });
+        Toast.show('Google signup was  successful', Toast.LONG);
+        this.appNavigation('signup')
+      })
+      .catch((err) => {
+        console.log('WRONG SIGNIN', err);
+        Toast.show('Google signup was  unsuccessful', Toast.LONG);
+        navigate('SignUpPage');
+      })
+      .done();
+  };
+
+
+  /**
+   * googleSignIn
+   *
+   * Signs user out using google login interface
+   * @return {void}
+   */
+  googleSignOut = () => {
+    GoogleSignin.signOut()
+      .then(() => {
+        console.log('out');
+      })
+      .catch((err) => {
+
+      });
+  };
+
   render() {
     console.log(this.state, 'Entire state');
     const {
@@ -159,9 +233,24 @@ class LandingPage extends React.Component {
       signUpStyle,
       signInStyle,
       TextShadowStyle,
-      emailText
+      emailText,
+      activityIndicator
     } = styles;
     let { height, width } = Dimensions.get('window');
+
+    // ACTIVITY INDICATOR
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1}}>
+          <StatusBarComponent />
+          <ActivityIndicator
+            color = '#004a80'
+            size = "large"
+            style={activityIndicator}
+          />
+        </View>
+      );
+    }
 
     return (
       <View style={container}>
@@ -191,27 +280,35 @@ class LandingPage extends React.Component {
             <TouchableOpacity onPress={() => this.appNavigation('signup')}>
               <Text style={[ signUpStyle, emailText]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Email</Text>
             </TouchableOpacity>
-
           </View>
-          <View>
-            <LoginButton
-              publishPermissions={["publish_actions email public_profile"]}
-              onLoginFinished={
-                (error, result) => {
-                  if (error) {
-                    alert("login has error: " + result.error);
-                  } else if (result.isCancelled) {
-                    alert("login is cancelled.");
-                  } else {
-                    AccessToken.getCurrentAccessToken().then(
-                      (data) => {
-                        this.getFacebookUser(data.accessToken);
-                      }
-                    )
+          <View style={{ flexDirection: 'column', justifyContent: 'center'}}>
+            <View style={{ marginTop: 3, marginLeft: 4 }}>
+              <LoginButton
+                publishPermissions={["publish_actions email public_profile"]}
+                onLoginFinished={
+                  (error, result) => {
+                    if (error) {
+                      alert("login has error: " + result.error);
+                    } else if (result.isCancelled) {
+                      alert("login is cancelled.");
+                    } else {
+                      AccessToken.getCurrentAccessToken().then(
+                        (data) => {
+                          this.getFacebookUser(data.accessToken);
+                        }
+                      )
+                    }
                   }
                 }
-              }
-              onLogoutFinished={() => alert("logout.")}/>
+                onLogoutFinished={() => alert("logout.")}/>
+            </View>
+            <View stle={{ justifyContent: 'center'}}>
+              <GoogleSigninButton
+                style={{ width: width / 2.09, height: 40, marginTop: 10 }}
+                size={GoogleSigninButton.Size.Wide}
+                color={GoogleSigninButton.Color.Auto}
+                onPress={this.googleSignIn}/>
+            </View>
           </View>
         </View>
       </View>
@@ -270,7 +367,13 @@ const styles = StyleSheet.create({
   },
   emailText: {
     fontWeight: '700',
-  }
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20
+  },
 });
 
 export { LandingPage };
