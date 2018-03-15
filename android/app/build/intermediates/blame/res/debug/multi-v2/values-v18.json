@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/res/values-v18/values-v18.xml",
+                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/fb010359ee86c0265ffe8e4c3adc46eb/res/values-v18/values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

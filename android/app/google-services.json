@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "557710622421",
+    "project_id": "moov-194715"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557710622421:android:2755bf58b0cbad18",
+        "android_client_info": {
+          "package_name": "com.moov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557710622421-0camtpco5o4nlo36o1ml9eonl16anmkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moov",
+            "certificate_hash": "5fee1adf48810b7c424d0cc6a719aa29467399b0"
+          }
+        },
+        {
+          "client_id": "557710622421-15sfn3rs1u3puordofs1r6qpvqf4v8mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_1co5jGiPSa8Fir5E3IfC1nyY4LvZjuE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

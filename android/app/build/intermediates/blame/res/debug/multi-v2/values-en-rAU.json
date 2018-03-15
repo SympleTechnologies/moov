@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
-                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/2a616bac22be3deef061abc8dc0ce6a5/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/res/values-en-rAU/values-en-rAU.xml",
+                    "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/fb010359ee86c0265ffe8e4c3adc46eb/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
