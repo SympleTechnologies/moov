@@ -1,248 +1,519 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:21:1-30:12
-MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:2:1-15:12
-MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/a616bc58537e7d75da532cc38b0698bf/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/d2cbf2f1e94b1efa8358e5bb1a1ed2a6/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:21:1-36:12
-MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:2:1-9:12
-MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:2:1-14:12
-MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/c707c607409569591c58a9c6c1dbdf99/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/bff89451d89ccd52c5073b7b868ca8bd/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/52a8fcde7d88b30a4f77919e03e9dcbc/AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:21:1-45:12
-MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/424d37967eab2254f3a6fc5ea9a655e1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/0cc176eec24e96f0cb0d8e5f116b6228/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f6c17b07c1e07dbdc567498cec37afcd/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/334e493efc911ca37c143d41ee5d34c9/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/56a8da65e7a39881c9f5f2d86bc11496/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/b97cd2c8fdb598806f756e919514a864/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/5ef44397c7f29305fccb096931a65d0a/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/e886006068c7d622892a148277655e10/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:10:1-18:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:1:1-4:12
-MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:1:1-3:12
-MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:2:1-9:12
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/617c0327cd8e8d9477931af64f6dfa9e/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:21:1-30:12
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:2:1-15:12
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/c3fc5ed8bb930744e1885f3250d69071/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/e1d3981b9a4753d41a0baf5e4a336b96/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:21:1-36:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/fb010359ee86c0265ffe8e4c3adc46eb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/45429c5f05385a09eb7f99c5de90d5b9/AndroidManifest.xml:2:1-6:12
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/b5483095eb0e043d635d0686c24020e9/AndroidManifest.xml:2:1-9:12
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/51110b234271d8816030a521fc6343ec/AndroidManifest.xml:2:1-14:12
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/57e400fe8c02a3039a0cea8554f5b9e8/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/395277f0fdb33bc89f6fd04859e7f291/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/b2adcb9381ecd669d5de8963300f29b2/AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:21:1-45:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/6fcad2dc83ae61d051d650e7dcd9ff1a/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/255174fc267df464e8fa78acccf992d6/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:17:1-54:12
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:17:1-59:12
+MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:2:1-15:12
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/5068e826e6bcfcb0dcd5d72c1407292a/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/24c999612eb1f6498433008f72936861/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/231f4d92d52d39bcbbb6dff625cd57f4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/e38a83040c5b1d70c7ff3ac5ecaa5b1c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/834b973e71cd85b790ae6d617dff35ca/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/116726cd6ec2cc431c0eb9fe12098427/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/9bc2332e875635352746917209393739/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/24fc980ed46ab402345bb5b1af6fd20d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/4fedb35b9cf5d1b6fdd714860309cb1f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/f656a3e956071a6c7c410dde801c286e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/2a616bac22be3deef061abc8dc0ce6a5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/f6b9c4bea91e513aac3f0ccacd282be9/AndroidManifest.xml:10:1-18:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/18890002114c09625ce8b1f2dfcb10ed/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/7a79ebc23e2c04c46851823bb1e77ba6/AndroidManifest.xml:1:1-4:12
+MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/01c1c9720371f28f7d20af22bfc92756/AndroidManifest.xml:1:1-3:12
+MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/1079c2ce5fd511cd929e1b368af1e649/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/0d697f19884d0e06b745b5f58240459d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/51dd6233fdca5136c7bd9fe7a90c1869/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/74a49438c66fffb2467ecebb934f5eb8/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/e94961883a6379429de895eec1b47a5e/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/c65301245208cfe6c201855a591488c7/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/711472421b24d81d5559afa4416bc58a/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/c221a710db6b4162000ce722a74d7659/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/64e342dee2dc706a7ddd899a9ea7c1bf/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/43e80aa19849b230de44d9e334378550/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/c989014ca346c7a17e24c22d6d65cd21/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/494d432d903d7f031f4e5a75fe2876a6/AndroidManifest.xml:2:1-6:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/95b3f202e91d9b24aeddc24fecd02a95/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/e00439dca3fc37b3b57ae8295437d96c/AndroidManifest.xml:2:1-6:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12
 	package
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:2:5-23
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:2:5-23
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:4:5-30
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:11-69
 	android:versionCode
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:3:5-28
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:5-67
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:6:5-67
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:5-77
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:11:5-78
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:7:5-77
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:22-75
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-sdk
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
-MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/a616bc58537e7d75da532cc38b0698bf/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/a616bc58537e7d75da532cc38b0698bf/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/d2cbf2f1e94b1efa8358e5bb1a1ed2a6/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/d2cbf2f1e94b1efa8358e5bb1a1ed2a6/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:24:5-26:41
-MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/c0c47a7b891a481d889d58d3a21a7dc4/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/f9fc24760071fe536e726d50cf5809da/AndroidManifest.xml:5:5-7:41
-MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:7:5-44
-MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:7:5-44
-MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/c707c607409569591c58a9c6c1dbdf99/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/c707c607409569591c58a9c6c1dbdf99/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/bff89451d89ccd52c5073b7b868ca8bd/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/bff89451d89ccd52c5073b7b868ca8bd/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/52a8fcde7d88b30a4f77919e03e9dcbc/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/52a8fcde7d88b30a4f77919e03e9dcbc/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:24:5-26:41
-MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/424d37967eab2254f3a6fc5ea9a655e1/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/424d37967eab2254f3a6fc5ea9a655e1/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/56679afd04dee0eda6feccbd3b47925a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/0cc176eec24e96f0cb0d8e5f116b6228/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/0cc176eec24e96f0cb0d8e5f116b6228/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f6c17b07c1e07dbdc567498cec37afcd/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/f6c17b07c1e07dbdc567498cec37afcd/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/334e493efc911ca37c143d41ee5d34c9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/334e493efc911ca37c143d41ee5d34c9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/56a8da65e7a39881c9f5f2d86bc11496/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/56a8da65e7a39881c9f5f2d86bc11496/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/b97cd2c8fdb598806f756e919514a864/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/b97cd2c8fdb598806f756e919514a864/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/5ef44397c7f29305fccb096931a65d0a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/5ef44397c7f29305fccb096931a65d0a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/e886006068c7d622892a148277655e10/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/e886006068c7d622892a148277655e10/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/ba5be81e5fa1331f70c85f9457f749d0/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
-MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/feb4383a0d2a19391d2c6bbdb10a3e10/AndroidManifest.xml:14:5-16:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/aa5497956ea83f924df2e5e96abd6c3a/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:2:3-70
-MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:2:3-70
-MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/d154bd48be17704c96c951283af919aa/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/fc1243091fceb933775961e37b0031d4/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/cad46002779ff1466d270996e759149e/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/51a63975b29353504fc8fd53a210b0f1/AndroidManifest.xml:5:5-7:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/617c0327cd8e8d9477931af64f6dfa9e/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/617c0327cd8e8d9477931af64f6dfa9e/AndroidManifest.xml:20:5-22:41
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
-INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/c3fc5ed8bb930744e1885f3250d69071/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/c3fc5ed8bb930744e1885f3250d69071/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/e1d3981b9a4753d41a0baf5e4a336b96/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/e1d3981b9a4753d41a0baf5e4a336b96/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/fb010359ee86c0265ffe8e4c3adc46eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/fb010359ee86c0265ffe8e4c3adc46eb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/45429c5f05385a09eb7f99c5de90d5b9/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/45429c5f05385a09eb7f99c5de90d5b9/AndroidManifest.xml:4:5-43
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/b5483095eb0e043d635d0686c24020e9/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/b5483095eb0e043d635d0686c24020e9/AndroidManifest.xml:5:5-7:41
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/51110b234271d8816030a521fc6343ec/AndroidManifest.xml:7:5-44
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/51110b234271d8816030a521fc6343ec/AndroidManifest.xml:7:5-44
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/57e400fe8c02a3039a0cea8554f5b9e8/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/57e400fe8c02a3039a0cea8554f5b9e8/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/395277f0fdb33bc89f6fd04859e7f291/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/395277f0fdb33bc89f6fd04859e7f291/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/b2adcb9381ecd669d5de8963300f29b2/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/b2adcb9381ecd669d5de8963300f29b2/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:24:5-26:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/6fcad2dc83ae61d051d650e7dcd9ff1a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/6fcad2dc83ae61d051d650e7dcd9ff1a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/255174fc267df464e8fa78acccf992d6/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/255174fc267df464e8fa78acccf992d6/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/5068e826e6bcfcb0dcd5d72c1407292a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/5068e826e6bcfcb0dcd5d72c1407292a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/24c999612eb1f6498433008f72936861/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/24c999612eb1f6498433008f72936861/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/231f4d92d52d39bcbbb6dff625cd57f4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/231f4d92d52d39bcbbb6dff625cd57f4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/e38a83040c5b1d70c7ff3ac5ecaa5b1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/e38a83040c5b1d70c7ff3ac5ecaa5b1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/834b973e71cd85b790ae6d617dff35ca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/834b973e71cd85b790ae6d617dff35ca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/116726cd6ec2cc431c0eb9fe12098427/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customtabs:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/116726cd6ec2cc431c0eb9fe12098427/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/9bc2332e875635352746917209393739/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/9bc2332e875635352746917209393739/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/24fc980ed46ab402345bb5b1af6fd20d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/24fc980ed46ab402345bb5b1af6fd20d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/4fedb35b9cf5d1b6fdd714860309cb1f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/4fedb35b9cf5d1b6fdd714860309cb1f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/f656a3e956071a6c7c410dde801c286e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/f656a3e956071a6c7c410dde801c286e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/2a616bac22be3deef061abc8dc0ce6a5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/2a616bac22be3deef061abc8dc0ce6a5/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/f6b9c4bea91e513aac3f0ccacd282be9/AndroidManifest.xml:14:5-16:41
+MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/f6b9c4bea91e513aac3f0ccacd282be9/AndroidManifest.xml:14:5-16:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/18890002114c09625ce8b1f2dfcb10ed/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/18890002114c09625ce8b1f2dfcb10ed/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/7a79ebc23e2c04c46851823bb1e77ba6/AndroidManifest.xml:2:3-70
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/7a79ebc23e2c04c46851823bb1e77ba6/AndroidManifest.xml:2:3-70
+MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/1079c2ce5fd511cd929e1b368af1e649/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/1079c2ce5fd511cd929e1b368af1e649/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/0d697f19884d0e06b745b5f58240459d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/0d697f19884d0e06b745b5f58240459d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/51dd6233fdca5136c7bd9fe7a90c1869/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/drawee-1.3.0.aar/51dd6233fdca5136c7bd9fe7a90c1869/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/74a49438c66fffb2467ecebb934f5eb8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/fbcore-1.3.0.aar/74a49438c66fffb2467ecebb934f5eb8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/e94961883a6379429de895eec1b47a5e/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/e94961883a6379429de895eec1b47a5e/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/c65301245208cfe6c201855a591488c7/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/c65301245208cfe6c201855a591488c7/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/711472421b24d81d5559afa4416bc58a/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/711472421b24d81d5559afa4416bc58a/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/c221a710db6b4162000ce722a74d7659/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/c221a710db6b4162000ce722a74d7659/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/64e342dee2dc706a7ddd899a9ea7c1bf/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/64e342dee2dc706a7ddd899a9ea7c1bf/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/43e80aa19849b230de44d9e334378550/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/43e80aa19849b230de44d9e334378550/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/c989014ca346c7a17e24c22d6d65cd21/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/c989014ca346c7a17e24c22d6d65cd21/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/494d432d903d7f031f4e5a75fe2876a6/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/494d432d903d7f031f4e5a75fe2876a6/AndroidManifest.xml:4:5-43
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/95b3f202e91d9b24aeddc24fecd02a95/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/95b3f202e91d9b24aeddc24fecd02a95/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/e00439dca3fc37b3b57ae8295437d96c/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/e00439dca3fc37b3b57ae8295437d96c/AndroidManifest.xml:4:5-43
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
+INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:10:5-12:41
 	android:targetSdkVersion
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:12:9-38
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:12:9-38
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:11:9-35
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:11:9-35
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:14:5-32:19
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
-MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
-MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/ff2ed604314fc8cc38edd8635feb6feb/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/a616bc58537e7d75da532cc38b0698bf/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/a616bc58537e7d75da532cc38b0698bf/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/d2cbf2f1e94b1efa8358e5bb1a1ed2a6/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/d2cbf2f1e94b1efa8358e5bb1a1ed2a6/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:28:5-34:19
-MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:28:5-34:19
-MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:9:5-12:19
-MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/fdb98f1af5199f9b7e28e63700538ada/AndroidManifest.xml:9:5-12:19
-MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/c707c607409569591c58a9c6c1dbdf99/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/c707c607409569591c58a9c6c1dbdf99/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/bff89451d89ccd52c5073b7b868ca8bd/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/bff89451d89ccd52c5073b7b868ca8bd/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/52a8fcde7d88b30a4f77919e03e9dcbc/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/52a8fcde7d88b30a4f77919e03e9dcbc/AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:28:5-43:19
-MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:28:5-43:19
-MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
-MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/d21cde01ce88cf7d7d0a7522c6c199a3/AndroidManifest.xml:3:3-17
-MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:2:3-17
-MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3f12b27a2fd0cca415b36abf994393d9/AndroidManifest.xml:2:3-17
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:14:5-32:19
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/9d959c260a25f8d5e84c39212559e9a8/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/c3fc5ed8bb930744e1885f3250d69071/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/c3fc5ed8bb930744e1885f3250d69071/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/e1d3981b9a4753d41a0baf5e4a336b96/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/e1d3981b9a4753d41a0baf5e4a336b96/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:28:5-34:19
+MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:28:5-34:19
+MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/45429c5f05385a09eb7f99c5de90d5b9/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/45429c5f05385a09eb7f99c5de90d5b9/AndroidManifest.xml:5:5-20
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/51110b234271d8816030a521fc6343ec/AndroidManifest.xml:9:5-12:19
+MERGED from [me.relex:photodraweeview:1.0.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/photodraweeview-1.0.0.aar/51110b234271d8816030a521fc6343ec/AndroidManifest.xml:9:5-12:19
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/57e400fe8c02a3039a0cea8554f5b9e8/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.31.0.aar/57e400fe8c02a3039a0cea8554f5b9e8/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/395277f0fdb33bc89f6fd04859e7f291/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/395277f0fdb33bc89f6fd04859e7f291/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/b2adcb9381ecd669d5de8963300f29b2/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/b2adcb9381ecd669d5de8963300f29b2/AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:28:5-43:19
+MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:28:5-43:19
+MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:27:5-52:19
+MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:27:5-52:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:27:5-38:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:27:5-38:19
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:34:5-57:19
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:34:5-57:19
+MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/5068e826e6bcfcb0dcd5d72c1407292a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/5068e826e6bcfcb0dcd5d72c1407292a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:22:5-26:19
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/7a79ebc23e2c04c46851823bb1e77ba6/AndroidManifest.xml:3:3-17
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/7a79ebc23e2c04c46851823bb1e77ba6/AndroidManifest.xml:3:3-17
+MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/01c1c9720371f28f7d20af22bfc92756/AndroidManifest.xml:2:3-17
+MERGED from [org.webkit:android-jsc:r174650] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/01c1c9720371f28f7d20af22bfc92756/AndroidManifest.xml:2:3-17
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/e94961883a6379429de895eec1b47a5e/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/e94961883a6379429de895eec1b47a5e/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/c65301245208cfe6c201855a591488c7/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/c65301245208cfe6c201855a591488c7/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/711472421b24d81d5559afa4416bc58a/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/711472421b24d81d5559afa4416bc58a/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/c221a710db6b4162000ce722a74d7659/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/c221a710db6b4162000ce722a74d7659/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/64e342dee2dc706a7ddd899a9ea7c1bf/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/64e342dee2dc706a7ddd899a9ea7c1bf/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/43e80aa19849b230de44d9e334378550/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/43e80aa19849b230de44d9e334378550/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/c989014ca346c7a17e24c22d6d65cd21/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/c989014ca346c7a17e24c22d6d65cd21/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/494d432d903d7f031f4e5a75fe2876a6/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/494d432d903d7f031f4e5a75fe2876a6/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/e00439dca3fc37b3b57ae8295437d96c/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/e00439dca3fc37b3b57ae8295437d96c/AndroidManifest.xml:5:5-20
 	android:supportsRtl
-		ADDED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/0c4d8a89d24be522cc04c8f1d38497b4/AndroidManifest.xml:28:18-44
+		ADDED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/fe9136a28b6ded8ce2675c273ae7e1de/AndroidManifest.xml:28:18-44
 	android:label
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:7-39
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:7-39
 	android:icon
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:18:7-41
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:18:7-41
 	android:allowBackup
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:16:7-33
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:16:7-33
 	android:theme
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:19:7-38
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:19:7-38
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:15:7-38
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:15:7-38
 activity#com.moov.MainActivity
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:20:7-29:18
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:20:7-29:18
 	android:label
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:22:9-41
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:22:9-41
 	android:windowSoftInputMode
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:24:9-51
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:24:9-51
 	android:configChanges
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:23:9-79
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:23:9-79
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:21:9-37
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:21:9-37
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:25:9-28:25
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:25:9-28:25
 action#android.intent.action.MAIN
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:26:13-65
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:26:13-65
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:26:21-62
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:26:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:27:13-73
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:27:13-73
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:27:23-70
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:27:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:30:7-84
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:30:7-84
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:30:17-81
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:30:17-81
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:31:9-107
+ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:31:9-107
 	android:value
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:31:66-105
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:31:66-105
 	android:name
-		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:31:20-65
+		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:31:20-65
 activity#com.facebook.FacebookActivity
-ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:29:9-32:66
+ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:29:9-32:66
 	android:configChanges
-		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:31:13-96
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:31:13-96
 	android:theme
-		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:32:13-63
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:32:13-63
 	android:name
-		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:30:13-57
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:30:13-57
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:33:9-71
+ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:33:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/99030a1322c325b5ba60f080e04f83cd/AndroidManifest.xml:33:19-68
-provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:39:9-42:40
-	android:authorities
-		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:41:13-72
+		ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/6f7486a4deb476efed48f1b7bf0f56c2/AndroidManifest.xml:33:19-68
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:25:13-46
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:42:13-37
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:27:13-72
 	android:name
-		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/d9f56cf532b2a531c05b4c7f612d5134/AndroidManifest.xml:40:13-70
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/800bae4d1827e8dd4b4b6a6eedb75379/AndroidManifest.xml:34:13-89
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:39:9-42:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:41:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/ed4159d52c4fa397ec8e2326c05937db/AndroidManifest.xml:40:13-70
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/aaa50f5f4c278c23bd2c6dacbaa1f7a5/AndroidManifest.xml:24:13-79
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:24:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:25:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:28:9-32:20
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:28:9-32:20
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:28:9-32:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:30:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:29:13-85
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:33:9-41:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:35:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:36:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:37:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:34:13-100
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:38:13-40:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:39:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:39:25-76
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:43:9-46:40
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:34:9-37:40
+MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/b3a440c791cf1ab360530cb4063a10a3/AndroidManifest.xml:34:9-37:40
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:45:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:46:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:44:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:47:9-51:72
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:49:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:50:13-37
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:51:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/85dadf73327ba88575b6af6eee29ae58/AndroidManifest.xml:48:13-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:26:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:29:9-63
+permission#com.moov.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:29:9-63
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:32:22-76
+uses-permission#com.moov.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:32:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:35:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:37:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:38:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:36:13-78
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:39:13-43:29
+intent-filter#com.google.android.c2dm.intent.RECEIVE+com.moov
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:39:13-43:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:40:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:40:25-78
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:42:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:42:27-58
+category#com.moov
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:42:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:42:27-58
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:50:9-56:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:52:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:51:13-77
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:53:13-55:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:53:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:54:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5d0f12b758f814ff2246517012565c98/AndroidManifest.xml:54:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:8:9-12:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:11:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:12:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/6c69f3d232977dac545ccd10e5558c0b/AndroidManifest.xml:9:13-77
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/6f2df8463017be0a3a3011e422b3bda3/AndroidManifest.xml:24:13-58
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-34:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

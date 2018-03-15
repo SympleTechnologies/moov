@@ -187,24 +187,29 @@ class LandingPage extends React.Component {
    * @return {void}
    */
   googleSignIn = () => {
-    GoogleSignin.signIn()
-      .then((user) => {
-        console.log(user);
-        this.setState({
-          firstName: user.givenName,
-          lastName: user.familyName,
-          email: user.email,
-          imgURL: user.photo,
-        });
-        Toast.show('Google signup was  successful', Toast.LONG);
-        this.appNavigation('signup')
+    GoogleSignin.configure({
+      iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com'
+    })
+      .then(() => {
+        GoogleSignin.signIn()
+          .then((user) => {
+            console.log(user);
+            this.setState({
+              firstName: user.givenName,
+              lastName: user.familyName,
+              email: user.email,
+              imgURL: user.photo,
+            });
+            Toast.show('Google signup was successful', Toast.LONG);
+            this.appNavigation('signup')
+          })
+          .catch((err) => {
+            console.log('WRONG SIGNIN', err);
+            console.log('WRONG SIGNIN', err.message);
+            Toast.show('Google sign-up was unsuccessful', Toast.LONG);
+          })
+        .done();
       })
-      .catch((err) => {
-        console.log('WRONG SIGNIN', err);
-        Toast.show('Google signup was  unsuccessful', Toast.LONG);
-        navigate('SignUpPage');
-      })
-      .done();
   };
 
 
