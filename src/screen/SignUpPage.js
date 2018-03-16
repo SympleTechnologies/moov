@@ -23,16 +23,16 @@ import * as axios from "axios/index";
 class SignUpPage extends React.Component {
   state= {
     stage: '1',
-    isValidPhoneNumber: true,
+    isValidPhoneNumber: '',
     type: "",
     phoneNumber: "",
     isValidUserDetails: '',
 
-    firstName: 'c',
-    lastName: 'c',
-    email: 'c@c.com',
-    password: 'dddddd',
-    confirmPassword: 'dddddd',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     errorMessage: '',
 
     shareLinkContent: {
