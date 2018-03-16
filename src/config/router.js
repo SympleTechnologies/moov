@@ -94,28 +94,44 @@ export const Tabs = TabNavigator({
       style: {
         color: '#004a80',
       },
-      tabBarIcon: <Icon name="ios-car-outline" type="ionicon" color="white" />,
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+      ),
     },
   },
   Wallet: {
     screen: WalletHome,
     navigationOptions: {
       tabBarLabel: 'Wallet',
-      tabBarIcon: <Icon name="credit-card-plus" type="material-community" color="white" />,
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="credit-card-plus" type="material-community" color="black" />
+          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+      ),
     },
   },
   AskUs: {
     screen: AskHome,
     navigationOptions: {
       tabBarLabel: 'Ask Us',
-      tabBarIcon: <Icon name="help" type="entypo" color="white" />,
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="help" type="entypo" color="black" />
+          : <Icon name="help" type="entypo" color="#b3b4b4" />
+      ),
     },
   },
   Profile: {
     screen: ProfileHome,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: <Icon name="user-circle" type="font-awesome" color="white" />,
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="user-circle" type="font-awesome" color="black" />
+          : <Icon name="user-circle" type="font-awesome" color="#b3b4b4" />
+      ),
     },
     style: {
       color: 'green',
@@ -126,8 +142,9 @@ export const Tabs = TabNavigator({
   animationEnabled: true,
   tabBarOptions: {
     style: {
-      backgroundColor: '#ffc653',
+      backgroundColor: 'white',
       padding: 2,
+      // tabBarLabelColor: ''
       // marginTop: STATUS_BAR_HEIGHT
     },
     indicatorStyle: {
@@ -135,9 +152,10 @@ export const Tabs = TabNavigator({
       borderBottomWidth: 3,
     },
     tabStyle: {
-      borderRightColor: '#ffc653',
+      borderRightColor: 'white',
       borderRightWidth: 1,
     },
-    activeTintColor: 'white',
+    activeTintColor: 'black',
+    inactiveTintColor: '#b3b4b4'
   },
 });
