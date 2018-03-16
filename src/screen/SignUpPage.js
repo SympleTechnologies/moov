@@ -6,7 +6,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Linking } f
 
 // third-part library
 import PhoneInput from "react-native-phone-input";
-import { Heading, Subtitle, Button, Icon, Title } from '@shoutem/ui';
+import { Heading, Subtitle, Icon } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import FBSDK from 'react-native-fbsdk';
 

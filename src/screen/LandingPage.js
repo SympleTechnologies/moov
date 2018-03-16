@@ -13,6 +13,7 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // commom
 import { StatusBarComponent } from "../common";
+import {NumberFormPage} from "../component";
 
 const {
   LoginButton,
@@ -112,6 +113,17 @@ class LandingPage extends React.Component {
     if (page === 'signIn') {
       navigate('SignInPage');
     }
+
+    if (page === 'number') {
+      navigate('NumberFormPage', {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        imgURL: this.state.imgURL,
+      });
+
+      this.setState({ loading: false })
+    }
   };
 
   /**
@@ -153,6 +165,7 @@ class LandingPage extends React.Component {
       email: userDetails.email,
       imgURL: userDetails.picture.data['url'],
     })
+    this.appNavigation('number');
   };
 
   /**
@@ -200,8 +213,9 @@ class LandingPage extends React.Component {
               email: user.email,
               imgURL: user.photo,
             });
+
             Toast.show('Google signup was successful', Toast.LONG);
-            this.appNavigation('signup')
+            this.appNavigation('number');
           })
           .catch((err) => {
             console.log('WRONG SIGNIN', err);
