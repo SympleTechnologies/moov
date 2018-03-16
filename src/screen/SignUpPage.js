@@ -2,13 +2,14 @@
 import React from 'react';
 
 // react-native libraries
-import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Linking } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, ActivityIndicator, AsyncStorage } from 'react-native';
 
 // third-part library
 import PhoneInput from "react-native-phone-input";
-import { Heading, Subtitle, Button, Icon, Title } from '@shoutem/ui';
+import { Heading, Subtitle, Icon } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import FBSDK from 'react-native-fbsdk';
+import firebase from 'firebase';
 
 const {
   ShareDialog,
@@ -17,6 +18,7 @@ const {
 // common
 import {StatusBarComponent, ButtonComponent, Input, ButtonIconComponent} from "../common";
 import {SignUpForm} from "../component";
+import * as axios from "axios/index";
 
 class SignUpPage extends React.Component {
   state= {
@@ -35,8 +37,8 @@ class SignUpPage extends React.Component {
 
     shareLinkContent: {
       contentType: 'link',
-      contentUrl: "https://facebook.com",
-      contentDescription: 'Wow, check out this great site!',
+      contentUrl: "https://symple.tech",
+      contentDescription: 'Get mooving with MOOV!',
     },
   };
 
@@ -47,8 +49,41 @@ class SignUpPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyD0ZJS7tPUrOWkZEZQRXDLQfLRT2yxhKMM",
+        authDomain: "moov-68c37.firebaseapp.com",
+        databaseURL: "https://moov-68c37.firebaseio.com",
+        projectId: "moov-68c37",
+        storageBucket: "moov-68c37.appspot.com",
+        messagingSenderId: "1050975255216"
+      });
+    }
   }
+
+  // Share the link using the share dialog.
+  shareLinkWithShareDialog = () => {
+    let tmp = this;
+    ShareDialog.canShow(this.state.shareLinkContent).then(
+      function(canShow) {
+        if (canShow) {
+          return ShareDialog.show(tmp.state.shareLinkContent);
+        }
+      }
+    ).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Share cancelled');
+        } else {
+          alert('Share success with postId: '
+            + result.postId);
+        }
+      },
+      function(error) {
+        alert('Share fail with error: ' + error);
+      }
+    );
+  };
 
   /**
    * updateInfo
@@ -132,41 +167,155 @@ class SignUpPage extends React.Component {
   onSubmit = () => {
     if(this.validateFields()) {
       this.setState({ errorMessage: '' });
-      this.setState({ isValidUserDetails: true })
+      // this.setState({ isValidUserDetails: true })
+      this.saveUserToServer();
     }
   };
 
-  // Share the link using the share dialog.
-  shareLinkWithShareDialog = () => {
-    let tmp = this;
-    ShareDialog.canShow(this.state.shareLinkContent).then(
-      function(canShow) {
-        if (canShow) {
-          return ShareDialog.show(tmp.state.shareLinkContent);
+  /**
+   * saveUserToServer
+   *
+   * Saves user using axios
+   * @return {void}
+   */
+  saveUserToServer = () => {
+    this.setState({ loading: !this.state.loading });
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.email,
+      "image_url": this.state.imgURL,
+      "mobile_number": this.state.phoneNumber
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        console.log(response);
+        this.signUpSuccess(response);
+        // Toast.show(`${response.data.data.message}`, Toast.LONG);
+      })
+      .catch((error) => {
+        this.setState({ loading: !this.state.loading });
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        Toast.show(`${error.response.data.data.message}`, Toast.LONG);
+        console.log(error.message);
+      });
+  };
+
+  /**
+   * onLoginSuccess
+   *
+   * Navigates user to MoovPage
+   * @return {void}
+   */
+  signUpSuccess (response) {
+    AsyncStorage.setItem("token", response.data.data.token);
+
+    this.setState({ userToken: response.data.data.token }, () => {
+      this.createUserOnFirebase();
+    });
+  };
+
+  /**
+   * createUserOnFirebase
+   */
+  createUserOnFirebase = () => {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(this.onFirebaseSuccess)
+      .catch((error) => {
+        this.deleteUser();
+      })
+  };
+
+  /**
+   * onSignuSuccess
+   *
+   * navigates to Moov Homepage
+   * @return {void}
+   */
+  onFirebaseSuccess = (response) => {
+    console.log(response);
+    Toast.show(`User has been created`, Toast.LONG);
+    const { navigate } = this.props.navigation;
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        if (user && user.emailVerified === false) {
+          user.sendEmailVerification()
+            .then(() => {
+              // navigate('MoovPages');
+            })
+            .catch((error) => {
+              console.log(error.message);
+              this.setState({
+                errorMessage: error.message,
+                loading: !this.state.loading
+              })
+            })
         }
       }
-    ).then(
-      function(result) {
-        if (result.isCancelled) {
-          alert('Share cancelled');
-        } else {
-          alert('Share success with postId: '
-            + result.postId);
-        }
+    });
+  };
+
+  /**
+   * deleteUser
+   *
+   * deletes already created user on the server
+   * @return {void}
+   */
+  deleteUser = () => {
+    axios.delete(`https://moov-backend-staging.herokuapp.com/api/v1/user`, {
+      headers: {
+        'Authorization': `Bearer ${this.state.userToken}`,
+        'Content-Type': 'application/json'
       },
-      function(error) {
-        alert('Share fail with error: ' + error);
+      data: {
+        "email": this.state.email
       }
-    );
-  }
+    })
+      .then((response) => {
+        AsyncStorage.removeItem("token");
+        console.log(response);
+        Toast.show(`Network error please check your connection`, Toast.LONG);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        console.log('Failed');
+      });
+  };
+
 
   render() {
-    const { container, stageOneStyle, button, progressBar, landingPageBody, landingPageBodyText, signInStyle, TextShadowStyle } = styles;
+    const {
+      container,
+      stageOneStyle,
+      button,
+      progressBar,
+      landingPageBody,
+      landingPageBodyText,
+      signInStyle,
+      TextShadowStyle,
+      activityIndicator
+    } = styles;
     let { height, width } = Dimensions.get('window');
     console.log(this.state);
 
     if(this.state.isValidPhoneNumber === false) {
       Toast.show('You have entered an invalid phone number.', Toast.LONG);
+    }
+
+    // ACTIVITY INDICATOR
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1}}>
+          <StatusBarComponent />
+          <ActivityIndicator
+            color = '#f68d65'
+            size = "large"
+            style={activityIndicator}
+          />
+        </View>
+      );
     }
 
     if(this.state.isValidUserDetails) {
@@ -187,9 +336,7 @@ class SignUpPage extends React.Component {
               <View style={{ height: height / 5, width: width / 1.5}}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Icon name="share-android" />
-                  {/*<Icon style={{ color: '#333'}} name="share-android" />*/}
                   <Text style={{ fontSize: 20 }}>For a free ride</Text>
-                  {/*<Text style={{ fontSize: 20, color: '#ed1768' }}>for a free ride</Text>*/}
                   <TouchableOpacity>
                     <Icon style={{ color: '#1ea1f2'}} name="tweet" />
                   </TouchableOpacity>
@@ -236,9 +383,12 @@ class SignUpPage extends React.Component {
                   {/*{this.renderInfo()}*/}
                 </View>
               </View>
-              <View style={{ height: height / 15, alignItems: 'center'}}>
-                <ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />
-              </View>
+              {/*<View style={{ height: height / 15, alignItems: 'center'}}>*/}
+                {/*<ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT' />*/}
+              {/*</View>*/}
+              <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
+                <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -328,13 +478,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     textDecorationLine: 'underline',
   },
-  TextShadowStyle:
-    {
-      textAlign: 'center',
-      fontSize: 20,
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 5,
-    },
+  TextShadowStyle: {
+    textAlign: 'center',
+    fontSize: 20,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20
+  },
 });
 
 export { SignUpPage };

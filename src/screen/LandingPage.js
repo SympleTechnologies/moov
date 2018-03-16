@@ -13,6 +13,7 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // commom
 import { StatusBarComponent } from "../common";
+import {NumberFormPage} from "../component";
 
 const {
   LoginButton,
@@ -49,8 +50,8 @@ class LandingPage extends React.Component {
    */
   componentDidMount() {
     this.spring();
-    this.setupGoogleSignin();
     this.googleSignOut();
+    this.setupGoogleSignin();
   }
 
   /**
@@ -110,7 +111,18 @@ class LandingPage extends React.Component {
     }
 
     if (page === 'signIn') {
+      this.setState({ loading: false })
       navigate('SignInPage');
+    }
+
+    if (page === 'number') {
+      this.setState({ loading: false })
+      navigate('NumberFormPage', {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        imgURL: this.state.imgURL,
+      });
     }
   };
 
@@ -153,6 +165,7 @@ class LandingPage extends React.Component {
       email: userDetails.email,
       imgURL: userDetails.picture.data['url'],
     })
+    this.appNavigation('number');
   };
 
   /**
@@ -200,8 +213,9 @@ class LandingPage extends React.Component {
               email: user.email,
               imgURL: user.photo,
             });
+
             Toast.show('Google signup was successful', Toast.LONG);
-            this.appNavigation('signup')
+            this.appNavigation('number');
           })
           .catch((err) => {
             console.log('WRONG SIGNIN', err);
@@ -330,15 +344,12 @@ const styles = StyleSheet.create({
   },
   landingPageBody: {
     flexDirection: 'column',
-    // justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '20%',
   },
   landingPageBodyText: {
     color: '#b3b4b4',
     fontSize: 20,
-    // borderWidth: 1,
-    // borderColor: '#333',
     borderRadius: 15,
     padding: 8,
     overflow: 'hidden',
@@ -349,13 +360,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
     backgroundColor: 'white',
-    textDecorationLine: 'underline',
   },
   TextShadowStyle:
     {
       textAlign: 'center',
       fontSize: 20,
-      // textShadowColor: '#ed1768',
       textShadowOffset: { width: 1, height: 1 },
       textShadowRadius: 5,
 
@@ -368,7 +377,6 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     overflow: 'hidden',
     height: Dimensions.get('window').height / 10
-    // width: Dimensions.get('window').width / 3,
   },
   emailText: {
     fontWeight: '700',
