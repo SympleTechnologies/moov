@@ -50,8 +50,8 @@ class LandingPage extends React.Component {
    */
   componentDidMount() {
     this.spring();
-    this.setupGoogleSignin();
     this.googleSignOut();
+    this.setupGoogleSignin();
   }
 
   /**
@@ -111,18 +111,18 @@ class LandingPage extends React.Component {
     }
 
     if (page === 'signIn') {
+      this.setState({ loading: false })
       navigate('SignInPage');
     }
 
     if (page === 'number') {
+      this.setState({ loading: false })
       navigate('NumberFormPage', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
         imgURL: this.state.imgURL,
       });
-
-      this.setState({ loading: false })
     }
   };
 
@@ -344,15 +344,12 @@ const styles = StyleSheet.create({
   },
   landingPageBody: {
     flexDirection: 'column',
-    // justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: '20%',
   },
   landingPageBodyText: {
     color: '#b3b4b4',
     fontSize: 20,
-    // borderWidth: 1,
-    // borderColor: '#333',
     borderRadius: 15,
     padding: 8,
     overflow: 'hidden',
@@ -363,13 +360,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
     backgroundColor: 'white',
-    textDecorationLine: 'underline',
   },
   TextShadowStyle:
     {
       textAlign: 'center',
       fontSize: 20,
-      // textShadowColor: '#ed1768',
       textShadowOffset: { width: 1, height: 1 },
       textShadowRadius: 5,
 
@@ -382,7 +377,6 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     overflow: 'hidden',
     height: Dimensions.get('window').height / 10
-    // width: Dimensions.get('window').width / 3,
   },
   emailText: {
     fontWeight: '700',

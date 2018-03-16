@@ -36,12 +36,12 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-    // this.setState({
-    //   firstName: this.props.navigation.state.params.firstName,
-    //   lastName: this.props.navigation.state.params.lastName,
-    //   email: this.props.navigation.state.params.email,
-    //   imgURL: this.props.navigation.state.params.imgURL,
-    // })
+    this.setState({
+      firstName: this.props.navigation.state.params.firstName,
+      lastName: this.props.navigation.state.params.lastName,
+      email: this.props.navigation.state.params.email,
+      imgURL: this.props.navigation.state.params.imgURL,
+    })
   }
 
   /**
@@ -174,44 +174,44 @@ class NumberFormPage extends React.Component {
 
     return (
       <View style={container}>
-        <ImageBackground
-          source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
-          style={{width: '100%', height: '100%'}}
-        >
+        {/*<ImageBackground*/}
+          {/*source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}*/}
+          {/*style={{width: '100%', height: '100%'}}*/}
+        {/*>*/}
 
-        </ImageBackground>
-        {/*<StatusBarComponent backgroundColor='white' barStyle="dark-content"/>*/}
-        {/*<View style={{ height: height / 10}}>*/}
-          {/*<Heading>Get MOOVING.</Heading>*/}
-        {/*</View>*/}
-        {/*<Image*/}
-          {/*style={progressBar}*/}
-          {/*source={require('../../assets/formB.png')}*/}
-        {/*/>*/}
-        {/*<View>*/}
-          {/*<View>*/}
+        {/*</ImageBackground>*/}
+        <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+        <View style={{ height: height / 10}}>
+          <Heading>Get MOOVING.</Heading>
+        </View>
+        <Image
+          style={progressBar}
+          source={require('../../assets/formB.png')}
+        />
+        <View>
+          <View>
+            <View style={{ height: height / 15, alignItems: 'center'}}>
+              <Subtitle>Enter your phone number:</Subtitle>
+            </View>
+            <View style={{ height: height / 5, width: width / 1.5}}>
+              <View style={stageTwoStyle}>
+                <PhoneInput
+                  ref={ref => {
+                    this.phone = ref;
+                  }}
+                  autoFocus
+                />
+                {/*{this.renderInfo()}*/}
+              </View>
+            </View>
             {/*<View style={{ height: height / 15, alignItems: 'center'}}>*/}
-              {/*<Subtitle>Enter your phone number:</Subtitle>*/}
+              {/*<ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT'/>*/}
             {/*</View>*/}
-            {/*<View style={{ height: height / 5, width: width / 1.5}}>*/}
-              {/*<View style={stageTwoStyle}>*/}
-                {/*<PhoneInput*/}
-                  {/*ref={ref => {*/}
-                    {/*this.phone = ref;*/}
-                  {/*}}*/}
-                  {/*autoFocus*/}
-                {/*/>*/}
-                {/*/!*{this.renderInfo()}*!/*/}
-              {/*</View>*/}
-            {/*</View>*/}
-            {/*/!*<View style={{ height: height / 15, alignItems: 'center'}}>*!/*/}
-              {/*/!*<ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT'/>*!/*/}
-            {/*/!*</View>*!/*/}
-            {/*<TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>*/}
-              {/*<Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>*/}
-            {/*</TouchableOpacity>*/}
-          {/*</View>*/}
-        {/*</View>*/}
+            <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
+              <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
