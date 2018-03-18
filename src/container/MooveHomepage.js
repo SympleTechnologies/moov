@@ -2,15 +2,26 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, AsyncStorage, Dimensions, Platform, PermissionsAndroid, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  AsyncStorage,
+  Dimensions,
+  Platform,
+  PermissionsAndroid,
+  ActivityIndicator,
+  TouchableOpacity
+} from 'react-native';
 import {StatusBarComponent} from "../common";
 
 // component
 import { GooglePlacesInput } from "../component";
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
-import { Card, Button, PricingCard, Icon, ListItem } from 'react-native-elements';
+import { Card,  PricingCard, Button, Icon, ListItem } from 'react-native-elements';
 import { Heading, Subtitle, Caption } from '@shoutem/ui';
+import Toast from 'react-native-simple-toast';
 
 class MoovHomepage extends React.Component {
   state= {
@@ -27,6 +38,22 @@ class MoovHomepage extends React.Component {
     price: '',
 
     requestSlot: 1,
+
+
+    authorization_code: null,
+    authorization_code_status: false,
+    created_at: "2018-03-12T12:40:26.694447+00:00",
+    email: "moov@email.com",
+    firstname: "moov",
+    id: "-L7PDTp4E8yfbkikiXow",
+    image_url: "https://my_image.jpg",
+    lastname: "moov",
+    mobile_number: "08000000000",
+    modified_at: "2018-03-12T12:40:26.694457+00:00",
+    user_type: "student",
+    wallet_amount: 300,
+
+
 
   };
 
@@ -54,6 +81,37 @@ class MoovHomepage extends React.Component {
     }
   };
 
+  /**
+   * componentWillUnmount
+   *
+   * React life-cycle method sets user token
+   * @return {void}
+   */
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchId);
+  }
+
+  /**
+   * watchLocation
+   *
+   * Get's user location and sets it in the state as user moves
+   * @return {void}
+   */
+  watchLocation = () => {
+    this.watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        console.log(position);
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+    );
+  }
+
 
   /**
    * getMyLocation
@@ -75,6 +133,8 @@ class MoovHomepage extends React.Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
     );
+
+    this.watchLocation();
   };
 
   /**
@@ -135,10 +195,94 @@ class MoovHomepage extends React.Component {
     });
   };
 
+  /**
+   * verifyRoutes
+   *
+   * Verifies user location and destination
+   * @return {void}
+   */
+  verifyRoutes = () => {
+    if(this.state.myDestinationLatitude !== null) {
+      this.getPrice();
+    } else {
+      Toast.showWithGravity(
+        `Kindly select a destination`,
+        Toast.LONG,
+        Toast.TOP,
+      );
+    }
+  };
+
+  /**
+   * getPrice
+   *
+   * This method gets the distance and calcultes the get Price method
+   * @return {void}
+   */
+  getPrice = () => {
+    let distance = this.getDistance(
+      this.state.myLocationLatitude,
+      this.state.myLocationLongitude,
+      this.state.myDestinationLatitude,
+      this.state.myDestinationLongitude
+    );
+
+    let price = Math.floor(distance) *  this.state.requestSlot;
+
+    price = price;
+
+    // this.setState({ price })
+    return price < 100
+      ? this.setState({ price : 100, showModal: !this.state.showModal })
+      : this.setState({ price, showModal: !this.state.showModal })
+  };
+
+  /**
+   * getDistance
+   *
+   * Calculates the User's distance
+   * @param lat1
+   * @param lon1
+   * @param lat2
+   * @param lon2
+   * @param unit
+   * @return {number}
+   */
+  getDistance = (lat1, lon1, lat2, lon2, unit) =>  {
+    let radlat1 = Math.PI * lat1/180;
+    let radlat2 = Math.PI * lat2/180;
+    let theta = lon1-lon2;
+    let radtheta = Math.PI * theta/180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit === "K") { dist = dist * 1.609344 }
+    if (unit === "N") { dist = dist * 0.8684 }
+
+    return dist * 500
+  };
+
+  getDriver = () => {
+    this.setState({ showModal: !this.state.showModal })
+  };
+
+  /**
+   * verifyFunds
+   *
+   * checks if user has sufficient funds to order a cab
+   * @return {*}
+   */
+  verifyFunds = () => {
+    return this.state.price > this.state.wallet_amount
+    ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
+    : this.getDriver();
+  };
+
   render() {
     console.log(this.state);
 
-    const { container, activityIndicator } = styles;
+    const { container, activityIndicator, buttonTextStyle } = styles;
 
     let myDestination, myLocation;
     let { height, width } = Dimensions.get('window');
@@ -150,6 +294,7 @@ class MoovHomepage extends React.Component {
     if (this.state.myLocationLongitude === null) {
       return (
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: 'white'}}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
           <StatusBarComponent />
           <Card
             title='FETCHING YOUR LOCATION'
@@ -201,8 +346,8 @@ class MoovHomepage extends React.Component {
                   `To ${this.state.myDestinationName} `,
                   `Powered by Symple.tech`
                 ]}
-                button={{ title: 'Accept', icon: 'directions-car' }}
-                onButtonPress={this.toggleMap}
+                button={{ title: 'CONFIRM', icon: 'directions-car' }}
+                onButtonPress={this.verifyFunds}
               />
             </View>
           </Modal>
@@ -247,13 +392,9 @@ class MoovHomepage extends React.Component {
             />
           </View>
           <View style={{ zIndex: -1, marginTop: 10 }}>
-            {/*<ButtonTextComponent*/}
-              {/*onPress={this.verifyRoutes}*/}
-              {/*buttonText='MOOV'*/}
-              {/*iconName='fast-forward'*/}
-              {/*iconType='foundation'*/}
-              {/*backgroundColor='#004a80'*/}
-            {/*/>*/}
+            <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.verifyRoutes}>
+              <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>MOOV</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -275,6 +416,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 20
+  },
+  buttonTextStyle: {
+    color: '#333',
+    textAlign: 'center',
+    marginBottom: 20,
+    backgroundColor: 'white',
+    fontSize: 15,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
+    marginTop: 20
+    // textDecorationLine: 'underline',
   },
 });
 

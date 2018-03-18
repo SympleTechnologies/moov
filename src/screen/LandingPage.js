@@ -40,6 +40,7 @@ class LandingPage extends React.Component {
     email: '',
     imgURL: '',
     loading: false,
+    userAuthID: ''
   };
 
   /**
@@ -122,6 +123,7 @@ class LandingPage extends React.Component {
         lastName: this.state.lastName,
         email: this.state.email,
         imgURL: this.state.imgURL,
+        userAuthID: this.state.userID
       });
     }
   };
@@ -164,6 +166,7 @@ class LandingPage extends React.Component {
       lastName: userDetails.last_name,
       email: userDetails.email,
       imgURL: userDetails.picture.data['url'],
+      userAuthID: userDetails.id
     })
     this.appNavigation('number');
   };
@@ -212,6 +215,7 @@ class LandingPage extends React.Component {
               lastName: user.familyName,
               email: user.email,
               imgURL: user.photo,
+              userAuthID: user.id
             });
 
             Toast.show('Google signup was successful', Toast.LONG);
