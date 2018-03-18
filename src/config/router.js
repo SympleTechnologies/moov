@@ -148,14 +148,17 @@ export const Tabs = TabNavigator({
       // marginTop: STATUS_BAR_HEIGHT
     },
     indicatorStyle: {
-      borderBottomColor: '#ffffff',
-      borderBottomWidth: 3,
+      borderBottomColor: 'black',
+      // borderBottomColor: '#ffffff',
+      // borderBottomWidth: 1,
+      backgroundColor:'black'
     },
     tabStyle: {
       borderRightColor: 'white',
       borderRightWidth: 1,
     },
     activeTintColor: 'black',
-    inactiveTintColor: '#b3b4b4'
+    inactiveTintColor: '#b3b4b4',
+    animationEnabled: true,
   },
 });
