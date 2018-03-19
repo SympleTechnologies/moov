@@ -134,9 +134,15 @@ android {
             }
         }
     }
+
+    project.ext {
+        googlePlayServicesVersion = "11.8.0"
+    }
 }
 
 dependencies {
+    compile project(':react-native-fetch-blob')
+    compile project(':react-native-image-picker')
 //    implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-photo-view')

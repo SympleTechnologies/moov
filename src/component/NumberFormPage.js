@@ -2,7 +2,10 @@
 import React from 'react';
 
 // react-native libraries
-import {StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ActivityIndicator, ImageBackground} from 'react-native';
+import {
+  StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ActivityIndicator, ImageBackground,
+  AsyncStorage
+} from 'react-native';
 
 // third-party libraries
 import { Heading, Subtitle, Icon } from '@shoutem/ui';
@@ -12,6 +15,7 @@ import Toast from 'react-native-simple-toast';
 
 // common
 import { ButtonComponent, StatusBarComponent} from "../common";
+import firebase from "firebase";
 
 class NumberFormPage extends React.Component {
   state= {
@@ -22,7 +26,9 @@ class NumberFormPage extends React.Component {
     firstName: '',
     lastName: '',
     email: '',
+    password: '',
     imgURL: '',
+    userAuthID: '',
 
     loading: false,
 
@@ -36,13 +42,54 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
+        authDomain: "moov-project.firebaseapp.com",
+        databaseURL: "https://moov-project.firebaseio.com",
+        projectId: "moov-project",
+        storageBucket: "moov-project.appspot.com",
+        messagingSenderId: "365082073509"
+      });
+    }
+
     this.setState({
       firstName: this.props.navigation.state.params.firstName,
       lastName: this.props.navigation.state.params.lastName,
       email: this.props.navigation.state.params.email,
+      password: this.props.navigation.state.params.password,
       imgURL: this.props.navigation.state.params.imgURL,
+      userAuthID: this.props.navigation.state.params.userAuthID,
     })
   }
+
+  /**
+   * shareLinkWithShareDialog
+   *
+   * Allows user share on facebook
+   */
+  shareLinkWithShareDialog = () => {
+    let tmp = this;
+    ShareDialog.canShow(this.state.shareLinkContent).then(
+      function(canShow) {
+        if (canShow) {
+          return ShareDialog.show(tmp.state.shareLinkContent);
+        }
+      }
+    ).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Share cancelled');
+        } else {
+          alert('Share success with postId: '
+            + result.postId);
+        }
+      },
+      function(error) {
+        alert('Share fail with error: ' + error);
+      }
+    );
+  };
 
   /**
    * updateInfo
@@ -67,12 +114,52 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   createUser = () => {
-    console.log(this.state, 'before create')
-
     return this.state.isValidPhoneNumber
-      ? this.saveUserToServer()
-      : Toast.show('The number supplied did not seem to be a phone number', Toast.LONG);
+      ? this.checkTypeOfAccount()
+      : Toast.show('The number supplied is invalid', Toast.LONG);
   };
+
+  /**
+   *checkTypeOfAccount
+   *
+   * Checks for account type, e.g Social auth or email
+   */
+  checkTypeOfAccount = () => {
+    if(this.state.userAuthID) {
+      this.saveUserToServer();
+    } else {
+      this.createUserOnFirebase()
+    }
+  };
+
+  /**
+   * createUserOnFirebase
+   */
+  createUserOnFirebase = () => {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          userAuthID: response.uid
+        }, () => {
+          this.createUser();
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(error.message);
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+      })
+  };
+
+  saveUserToLocalStorage = (userDetails) => {
+    console.log(userDetails);
+    AsyncStorage.setItem("token", userDetails.token).then(() => {
+      AsyncStorage.setItem("user", userDetails.token);
+    });
+
+  };
+
 
   /**
    * saveUserToServer
@@ -89,19 +176,33 @@ class NumberFormPage extends React.Component {
       "email": this.state.email,
       "image_url": this.state.imgURL,
       "mobile_number": this.state.phoneNumber
-  })
+    })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
         console.log(response);
-        Toast.show(`${response.data.data.message}`, Toast.LONG);
+        alert(`${response.data.data.message}`);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
         this.setState({ loading: !this.state.loading });
         console.log(error.response.data);
         console.log(error.response.data.data.message);
-        Toast.show(`${error.response.data.data.message}`, Toast.LONG);
+        alert(`${error.response.data.data.message}`);
         console.log(error.message);
       });
+  };
+
+  /**
+   * appNavigation
+   *
+   * @param {string} page - The page the user wants to navigate to
+   * @return {void}
+   */
+  appNavigation = () => {
+    console.log('navigate');
+    const { navigate } = this.props.navigation;
+    navigate('MoovHomepage');
   };
 
   render() {
@@ -162,7 +263,7 @@ class NumberFormPage extends React.Component {
                 </View>
               </View>
               <View style={{ height: height / 15, alignItems: 'center'}}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.appNavigation}>
                   <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
                 </TouchableOpacity>
               </View>
@@ -174,12 +275,6 @@ class NumberFormPage extends React.Component {
 
     return (
       <View style={container}>
-        {/*<ImageBackground*/}
-          {/*source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}*/}
-          {/*style={{width: '100%', height: '100%'}}*/}
-        {/*>*/}
-
-        {/*</ImageBackground>*/}
         <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
         <View style={{ height: height / 10}}>
           <Heading>Get MOOVING.</Heading>
@@ -201,12 +296,8 @@ class NumberFormPage extends React.Component {
                   }}
                   autoFocus
                 />
-                {/*{this.renderInfo()}*/}
               </View>
             </View>
-            {/*<View style={{ height: height / 15, alignItems: 'center'}}>*/}
-              {/*<ButtonComponent onPress={this.updateInfo} backgroundColor='#f68d65' text='NEXT'/>*/}
-            {/*</View>*/}
             <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
               <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
             </TouchableOpacity>

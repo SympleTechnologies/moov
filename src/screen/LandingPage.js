@@ -1,9 +1,8 @@
 // react libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // react-native libraries
-import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
 
 // third-part library
 import FBSDK from 'react-native-fbsdk';
@@ -13,7 +12,6 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // commom
 import { StatusBarComponent } from "../common";
-import {NumberFormPage} from "../component";
 
 const {
   LoginButton,
@@ -66,8 +64,8 @@ class LandingPage extends React.Component {
       await GoogleSignin.hasPlayServices({ autoResolve: true });
 
       await GoogleSignin.configure({
-        iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
-        webClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
+        iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com',
+        webClientId: '365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com',
         offlineAccess: false
       });
 
@@ -123,7 +121,7 @@ class LandingPage extends React.Component {
         lastName: this.state.lastName,
         email: this.state.email,
         imgURL: this.state.imgURL,
-        userAuthID: this.state.userID
+        userAuthID: this.state.userAuthID
       });
     }
   };
@@ -137,7 +135,7 @@ class LandingPage extends React.Component {
    * @private
    * @return {void}
    */
-  //Create response callback.
+    // Create response callback.
   _responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       console.log(error.toString(), 'Error from fb');
@@ -204,7 +202,7 @@ class LandingPage extends React.Component {
    */
   googleSignIn = () => {
     GoogleSignin.configure({
-      iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com'
+      iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com'
     })
       .then(() => {
         GoogleSignin.signIn()
@@ -226,10 +224,9 @@ class LandingPage extends React.Component {
             console.log('WRONG SIGNIN', err.message);
             Toast.show('Google sign-up was unsuccessful', Toast.LONG);
           })
-        .done();
+          .done();
       })
   };
-
 
   /**
    * googleSignIn
@@ -327,7 +324,7 @@ class LandingPage extends React.Component {
             </View>
             <View stle={{ justifyContent: 'center'}}>
               <GoogleSigninButton
-                style={{ width: width / 2.09, height: 40, marginTop: 10 }}
+                style={{ width: '102%', height: 40, marginTop: 10 }}
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Auto}
                 onPress={this.googleSignIn}/>

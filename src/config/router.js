@@ -8,7 +8,7 @@ import { Icon } from 'react-native-elements';
 // containers
 import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage } from '../container';
 
-export const MooveHome = StackNavigator({
+export const MoovHome = StackNavigator({
   MoovHomePage: {
     screen: MoovHomepage,
     navigationOptions: {
@@ -87,7 +87,7 @@ export const ProfileHome = StackNavigator({
 
 export const Tabs = TabNavigator({
   Moov: {
-    screen: MooveHome,
+    screen: MoovHome,
     navigationOptions: {
       tabBarLabel: 'MOOV',
       color: 'white',
