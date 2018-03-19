@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // react-native libraries
-import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
 
 // third-part library
 import FBSDK from 'react-native-fbsdk';
@@ -13,7 +13,6 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // commom
 import { StatusBarComponent } from "../common";
-import {NumberFormPage} from "../component";
 
 const {
   LoginButton,
@@ -123,7 +122,7 @@ class LandingPage extends React.Component {
         lastName: this.state.lastName,
         email: this.state.email,
         imgURL: this.state.imgURL,
-        userAuthID: this.state.userID
+        userAuthID: this.state.userAuthID
       });
     }
   };
@@ -137,7 +136,7 @@ class LandingPage extends React.Component {
    * @private
    * @return {void}
    */
-  //Create response callback.
+    // Create response callback.
   _responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       console.log(error.toString(), 'Error from fb');
@@ -226,10 +225,9 @@ class LandingPage extends React.Component {
             console.log('WRONG SIGNIN', err.message);
             Toast.show('Google sign-up was unsuccessful', Toast.LONG);
           })
-        .done();
+          .done();
       })
   };
-
 
   /**
    * googleSignIn
@@ -327,7 +325,7 @@ class LandingPage extends React.Component {
             </View>
             <View stle={{ justifyContent: 'center'}}>
               <GoogleSigninButton
-                style={{ width: width / 2.09, height: 40, marginTop: 10 }}
+                style={{ width: '102%', height: 40, marginTop: 10 }}
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Auto}
                 onPress={this.googleSignIn}/>

@@ -185,5 +185,7 @@
     <orderEntry type="module" module-name="react-native-fbsdk" />
     <orderEntry type="module" module-name="react-native-vector-icons" />
     <orderEntry type="module" module-name="react-native-google-signin" />
+    <orderEntry type="module" module-name="react-native-image-picker" />
+    <orderEntry type="module" module-name="react-native-fetch-blob" />
   </component>
 </module>

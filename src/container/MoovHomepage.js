@@ -53,7 +53,7 @@ class MoovHomepage extends React.Component {
     user_type: "student",
     wallet_amount: 300,
 
-
+    user: [],
 
   };
 
@@ -66,6 +66,9 @@ class MoovHomepage extends React.Component {
   componentDidMount() {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
+    }).done();
+    AsyncStorage.getItem("user").then((value) => {
+      this.setState({ user: value });
     }).done();
 
     if(Platform.OS === 'ios') {
@@ -274,7 +277,7 @@ class MoovHomepage extends React.Component {
    * @return {*}
    */
   verifyFunds = () => {
-    return this.state.price > this.state.wallet_amount
+    return this.state.price > this.state.user.wallet_amount
     ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
     : this.getDriver();
   };
@@ -406,16 +409,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#b3b4b4'
+    borderColor: '#b3b4b4',
   },
   activityIndicator: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 20
+    height: 20,
   },
   buttonTextStyle: {
     color: '#333',
@@ -425,8 +426,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 5,
-    marginTop: 20
-    // textDecorationLine: 'underline',
+    marginTop: 20,
   },
 });
 

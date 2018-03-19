@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.imagepicker.ImagePickerPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.reactnative.photoview.PhotoViewPackage;
@@ -39,6 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFetchBlobPackage(),
+            new ImagePickerPackage(),
             new RNGoogleSigninPackage(),
             new FBSDKPackage(mCallbackManager),
             new PhotoViewPackage(),
