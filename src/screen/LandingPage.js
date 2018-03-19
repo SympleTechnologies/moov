@@ -1,6 +1,5 @@
 // react libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // react-native libraries
 import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
@@ -65,8 +64,8 @@ class LandingPage extends React.Component {
       await GoogleSignin.hasPlayServices({ autoResolve: true });
 
       await GoogleSignin.configure({
-        iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
-        webClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com',
+        iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com',
+        webClientId: '365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com',
         offlineAccess: false
       });
 
@@ -203,7 +202,7 @@ class LandingPage extends React.Component {
    */
   googleSignIn = () => {
     GoogleSignin.configure({
-      iosClientId: '1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com'
+      iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com'
     })
       .then(() => {
         GoogleSignin.signIn()

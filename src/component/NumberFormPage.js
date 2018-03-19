@@ -44,12 +44,12 @@ class NumberFormPage extends React.Component {
   componentDidMount() {
     if (firebase.apps.length === 0) {
       firebase.initializeApp({
-        apiKey: "AIzaSyD0ZJS7tPUrOWkZEZQRXDLQfLRT2yxhKMM",
-        authDomain: "moov-68c37.firebaseapp.com",
-        databaseURL: "https://moov-68c37.firebaseio.com",
-        projectId: "moov-68c37",
-        storageBucket: "moov-68c37.appspot.com",
-        messagingSenderId: "1050975255216"
+        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
+        authDomain: "moov-project.firebaseapp.com",
+        databaseURL: "https://moov-project.firebaseio.com",
+        projectId: "moov-project",
+        storageBucket: "moov-project.appspot.com",
+        messagingSenderId: "365082073509"
       });
     }
 

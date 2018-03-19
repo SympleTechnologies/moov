@@ -1,19 +1,21 @@
 {
   "project_info": {
-    "project_number": "557710622421",
-    "project_id": "moov-194715"
+    "project_number": "365082073509",
+    "firebase_url": "https://moov-project.firebaseio.com",
+    "project_id": "moov-project",
+    "storage_bucket": "moov-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:557710622421:android:2755bf58b0cbad18",
+        "mobilesdk_app_id": "1:365082073509:android:2755bf58b0cbad18",
         "android_client_info": {
           "package_name": "com.moov"
         }
       },
       "oauth_client": [
         {
-          "client_id": "557710622421-0camtpco5o4nlo36o1ml9eonl16anmkp.apps.googleusercontent.com",
+          "client_id": "365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moov",
@@ -21,13 +23,13 @@
           }
         },
         {
-          "client_id": "557710622421-15sfn3rs1u3puordofs1r6qpvqf4v8mu.apps.googleusercontent.com",
+          "client_id": "365082073509-dqkja123tvec74d2rl4om958ch8ntvoq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_1co5jGiPSa8Fir5E3IfC1nyY4LvZjuE"
+          "current_key": "AIzaSyANSBeN3IiJAFcsih3h2wqCrWOqFNATjqw"
         }
       ],
       "services": {
@@ -35,11 +37,23 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365082073509-dqkja123tvec74d2rl4om958ch8ntvoq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.chineduofor.moov"
+              }
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

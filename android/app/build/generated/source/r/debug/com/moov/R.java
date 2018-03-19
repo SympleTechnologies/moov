@@ -3225,14 +3225,16 @@ public final class R {
     public static final int common_signin_button_text_long=0x7f0b005e;
     public static final int default_web_client_id=0x7f0b005f;
     public static final int facebook_app_id=0x7f0b0060;
-    public static final int gcm_defaultSenderId=0x7f0b0061;
-    public static final int google_api_key=0x7f0b0062;
-    public static final int google_app_id=0x7f0b0063;
-    public static final int google_crash_reporting_api_key=0x7f0b0064;
-    public static final int messenger_send_button_text=0x7f0b0065;
-    public static final int project_id=0x7f0b0066;
-    public static final int search_menu_title=0x7f0b0067;
-    public static final int status_bar_notification_info_overflow=0x7f0b0068;
+    public static final int firebase_database_url=0x7f0b0061;
+    public static final int gcm_defaultSenderId=0x7f0b0062;
+    public static final int google_api_key=0x7f0b0063;
+    public static final int google_app_id=0x7f0b0064;
+    public static final int google_crash_reporting_api_key=0x7f0b0065;
+    public static final int google_storage_bucket=0x7f0b0066;
+    public static final int messenger_send_button_text=0x7f0b0067;
+    public static final int project_id=0x7f0b0068;
+    public static final int search_menu_title=0x7f0b0069;
+    public static final int status_bar_notification_info_overflow=0x7f0b006a;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0c0000;

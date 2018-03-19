@@ -80,8 +80,8 @@
 		F73378BE2059B5B500441B05 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F73378B72059B5B500441B05 /* GoogleSignIn.bundle */; };
 		F73378BF2059B5B500441B05 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73378B82059B5B500441B05 /* GoogleNetworkingUtilities.framework */; };
 		F73378C02059B5B500441B05 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73378B92059B5B500441B05 /* GoogleSignIn.framework */; };
-		F73378C22059B5CC00441B05 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F73378C12059B5CC00441B05 /* GoogleService-Info.plist */; };
 		F77ED3FE204DCF7800CAFC04 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		F78628C42060311A003268A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F78628C32060311A003268A6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -493,8 +493,8 @@
 		F73378B72059B5B500441B05 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		F73378B82059B5B500441B05 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		F73378B92059B5B500441B05 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
-		F73378C12059B5CC00441B05 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F74E1DCAE5784EB0A702555E /* LRDRCTSimpleToast.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LRDRCTSimpleToast.xcodeproj; path = "../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast.xcodeproj"; sourceTree = "<group>"; };
+		F78628C32060311A003268A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,6 +654,7 @@
 		13B07FAE1A68108700A75B9A /* moov */ = {
 			isa = PBXGroup;
 			children = (
+				F78628C32060311A003268A6 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -761,7 +762,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				F73378C12059B5CC00441B05 /* GoogleService-Info.plist */,
 				F73378B22059B5B500441B05 /* GoogleSdk */,
 				13B07FAE1A68108700A75B9A /* moov */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1455,7 +1455,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				F73378C22059B5CC00441B05 /* GoogleService-Info.plist in Resources */,
+				F78628C42060311A003268A6 /* GoogleService-Info.plist in Resources */,
 				B9D78EE1C3FC4E3EA0C760A6 /* Entypo.ttf in Resources */,
 				157E87371F174327BF8128CF /* EvilIcons.ttf in Resources */,
 				7B8D6E80EA284994B67A1E71 /* FontAwesome.ttf in Resources */,

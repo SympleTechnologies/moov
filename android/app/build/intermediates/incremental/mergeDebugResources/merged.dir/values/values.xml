@@ -657,14 +657,16 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <string name="default_web_client_id" translatable="false">557710622421-15sfn3rs1u3puordofs1r6qpvqf4v8mu.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">365082073509-dqkja123tvec74d2rl4om958ch8ntvoq.apps.googleusercontent.com</string>
     <string name="facebook_app_id">1584621494925758</string>
-    <string name="gcm_defaultSenderId" translatable="false">557710622421</string>
-    <string name="google_api_key" translatable="false">AIzaSyC_1co5jGiPSa8Fir5E3IfC1nyY4LvZjuE</string>
-    <string name="google_app_id" translatable="false">1:557710622421:android:2755bf58b0cbad18</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC_1co5jGiPSa8Fir5E3IfC1nyY4LvZjuE</string>
+    <string name="firebase_database_url" translatable="false">https://moov-project.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">365082073509</string>
+    <string name="google_api_key" translatable="false">AIzaSyANSBeN3IiJAFcsih3h2wqCrWOqFNATjqw</string>
+    <string name="google_app_id" translatable="false">1:365082073509:android:2755bf58b0cbad18</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyANSBeN3IiJAFcsih3h2wqCrWOqFNATjqw</string>
+    <string name="google_storage_bucket" translatable="false">moov-project.appspot.com</string>
     <string name="messenger_send_button_text">Send</string>
-    <string name="project_id" translatable="false">moov-194715</string>
+    <string name="project_id" translatable="false">moov-project</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

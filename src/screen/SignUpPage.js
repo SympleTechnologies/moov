@@ -4,39 +4,29 @@ import React from 'react';
 // react-native libraries
 import {
   StyleSheet,
-  Text,
   View,
-  TouchableOpacity,
   Dimensions,
   Image,
   ActivityIndicator,
-  AsyncStorage,
   Platform,
-  Button,
 } from 'react-native';
 
 // third-part library
-import { Heading, Subtitle, Icon } from '@shoutem/ui';
+import { Heading } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
-import FBSDK from 'react-native-fbsdk';
 import firebase from 'firebase';
 import RNFetchBlob from 'react-native-fetch-blob'
 import ImagePicker from 'react-native-image-picker';
 
-// common
-import {StatusBarComponent, ButtonComponent, Input, ButtonIconComponent} from "../common";
-import {SignUpForm} from "../component";
+// component
+import { SignUpForm } from "../component";
 
-const {
-  ShareDialog,
-} = FBSDK;
+// common
+import { StatusBarComponent } from "../common";
 
 // More info on all the options is below in the README...just some common use cases shown here
 let options = {
   title: 'Select Avatar',
-  // customButtons: [
-  //   {name: 'fb', title: 'Choose Photo from Facebook'},
-  // ],
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -87,12 +77,12 @@ class SignUpPage extends React.Component {
   componentDidMount() {
     if (firebase.apps.length === 0) {
       firebase.initializeApp({
-        apiKey: "AIzaSyD0ZJS7tPUrOWkZEZQRXDLQfLRT2yxhKMM",
-        authDomain: "moov-68c37.firebaseapp.com",
-        databaseURL: "https://moov-68c37.firebaseio.com",
-        projectId: "moov-68c37",
-        storageBucket: "moov-68c37.appspot.com",
-        messagingSenderId: "1050975255216"
+        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
+        authDomain: "moov-project.firebaseapp.com",
+        databaseURL: "https://moov-project.firebaseio.com",
+        projectId: "moov-project",
+        storageBucket: "moov-project.appspot.com",
+        messagingSenderId: "365082073509"
       });
     }
   }
@@ -112,11 +102,6 @@ class SignUpPage extends React.Component {
         console.log('User tapped custom button: ', response.customButton);
       }
       else {
-        // let source = { uri: response.uri };
-        // this.setState({image_uri: response.uri})
-
-        // You can also display the image using data:
-        // let image_uri = { uri: 'data:image/jpeg;base64,' + response.data };
 
         this.uploadImage(response.uri)
           .then(url => {
