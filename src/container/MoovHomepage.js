@@ -39,20 +39,6 @@ class MoovHomepage extends React.Component {
 
     requestSlot: 1,
 
-
-    authorization_code: null,
-    authorization_code_status: false,
-    created_at: "2018-03-12T12:40:26.694447+00:00",
-    email: "moov@email.com",
-    firstname: "moov",
-    id: "-L7PDTp4E8yfbkikiXow",
-    image_url: "https://my_image.jpg",
-    lastname: "moov",
-    mobile_number: "08000000000",
-    modified_at: "2018-03-12T12:40:26.694457+00:00",
-    user_type: "student",
-    wallet_amount: 300,
-
     user: [],
 
   };
@@ -68,7 +54,7 @@ class MoovHomepage extends React.Component {
       this.setState({ userToken: value });
     }).done();
     AsyncStorage.getItem("user").then((value) => {
-      this.setState({ user: value });
+      this.setState({ user: JSON.parse(value) });
     }).done();
 
     if(Platform.OS === 'ios') {

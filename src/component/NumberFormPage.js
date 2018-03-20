@@ -155,7 +155,8 @@ class NumberFormPage extends React.Component {
   saveUserToLocalStorage = (userDetails) => {
     console.log(userDetails);
     AsyncStorage.setItem("token", userDetails.token).then(() => {
-      AsyncStorage.setItem("user", userDetails.token);
+      // AsyncStorage.setItem("user", userDetails.user);
+      AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
     });
 
   };
