@@ -3576,6 +3576,10 @@ react-native-navigation-experimental-compat@shoutem/react-native-navigation-expe
   dependencies:
     fbjs "~0.8.9"
 
+react-native-paystack@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-paystack/-/react-native-paystack-3.1.4.tgz#e04a3f7f1872c2ef60fd43a686f12312dee13e18"
+
 react-native-phone-input@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/react-native-phone-input/-/react-native-phone-input-0.2.1.tgz#ac6852a1ea37d8d58ff83ded52d18d7b6303e667"

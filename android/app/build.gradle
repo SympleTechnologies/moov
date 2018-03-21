@@ -121,6 +121,11 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    project.ext {
+        googlePlayServicesVersion = "11.8.0"
+    }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -134,15 +139,12 @@ android {
             }
         }
     }
-
-    project.ext {
-        googlePlayServicesVersion = "11.8.0"
-    }
 }
 
 dependencies {
-    compile project(':react-native-fetch-blob')
-    compile project(':react-native-image-picker')
+    implementation project(':react-native-paystack')
+    implementation project(':react-native-fetch-blob')
+    implementation project(':react-native-image-picker')
 //    implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-photo-view')

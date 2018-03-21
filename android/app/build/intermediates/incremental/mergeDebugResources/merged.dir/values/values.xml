@@ -91,6 +91,10 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="pstck_pinpad_default_button_textcolor">#DFE1E2</color>
+    <color name="pstck_pinpad_default_pin_indicator_empty_color">#E0E0E0</color>
+    <color name="pstck_pinpad_default_pin_indicator_filled_color">#C4C4C4</color>
+    <color name="pstck_pinpad_default_prompt_textcolor">#D0D0D0</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
@@ -194,6 +198,7 @@
             <enum name="normal" value="0"/>
             <enum name="italic" value="1"/>
         </attr><attr format="reference" name="font"/><attr format="integer" name="fontWeight"/><attr name="android:fontStyle"/><attr name="android:font"/><attr name="android:fontWeight"/></declare-styleable>
+    <declare-styleable name="ForegroundView"><attr name="foreground"/><attr name="foregroundInsidePadding"/><attr name="foregroundGravity"/></declare-styleable>
     <declare-styleable name="GenericDraweeHierarchy"><attr format="integer" name="fadeDuration"/><attr format="float" name="viewAspectRatio"/><attr format="reference" name="placeholderImage"/><attr name="placeholderImageScaleType">
       <enum name="none" value="-1"/>
       <enum name="fitXY" value="0"/>
@@ -302,6 +307,7 @@
             <enum name="add" value="16"/>
         </attr></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/><attr format="reference" name="subMenuArrow"/></declare-styleable>
+    <declare-styleable name="PinPadView"><attr format="boolean" name="place_digits_randomly"/><attr format="boolean" name="auto_submit"/><attr format="boolean" name="vibrate_on_incomplete_submit"/><attr format="color" name="pin_indicator_filled_color"/><attr format="color" name="pin_indicator_empty_color"/><attr format="dimension" name="pin_indicator_size"/><attr format="dimension" name="pin_indicator_stroke_width"/><attr format="dimension" name="pin_indicator_spacing"/><attr format="integer" name="pin_length"/><attr format="string" name="prompt_text"/><attr format="color" name="prompt_textcolor"/><attr format="dimension" name="prompt_textsize"/><attr format="dimension" name="prompt_text_padding"/><attr format="dimension" name="prompt_text_paddingTop"/><attr format="dimension" name="prompt_text_paddingBottom"/><attr format="color" name="button_textcolor"/><attr format="dimension" name="button_numeric_textsize"/><attr format="dimension" name="button_alpha_textsize"/><attr format="string" name="button_text_numeric"/><attr format="string" name="button_text_alpha"/><attr format="reference" name="button_drawable"/><attr format="dimension" name="button_drawable_size"/></declare-styleable>
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/><attr name="android:popupAnimationStyle"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="RecycleListView"><attr format="dimension" name="paddingBottomNoButtons"/><attr format="dimension" name="paddingTopNoTitle"/></declare-styleable>
@@ -529,6 +535,13 @@
     <dimen name="notification_subtext_size">13sp</dimen>
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
+    <dimen name="paystack__view__horizontal_margin">16dp</dimen>
+    <dimen name="paystack__view__margin">5dp</dimen>
+    <dimen name="paystack__view__vertical_margin">16dp</dimen>
+    <dimen name="pstck_pinpad__default_indicator_height">64dp</dimen>
+    <dimen name="pstck_pinpad__default_prompt_padding">24dp</dimen>
+    <dimen name="pstck_pinpad__default_prompt_paddingBottom">16dp</dimen>
+    <dimen name="pstck_pinpad__default_prompt_paddingTop">16dp</dimen>
     <dimen name="tooltip_corner_radius">2dp</dimen>
     <dimen name="tooltip_horizontal_padding">16dp</dimen>
     <dimen name="tooltip_margin">8dp</dimen>
@@ -667,6 +680,17 @@
     <string name="google_storage_bucket" translatable="false">moov-project.appspot.com</string>
     <string name="messenger_send_button_text">Send</string>
     <string name="project_id" translatable="false">moov-project</string>
+    <string name="pstck_pinpad__app_name">pinpad</string>
+    <string name="pstck_pinpad__num_0">0</string>
+    <string name="pstck_pinpad__num_1">1</string>
+    <string name="pstck_pinpad__num_2">2</string>
+    <string name="pstck_pinpad__num_3">3</string>
+    <string name="pstck_pinpad__num_4">4</string>
+    <string name="pstck_pinpad__num_5">5</string>
+    <string name="pstck_pinpad__num_6">6</string>
+    <string name="pstck_pinpad__num_7">7</string>
+    <string name="pstck_pinpad__num_8">8</string>
+    <string name="pstck_pinpad__num_9">9</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -1814,6 +1838,19 @@
     <style name="MessengerButtonText.White.Small">
     <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
   </style>
+    <style name="Paystack.Dialog" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+    <style name="Paystack.Dialog.CardEntry" parent="Paystack.Dialog">
+    </style>
+    <style name="Paystack.Dialog.OtpEntry" parent="Paystack.Dialog">
+    </style>
+    <style name="Paystack.Dialog.PinEntry" parent="Paystack.Dialog">
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 
@@ -2123,6 +2160,7 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="Widget"/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -2219,6 +2257,15 @@
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
     <style name="Widget.Compat.NotificationActionContainer" parent=""/>
     <style name="Widget.Compat.NotificationActionText" parent=""/>
+    <style name="Widget.PinPad">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="button_textcolor">@color/pstck_pinpad_default_button_textcolor</item>
+        <item name="prompt_textcolor">@color/pstck_pinpad_default_prompt_textcolor</item>
+        <item name="pin_indicator_filled_color">@color/pstck_pinpad_default_pin_indicator_filled_color</item>
+        <item name="pin_indicator_empty_color">@color/pstck_pinpad_default_pin_indicator_empty_color</item>
+        <item name="android:gravity">center</item>
+    </style>
     <style name="com_facebook_activity_theme" parent="@style/Theme.AppCompat.NoActionBar">
       <item name="android:windowIsTranslucent">true</item>
       <item name="android:windowBackground">@android:color/transparent</item>

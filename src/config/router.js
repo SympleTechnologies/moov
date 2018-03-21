@@ -86,21 +86,21 @@ export const ProfileHome = StackNavigator({
 
 
 export const Tabs = TabNavigator({
-  Moov: {
-    screen: MoovHome,
-    navigationOptions: {
-      tabBarLabel: 'MOOV',
-      color: 'white',
-      style: {
-        color: '#004a80',
-      },
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
-          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
-      ),
-    },
-  },
+  // Moov: {
+  //   screen: MoovHome,
+  //   navigationOptions: {
+  //     tabBarLabel: 'MOOV',
+  //     color: 'white',
+  //     style: {
+  //       color: '#004a80',
+  //     },
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+  //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+  //     ),
+  //   },
+  // },
   Wallet: {
     screen: WalletHome,
     navigationOptions: {
