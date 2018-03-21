@@ -116,7 +116,7 @@ class NumberFormPage extends React.Component {
   createUser = () => {
     return this.state.isValidPhoneNumber
       ? this.checkTypeOfAccount()
-      : Toast.show('The number supplied is invalid', Toast.LONG);
+      : Toast.showWithGravity('The number supplied is invalid', Toast.LONG, Toast.TOP);
   };
 
   /**
@@ -142,7 +142,7 @@ class NumberFormPage extends React.Component {
         this.setState({
           userAuthID: response.uid
         }, () => {
-          this.createUser();
+          this.checkTypeOfAccount();
         });
       })
       .catch((error) => {
@@ -152,14 +152,19 @@ class NumberFormPage extends React.Component {
       })
   };
 
+  /**
+   * saveUserToLocalStorage
+   *
+   * Saves user details to local storage
+   * @param userDetails
+   */
   saveUserToLocalStorage = (userDetails) => {
     console.log(userDetails);
     AsyncStorage.setItem("token", userDetails.token).then(() => {
-      AsyncStorage.setItem("user", userDetails.token);
+      AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
     });
 
   };
-
 
   /**
    * saveUserToServer
@@ -190,7 +195,17 @@ class NumberFormPage extends React.Component {
         console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
         console.log(error.message);
+        this.deleteUserFromFirebase();
       });
+  };
+
+  deleteUserFromFirebase = () => {
+    firebase.auth().currentUser.delete().then(() => {
+      console.log('delete successful?');
+    }).catch((error) => {
+      console.log(error);
+      console.log(error.message)
+    })
   };
 
   /**
