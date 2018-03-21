@@ -8,6 +8,9 @@ import { Icon } from 'react-native-elements';
 // containers
 import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage } from '../container';
 
+// component
+import { LoadPage, TransferPage, WithdrawPage } from "../component/Wallet";
+
 export const MoovHome = StackNavigator({
   MoovHomePage: {
     screen: MoovHomepage,
@@ -22,8 +25,26 @@ export const MoovHome = StackNavigator({
 });
 //
 export const WalletHome = StackNavigator({
-  WalletHomePage: {
-    screen: WalletHomepage,
+  // WalletHomePage: {
+  //   screen: WalletHomepage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
+  LoadPage: {
+    screen: LoadPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  TransferPage: {
+    screen: TransferPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  WithdrawPage: {
+    screen: WithdrawPage,
     navigationOptions: {
       header: null,
     }
