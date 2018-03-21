@@ -2,7 +2,10 @@
 import React from 'react';
 
 // react-native libraries
-import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Animated} from 'react-native';
+import {
+  StyleSheet, Text, View, TouchableOpacity, Dimensions, Animated, ActivityIndicator,
+  AsyncStorage
+} from 'react-native';
 
 // third-party libraries
 import * as axios from "axios/index";
@@ -10,6 +13,7 @@ import Toast from "react-native-simple-toast";
 import { Caption, Heading, Subtitle } from '@shoutem/ui';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FBSDK, {LoginManager} from 'react-native-fbsdk';
+import firebase from 'firebase';
 
 // common
 import {StatusBarComponent} from "../common";
@@ -37,7 +41,10 @@ class SignInPage extends React.Component {
   }
 
   state= {
-    userToken: '',
+    email: '',
+    password: '',
+    userAuthID: '',
+    loading: false,
   };
 
   /**
@@ -47,9 +54,21 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
+        authDomain: "moov-project.firebaseapp.com",
+        databaseURL: "https://moov-project.firebaseio.com",
+        projectId: "moov-project",
+        storageBucket: "moov-project.appspot.com",
+        messagingSenderId: "365082073509"
+      });
+    }
+
     this.spring();
     this.googleSignOut();
     this.setupGoogleSignin();
+
   }
 
 
@@ -104,10 +123,7 @@ class SignInPage extends React.Component {
     Toast.show('Success.', Toast.LONG);
     console.log(userDetails);
     this.setState({
-      firstName: userDetails.first_name,
-      lastName: userDetails.last_name,
       email: userDetails.email,
-      imgURL: userDetails.picture.data['url'],
       userAuthID: userDetails.id
     });
 
@@ -164,6 +180,18 @@ class SignInPage extends React.Component {
   }
 
   /**
+   * appNavigation
+   *
+   * @param {string} page - The page the user wants to navigate to
+   * @return {void}
+   */
+  appNavigation = () => {
+    console.log('navigate');
+    const { navigate } = this.props.navigation;
+    navigate('MoovHomepage');
+  };
+
+  /**
    * googleSignIn
    *
    * Signs user out using google login interface
@@ -193,16 +221,15 @@ class SignInPage extends React.Component {
         GoogleSignin.signIn()
           .then((user) => {
             console.log(user);
+
             this.setState({
-              firstName: user.givenName,
-              lastName: user.familyName,
               email: user.email,
-              imgURL: user.photo,
               userAuthID: user.id
+            }, () => {
+              this.signInToServer();
             });
 
             Toast.show('Google signup was successful', Toast.LONG);
-            this.appNavigation('number');
           })
           .catch((err) => {
             console.log('WRONG SIGNIN', err);
@@ -213,11 +240,138 @@ class SignInPage extends React.Component {
       })
   };
 
+  /**
+   * validateFields
+   *
+   * validates user input fields
+   * @return {boolean}
+   */
+  validateFields = () => {
+    let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    if ( this.state.email === '') {
+      Toast.showWithGravity('Email field cannot be empty', Toast.LONG, Toast.TOP);
+    } else if(this.state.email.match(pattern) === null) {
+      Toast.showWithGravity('Email address is badly formatted', Toast.LONG, Toast.TOP);
+    } else {
+      return true
+    }
+  };
+
+  /**
+   *
+   */
+  submitForm = () => {
+    console.log('called sub')
+    if(this.validateFields()) {
+      this.signInToFirebase()
+    }
+  };
+
+  /**
+   *
+   */
+  signInToFirebase = () => {
+    this.setState({ loading: !this.state.loading });
+    console.log('called fb');
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((response) => {
+        console.log('called sdsdsd');
+        console.log(response, 'After login');
+        this.setState({
+          userAuthID: response.uid,
+        }, () => {
+          this.signInToServer();
+        });
+      })
+      .catch((error) => {
+        console.log('called error');
+        console.log(error, 'Login Error');
+        this.setState({ loading: !this.state.loading });
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * saveUserToLocalStorage
+   *
+   * Saves user details to local storage
+   * @param userDetails
+   */
+  saveUserToLocalStorage = (userDetails) => {
+    console.log(userDetails);
+    AsyncStorage.setItem("token", userDetails.token).then(() => {
+      AsyncStorage.setItem('user', JSON.stringify(userDetails.data));
+      this.appNavigation();
+    });
+
+  };
+
+  /**
+   * saveUserToServer
+   *
+   * login user using axios
+   * @return {void}
+   */
+  signInToServer = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
+      "email": this.state.email,
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading });
+        console.log(response);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
+        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+      })
+      .catch((error) => {
+        this.setState({ loading: !this.state.loading });
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        alert(`${error.response.data.data.message}`);
+        console.log(error.message);
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * resetPassword
+   *
+   * sends user reset email link
+   * @return {void}
+   */
+  resetPassword = () => {
+    console.log('called')
+
+    firebase.auth().sendPasswordResetEmail(this.state.email).then((response) => {
+      Toast.showWithGravity(`Check your email`, Toast.LONG, Toast.TOP);
+    }).catch((error) => {
+      // An error happened.
+      console.log(error)
+      console.log(error.message)
+      Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+    });
+  };
+
   render() {
     console.log(this.state);
 
-    const { container } = styles;
+    const { container, activityIndicator } = styles;
     let { height, width } = Dimensions.get('window');
+
+
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <ActivityIndicator
+            color = '#f68d65'
+            size = "large"
+            style={activityIndicator}
+          />
+        </View>
+      );
+    }
 
     return (
       <View style={container}>
@@ -242,8 +396,17 @@ class SignInPage extends React.Component {
             {/*<Subtitle>Welcome back</Subtitle>*/}
           </View>
           <View style={{ marginTop: 10 }}>
-            <SignInFormPage />
-            <TouchableOpacity onPress={() => console.log('forget password')}>
+            <SignInFormPage
+              emailValue={this.state.email}
+              passwordValue={this.state.password}
+
+              onChangeEmailText={email => this.setState({ email })}
+              onChangePasswordText={password => this.setState({ password })}
+
+              buttonText='Sign In'
+              onSubmit={() => this.submitForm()}
+            />
+            <TouchableOpacity onPress={this.resetPassword}>
               <Caption style={{ textAlign: 'center', color: 'red', fontSize: 10, marginBottom: 30 }}>Forgot Password</Caption>
             </TouchableOpacity>
             <View style={{ flexDirection: 'column', alignItems: 'center'}}>
@@ -290,6 +453,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#b3b4b4',
+  },
+  activityIndicator: {
+    flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 20
   },
 });
 

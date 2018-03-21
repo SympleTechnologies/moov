@@ -87,6 +87,11 @@ class SignUpPage extends React.Component {
     }
   }
 
+  /**
+   * getImage
+   *
+   * get user's image from phone
+   */
   getImage = () => {
 
     ImagePicker.showImagePicker(options, (response) => {
@@ -120,6 +125,14 @@ class SignUpPage extends React.Component {
 
   };
 
+  /**
+   * uploadImage
+   *
+   * uploads user image to firebase
+   * @param uri
+   * @param mime
+   * @return {Promise<any>}
+   */
   uploadImage(uri, mime = 'application/octet-stream') {
     this.setState({ loading: !this.state.loading });
 
@@ -179,29 +192,29 @@ class SignUpPage extends React.Component {
     let format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
     if ( this.state.firstName === '') {
-      Toast.show('First Name field cannot be empty', Toast.LONG);
+      Toast.showWithGravity('First Name field cannot be empty', Toast.LONG, Toast.TOP);
     } else if(format.test(this.state.firstName)){
-      Toast.show('First Name field cannot special characters', Toast.LONG);
+      Toast.showWithGravity('First Name field cannot special characters', Toast.LONG, Toast.TOP);
     } else if(hasNumber.test(this.state.firstName)) {
-      Toast.show('First Name field cannot contains numbers', Toast.LONG);
+      Toast.showWithGravity('First Name field cannot contains numbers', Toast.LONG, Toast.TOP);
     } else if ( this.state.lastName === '') {
-      Toast.show('Last Name field cannot be empty', Toast.LONG);
+      Toast.showWithGravity('Last Name field cannot be empty', Toast.LONG, Toast.TOP);
     } else if(format.test(this.state.lastName)){
-      Toast.show('Last Name field cannot special characters', Toast.LONG);
+      Toast.showWithGravity('Last Name field cannot special characters', Toast.LONG, Toast.TOP);
     } else if(hasNumber.test(this.state.lastName)) {
-      Toast.show('Last Name field cannot contains numbers', Toast.LONG);
+      Toast.showWithGravity('Last Name field cannot contains numbers', Toast.LONG, Toast.TOP);
     } else if ( this.state.email === '') {
-      Toast.show('Email field cannot be empty', Toast.LONG);
+      Toast.showWithGravity('Email field cannot be empty', Toast.LONG, Toast.TOP);
     } else if(this.state.email.match(pattern) === null) {
-      Toast.show('Email address is badly formatted', Toast.LONG);
+      Toast.showWithGravity('Email address is badly formatted', Toast.LONG);
     } else if ( this.state.password === '' ) {
-      Toast.show('Password field cannot be empty', Toast.LONG);
+      Toast.showWithGravity('Password field cannot be empty', Toast.LONG);
     } else if(this.state.password.length < 6) {
-      Toast.show('Password cannot be less than 6 characters', Toast.LONG);
+      Toast.showWithGravity('Password cannot be less than 6 characters', Toast.LONG);
     } else if ( this.state.confirmPassword === '' ) {
-      Toast.show('Confirm Password cannot be empty', Toast.LONG);
+      Toast.showWithGravity('Confirm Password cannot be empty', Toast.LONG);
     } else if ( this.state.confirmPassword !== this.state.password ) {
-      Toast.show('Password does not match the confirm password field', Toast.LONG);
+      Toast.showWithGravity('Password does not match the confirm password field', Toast.LONG);
     } else {
       return true
     }
@@ -228,7 +241,7 @@ class SignUpPage extends React.Component {
     console.log(this.state);
 
     if(this.state.isValidPhoneNumber === false) {
-      Toast.show('You have entered an invalid phone number.', Toast.LONG);
+      Toast.showWithGravity('You have entered an invalid phone number.', Toast.LONG, Toast.TOP);
     }
 
     // ACTIVITY INDICATOR
@@ -278,11 +291,14 @@ class SignUpPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    height: Dimensions.get('window').height
+    borderWidth: 1,
+    borderColor: '#b3b4b4',
   },
+
   progressBar: {
     width: Dimensions.get('window').width / 1,
     height: Dimensions.get('window').height / 10

@@ -4,9 +4,6 @@ import React from 'react';
 // react-native libraries
 import { StyleSheet, View, Dimensions, Text, TouchableOpacity, Linking } from 'react-native';
 
-// third-part library
-import { Caption } from '@shoutem/ui';
-
 // common
 import { ButtonComponent, Input, StatusBarComponent } from "../common";
 
@@ -50,7 +47,7 @@ const SignInFormPage =
               <Text
                 style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
               >
-                Login
+                {buttonText}
               </Text>
               {/*<TouchableOpacity onPress={() => console.log('forget password')}>*/}
                 {/*<Caption style={{ textAlign: 'center', color: '#ed1768', fontSize: 10 }}>Terms and Conditions</Caption>*/}
