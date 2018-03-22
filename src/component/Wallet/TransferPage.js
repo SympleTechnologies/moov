@@ -30,29 +30,6 @@ class TransferPage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
-
-    // this.chargeCard();
-  }
-
-  chargeCard() {
-
-    RNPaystack.chargeCard({
-      cardNumber: '507850785078507812',
-      expiryMonth: '10',
-      expiryYear: '22',
-      cvc: '081',
-      email: 'oforchinedukelechi@gmail.com',
-      amountInKobo: 150000,
-    })
-      .then(response => {
-        console.log(response); // card charged successfully, get reference here
-      })
-      .catch(error => {
-        console.log(error); // error is a javascript Error object
-        console.log(error.message);
-        console.log(error.code);
-      })
-
   }
 
   render() {

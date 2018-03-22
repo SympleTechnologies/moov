@@ -2,23 +2,25 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, AsyncStorage, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, Dimensions, TouchableOpacity } from 'react-native';
 
 // third-parties libraries
-import RNPaystack from 'react-native-paystack';
 import { Title,TextInput, Heading, Subtitle, Caption } from '@shoutem/ui';
 import { FormInput, FormLabel } from 'react-native-elements';
+import Modal from 'react-native-simple-modal';
 import Toast from 'react-native-simple-toast'
 
 
 // common
 import {ButtonTextComponent, StatusBarComponent} from "../../common/index";
+import {PaymentPage} from "./PaymentPage";
 
 class LoadPage extends React.Component {
   state= {
     userToken: '',
-    requestSlot: 'LOAD',
-    amount: ''
+    requestType: 'LOAD',
+    amount: '',
+    showModal: false
   };
 
   /**
@@ -31,30 +33,29 @@ class LoadPage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
-
     // this.chargeCard();
   }
 
-  chargeCard() {
+  /**
+   * convertAmountToKobo
+   *
+   * Converts the current amount in naira to kobo
+   * @return {void}
+   */
+  convertAmountToKobo = () => {
+    this.setState({ showModal: false });
+    const { navigate } = this.props.navigation;
+    let amount;
 
-    RNPaystack.chargeCard({
-      cardNumber: '507850785078507812',
-      expiryMonth: '10',
-      expiryYear: '22',
-      cvc: '081',
-      email: 'oforchinedukelechi@gmail.com',
-      amountInKobo: 150000,
-    })
-      .then(response => {
-        console.log(response); // card charged successfully, get reference here
-      })
-      .catch(error => {
-        console.log(error); // error is a javascript Error object
-        console.log(error.message);
-        console.log(error.code);
-      })
+    amount = this.state.amount * 100;
 
-  }
+    this.setState({  amount: amount }, () => {
+      navigate('PaymentPage', {
+        amount: this.state.amount,
+        requestType: this.state.requestType,
+      });
+    });
+  };
 
   /**
    * verifyAmount
@@ -65,7 +66,7 @@ class LoadPage extends React.Component {
   verifyAmount = () => {
     if(this.state.amount.length >= 3) {
       if (!this.state.amount.match(/[a-z]/i) && /^[a-zA-Z0-9- ]*$/.test(this.state.amount) === true && this.state.amount.length >= 3) {
-
+        this.setState({ showModal: true })
       }
       else {
         Toast.showWithGravity(`Amount should contain only numbers`,Toast.LONG,Toast.TOP,);
@@ -84,7 +85,42 @@ class LoadPage extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
-        <View style={{ flexDirection: 'column'}}>
+        <Modal
+          offset={this.state.offset}
+          open={this.state.showModal}
+          modalDidOpen={this.modalDidOpen}
+          modalDidClose={() => this.setState({showModal: false})}
+          style={{alignItems: 'center'}}>
+          <View style={{alignItems: 'center'}}>
+            <Text style={{fontSize: 20, marginBottom: 10}}>Confirmation Box!</Text>
+            <Text style={{ fontWeight: '700' }}>Amount: {this.state.amount}</Text>
+            <View style={{ flexDirection: 'row', marginTop: 40}}>
+              <TouchableOpacity
+                style={{margin: 5, marginRight: width / 4}}
+              >
+                <ButtonTextComponent
+                  onPress={this.convertAmountToKobo}
+                  buttonText='YES'
+                  iconName='ios-checkmark-circle-outline'
+                  iconType='ionicon'
+                  backgroundColor='#004a80'
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{margin: 5}}
+              >
+                <ButtonTextComponent
+                  onPress={() => this.setState({showModal: false})}
+                  buttonText='NO'
+                  iconName='cancel'
+                  iconType='material'
+                  backgroundColor='#a84441'
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+        <View style={{ flexDirection: 'column', zIndex: -1}}>
           <View style={{ flexDirection: 'row', width: '70%', marginBottom: 10 }}>
             <View style={{ paddingTop: width / 28 }}>
               <Title>Enter Amount: </Title>
@@ -95,6 +131,7 @@ class LoadPage extends React.Component {
                 // onChangeText={...}
                 autoFocus
                 keyboardType='numeric'
+                onChangeText={amount => this.setState({ amount: amount.replace(" ", "") })}
               />
               {/*<FormInput*/}
                 {/*style={{ flexDirection: 'row', width: 1 }}*/}
@@ -106,7 +143,7 @@ class LoadPage extends React.Component {
               {/*/>*/}
             </View>
           </View>
-           <View style={{ marginTop: 40 }}>
+           <View style={{ marginTop: 40, zIndex: -1 }}>
               <ButtonTextComponent
                 buttonText='LOAD'
                 iconName='payment'
