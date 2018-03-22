@@ -25,12 +25,6 @@ export const MoovHome = StackNavigator({
 });
 //
 export const WalletHome = StackNavigator({
-  PaymentPage: {
-    screen: PaymentPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
   WalletHomePage: {
     screen: WalletHomepage,
     navigationOptions: {
@@ -51,6 +45,12 @@ export const WalletHome = StackNavigator({
   },
   WithdrawPage: {
     screen: WithdrawPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  PaymentPage: {
+    screen: PaymentPage,
     navigationOptions: {
       header: null,
     }

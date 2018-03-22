@@ -6,16 +6,15 @@ import { StyleSheet, Text, View, AsyncStorage, Dimensions } from 'react-native';
 
 // third-parties libraries
 import RNPaystack from 'react-native-paystack';
-import { Title,TextInput, Heading, Subtitle, Caption } from '@shoutem/ui';
-import { FormInput, FormLabel } from 'react-native-elements';
-import { Dropdown } from 'react-native-material-dropdown';
+import { Title } from '@shoutem/ui';
 import { LiteCreditCardInput } from "react-native-credit-card-input";
-import Toast from 'react-native-simple-toast'
+import Toast from 'react-native-simple-toast';
+import { NavigationActions } from 'react-navigation';
 
 
 // common
 import {ButtonTextComponent, StatusBarComponent} from "../../common/index";
-import {WithdrawPage} from "./index";
+import {WalletHomepage} from "../../container";
 
 class PaymentPage extends React.Component {
   state= {
@@ -43,24 +42,15 @@ class PaymentPage extends React.Component {
       this.setState({ userToken: value });
     }).done();
 234
-    // this.setState({
-    //   amount: this.props.navigation.state.params.amount,
-    //   requestType: this.props.navigation.state.params.requestType,
-    // })
-
-    const { navigate } = this.props.navigation;
-    navigate('WithdrawPage', {
-      amount: this.state.amount,
-      requestType: this.state.requestType,
-    });
+    this.setState({
+      amount: this.props.navigation.state.params.amount,
+      requestType: this.props.navigation.state.params.requestType,
+    })
   }
 
   goHome = () => {
     const { navigate } = this.props.navigation;
-    navigate('PaymentPage', {
-      amount: this.state.amount,
-      requestType: this.state.requestType,
-    });
+    navigate('WalletHomePage');
   };
 
   chargeCard() {
@@ -125,8 +115,13 @@ class PaymentPage extends React.Component {
 
   render() {
     console.log(this.state);
-    let { height, width } = Dimensions.get('window');
-    let slots = [ { value: 'LOAD', }, { value: 'TRANSFER', }, { value: 'WITHDRAW', } ];
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({routeName: 'Wallet'})
+      ]
+    });
+
 
     return (
       <View style={styles.container}>
