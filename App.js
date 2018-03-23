@@ -37,7 +37,7 @@ export default MainStack = StackNavigator({
   //   navigationOptions: {
   //     header: null,
   //   }
-  // },
+  // // },
   // MoovHomepage: {
   //   screen: MoovHomepage,
   //   navigationOptions: {

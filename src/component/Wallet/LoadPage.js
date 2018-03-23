@@ -37,23 +37,18 @@ class LoadPage extends React.Component {
   }
 
   /**
-   * convertAmountToKobo
+   * appNavigation
    *
-   * Converts the current amount in naira to kobo
+   * navigates user to payment page
    * @return {void}
    */
-  convertAmountToKobo = () => {
+  appNavigation = () => {
     this.setState({ showModal: false });
     const { navigate } = this.props.navigation;
-    let amount;
 
-    amount = this.state.amount * 100;
-
-    this.setState({  amount: amount }, () => {
-      navigate('PaymentPage', {
-        amount: this.state.amount,
-        requestType: this.state.requestType,
-      });
+    navigate('PaymentPage', {
+      amount: this.state.amount,
+      requestType: this.state.requestType,
     });
   };
 
@@ -64,13 +59,15 @@ class LoadPage extends React.Component {
    * @return {void}
    */
   verifyAmount = () => {
-    if(this.state.amount.length >= 3) {
-      if (!this.state.amount.match(/[a-z]/i) && /^[a-zA-Z0-9- ]*$/.test(this.state.amount) === true && this.state.amount.length >= 3) {
-        this.setState({ showModal: true })
-      }
-      else {
-        Toast.showWithGravity(`Amount should contain only numbers`,Toast.LONG,Toast.TOP,);
-      }
+    if(this.state.amount < 1) {
+      Toast.showWithGravity(`Invalid amount`,Toast.LONG,Toast.TOP,);
+    } else if(this.state.amount.length >= 3) {
+        if (!this.state.amount.match(/[a-z]/i) && /^[a-zA-Z0-9- ]*$/.test(this.state.amount) === true && this.state.amount.length >= 3) {
+          this.setState({ showModal: true })
+        }
+        else {
+          Toast.showWithGravity(`Amount should contain only numbers`,Toast.LONG,Toast.TOP,);
+        }
     }
     else {
       Toast.showWithGravity(`Amount should be 3 digits or more`,Toast.LONG, Toast.TOP,);
@@ -99,7 +96,7 @@ class LoadPage extends React.Component {
                 style={{margin: 5, marginRight: width / 4}}
               >
                 <ButtonTextComponent
-                  onPress={this.convertAmountToKobo}
+                  onPress={this.appNavigation}
                   buttonText='YES'
                   iconName='ios-checkmark-circle-outline'
                   iconType='ionicon'

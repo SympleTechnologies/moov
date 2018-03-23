@@ -13,8 +13,7 @@ import { NavigationActions } from 'react-navigation';
 
 
 // common
-import {ButtonTextComponent, StatusBarComponent} from "../../common/index";
-import {WalletHomepage} from "../../container";
+import { ButtonTextComponent, StatusBarComponent } from "../../common/index";
 
 class PaymentPage extends React.Component {
   state= {
@@ -41,26 +40,41 @@ class PaymentPage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
-234
+
     this.setState({
       amount: this.props.navigation.state.params.amount,
       requestType: this.props.navigation.state.params.requestType,
-    })
+    });
   }
 
+  /**
+   * goHome
+   *
+   * returns User to the Wallet selection homepage
+   */
   goHome = () => {
     const { navigate } = this.props.navigation;
     navigate('WalletHomePage');
   };
 
+
+  /**
+   * chargeCard
+   *
+   * p
+   */
   chargeCard() {
+    let amount = this.state.amount * 100;
+
+    console.log(this.state, 'from state')
+
     RNPaystack.chargeCard({
       cardNumber: this.state.cardNumber,
       expiryMonth: this.state.expiryMonth,
       expiryYear: this.state.expiryYear,
       cvc: this.state.cvc,
       email: this.state.email,
-      amountInKobo: this.state.amount,
+      amountInKobo: amount,
     })
       .then(response => {
         console.log(response); // card charged successfully, get reference here
@@ -74,6 +88,34 @@ class PaymentPage extends React.Component {
         Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP)
       })
 
+  }
+
+  /**
+   * addPayStackFee
+   */
+  addPayStackFee = () => {
+    console.log(this.state, 'here');
+
+    let reg = 0.015 * this.state.amount;
+
+    let newAmount = parseInt(reg) + parseInt(this.state.amount);
+    let extraCharge = parseInt(this.state.amount) + 100 + parseInt(reg);
+
+    console.log(newAmount, extraCharge, 'right here');
+
+    if(this.state.amount < 2500) {
+      this.setState({
+        amount: newAmount
+      }, () => {
+        this.chargeCard()
+      });
+    } else if (this.state.amount >= 2500) {
+      this.setState({
+        amount: extraCharge
+      }, () => {
+        this.chargeCard()
+      });
+    }
   }
 
   /**
@@ -107,14 +149,16 @@ class PaymentPage extends React.Component {
    */
   onSubmit = () => {
     if ( this.state.cardNumber !== '') {
-      this.chargeCard()
-    } else {Toast.showWithGravity(`${this.state.errorMessage}`, Toast.LONG, Toast.TOP,
-    );
+      // this.chargeCard()
+      this.addPayStackFee();
+    } else {
+        Toast.showWithGravity(`${this.state.errorMessage}`, Toast.LONG, Toast.TOP,
+      );
     }
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
