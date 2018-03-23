@@ -91,34 +91,6 @@ class PaymentPage extends React.Component {
   }
 
   /**
-   * addPayStackFee
-   */
-  addPayStackFee = () => {
-    console.log(this.state, 'here');
-
-    let reg = 0.015 * this.state.amount;
-
-    let newAmount = parseInt(reg) + parseInt(this.state.amount);
-    let extraCharge = parseInt(this.state.amount) + 100 + parseInt(reg);
-
-    console.log(newAmount, extraCharge, 'right here');
-
-    if(this.state.amount < 2500) {
-      this.setState({
-        amount: newAmount
-      }, () => {
-        this.chargeCard()
-      });
-    } else if (this.state.amount >= 2500) {
-      this.setState({
-        amount: extraCharge
-      }, () => {
-        this.chargeCard()
-      });
-    }
-  }
-
-  /**
    * _onChange
    *
    * Sets states of card parameters and error messages
@@ -149,8 +121,7 @@ class PaymentPage extends React.Component {
    */
   onSubmit = () => {
     if ( this.state.cardNumber !== '') {
-      // this.chargeCard()
-      this.addPayStackFee();
+      this.chargeCard()
     } else {
         Toast.showWithGravity(`${this.state.errorMessage}`, Toast.LONG, Toast.TOP,
       );

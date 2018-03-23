@@ -53,6 +53,34 @@ class LoadPage extends React.Component {
   };
 
   /**
+   * addPayStackFee
+   */
+  addPayStackFee = () => {
+    console.log(this.state, 'here');
+
+    let reg = 0.015 * this.state.amount;
+
+    let newAmount = parseInt(reg) + parseInt(this.state.amount);
+    let extraCharge = parseInt(this.state.amount) + 100 + parseInt(reg);
+
+    console.log(newAmount, extraCharge, 'right here');
+
+    if(this.state.amount < 2500) {
+      this.setState({
+        amount: newAmount
+      }, () => {
+        this.appNavigation()
+      });
+    } else if (this.state.amount >= 2500) {
+      this.setState({
+        amount: extraCharge
+      }, () => {
+        this.appNavigation()
+      });
+    }
+  }
+
+  /**
    * verifyAmount
    *
    * Ask user to verify the amount value and sets state of the show modal
@@ -96,7 +124,7 @@ class LoadPage extends React.Component {
                 style={{margin: 5, marginRight: width / 4}}
               >
                 <ButtonTextComponent
-                  onPress={this.appNavigation}
+                  onPress={this.addPayStackFee}
                   buttonText='YES'
                   iconName='ios-checkmark-circle-outline'
                   iconType='ionicon'
