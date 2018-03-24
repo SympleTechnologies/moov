@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/../node_modules/react-native-google-signin/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-image-picker/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-paystack/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-photo-view/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
           </set>

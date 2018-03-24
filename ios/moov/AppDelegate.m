@@ -16,6 +16,8 @@
 
 #import <RNGoogleSignin/RNGoogleSignin.h>
 
+#import <Paystack/Paystack.h>
+
 @implementation AppDelegate
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -42,6 +44,8 @@
   
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
+  
+  [Paystack setDefaultPublicKey:@"pk_test_1544ffee69407a91be7cece08566ea4ca1343126"];
   
   return YES;
 }

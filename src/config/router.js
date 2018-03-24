@@ -8,6 +8,9 @@ import { Icon } from 'react-native-elements';
 // containers
 import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage } from '../container';
 
+// component
+import { LoadPage, TransferPage, WithdrawPage, PaymentPage } from "../component/Wallet";
+
 export const MoovHome = StackNavigator({
   MoovHomePage: {
     screen: MoovHomepage,
@@ -24,6 +27,30 @@ export const MoovHome = StackNavigator({
 export const WalletHome = StackNavigator({
   WalletHomePage: {
     screen: WalletHomepage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  LoadPage: {
+    screen: LoadPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  TransferPage: {
+    screen: TransferPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  WithdrawPage: {
+    screen: WithdrawPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  PaymentPage: {
+    screen: PaymentPage,
     navigationOptions: {
       header: null,
     }
@@ -86,21 +113,21 @@ export const ProfileHome = StackNavigator({
 
 
 export const Tabs = TabNavigator({
-  Moov: {
-    screen: MoovHome,
-    navigationOptions: {
-      tabBarLabel: 'MOOV',
-      color: 'white',
-      style: {
-        color: '#004a80',
-      },
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
-          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
-      ),
-    },
-  },
+  // Moov: {
+  //   screen: MoovHome,
+  //   navigationOptions: {
+  //     tabBarLabel: 'MOOV',
+  //     color: 'white',
+  //     style: {
+  //       color: '#004a80',
+  //     },
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+  //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+  //     ),
+  //   },
+  // },
   Wallet: {
     screen: WalletHome,
     navigationOptions: {

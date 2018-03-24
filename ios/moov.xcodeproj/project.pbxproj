@@ -46,6 +46,7 @@
 		69A851E3E6FF47B39EC23998 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D514F9F6D9342528BBE11CA /* Rubik-Black.ttf */; };
 		7B8D6E80EA284994B67A1E71 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBA46ABA7CC844D4ABED9125 /* FontAwesome.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		83FDA3F1BB3E453E85937E1D /* libRNPaystack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4FE7485A2A4A878A566E17 /* libRNPaystack.a */; };
 		88953E479C5D496C9B2BF582 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 033FC91F0B844739A583FD44 /* libRNImagePicker.a */; };
 		900AB2AA101B4B3A8BAF8B3F /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4F71518724C5998704292 /* Rubik-Italic.ttf */; };
 		97E5234874D34436A261C3B5 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACAF1319F4714D859B508694 /* SimpleLineIcons.ttf */; };
@@ -82,6 +83,7 @@
 		F73378C02059B5B500441B05 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73378B92059B5B500441B05 /* GoogleSignIn.framework */; };
 		F77ED3FE204DCF7800CAFC04 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		F78628C42060311A003268A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F78628C32060311A003268A6 /* GoogleService-Info.plist */; };
+		F7FCAF792062B25200DFEBB0 /* Paystack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCAF782062B25200DFEBB0 /* Paystack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +416,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		F7FCAF762062B1D000DFEBB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C8E73794194D57A70F2E59 /* RNPaystack.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNPaystack;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -450,6 +459,7 @@
 		57B4E6C55783424F8DB4101B /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		58131D0DE633401CA64CB1D6 /* libLRDRCTSimpleToast.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLRDRCTSimpleToast.a; sourceTree = "<group>"; };
 		5D3DB79BAA8C43AB8B6481E7 /* libRNPhotoView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNPhotoView.a; sourceTree = "<group>"; };
+		5E4FE7485A2A4A878A566E17 /* libRNPaystack.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNPaystack.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		63EAB0B356FB46B1AC6D60FC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		682E63749C684669BE41D83C /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -466,6 +476,7 @@
 		ACAF1319F4714D859B508694 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B7071731987C4D02B5458769 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		B9C8E73794194D57A70F2E59 /* RNPaystack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNPaystack.xcodeproj; path = "../node_modules/react-native-paystack/ios/RNPaystack.xcodeproj"; sourceTree = "<group>"; };
 		C5CC3DDA7C684E9BADB526F1 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		C62A7EE4F9E94601AEC65D9C /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-MediumItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		C8081565289D4700B37982C0 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-LightItalic.ttf"; path = "../node_modules/@shoutem/ui/fonts/Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -495,6 +506,8 @@
 		F73378B92059B5B500441B05 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		F74E1DCAE5784EB0A702555E /* LRDRCTSimpleToast.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LRDRCTSimpleToast.xcodeproj; path = "../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast.xcodeproj"; sourceTree = "<group>"; };
 		F78628C32060311A003268A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F7FCAF782062B25200DFEBB0 /* Paystack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Paystack.framework; sourceTree = "<group>"; };
+		F7FCAF7A2062B26900DFEBB0 /* moov.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = moov.entitlements; path = moov/moov.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +545,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				F73378BA2059B5B500441B05 /* GoogleUtilities.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				F7FCAF792062B25200DFEBB0 /* Paystack.framework in Frameworks */,
 				56EE03827A6D44F68BCB7FAE /* libRNVectorIcons.a in Frameworks */,
 				F73378C02059B5B500441B05 /* GoogleSignIn.framework in Frameworks */,
 				EECF9C0A33F748C5A4DCD9D9 /* libBVLinearGradient.a in Frameworks */,
@@ -544,6 +558,7 @@
 				D33978A8A69D43D5875A179C /* libRCTFBSDK.a in Frameworks */,
 				88953E479C5D496C9B2BF582 /* libRNImagePicker.a in Frameworks */,
 				B95B38A0C6674A06892DC940 /* libRNFetchBlob.a in Frameworks */,
+				83FDA3F1BB3E453E85937E1D /* libRNPaystack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +669,7 @@
 		13B07FAE1A68108700A75B9A /* moov */ = {
 			isa = PBXGroup;
 			children = (
+				F7FCAF7A2062B26900DFEBB0 /* moov.entitlements */,
 				F78628C32060311A003268A6 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -746,6 +762,7 @@
 				8F2B4D933B9E4526BFC73EBF /* RCTFBSDK.xcodeproj */,
 				54D2CF2B3B644AC18147AF69 /* RNImagePicker.xcodeproj */,
 				A355E9DE9A6A4C138D4BD1A1 /* RNFetchBlob.xcodeproj */,
+				B9C8E73794194D57A70F2E59 /* RNPaystack.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -762,6 +779,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F7FCAF782062B25200DFEBB0 /* Paystack.framework */,
 				F73378B22059B5B500441B05 /* GoogleSdk */,
 				13B07FAE1A68108700A75B9A /* moov */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -889,6 +907,7 @@
 				9CF8949C854D4F96BA9B71C3 /* libRCTFBSDK.a */,
 				033FC91F0B844739A583FD44 /* libRNImagePicker.a */,
 				3F1F252444C6421E95F2AE3D /* libRNFetchBlob.a */,
+				5E4FE7485A2A4A878A566E17 /* libRNPaystack.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -913,6 +932,14 @@
 			isa = PBXGroup;
 			children = (
 				F7B6868C20503F56002B374D /* libBVLinearGradient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7FCAF732062B1D000DFEBB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7FCAF772062B1D000DFEBB0 /* libRNPaystack.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1007,6 +1034,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = WYT783GC26;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1103,6 +1135,10 @@
 				{
 					ProductGroup = F786287D205FE6BF003268A6 /* Products */;
 					ProjectRef = 54D2CF2B3B644AC18147AF69 /* RNImagePicker.xcodeproj */;
+				},
+				{
+					ProductGroup = F7FCAF732062B1D000DFEBB0 /* Products */;
+					ProjectRef = B9C8E73794194D57A70F2E59 /* RNPaystack.xcodeproj */;
 				},
 				{
 					ProductGroup = F7B6868120503F55002B374D /* Products */;
@@ -1439,6 +1475,13 @@
 			remoteRef = F7B6868E20503F56002B374D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F7FCAF772062B1D000DFEBB0 /* libRNPaystack.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNPaystack.a;
+			remoteRef = F7FCAF762062B1D000DFEBB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1609,12 +1652,14 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = moovTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1647,12 +1692,14 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = moovTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1675,6 +1722,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = moov/moov.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = WYT783GC26;
@@ -1695,6 +1743,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = moov/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1713,6 +1762,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = moov/moov.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WYT783GC26;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1728,6 +1778,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = moov/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1763,11 +1814,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = "moov-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1809,11 +1862,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-paystack/ios/**",
 				);
 				INFOPLIST_FILE = "moov-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1856,6 +1911,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.moov-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1880,6 +1936,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
