@@ -2,7 +2,7 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, AsyncStorage, Dimensions } from 'react-native';
+import { StyleSheet, View, AsyncStorage, ActivityIndicator } from 'react-native';
 
 // third-parties libraries
 import RNPaystack from 'react-native-paystack';
@@ -79,15 +79,21 @@ class PaymentPage extends React.Component {
       .then(response => {
         console.log(response); // card charged successfully, get reference here
         Toast.showWithGravity('Success!', Toast.LONG, Toast.TOP)
-        this.goHome();
+        this.setState({
+          loading: false
+        }, () => {
+          this.goHome();
+        });
       })
       .catch(error => {
         console.log(error); // error is a javascript Error object
         console.log(error.message);
         console.log(error.code);
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP)
+        this.setState({
+          loading: false
+        });
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
       })
-
   }
 
   /**
@@ -121,7 +127,11 @@ class PaymentPage extends React.Component {
    */
   onSubmit = () => {
     if ( this.state.cardNumber !== '') {
-      this.chargeCard()
+      this.setState({
+        loading: true
+      }, () => {
+        this.chargeCard()
+      });
     } else {
         Toast.showWithGravity(`${this.state.errorMessage}`, Toast.LONG, Toast.TOP,
       );
@@ -130,16 +140,25 @@ class PaymentPage extends React.Component {
 
   render() {
     // console.log(this.state);
-    const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({routeName: 'Wallet'})
-      ]
-    });
+    const { container, activityIndicator } = styles;
 
+    // ACTIVITY INDICATOR
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent />
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <ActivityIndicator
+            color = '#f68d65'
+            size = "large"
+            style={activityIndicator}
+          />
+        </View>
+      );
+    }
 
     return (
-      <View style={styles.container}>
+      <View style={container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
         <Title>Card payment!</Title>
         <LiteCreditCardInput
@@ -169,6 +188,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#b3b4b4',
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20
   },
 });
 
