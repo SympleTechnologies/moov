@@ -56,10 +56,39 @@ class LandingPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
+        authDomain: "moov-project.firebaseapp.com",
+        databaseURL: "https://moov-project.firebaseio.com",
+        projectId: "moov-project",
+        storageBucket: "moov-project.appspot.com",
+        messagingSenderId: "365082073509"
+      });
+    }
+
     this.spring();
-    // this.googleSignOut();
-    // this.setupGoogleSignin();
+    LoginManager.logOut()
+    this.googleSignOut();
+    this.setupGoogleSignin();
   }
+
+  /**
+   * spring
+   *
+   * Animates app icon
+   * @returns {void}
+   */
+  spring = () => {
+    this.springValue.setValue(0.1);
+    Animated.spring(
+      this.springValue,
+      {
+        toValue: 1,
+        friction: 1
+      }
+    ).start()
+  };
 
   /**
    * setupGoogleSignin
@@ -84,60 +113,6 @@ class LandingPage extends React.Component {
       console.log("Google signin error", err.code, err.message);
     }
   }
-
-  /**
-   * spring
-   *
-   * Animates app icon
-   * @returns {void}
-   */
-  spring = () => {
-    this.springValue.setValue(0.1);
-    Animated.spring(
-      this.springValue,
-      {
-        toValue: 1,
-        friction: 1
-      }
-    ).start()
-  };
-
-  /**
-   * appNavigation
-   *
-   * @param {string} page - The page the user wants to navigate to
-   * @return {void}
-   */
-  appNavigation = (page) => {
-    this.setState({ loading: true })
-    const { navigate } = this.props.navigation;
-
-    if (page === 'signup') {
-      navigate('SignUpPage');
-      this.setState({ loading: false })
-    }
-
-    if (page === 'Homepage') {
-      navigate('MoovHomepage');
-      this.setState({ loading: false })
-    }
-
-    if (page === 'signIn') {
-      this.setState({ loading: false })
-      navigate('SignInPage');
-    }
-
-    if (page === 'number') {
-      this.setState({ loading: false })
-      navigate('NumberFormPage', {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        imgURL: this.state.imgURL,
-        userAuthID: this.state.userAuthID
-      });
-    }
-  };
 
   /**
    * _responseInfoCallback
@@ -170,16 +145,20 @@ class LandingPage extends React.Component {
    * @return {void}
    */
   facebookLoginSucces = (userDetails) => {
-    Toast.show('Success.', Toast.LONG);
+    Toast.show('Facebook signup was successful', Toast.LONG);
     console.log(userDetails);
+
     this.setState({
       firstName: userDetails.first_name,
       lastName: userDetails.last_name,
       email: userDetails.email,
       imgURL: userDetails.picture.data['url'],
       userAuthID: userDetails.id
-    })
-    this.appNavigation('number');
+    }, () => {
+      this.signInToServer();
+    });
+
+    // this.appNavigation('number');
   };
 
   /**
@@ -221,16 +200,18 @@ class LandingPage extends React.Component {
         GoogleSignin.signIn()
           .then((user) => {
             console.log(user);
+
             this.setState({
               firstName: user.givenName,
               lastName: user.familyName,
               email: user.email,
               imgURL: user.photo,
               userAuthID: user.id
+            }, () => {
+              this.signInToServer();
             });
 
             Toast.show('Google signup was successful', Toast.LONG);
-            this.appNavigation('number');
           })
           .catch((err) => {
             console.log('WRONG SIGNIN', err);
@@ -258,6 +239,43 @@ class LandingPage extends React.Component {
   };
 
   /**
+   * appNavigation
+   *
+   * @param {string} page - The page the user wants to navigate to
+   * @return {void}
+   */
+  appNavigation = (page) => {
+    this.setState({ loading: true })
+    const { navigate } = this.props.navigation;
+
+    if (page === 'signup') {
+      navigate('SignUpPage');
+      this.setState({ loading: false })
+    }
+
+    if (page === 'Homepage') {
+      navigate('MoovPages');
+      this.setState({ loading: false })
+    }
+
+    if (page === 'signIn') {
+      this.setState({ loading: false })
+      navigate('SignInPage');
+    }
+
+    if (page === 'number') {
+      this.setState({ loading: false })
+      navigate('NumberFormPage', {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        imgURL: this.state.imgURL,
+        userAuthID: this.state.userAuthID
+      });
+    }
+  };
+
+  /**
    * saveUserToLocalStorage
    *
    * Saves user details to local storage
@@ -273,6 +291,23 @@ class LandingPage extends React.Component {
   };
 
   /**
+   * checkErrorMessage
+   *
+   * checks error message from the server for right navigation
+   * @param {string} message - Error message from server
+   * @return {void}
+   */
+  checkErrorMessage = (message) => {
+    if(message === 'User does not exist') {
+      this.appNavigation('number');
+    } else {
+      console.log(message, 'check error');
+      // this.setState({ loading: true });
+      Toast.showWithGravity(`Login was unsuccessful`, Toast.LONG, Toast.TOP);
+    }
+  };
+
+  /**
    * saveUserToServer
    *
    * login user using axios
@@ -281,6 +316,7 @@ class LandingPage extends React.Component {
   signInToServer = () => {
     axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
       "email": this.state.email,
+      "user_id": this.state.userAuthID,
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading });
@@ -290,12 +326,11 @@ class LandingPage extends React.Component {
         Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
       })
       .catch((error) => {
-        this.setState({ loading: !this.state.loading });
         console.log(error.response.data);
         console.log(error.response.data.data.message);
-        alert(`${error.response.data.data.message}`);
         console.log(error.message);
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+        this.setState({ loading: !this.state.loading });
+        this.checkErrorMessage(error.response.data.data.message);
       });
   };
 
@@ -347,6 +382,25 @@ class LandingPage extends React.Component {
     if(this.validateFields()) {
       this.signInToFirebase()
     }
+  };
+
+  /**
+   * resetPassword
+   *
+   * sends user reset email link
+   * @return {void}
+   */
+  resetPassword = () => {
+    console.log('called');
+
+    firebase.auth().sendPasswordResetEmail(this.state.email).then((response) => {
+      Toast.showWithGravity(`Check your email`, Toast.LONG, Toast.TOP);
+    }).catch((error) => {
+      // An error happened.
+      console.log(error)
+      console.log(error.message)
+      Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+    });
   };
 
   render() {
@@ -420,7 +474,7 @@ class LandingPage extends React.Component {
               buttonText='Sign In'
               onSubmit={() => this.submitForm()}
             />
-            <TouchableOpacity onPress={() => console.log('forget password')}>
+            <TouchableOpacity onPress={this.resetPassword}>
               <Caption style={{ textAlign: 'center', color: 'red', fontSize: 10 }}>Forgot password</Caption>
             </TouchableOpacity>
           </View>
