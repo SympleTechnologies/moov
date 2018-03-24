@@ -179,17 +179,17 @@ class SignInPage extends React.Component {
     }
   }
 
-  /**
-   * appNavigation
-   *
-   * @param {string} page - The page the user wants to navigate to
-   * @return {void}
-   */
-  appNavigation = () => {
-    console.log('navigate');
-    const { navigate } = this.props.navigation;
-    navigate('MoovHomepage');
-  };
+  // /**
+  //  * appNavigation
+  //  *
+  //  * @param {string} page - The page the user wants to navigate to
+  //  * @return {void}
+  //  */
+  // appNavigation = () => {
+  //   console.log('navigate');
+  //   const { navigate } = this.props.navigation;
+  //   navigate('MoovHomepage');
+  // };
 
   /**
    * googleSignIn
@@ -268,71 +268,71 @@ class SignInPage extends React.Component {
     }
   };
 
-  /**
-   *
-   */
-  signInToFirebase = () => {
-    this.setState({ loading: !this.state.loading });
-    console.log('called fb');
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((response) => {
-        console.log('called sdsdsd');
-        console.log(response, 'After login');
-        this.setState({
-          userAuthID: response.uid,
-        }, () => {
-          this.signInToServer();
-        });
-      })
-      .catch((error) => {
-        console.log('called error');
-        console.log(error, 'Login Error');
-        this.setState({ loading: !this.state.loading });
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-      });
-  };
+  // /**
+  //  *
+  //  */
+  // signInToFirebase = () => {
+  //   this.setState({ loading: !this.state.loading });
+  //   console.log('called fb');
+  //   firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+  //     .then((response) => {
+  //       console.log('called sdsdsd');
+  //       console.log(response, 'After login');
+  //       this.setState({
+  //         userAuthID: response.uid,
+  //       }, () => {
+  //         this.signInToServer();
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log('called error');
+  //       console.log(error, 'Login Error');
+  //       this.setState({ loading: !this.state.loading });
+  //       Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+  //     });
+  // };
 
-  /**
-   * saveUserToLocalStorage
-   *
-   * Saves user details to local storage
-   * @param userDetails
-   */
-  saveUserToLocalStorage = (userDetails) => {
-    console.log(userDetails);
-    AsyncStorage.setItem("token", userDetails.token).then(() => {
-      AsyncStorage.setItem('user', JSON.stringify(userDetails.data));
-      this.appNavigation();
-    });
+  // /**
+  //  * saveUserToLocalStorage
+  //  *
+  //  * Saves user details to local storage
+  //  * @param userDetails
+  //  */
+  // saveUserToLocalStorage = (userDetails) => {
+  //   console.log(userDetails);
+  //   AsyncStorage.setItem("token", userDetails.token).then(() => {
+  //     AsyncStorage.setItem('user', JSON.stringify(userDetails.data));
+  //     this.appNavigation();
+  //   });
+  //
+  // };
 
-  };
-
-  /**
-   * saveUserToServer
-   *
-   * login user using axios
-   * @return {void}
-   */
-  signInToServer = () => {
-    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
-      "email": this.state.email,
-    })
-      .then((response) => {
-        this.setState({ loading: !this.state.loading });
-        console.log(response);
-        console.log(response.data.data);
-        this.saveUserToLocalStorage(response.data.data);
-        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
-      })
-      .catch((error) => {
-        this.setState({ loading: !this.state.loading });
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
-        alert(`${error.response.data.data.message}`);
-        console.log(error.message);
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-      });
-  };
+  // /**
+  //  * saveUserToServer
+  //  *
+  //  * login user using axios
+  //  * @return {void}
+  //  */
+  // signInToServer = () => {
+  //   axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
+  //     "email": this.state.email,
+  //   })
+  //     .then((response) => {
+  //       this.setState({ loading: !this.state.loading });
+  //       console.log(response);
+  //       console.log(response.data.data);
+  //       this.saveUserToLocalStorage(response.data.data);
+  //       Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+  //     })
+  //     .catch((error) => {
+  //       this.setState({ loading: !this.state.loading });
+  //       console.log(error.response.data);
+  //       console.log(error.response.data.data.message);
+  //       alert(`${error.response.data.data.message}`);
+  //       console.log(error.message);
+  //       Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+  //     });
+  // };
 
   /**
    * resetPassword

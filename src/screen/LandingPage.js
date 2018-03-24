@@ -2,16 +2,23 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
+import {
+  StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform,
+  Linking, AsyncStorage
+} from 'react-native';
 
 // third-part library
 import FBSDK from 'react-native-fbsdk';
 import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import { Caption, Heading, Subtitle, Title } from '@shoutem/ui';
 
 // commom
 import { StatusBarComponent } from "../common";
+import {SignInFormPage} from "../component";
+import firebase from "firebase";
+import * as axios from "axios/index";
 
 const {
   LoginButton,
@@ -36,6 +43,7 @@ class LandingPage extends React.Component {
     firstName: '',
     lastName: '',
     email: '',
+    password: '',
     imgURL: '',
     loading: false,
     userAuthID: ''
@@ -49,8 +57,8 @@ class LandingPage extends React.Component {
    */
   componentDidMount() {
     this.spring();
-    this.googleSignOut();
-    this.setupGoogleSignin();
+    // this.googleSignOut();
+    // this.setupGoogleSignin();
   }
 
   /**
@@ -106,6 +114,11 @@ class LandingPage extends React.Component {
 
     if (page === 'signup') {
       navigate('SignUpPage');
+      this.setState({ loading: false })
+    }
+
+    if (page === 'Homepage') {
+      navigate('MoovHomepage');
       this.setState({ loading: false })
     }
 
@@ -244,6 +257,98 @@ class LandingPage extends React.Component {
       });
   };
 
+  /**
+   * saveUserToLocalStorage
+   *
+   * Saves user details to local storage
+   * @param userDetails
+   */
+  saveUserToLocalStorage = (userDetails) => {
+    console.log(userDetails);
+    AsyncStorage.setItem("token", userDetails.token).then(() => {
+      AsyncStorage.setItem('user', JSON.stringify(userDetails.data));
+      this.appNavigation('Homepage');
+    });
+
+  };
+
+  /**
+   * saveUserToServer
+   *
+   * login user using axios
+   * @return {void}
+   */
+  signInToServer = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
+      "email": this.state.email,
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading });
+        console.log(response);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
+        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+      })
+      .catch((error) => {
+        this.setState({ loading: !this.state.loading });
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        alert(`${error.response.data.data.message}`);
+        console.log(error.message);
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   *
+   */
+  signInToFirebase = () => {
+    this.setState({ loading: !this.state.loading });
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((response) => {
+        console.log('called sdsdsd');
+        console.log(response, 'After login');
+        this.setState({
+          userAuthID: response.uid,
+        }, () => {
+          this.signInToServer();
+        });
+      })
+      .catch((error) => {
+        console.log('called error');
+        console.log(error, 'Login Error');
+        this.setState({ loading: !this.state.loading });
+        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * validateFields
+   *
+   * validates user input fields
+   * @return {boolean}
+   */
+  validateFields = () => {
+    let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    if ( this.state.email === '') {
+      Toast.showWithGravity('Email field cannot be empty', Toast.LONG, Toast.TOP);
+    } else if(this.state.email.match(pattern) === null) {
+      Toast.showWithGravity('Email address is badly formatted', Toast.LONG, Toast.TOP);
+    } else {
+      return true
+    }
+  };
+
+  /**
+   *
+   */
+  submitForm = () => {
+    if(this.validateFields()) {
+      this.signInToFirebase()
+    }
+  };
+
   render() {
     console.log(this.state, 'Entire state');
     const {
@@ -275,73 +380,180 @@ class LandingPage extends React.Component {
     return (
       <View style={container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
-        <View style={{ alignItems: 'center'}}>
-          <TouchableOpacity onPress={this.spring.bind(this)}>
-            <Animated.Image
-              style={{
-                alignItems: 'center',
-                height: height / 3.5,
-                width: width / 2,
-                transform: [{scale: this.springValue}],
-                borderRadius: 25
-              }}
-              source={require('../../assets/appLogo.png')}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={landingPageBody}>
-          <TouchableOpacity onPress={() => this.appNavigation('signIn')} >
-            <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Sign In</Text>
-          </TouchableOpacity>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
-            <TouchableOpacity onPress={() => this.appNavigation('signup')}>
-              <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign up with</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.appNavigation('signup')}>
-              <Text style={[ signUpStyle, emailText]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Email</Text>
+        <View style={{ flexDirection: 'column', width: width / 1.3 }}>
+
+          {/*Logo*/}
+          <View style={{ alignItems: 'center', marginBottom: height / 15}}>
+            <TouchableOpacity onPress={this.spring.bind(this)}>
+              <Animated.Image
+                style={{
+                  alignItems: 'center',
+                  height: height / 10,
+                  width: width / 5,
+                  transform: [{scale: this.springValue}],
+                  borderRadius: 15
+                }}
+                source={require('../../assets/appLogo.png')}
+              />
             </TouchableOpacity>
           </View>
-          <View style={{ flexDirection: 'column', justifyContent: 'center'}}>
-            <View style={{ marginTop: 3, marginLeft: 4 }}>
-              <LoginButton
-                publishPermissions={["publish_actions email public_profile"]}
-                onLoginFinished={
-                  (error, result) => {
-                    if (error) {
-                      alert("login has error: " + result.error);
-                    } else if (result.isCancelled) {
-                      alert("login is cancelled.");
-                    } else {
-                      AccessToken.getCurrentAccessToken().then(
-                        (data) => {
-                          this.getFacebookUser(data.accessToken);
-                        }
-                      )
+
+          {/*Title*/}
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <View>
+              <Title>Welcome</Title>
+            </View>
+            <View style={{ marginTop: height / 20, marginBottom: height / 40}}>
+              <Subtitle style={{ color: '#b3b4b4' }}>Sign in and get mooving with MOOV.</Subtitle>
+            </View>
+          </View>
+
+          {/*Sign-In form*/}
+          <View style={{ marginBottom: height / 25 }}>
+            <SignInFormPage
+              emailValue={this.state.email}
+              passwordValue={this.state.password}
+
+              onChangeEmailText={email => this.setState({ email })}
+              onChangePasswordText={password => this.setState({ password })}
+
+              buttonText='Sign In'
+              onSubmit={() => this.submitForm()}
+            />
+            <TouchableOpacity onPress={() => console.log('forget password')}>
+              <Caption style={{ textAlign: 'center', color: 'red', fontSize: 10 }}>Forgot password</Caption>
+            </TouchableOpacity>
+          </View>
+
+          {/* Social Auth*/}
+          <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{ flexDirection: 'column', justifyContent: 'center'}}>
+              <View style={{ marginTop: 3, marginLeft: 4 }}>
+                <LoginButton
+                  publishPermissions={["publish_actions email public_profile"]}
+                  onLoginFinished={
+                    (error, result) => {
+                      if (error) {
+                        alert("login has error: " + result.error);
+                      } else if (result.isCancelled) {
+                        alert("login is cancelled.");
+                      } else {
+                        AccessToken.getCurrentAccessToken().then(
+                          (data) => {
+                            this.getFacebookUser(data.accessToken);
+                          }
+                        )
+                      }
                     }
                   }
-                }
-                onLogoutFinished={() => alert("logout.")}/>
-            </View>
-            <View stle={{ justifyContent: 'center'}}>
-              <GoogleSigninButton
-                style={{ width: '102%', height: 40, marginTop: 10 }}
-                size={GoogleSigninButton.Size.Wide}
-                color={GoogleSigninButton.Color.Auto}
-                onPress={this.googleSignIn}/>
+                  onLogoutFinished={() => alert("logout.")}/>
+              </View>
+              <View stle={{ justifyContent: 'center'}}>
+                <GoogleSigninButton
+                  style={{ width: '102%', height: 40, marginTop: 10 }}
+                  size={GoogleSigninButton.Size.Wide}
+                  color={GoogleSigninButton.Color.Auto}
+                  onPress={this.googleSignIn}/>
+              </View>
             </View>
           </View>
+
+          {/*Sign UP*/}
+          <View style={{ marginTop: 30, flexDirection: 'row', justifyContent: 'center'}}>
+            <Caption style={{ textAlign: 'center', color: '#333333', fontSize: 10 }}>New to MOOV? Sign up with</Caption>
+            <TouchableOpacity onPress={() => this.appNavigation('signup')}>
+              <Caption style={{ textAlign: 'center', color: '#333', fontSize: 10, fontWeight: '700' }}> Email</Caption>
+            </TouchableOpacity>
+          </View>
+
         </View>
       </View>
     );
+
+    // return (
+    //   <View style={container}>
+    //     <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+    //     <View style={{ alignItems: 'center'}}>
+    //       <TouchableOpacity onPress={this.spring.bind(this)}>
+    //         <Animated.Image
+    //           style={{
+    //             alignItems: 'center',
+    //             height: height / 3.5,
+    //             width: width / 2,
+    //             transform: [{scale: this.springValue}],
+    //             borderRadius: 25
+    //           }}
+    //           source={require('../../assets/appLogo.png')}
+    //         />
+    //       </TouchableOpacity>
+    //     </View>
+    //     <View style={landingPageBody}>
+    //       {/*<TouchableOpacity onPress={() => this.appNavigation('signIn')} >*/}
+    //         {/*<Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Sign In</Text>*/}
+    //       {/*</TouchableOpacity>*/}
+    //       <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+    //         <SignInFormPage
+    //           emailValue={this.state.email}
+    //           passwordValue={this.state.password}
+    //
+    //           onChangeEmailText={email => this.setState({ email })}
+    //           onChangePasswordText={password => this.setState({ password })}
+    //
+    //           buttonText='Sign In'
+    //           // onSubmit={() => this.submitForm()}
+    //         />
+    //         <TouchableOpacity onPress={() => this.appNavigation('signup')}>
+    //           <Text style={[ signUpStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>New to MOOV? Sign up with</Text>
+    //         </TouchableOpacity>
+    //         <TouchableOpacity onPress={() => this.appNavigation('signup')}>
+    //           <Text style={[ signUpStyle, emailText]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Email</Text>
+    //         </TouchableOpacity>
+    //       </View>
+    //       <View style={{ flexDirection: 'column', justifyContent: 'center'}}>
+    //         <View style={{ marginTop: 3, marginLeft: 4 }}>
+    //           <LoginButton
+    //             publishPermissions={["publish_actions email public_profile"]}
+    //             onLoginFinished={
+    //               (error, result) => {
+    //                 if (error) {
+    //                   alert("login has error: " + result.error);
+    //                 } else if (result.isCancelled) {
+    //                   alert("login is cancelled.");
+    //                 } else {
+    //                   AccessToken.getCurrentAccessToken().then(
+    //                     (data) => {
+    //                       this.getFacebookUser(data.accessToken);
+    //                     }
+    //                   )
+    //                 }
+    //               }
+    //             }
+    //             onLogoutFinished={() => alert("logout.")}/>
+    //         </View>
+    //          <View stle={{ justifyContent: 'center'}}>
+    //            <GoogleSigninButton
+    //             style={{ width: '102%', height: 40, marginTop: 10 }}
+    //             size={GoogleSigninButton.Size.Wide}
+    //             color={GoogleSigninButton.Color.Auto}
+    //             onPress={this.googleSignIn}/>
+    //         </View>
+    //       </View>
+    //     </View>
+    //   </View>
+    // );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 1,
+    // backgroundColor: 'white',
+    // justifyContent: 'center',
+    // height: Dimensions.get('window').height
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
+    alignItems: 'center',
     justifyContent: 'center',
-    height: Dimensions.get('window').height
   },
   landingPageBody: {
     flexDirection: 'column',
