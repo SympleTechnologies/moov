@@ -16,6 +16,7 @@ import Toast from 'react-native-simple-toast';
 // common
 import { ButtonComponent, StatusBarComponent} from "../common";
 import firebase from "firebase";
+import {MoovHomepage} from "../container/MoovHomepage";
 
 class NumberFormPage extends React.Component {
   state= {
@@ -98,6 +99,7 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   updateInfo = () => {
+    this.setState({ loading: !this.state.loading });
     this.setState({
       isValidPhoneNumber: this.phone.isValidNumber(),
       type: this.phone.getNumberType(),
@@ -148,6 +150,7 @@ class NumberFormPage extends React.Component {
       .catch((error) => {
         console.log(error);
         console.log(error.message);
+        this.setState({ loading: !this.state.loading });
         Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
       })
   };
@@ -173,13 +176,12 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   saveUserToServer = () => {
-    this.setState({ loading: !this.state.loading });
     axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "user_id": this.state.userAuthID,
       "user_type": "student",
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
       "email": this.state.email,
-      "image_url": this.state.imgURL,
       "mobile_number": this.state.phoneNumber
     })
       .then((response) => {
@@ -190,7 +192,6 @@ class NumberFormPage extends React.Component {
         this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
-        this.setState({ loading: !this.state.loading });
         console.log(error.response.data);
         console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
@@ -202,9 +203,11 @@ class NumberFormPage extends React.Component {
   deleteUserFromFirebase = () => {
     firebase.auth().currentUser.delete().then(() => {
       console.log('delete successful?');
+      this.setState({ loading: !this.state.loading });
     }).catch((error) => {
       console.log(error);
       console.log(error.message)
+      this.setState({ loading: !this.state.loading });
     })
   };
 
@@ -217,7 +220,7 @@ class NumberFormPage extends React.Component {
   appNavigation = () => {
     console.log('navigate');
     const { navigate } = this.props.navigation;
-    navigate('MoovHomepage');
+    navigate('MoovPages');
   };
 
   render() {
@@ -266,9 +269,7 @@ class NumberFormPage extends React.Component {
               <View style={{ height: height / 5, width: width / 1.5}}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Icon name="share-android" />
-                  {/*<Icon style={{ color: '#333'}} name="share-android" />*/}
                   <Text style={{ fontSize: 20 }}>For a free ride</Text>
-                  {/*<Text style={{ fontSize: 20, color: '#ed1768' }}>for a free ride</Text>*/}
                   <TouchableOpacity>
                     <Icon style={{ color: '#1ea1f2'}} name="tweet" />
                   </TouchableOpacity>
