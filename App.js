@@ -14,32 +14,26 @@ import { MoovHomepage } from "./src/container/MoovHomepage";
 import { NumberFormPage } from './src/component';
 
 export default MainStack = StackNavigator({
-  LandingPage: {
-  	screen: LandingPage,
-  	navigationOptions: {
-  		header: null,
-  	}
-  },
-  SignUpPage: {
-  	screen: SignUpPage,
-  	navigationOptions: {
-  		header: null,
-  	}
-  },
-  SignInPage: {
-    screen: SignInPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  NumberFormPage: {
-    screen: NumberFormPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  // MoovHomepage: {
-  //   screen: MoovHomepage,
+  // LandingPage: {
+  // 	screen: LandingPage,
+  // 	navigationOptions: {
+  // 		header: null,
+  // 	}
+  // },
+  // SignUpPage: {
+  // 	screen: SignUpPage,
+  // 	navigationOptions: {
+  // 		header: null,
+  // 	}
+  // },
+  // SignInPage: {
+  //   screen: SignInPage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
+  // NumberFormPage: {
+  //   screen: NumberFormPage,
   //   navigationOptions: {
   //     header: null,
   //   }
