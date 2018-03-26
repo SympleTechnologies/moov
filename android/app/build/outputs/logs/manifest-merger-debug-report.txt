@@ -1,18 +1,18 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-19:12
-MERGED from [:react-native-fetch-blob] /Users/chineduofor/Desktop/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
-MERGED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-23:12
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:21:1-30:12
-MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:2:1-15:12
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:react-native-fetch-blob] /Users/chineduofor/Documents/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-23:12
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:21:1-30:12
+MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-google-signin] /Users/chineduofor/Documents/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:2:1-15:12
 MERGED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:2:1-26:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/a2c232ad687668145df806b26c6fe8ed/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/0b3cc659378900f036090f2b6ec490ef/AndroidManifest.xml:21:1-31:12
@@ -65,27 +65,27 @@ MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/chineduo
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/a4b8dc20423f71bfc8bc9e92160b28d7/AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/78c16eb740abebc4269efe82b2e3ffe4/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/384754ee7cf97f083602542fa41be2d9/AndroidManifest.xml:2:1-6:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12
 	package
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:2:5-23
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:2:5-23
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:4:5-30
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:11-69
 	android:versionCode
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:3:5-28
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:6:5-67
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:5-67
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/9deac1342251c758f72f63d228399478/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/9deac1342251c758f72f63d228399478/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/6554b33dcd7af366f0fc6cc7db32095d/AndroidManifest.xml:23:5-67
@@ -93,59 +93,59 @@ MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/chineduo
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5b9a0a2eab92bb73b2235464a3d84628/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/5b9a0a2eab92bb73b2235464a3d84628/AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:7:5-81
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:7:22-78
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:7:22-78
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:9:5-77
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:11:5-78
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:5-77
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:9:22-75
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:9:22-75
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:11:5-79
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:11:22-76
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:11:22-76
 uses-feature#android.hardware.camera
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:12:5-84
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:12:5-84
 	android:required
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:12:58-82
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:12:58-82
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:12:19-57
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:12:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:13:5-94
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:13:5-94
 	android:required
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:13:68-92
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:13:68-92
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:13:19-67
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:13:19-67
 uses-permission#android.permission.CAMERA
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:14:5-65
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:14:5-65
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:14:22-62
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:14:22-62
 uses-sdk
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-fetch-blob] /Users/chineduofor/Desktop/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-fetch-blob] /Users/chineduofor/Desktop/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
-MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-linear-gradient] /Users/chineduofor/Desktop/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/chineduofor/Desktop/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-google-signin] /Users/chineduofor/Desktop/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:7:5-9:41
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fetch-blob] /Users/chineduofor/Documents/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fetch-blob] /Users/chineduofor/Documents/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:24:5-26:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /Users/chineduofor/Documents/moov/node_modules/react-native-linear-gradient/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/chineduofor/Documents/moov/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin] /Users/chineduofor/Documents/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-signin] /Users/chineduofor/Documents/moov/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:7:5-9:41
 MERGED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:7:5-9:41
 MERGED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/a2c232ad687668145df806b26c6fe8ed/AndroidManifest.xml:24:5-26:41
@@ -248,30 +248,30 @@ MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/ca
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/78c16eb740abebc4269efe82b2e3ffe4/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/384754ee7cf97f083602542fa41be2d9/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/384754ee7cf97f083602542fa41be2d9/AndroidManifest.xml:4:5-43
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
-INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
+INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
 	android:targetSdkVersion
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:19:9-38
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:19:9-38
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:18:9-35
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:18:9-35
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:21:5-42:19
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-17:19
-MERGED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-17:19
-MERGED from [:react-native-fetch-blob] /Users/chineduofor/Desktop/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
-MERGED from [:react-native-fetch-blob] /Users/chineduofor/Desktop/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
-MERGED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
-MERGED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
-MERGED from [:react-native-fbsdk] /Users/chineduofor/Desktop/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
-MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
-MERGED from [:react-native-photo-view] /Users/chineduofor/Desktop/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/2aa526b3d397a81cbbacf1e0e871cd92/AndroidManifest.xml:13:5-20
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:21:5-42:19
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-17:19
+MERGED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-17:19
+MERGED from [:react-native-fetch-blob] /Users/chineduofor/Documents/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-fetch-blob] /Users/chineduofor/Documents/moov/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
+MERGED from [:react-native-fbsdk] /Users/chineduofor/Documents/moov/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
+MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [:react-native-photo-view] /Users/chineduofor/Documents/moov/node_modules/react-native-photo-view/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-11:19
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.52.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/4a1d00f5caf4d174802b50537d84bdb9/AndroidManifest.xml:13:5-20
 MERGED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:11:5-24:19
 MERGED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:11:5-24:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/a2c232ad687668145df806b26c6fe8ed/AndroidManifest.xml:28:5-29:19
@@ -335,73 +335,73 @@ MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/384754ee7cf97f083602542fa41be2d9/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/384754ee7cf97f083602542fa41be2d9/AndroidManifest.xml:5:5-20
 	android:supportsRtl
-		ADDED from [:react-native-paystack] /Users/chineduofor/Desktop/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:9-35
+		ADDED from [:react-native-paystack] /Users/chineduofor/Documents/moov/node_modules/react-native-paystack/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:24:7-39
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:24:7-39
 	android:icon
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:25:7-41
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:25:7-41
 	android:allowBackup
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:23:7-33
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:23:7-33
 	android:theme
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:26:7-38
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:26:7-38
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:22:7-38
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:22:7-38
 activity#com.moov.MainActivity
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:27:7-38:18
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:27:7-38:18
 	android:label
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:29:9-41
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:29:9-41
 	android:windowSoftInputMode
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:31:9-51
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:31:9-51
 	android:configChanges
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:30:9-79
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:30:9-79
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:28:9-37
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:28:9-37
 intent-filter#android.intent.action.DOWNLOAD_COMPLETE+android.intent.action.DOWNLOAD_COMPLETE+android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:32:9-37:25
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:32:9-37:25
 action#android.intent.action.MAIN
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:33:13-65
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:33:13-65
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:33:21-62
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:33:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:34:13-73
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:34:13-73
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:34:23-70
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:34:23-70
 action#android.intent.action.DOWNLOAD_COMPLETE
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:35:6-70
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:35:6-70
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:35:14-68
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:35:14-68
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:39:7-84
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:39:7-84
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:39:17-81
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:39:17-81
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:40:9-107
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:40:9-107
 	android:value
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:40:66-105
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:40:66-105
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:40:20-65
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:40:20-65
 meta-data#co.paystack.android.PublicKey
-ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:41:9-131
+ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:41:9-131
 	android:value
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:41:65-129
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:41:65-129
 	android:name
-		ADDED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:41:20-64
+		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:41:20-64
 provider#android.support.v4.content.FileProvider
-ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:9-20:20
+ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:9-20:20
 	android:grantUriPermissions
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:13-47
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:13-47
 	android:authorities
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:13-60
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:13-60
 	android:exported
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:13-37
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:13-37
 	android:name
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:13-67
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:13-67
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:13-19:58
+ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:13-19:58
 	android:resource
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:17-55
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:17-55
 	android:name
-		ADDED from [:react-native-image-picker] /Users/chineduofor/Desktop/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:17-67
+		ADDED from [:react-native-image-picker] /Users/chineduofor/Documents/moov/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:17-67
 activity#co.paystack.android.ui.PinActivity
 ADDED from [co.paystack.android:paystack:3.0.9] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/24be2d84409701c0e0da097870d74d09/AndroidManifest.xml:12:9-14:63
 	android:theme
@@ -617,6 +617,6 @@ ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chinedu
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/2bcd0fdcc04b956434fe03d524bb9f43/AndroidManifest.xml:24:13-58
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/chineduofor/Desktop/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-44:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
