@@ -130,7 +130,7 @@ class SignUpPage extends React.Component {
         <View style={{flex: 1, backgroundColor: 'white' }}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <ActivityIndicator
-            color = '#f68d65'
+            color = '#004a80'
             size = "large"
             style={activityIndicator}
           />

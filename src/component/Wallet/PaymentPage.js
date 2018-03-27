@@ -146,10 +146,9 @@ class PaymentPage extends React.Component {
     if (this.state.loading) {
       return (
         <View style={{flex: 1, backgroundColor: 'white' }}>
-          <StatusBarComponent />
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <ActivityIndicator
-            color = '#f68d65'
+            color = '#004a80'
             size = "large"
             style={activityIndicator}
           />

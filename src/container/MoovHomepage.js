@@ -284,7 +284,6 @@ class MoovHomepage extends React.Component {
       return (
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: 'white'}}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
-          <StatusBarComponent />
           <Card
             title='FETCHING YOUR LOCATION'
             image={require('../../assets/scene-02.gif')}>

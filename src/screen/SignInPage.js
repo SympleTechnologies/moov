@@ -3,8 +3,7 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform,
-  Linking, AsyncStorage
+  StyleSheet, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, AsyncStorage
 } from 'react-native';
 
 // third-part library
@@ -17,7 +16,6 @@ import { Caption, Heading, Subtitle, Title } from '@shoutem/ui';
 // commom
 import { StatusBarComponent } from "../common";
 import {SignInFormPage} from "../component";
-import firebase from "firebase";
 import * as axios from "axios/index";
 
 const {
@@ -56,21 +54,10 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-    if (firebase.apps.length === 0) {
-      firebase.initializeApp({
-        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
-        authDomain: "moov-project.firebaseapp.com",
-        databaseURL: "https://moov-project.firebaseio.com",
-        projectId: "moov-project",
-        storageBucket: "moov-project.appspot.com",
-        messagingSenderId: "365082073509"
-      });
-    }
-
     this.spring();
-    LoginManager.logOut()
+    LoginManager.logOut();
     this.googleSignOut();
-    this.setupGoogleSignin();
+    this.setupGoogleSignin().then();
   }
 
   /**
@@ -91,30 +78,6 @@ class SignInPage extends React.Component {
   };
 
   /**
-   * setupGoogleSignin
-   *
-   * Initialize google auth
-   * @return {Promise<void>}
-   */
-  async setupGoogleSignin() {
-    try {
-      await GoogleSignin.hasPlayServices({ autoResolve: true });
-
-      await GoogleSignin.configure({
-        iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com',
-        webClientId: '365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com',
-        offlineAccess: false
-      });
-
-      const user = await GoogleSignin.currentUserAsync();
-      console.log(user);
-    }
-    catch (err) {
-      console.log("Google signin error", err.code, err.message);
-    }
-  }
-
-  /**
    * _responseInfoCallback
    *
    * GraphRequest call back handler
@@ -123,7 +86,6 @@ class SignInPage extends React.Component {
    * @private
    * @return {void}
    */
-    // Create response callback.
   _responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
       console.log(error.toString(), 'Error from fb');
@@ -156,7 +118,7 @@ class SignInPage extends React.Component {
       imgURL: userDetails.picture.data['url'],
       userAuthID: userDetails.id
     }, () => {
-      this.signInToServer();
+      this.signInWithSocialAuth();
     });
 
     // this.appNavigation('number');
@@ -189,6 +151,30 @@ class SignInPage extends React.Component {
   };
 
   /**
+   * setupGoogleSignin
+   *
+   * Initialize google auth
+   * @return {Promise<void>}
+   */
+  async setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+
+      await GoogleSignin.configure({
+        iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com',
+        webClientId: '365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com',
+        offlineAccess: false
+      });
+
+      const user = await GoogleSignin.currentUserAsync();
+      console.log(user);
+    }
+    catch (err) {
+      console.log("Google signin error", err.code, err.message);
+    }
+  }
+
+  /**
    * googleSignIn
    *
    * Signs user in using google login interface
@@ -211,7 +197,7 @@ class SignInPage extends React.Component {
               imgURL: user.photo,
               userAuthID: user.id
             }, () => {
-              this.signInToServer();
+              this.signInWithSocialAuth();
             });
 
             Toast.show('Google signup was successful', Toast.LONG);
@@ -241,6 +227,75 @@ class SignInPage extends React.Component {
 
       });
   };
+
+  /**
+   * signInWithSocialAuth
+   *
+   * Sign in with Social media
+   * @return {void}
+   */
+  signInWithSocialAuth = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
+      "email": this.state.email,
+      "password": this.state.userAuthID,
+    })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
+        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        console.log(error.message);
+        this.checkErrorMessage(error.response.data.data.message);
+      });
+  };
+
+  /**
+   * signInWithEmailAndPassword
+   *
+   * Sign in with user's email and password
+   * @return {void}
+   */
+  signInWithEmailAndPassword = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
+      "email": this.state.email,
+      "password": this.state.password,
+    })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
+        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        console.log(error.message);
+        // this.checkErrorMessage(error.response.data.data.message);
+        this.setState({ loading: !this.state.loading });
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * checkErrorMessage
+   *
+   * checks error message from the server for right navigation
+   * @param {string} message - Error message from server
+   * @return {void}
+   */
+  checkErrorMessageTwo = (message) => {
+    if(message === 'User does not exist') {
+      this.appNavigation('number');
+    } else {
+      console.log(message, 'check error');
+
+    }
+  };
+
 
   /**
    * appNavigation
@@ -298,59 +353,13 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   checkErrorMessage = (message) => {
+    this.setState({ loading: !this.state.loading });
     if(message === 'User does not exist') {
       this.appNavigation('number');
     } else {
       console.log(message, 'check error');
       Toast.showWithGravity(`Login was unsuccessful`, Toast.LONG, Toast.TOP);
     }
-  };
-
-  /**
-   * saveUserToServer
-   *
-   * login user using axios
-   * @return {void}
-   */
-  signInToServer = () => {
-    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
-      "email": this.state.email,
-      "user_id": this.state.userAuthID,
-    })
-      .then((response) => {
-        console.log(response);
-        console.log(response.data.data);
-        this.saveUserToLocalStorage(response.data.data);
-        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
-        console.log(error.message);
-        this.checkErrorMessage(error.response.data.data.message);
-      });
-  };
-
-  /**
-   *
-   */
-  signInToFirebase = () => {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((response) => {
-        console.log('called sdsdsd');
-        console.log(response, 'After login');
-        this.setState({
-          userAuthID: response.uid,
-        }, () => {
-          this.signInToServer();
-        });
-      })
-      .catch((error) => {
-        console.log('called error');
-        console.log(error, 'Login Error');
-        this.setState({ loading: !this.state.loading });
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-      });
   };
 
   /**
@@ -366,18 +375,20 @@ class SignInPage extends React.Component {
       Toast.showWithGravity('Email field cannot be empty', Toast.LONG, Toast.TOP);
     } else if(this.state.email.match(pattern) === null) {
       Toast.showWithGravity('Email address is badly formatted', Toast.LONG, Toast.TOP);
+    } else if ( this.state.password === '' ) {
+      Toast.showWithGravity('Password field cannot be empty', Toast.LONG, Toast.TOP);
     } else {
       return true
     }
   };
 
   /**
-   *
+   * submitForm
    */
   submitForm = () => {
     if(this.validateFields()) {
       this.setState({ loading: !this.state.loading });
-      this.signInToFirebase()
+      this.signInWithEmailAndPassword();
     }
   };
 
@@ -389,15 +400,6 @@ class SignInPage extends React.Component {
    */
   resetPassword = () => {
     console.log('called');
-
-    firebase.auth().sendPasswordResetEmail(this.state.email).then((response) => {
-      Toast.showWithGravity(`Check your email`, Toast.LONG, Toast.TOP);
-    }).catch((error) => {
-      // An error happened.
-      console.log(error)
-      console.log(error.message)
-      Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-    });
   };
 
   render() {
@@ -418,7 +420,7 @@ class SignInPage extends React.Component {
     if (this.state.loading) {
       return (
         <View style={{flex: 1}}>
-          <StatusBarComponent />
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
           <ActivityIndicator
             color = '#004a80'
             size = "large"
@@ -525,10 +527,6 @@ class SignInPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: 'white',
-    // justifyContent: 'center',
-    // height: Dimensions.get('window').height
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

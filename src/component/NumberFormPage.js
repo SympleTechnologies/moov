@@ -128,31 +128,10 @@ class NumberFormPage extends React.Component {
    */
   checkTypeOfAccount = () => {
     if(this.state.userAuthID) {
-      this.saveUserToServer();
+      this.signUpWithSocialAuth();
     } else {
-      this.createUserOnFirebase()
+      this.signUpWithEmailAndPassword();
     }
-  };
-
-  /**
-   * createUserOnFirebase
-   */
-  createUserOnFirebase = () => {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((response) => {
-        console.log(response);
-        this.setState({
-          userAuthID: response.uid
-        }, () => {
-          this.checkTypeOfAccount();
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(error.message);
-        this.setState({ loading: !this.state.loading });
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-      })
   };
 
   /**
@@ -170,14 +149,44 @@ class NumberFormPage extends React.Component {
   };
 
   /**
-   * saveUserToServer
+   * signUpWithSocialAuth
    *
-   * Saves user using axios
+   * signs up users using social auth
    * @return {void}
    */
-  saveUserToServer = () => {
+  signUpWithSocialAuth  = () => {
     axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
-      "user_id": this.state.userAuthID,
+      "password": this.state.userAuthID,
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.email,
+      "mobile_number": this.state.phoneNumber
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        console.log(response);
+        alert(`${response.data.data.message}`);
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        console.log(error.response.data.data.message);
+        alert(`${error.response.data.data.message}`);
+        console.log(error.message);
+      });
+  };
+
+  /**
+   * signUpWithEmailAndPassword
+   *
+   * signs up users using email and password
+   * @return {void}
+   */
+  signUpWithEmailAndPassword  = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "password": this.state.password,
       "user_type": "student",
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
@@ -241,9 +250,9 @@ class NumberFormPage extends React.Component {
     if (this.state.loading) {
       return (
         <View style={{flex: 1}}>
-          <StatusBarComponent />
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
           <ActivityIndicator
-            color = '#f68d65'
+            color = '#004a80'
             size = "large"
             style={activityIndicator}
           />
