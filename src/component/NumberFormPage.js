@@ -3,7 +3,13 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ActivityIndicator, ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  ActivityIndicator,
   AsyncStorage
 } from 'react-native';
 
@@ -14,9 +20,7 @@ import * as axios from 'axios';
 import Toast from 'react-native-simple-toast';
 
 // common
-import { ButtonComponent, StatusBarComponent} from "../common";
-import firebase from "firebase";
-import {MoovHomepage} from "../container/MoovHomepage";
+import { StatusBarComponent } from "../common";
 
 class NumberFormPage extends React.Component {
   state= {
@@ -43,17 +47,6 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-    if (firebase.apps.length === 0) {
-      firebase.initializeApp({
-        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
-        authDomain: "moov-project.firebaseapp.com",
-        databaseURL: "https://moov-project.firebaseio.com",
-        projectId: "moov-project",
-        storageBucket: "moov-project.appspot.com",
-        messagingSenderId: "365082073509"
-      });
-    }
-
     this.setState({
       firstName: this.props.navigation.state.params.firstName,
       lastName: this.props.navigation.state.params.lastName,
@@ -175,6 +168,7 @@ class NumberFormPage extends React.Component {
         console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
         console.log(error.message);
+        this.setState({ loading: !this.state.loading });
       });
   };
 
@@ -205,19 +199,8 @@ class NumberFormPage extends React.Component {
         console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
         console.log(error.message);
-        this.deleteUserFromFirebase();
+        this.setState({ loading: !this.state.loading });
       });
-  };
-
-  deleteUserFromFirebase = () => {
-    firebase.auth().currentUser.delete().then(() => {
-      console.log('delete successful?');
-      this.setState({ loading: !this.state.loading });
-    }).catch((error) => {
-      console.log(error);
-      console.log(error.message)
-      this.setState({ loading: !this.state.loading });
-    })
   };
 
   /**
