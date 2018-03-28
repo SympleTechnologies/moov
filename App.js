@@ -26,18 +26,18 @@ export default MainStack = StackNavigator({
   // 		header: null,
   // 	}
   // },
-  // SignInPage: {
-  //   screen: SignInPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
-  // NumberFormPage: {
-  //   screen: NumberFormPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // // },
+  SignInPage: {
+    screen: SignInPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  NumberFormPage: {
+    screen: NumberFormPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
   // MoovHomepage: {
   //   screen: MoovHomepage,
   //   navigationOptions: {
