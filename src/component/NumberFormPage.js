@@ -33,6 +33,7 @@ class NumberFormPage extends React.Component {
     email: '',
     password: '',
     imgURL: '',
+    socialEmail:'',
     userAuthID: '',
 
     loading: false,
@@ -53,6 +54,7 @@ class NumberFormPage extends React.Component {
       email: this.props.navigation.state.params.email,
       password: this.props.navigation.state.params.password,
       imgURL: this.props.navigation.state.params.imgURL,
+      socialEmail: this.props.navigation.state.params.socialEmail,
       userAuthID: this.props.navigation.state.params.userAuthID,
     })
   }
@@ -109,9 +111,15 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   createUser = () => {
-    return this.state.isValidPhoneNumber
-      ? this.checkTypeOfAccount()
-      : Toast.showWithGravity('The number supplied is invalid', Toast.LONG, Toast.TOP);
+    if(this.state.isValidPhoneNumber){
+      this.checkTypeOfAccount();
+      this.setState({ isValidPhoneNumber: false })
+    }
+
+    if(this.state.isValidPhoneNumber === false) {
+      this.setState({ isValidPhoneNumber: false, loading: !this.state.loading})
+      Toast.showWithGravity('The number supplied is invalid', Toast.LONG, Toast.TOP);
+    }
   };
 
   /**
@@ -134,11 +142,9 @@ class NumberFormPage extends React.Component {
    * @param userDetails
    */
   saveUserToLocalStorage = (userDetails) => {
-    console.log(userDetails);
     AsyncStorage.setItem("token", userDetails.token).then(() => {
       AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
     });
-
   };
 
   /**
@@ -153,21 +159,16 @@ class NumberFormPage extends React.Component {
       "user_type": "student",
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
-      "email": this.state.email,
+      "email": this.state.socialEmail,
       "mobile_number": this.state.phoneNumber
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
-        console.log(response);
         alert(`${response.data.data.message}`);
-        console.log(response.data.data);
         this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
-        console.log(error.message);
         this.setState({ loading: !this.state.loading });
       });
   };
@@ -189,16 +190,11 @@ class NumberFormPage extends React.Component {
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
-        console.log(response);
         alert(`${response.data.data.message}`);
-        console.log(response.data.data);
         this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
         alert(`${error.response.data.data.message}`);
-        console.log(error.message);
         this.setState({ loading: !this.state.loading });
       });
   };
@@ -210,13 +206,11 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   appNavigation = () => {
-    console.log('navigate');
     const { navigate } = this.props.navigation;
     navigate('MoovPages');
   };
 
   render() {
-    console.log(this.state);
     const {
       container,
       progressBar,
@@ -232,8 +226,8 @@ class NumberFormPage extends React.Component {
     // ACTIVITY INDICATOR
     if (this.state.loading) {
       return (
-        <View style={{flex: 1}}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <ActivityIndicator
             color = '#004a80'
             size = "large"
@@ -285,7 +279,7 @@ class NumberFormPage extends React.Component {
       <View style={container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
         <View style={{ height: height / 10}}>
-          <Heading>Get MOOVING.</Heading>
+          <Heading>Some more details.</Heading>
         </View>
         <Image
           style={progressBar}

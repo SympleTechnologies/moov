@@ -53,9 +53,9 @@ class MoovHomepage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
-    AsyncStorage.getItem("user").then((value) => {
-      this.setState({ user: JSON.parse(value) });
-    }).done();
+    // AsyncStorage.getItem("user").then((value) => {
+    //   this.setState({ user: JSON.parse(value) });
+    // }).done();
 
     if(Platform.OS === 'ios') {
       this.getMyLocation();

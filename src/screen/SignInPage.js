@@ -3,7 +3,7 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, AsyncStorage
+  StyleSheet, View, Dimensions, Animated, TouchableOpacity, Text, ActivityIndicator, AsyncStorage
 } from 'react-native';
 
 // third-part library
@@ -12,11 +12,13 @@ import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import { Caption, Heading, Subtitle, Title } from '@shoutem/ui';
+import * as axios from "axios/index";
+
+// component
+import { SignInFormPage } from "../component";
 
 // commom
 import { StatusBarComponent } from "../common";
-import {SignInFormPage} from "../component";
-import * as axios from "axios/index";
 
 const {
   LoginButton,
@@ -44,7 +46,8 @@ class SignInPage extends React.Component {
     password: '',
     imgURL: '',
     loading: false,
-    userAuthID: ''
+    userAuthID: '',
+    socialEmail: '',
   };
 
   /**
@@ -88,14 +91,10 @@ class SignInPage extends React.Component {
    */
   _responseInfoCallback = (error: ?Object, result: ?Object) => {
     if (error) {
-      console.log(error.toString(), 'Error from fb');
-      console.log(error, 'Error from fb');
       this.setState({ loading: !this.state.loading });
       Toast.show('The operation couldn’t be completed.', Toast.LONG);
       LoginManager.logOut()
     } else {
-      console.log(result.toString(), 'Success from fb');
-      console.log(result, 'Success from fb');
       this.facebookLoginSucces(result);
     }
   };
@@ -108,20 +107,16 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   facebookLoginSucces = (userDetails) => {
-    Toast.show('Facebook signup was successful', Toast.LONG);
-    console.log(userDetails);
-
     this.setState({
       firstName: userDetails.first_name,
       lastName: userDetails.last_name,
-      email: userDetails.email,
+      // email: userDetails.email,
+      socialEmail: userDetails.email,
       imgURL: userDetails.picture.data['url'],
-      userAuthID: userDetails.id
+      userAuthID: userDetails.id,
     }, () => {
       this.signInWithSocialAuth();
     });
-
-    // this.appNavigation('number');
   };
 
   /**
@@ -193,7 +188,7 @@ class SignInPage extends React.Component {
             this.setState({
               firstName: user.givenName,
               lastName: user.familyName,
-              email: user.email,
+              socialEmail: user.email,
               imgURL: user.photo,
               userAuthID: user.id
             }, () => {
@@ -203,8 +198,6 @@ class SignInPage extends React.Component {
             Toast.show('Google signup was successful', Toast.LONG);
           })
           .catch((err) => {
-            console.log('WRONG SIGNIN', err);
-            console.log('WRONG SIGNIN', err.message);
             this.setState({ loading: !this.state.loading });
             Toast.show('Google sign-up was unsuccessful', Toast.LONG);
           })
@@ -236,19 +229,14 @@ class SignInPage extends React.Component {
    */
   signInWithSocialAuth = () => {
     axios.post('https://moov-backend-staging.herokuapp.com/api/v1/login', {
-      "email": this.state.email,
+      "email": this.state.socialEmail,
       "password": this.state.userAuthID,
     })
       .then((response) => {
-        console.log(response);
-        console.log(response.data.data);
         this.saveUserToLocalStorage(response.data.data);
         Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
       })
       .catch((error) => {
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
-        console.log(error.message);
         this.checkErrorMessage(error.response.data.data.message);
       });
   };
@@ -265,37 +253,14 @@ class SignInPage extends React.Component {
       "password": this.state.password,
     })
       .then((response) => {
-        console.log(response);
-        console.log(response.data.data);
         this.saveUserToLocalStorage(response.data.data);
         Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
       })
       .catch((error) => {
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
-        console.log(error.message);
-        // this.checkErrorMessage(error.response.data.data.message);
         this.setState({ loading: !this.state.loading });
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
   };
-
-  /**
-   * checkErrorMessage
-   *
-   * checks error message from the server for right navigation
-   * @param {string} message - Error message from server
-   * @return {void}
-   */
-  checkErrorMessageTwo = (message) => {
-    if(message === 'User does not exist') {
-      this.appNavigation('number');
-    } else {
-      console.log(message, 'check error');
-
-    }
-  };
-
 
   /**
    * appNavigation
@@ -324,6 +289,7 @@ class SignInPage extends React.Component {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
+        socialEmail: this.state.socialEmail,
         imgURL: this.state.imgURL,
         userAuthID: this.state.userAuthID
       });
@@ -337,7 +303,6 @@ class SignInPage extends React.Component {
    * @param userDetails
    */
   saveUserToLocalStorage = (userDetails) => {
-    console.log(userDetails);
     AsyncStorage.setItem("token", userDetails.token).then(() => {
       AsyncStorage.setItem('user', JSON.stringify(userDetails.data));
       this.appNavigation('Homepage');
@@ -357,8 +322,8 @@ class SignInPage extends React.Component {
     if(message === 'User does not exist') {
       this.appNavigation('number');
     } else {
-      console.log(message, 'check error');
-      Toast.showWithGravity(`Login was unsuccessful`, Toast.LONG, Toast.TOP);
+      LoginManager.logOut();
+      Toast.showWithGravity(`${message}`, Toast.LONG, Toast.TOP);
     }
   };
 
@@ -403,7 +368,6 @@ class SignInPage extends React.Component {
   };
 
   render() {
-    console.log(this.state, 'Entire state');
     const {
       container,
       landingPageBody,
@@ -419,8 +383,8 @@ class SignInPage extends React.Component {
     // ACTIVITY INDICATOR
     if (this.state.loading) {
       return (
-        <View style={{flex: 1}}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <ActivityIndicator
             color = '#004a80'
             size = "large"
@@ -477,6 +441,9 @@ class SignInPage extends React.Component {
               <Caption style={{ textAlign: 'center', color: 'red', fontSize: 10 }}>Forgot password</Caption>
             </TouchableOpacity>
           </View>
+
+          {/*Sign-In wit email and password*/}
+
 
           {/* Social Auth*/}
           <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

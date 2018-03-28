@@ -112,13 +112,8 @@ class SignUpPage extends React.Component {
   };
 
   render() {
-    const {
-      container,
-      progressBar,
-      activityIndicator
-    } = styles;
-    let { height, width } = Dimensions.get('window');
-    console.log(this.state);
+    const { container, progressBar, activityIndicator } = styles;
+    let { height } = Dimensions.get('window');
 
     if(this.state.isValidPhoneNumber === false) {
       Toast.showWithGravity('You have entered an invalid phone number.', Toast.LONG, Toast.TOP);
@@ -174,8 +169,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#b3b4b4',
   },
 
   progressBar: {
