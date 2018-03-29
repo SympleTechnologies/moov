@@ -13,6 +13,7 @@ import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
 import { Caption, Subtitle, Title } from '@shoutem/ui';
+import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
 // common
 import {StatusBarComponent} from "../common";
@@ -61,6 +62,32 @@ class SignInPage extends React.Component {
   componentDidMount() {
     this.spring();
     LoginManager.logOut();
+    this.googleSignOut();
+    this.setupGoogleSignin().then();
+  }
+
+  /**
+   * setupGoogleSignin
+   *
+   * Initialize google auth
+   * @return {Promise<void>}
+   */
+  async setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+
+      await GoogleSignin.configure({
+        iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com',
+        webClientId: '365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com',
+        offlineAccess: false
+      });
+
+      const user = await GoogleSignin.currentUserAsync();
+      console.log(user);
+    }
+    catch (err) {
+      console.log("Google signin error", err.code, err.message);
+    }
   }
 
   /**
@@ -143,6 +170,58 @@ class SignInPage extends React.Component {
     }, () => {
       this.signInWithSocialAuth();
     });
+  };
+
+  /**
+   * googleSignIn
+   *
+   * Signs user out using google login interface
+   * @return {void}
+   */
+  googleSignOut = () => {
+    GoogleSignin.signOut()
+      .then(() => {
+        console.log('out');
+      })
+      .catch((err) => {
+
+      });
+  };
+
+  /**
+   * googleSignIn
+   *
+   * Signs user in using google login interface
+   * @return {void}
+   */
+  googleSignIn = () => {
+    this.setState({ loading: !this.state.loading });
+    GoogleSignin.configure({
+      iosClientId: '365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com'
+    })
+      .then(() => {
+        GoogleSignin.signIn()
+          .then((user) => {
+            console.log(user);
+
+            this.setState({
+              firstName: user.givenName,
+              lastName: user.familyName,
+              socialEmail: user.email,
+              imgURL: user.photo,
+              userAuthID: user.id
+            }, () => {
+              this.signInWithSocialAuth();
+            });
+
+            Toast.show('Google signup was successful', Toast.LONG);
+          })
+          .catch((err) => {
+            this.setState({ loading: !this.state.loading });
+            Toast.show('Google sign-up was unsuccessful', Toast.LONG);
+          })
+          .done();
+      })
   };
 
   /**
@@ -230,7 +309,6 @@ class SignInPage extends React.Component {
     }
   };
 
-
   render() {
 
     const { container, activityIndicator } = styles;
@@ -304,6 +382,13 @@ class SignInPage extends React.Component {
                   }
                 }
                 onLogoutFinished={() => alert("logout.")}/>
+            </View>
+            <View stle={{ justifyContent: 'center'}}>
+              <GoogleSigninButton
+                style={{ width: '102%', height: 40, marginTop: 10 }}
+                size={GoogleSigninButton.Size.Wide}
+                color={GoogleSigninButton.Color.Auto}
+                onPress={this.googleSignIn}/>
             </View>
           </View>
         </View>

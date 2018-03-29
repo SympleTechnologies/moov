@@ -141,6 +141,17 @@ class NumberFormPage extends React.Component {
     });
   };
 
+  /**
+   * appNavigation
+   *
+   * @param {string} page - The page the user wants to navigate to
+   * @return {void}
+   */
+  appNavigation = () => {
+    const { navigate } = this.props.navigation;
+    navigate('MoovPages');
+  };
+
   render() {
     console.log(this.state);
     const {
