@@ -57,6 +57,7 @@ class LandingPage extends React.Component {
    * @return {void}
    */
   appNavigation = () => {
+    console.log('Was clicked')
     const { navigate } = this.props.navigation;
     navigate('SignInPage');
   };

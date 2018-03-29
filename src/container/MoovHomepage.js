@@ -22,6 +22,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { Card,  PricingCard, Button, Icon, ListItem } from 'react-native-elements';
 import { Heading, Subtitle, Caption } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
+import * as axios from "axios/index";
 
 class MoovHomepage extends React.Component {
   state= {
