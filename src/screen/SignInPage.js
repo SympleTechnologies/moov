@@ -12,6 +12,7 @@ import FBSDK from 'react-native-fbsdk';
 import { LoginManager } from 'react-native-fbsdk'
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
+import { Caption, Subtitle, Title } from '@shoutem/ui';
 
 // common
 import {StatusBarComponent} from "../common";
@@ -32,9 +33,23 @@ const {
 
 class SignInPage extends React.Component {
 
+  /**
+   * constructor
+   */
+  constructor () {
+    super();
+    this.springValue = new Animated.Value(0.3);
+  }
+
   state = {
+    firstName: '',
+    lastName: '',
     email: '',
-    password: '',
+    socialEmail: '',
+    imgURL: '',
+    userAuthID: '',
+
+    loading: false,
   };
 
   /**
@@ -44,9 +59,26 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    this.spring();
     LoginManager.logOut();
   }
 
+  /**
+   * spring
+   *
+   * Animates app icon
+   * @returns {void}
+   */
+  spring = () => {
+    this.springValue.setValue(0.1);
+    Animated.spring(
+      this.springValue,
+      {
+        toValue: 1,
+        friction: 1
+      }
+    ).start()
+  };
 
   /**
    * getFacebookUser
@@ -222,6 +254,33 @@ class SignInPage extends React.Component {
     return (
       <View style={container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+
+        {/*Logo*/}
+        <View style={{ alignItems: 'center', marginBottom: height / 15}}>
+          <TouchableOpacity onPress={this.spring.bind(this)}>
+          <Animated.Image
+          style={{
+          alignItems: 'center',
+          height: height / 10,
+          width: width / 5,
+          transform: [{scale: this.springValue}],
+          borderRadius: 15
+          }}
+          source={require('../../assets/appLogo.png')}
+          />
+          </TouchableOpacity>
+        </View>
+
+        {/*Title*/}
+        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+          <View>
+            <Title>Sign In</Title>
+          </View>
+          <View style={{ marginTop: height / 20, marginBottom: height / 40}}>
+            <Subtitle style={{ color: '#b3b4b4' }}>Sign in and get mooving with MOOV.</Subtitle>
+          </View>
+        </View>
+
 
         {/* Social Auth*/}
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

@@ -18,6 +18,7 @@ import { ButtonComponent, StatusBarComponent} from "../common";
 import firebase from "firebase";
 
 class NumberFormPage extends React.Component {
+
   state= {
     isValidPhoneNumber: '',
     type: '',
@@ -28,6 +29,7 @@ class NumberFormPage extends React.Component {
     email: '',
     password: '',
     imgURL: '',
+    socialEmail:'',
     userAuthID: '',
 
     loading: false,
@@ -42,54 +44,16 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-    if (firebase.apps.length === 0) {
-      firebase.initializeApp({
-        apiKey: "AIzaSyDeLqj8WPs8ZDhw6w2F2AELIwrzpkzuDhM",
-        authDomain: "moov-project.firebaseapp.com",
-        databaseURL: "https://moov-project.firebaseio.com",
-        projectId: "moov-project",
-        storageBucket: "moov-project.appspot.com",
-        messagingSenderId: "365082073509"
-      });
-    }
-
     this.setState({
       firstName: this.props.navigation.state.params.firstName,
       lastName: this.props.navigation.state.params.lastName,
       email: this.props.navigation.state.params.email,
       password: this.props.navigation.state.params.password,
       imgURL: this.props.navigation.state.params.imgURL,
+      socialEmail: this.props.navigation.state.params.socialEmail,
       userAuthID: this.props.navigation.state.params.userAuthID,
     })
   }
-
-  /**
-   * shareLinkWithShareDialog
-   *
-   * Allows user share on facebook
-   */
-  shareLinkWithShareDialog = () => {
-    let tmp = this;
-    ShareDialog.canShow(this.state.shareLinkContent).then(
-      function(canShow) {
-        if (canShow) {
-          return ShareDialog.show(tmp.state.shareLinkContent);
-        }
-      }
-    ).then(
-      function(result) {
-        if (result.isCancelled) {
-          alert('Share cancelled');
-        } else {
-          alert('Share success with postId: '
-            + result.postId);
-        }
-      },
-      function(error) {
-        alert('Share fail with error: ' + error);
-      }
-    );
-  };
 
   /**
    * updateInfo
@@ -98,6 +62,7 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   updateInfo = () => {
+    this.setState({ loading: !this.state.loading });
     this.setState({
       isValidPhoneNumber: this.phone.isValidNumber(),
       type: this.phone.getNumberType(),
@@ -114,9 +79,15 @@ class NumberFormPage extends React.Component {
    * @return {void}
    */
   createUser = () => {
-    return this.state.isValidPhoneNumber
-      ? this.checkTypeOfAccount()
-      : Toast.showWithGravity('The number supplied is invalid', Toast.LONG, Toast.TOP);
+    if(this.state.isValidPhoneNumber){
+      this.checkTypeOfAccount();
+      this.setState({ isValidPhoneNumber: false })
+    }
+
+    if(this.state.isValidPhoneNumber === false) {
+      this.setState({ isValidPhoneNumber: false, loading: !this.state.loading})
+      Toast.showWithGravity('The number supplied is invalid', Toast.LONG, Toast.TOP);
+    }
   };
 
   /**
@@ -126,30 +97,36 @@ class NumberFormPage extends React.Component {
    */
   checkTypeOfAccount = () => {
     if(this.state.userAuthID) {
-      this.saveUserToServer();
+      this.signUpWithSocialAuth();
     } else {
-      this.createUserOnFirebase()
+      this.signUpWithEmailAndPassword();
     }
   };
 
   /**
-   * createUserOnFirebase
+   * signUpWithSocialAuth
+   *
+   * signs up users using social auth
+   * @return {void}
    */
-  createUserOnFirebase = () => {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+  signUpWithSocialAuth  = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "password": this.state.userAuthID,
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.socialEmail,
+      "mobile_number": this.state.phoneNumber
+    })
       .then((response) => {
-        console.log(response);
-        this.setState({
-          userAuthID: response.uid
-        }, () => {
-          this.checkTypeOfAccount();
-        });
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        alert(`${response.data.data.message}`);
+        this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
-        console.log(error);
-        console.log(error.message);
-        Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
-      })
+        alert(`${error.response.data.data.message}`);
+        this.setState({ loading: !this.state.loading });
+      });
   };
 
   /**
@@ -159,65 +136,9 @@ class NumberFormPage extends React.Component {
    * @param userDetails
    */
   saveUserToLocalStorage = (userDetails) => {
-    console.log(userDetails);
     AsyncStorage.setItem("token", userDetails.token).then(() => {
       AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
     });
-
-  };
-
-  /**
-   * saveUserToServer
-   *
-   * Saves user using axios
-   * @return {void}
-   */
-  saveUserToServer = () => {
-    this.setState({ loading: !this.state.loading });
-    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
-      "user_type": "student",
-      "firstname":  this.state.firstName ,
-      "lastname": this.state.lastName,
-      "email": this.state.email,
-      "image_url": this.state.imgURL,
-      "mobile_number": this.state.phoneNumber
-    })
-      .then((response) => {
-        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
-        console.log(response);
-        alert(`${response.data.data.message}`);
-        console.log(response.data.data);
-        this.saveUserToLocalStorage(response.data.data);
-      })
-      .catch((error) => {
-        this.setState({ loading: !this.state.loading });
-        console.log(error.response.data);
-        console.log(error.response.data.data.message);
-        alert(`${error.response.data.data.message}`);
-        console.log(error.message);
-        this.deleteUserFromFirebase();
-      });
-  };
-
-  deleteUserFromFirebase = () => {
-    firebase.auth().currentUser.delete().then(() => {
-      console.log('delete successful?');
-    }).catch((error) => {
-      console.log(error);
-      console.log(error.message)
-    })
-  };
-
-  /**
-   * appNavigation
-   *
-   * @param {string} page - The page the user wants to navigate to
-   * @return {void}
-   */
-  appNavigation = () => {
-    console.log('navigate');
-    const { navigate } = this.props.navigation;
-    navigate('MoovHomepage');
   };
 
   render() {
@@ -229,24 +150,9 @@ class NumberFormPage extends React.Component {
       landingPageBodyText,
       signInStyle,
       TextShadowStyle,
-      activityIndicator
     } = styles;
 
     let { height, width } = Dimensions.get('window');
-
-    // ACTIVITY INDICATOR
-    if (this.state.loading) {
-      return (
-        <View style={{flex: 1}}>
-          <StatusBarComponent />
-          <ActivityIndicator
-            color = '#f68d65'
-            size = "large"
-            style={activityIndicator}
-          />
-        </View>
-      );
-    }
 
     if(this.state.userCreated) {
       return (
@@ -266,9 +172,7 @@ class NumberFormPage extends React.Component {
               <View style={{ height: height / 5, width: width / 1.5}}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Icon name="share-android" />
-                  {/*<Icon style={{ color: '#333'}} name="share-android" />*/}
                   <Text style={{ fontSize: 20 }}>For a free ride</Text>
-                  {/*<Text style={{ fontSize: 20, color: '#ed1768' }}>for a free ride</Text>*/}
                   <TouchableOpacity>
                     <Icon style={{ color: '#1ea1f2'}} name="tweet" />
                   </TouchableOpacity>
@@ -292,7 +196,7 @@ class NumberFormPage extends React.Component {
       <View style={container}>
         <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
         <View style={{ height: height / 10}}>
-          <Heading>Get MOOVING.</Heading>
+          <Heading>Some more details.</Heading>
         </View>
         <Image
           style={progressBar}
