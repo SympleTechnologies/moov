@@ -72,11 +72,7 @@ const SignUpForm =
           <View>
             {/*<ButtonComponent onPress={onSubmit} backgroundColor='#f68d65' text='Sign Up' />*/}
             <TouchableOpacity style={{ alignItems: 'center'}} onPress={onSubmit}>
-              <Text
-                style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-              >
-                Sign Up
-              </Text>
+              <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Sign Up</Text>
             </TouchableOpacity>
           </View>
           <View style={{ width: width / 1.5, marginTop: 10, flexDirection: 'column' }}>

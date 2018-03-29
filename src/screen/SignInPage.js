@@ -267,7 +267,6 @@ class SignInPage extends React.Component {
    */
   signUpPage = () => {
     const { navigate } = this.props.navigation;
-
     navigate('SignUpPage');
   };
 

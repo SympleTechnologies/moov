@@ -2,7 +2,10 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
+import {
+  StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform,
+  AsyncStorage
+} from 'react-native';
 import {StatusBarComponent} from "../common";
 
 class LandingPage extends React.Component {
@@ -20,7 +23,10 @@ class LandingPage extends React.Component {
     email: '',
     imgURL: '',
     loading: false,
-    userAuthID: ''
+    userAuthID: '',
+
+    user: '',
+    userToken: '',
   };
 
   /**
@@ -31,6 +37,20 @@ class LandingPage extends React.Component {
    */
   componentDidMount() {
     this.spring();
+    AsyncStorage.getItem("token").then((value) => {
+      this.setState({ userToken: value });
+    }).done();
+    AsyncStorage.getItem("user").then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    }).done();
+  }
+
+  componentDidUpdate() {
+    console.log('yup yup')
+    const { navigate } = this.props.navigation;
+    if(this.state.user !== '' && this.state.userToken !== '') {
+      navigate('MoovPages');
+    }
   }
 
   /**

@@ -104,6 +104,32 @@ class NumberFormPage extends React.Component {
   };
 
   /**
+   * signUpWithEmailAndPassword
+   *
+   * signs up users using email and password
+   * @return {void}
+   */
+  signUpWithEmailAndPassword  = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "password": this.state.password,
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.email,
+      "mobile_number": this.state.phoneNumber
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        alert(`${response.data.data.message}`);
+        this.saveUserToLocalStorage(response.data.data);
+      })
+      .catch((error) => {
+        alert(`${error.response.data.data.message}`);
+        this.setState({ loading: !this.state.loading });
+      });
+  };
+
+  /**
    * signUpWithSocialAuth
    *
    * signs up users using social auth
@@ -161,9 +187,24 @@ class NumberFormPage extends React.Component {
       landingPageBodyText,
       signInStyle,
       TextShadowStyle,
+      activityIndicator
     } = styles;
 
     let { height, width } = Dimensions.get('window');
+
+    // ACTIVITY INDICATOR
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <ActivityIndicator
+            color = '#004a80'
+            size = "large"
+            style={activityIndicator}
+          />
+        </View>
+      );
+    }
 
     if(this.state.userCreated) {
       return (
