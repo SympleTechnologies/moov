@@ -46,11 +46,11 @@ class LandingPage extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('yup yup')
-    const { navigate } = this.props.navigation;
-    if(this.state.user !== '' && this.state.userToken !== '') {
-      navigate('MoovPages');
-    }
+    // console.log('yup yup')
+    // const { navigate } = this.props.navigation;
+    // if(this.state.user !== '' && this.state.userToken !== '') {
+    //   navigate('MoovPages');
+    // }
   }
 
   /**
