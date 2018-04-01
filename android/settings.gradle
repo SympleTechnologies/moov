@@ -1,4 +1,6 @@
 rootProject.name = 'moov'
+include ':react-native-google-places'
+project(':react-native-google-places').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-google-places/android')
 include ':react-native-paystack'
 project(':react-native-paystack').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-paystack/android')
 include ':react-native-fetch-blob'

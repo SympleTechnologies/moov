@@ -39,6 +39,9 @@
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="co.paystack.android.PublicKey" android:value="pk_test_1544ffee69407a91be7cece08566ea4ca1343126"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAkSRfO3lP2-3mzeb-IludMk1VHfaKJ9GM"/>
     </application>
 
 </manifest>

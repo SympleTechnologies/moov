@@ -141,6 +141,16 @@ android {
 }
 
 dependencies {
+//    compile project(':react-native-google-places')
+    implementation(project(':react-native-google-places')){
+        exclude group: 'com.google.android.gms', module: 'play-services-base'
+        exclude group: 'com.google.android.gms', module: 'play-services-places'
+        exclude group: 'com.google.android.gms', module: 'play-services-location'
+    }
+    implementation 'com.google.android.gms:play-services-base:12.0.1'
+    implementation 'com.google.android.gms:play-services-places:12.0.1'
+    implementation 'com.google.android.gms:play-services-location:12.0.1'
+
     implementation project(':react-native-paystack')
     implementation project(':react-native-fetch-blob')
     implementation project(':react-native-image-picker')
@@ -156,7 +166,7 @@ dependencies {
         exclude group: "com.google.android.gms" // very important
     }
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
-    implementation 'com.google.android.gms:play-services-auth:11.8.0'
+    implementation 'com.google.android.gms:play-services-auth:12.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -489,7 +489,8 @@ class SignInPage extends React.Component {
                     }
                   }
                 }
-                onLogoutFinished={() => alert("logout.")}/>
+                // onLogoutFinished={() => alert("logout.")}
+              />
             </View>
             <View stle={{ justifyContent: 'center'}}>
               <GoogleSigninButton
