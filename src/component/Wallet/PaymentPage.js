@@ -159,7 +159,7 @@ class PaymentPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <Title>Card payment!</Title>
         <LiteCreditCardInput
           autoFocus

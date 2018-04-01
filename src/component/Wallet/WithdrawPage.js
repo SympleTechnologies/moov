@@ -62,7 +62,7 @@ class WithdrawPage extends React.Component {
 
     return (
       <View style={styles.container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ flexDirection: 'column'}}>
           <View style={{ flexDirection: 'row', width: '70%', marginBottom: 10 }}>
             <View style={{ paddingTop: width / 34 }}>

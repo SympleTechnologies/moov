@@ -15,11 +15,15 @@ import {
 } from 'react-native';
 import {StatusBarComponent} from "../common";
 
+// third-parties libraries
+import RNGooglePlaces from 'react-native-google-places';
+import { NavigationBar, Title, Icon, DropDownMenu } from '@shoutem/ui'
+
 // component
 import { GooglePlacesInput } from "../component";
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
-import { Card,  PricingCard, Button, Icon, ListItem } from 'react-native-elements';
+import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
 import { Heading, Subtitle, Caption } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
@@ -30,7 +34,7 @@ class MoovHomepage extends React.Component {
 
     myLocationLatitude: null,
     myLocationLongitude: null,
-    myLocationName: 'My Location',
+    myLocationName: '',
 
     myDestinationLatitude: null,
     myDestinationLongitude: null,
@@ -41,6 +45,18 @@ class MoovHomepage extends React.Component {
     requestSlot: 1,
 
     user: [],
+
+    filters: [
+      { name: '1', value: '1' },
+      { name: '2', value: '2' },
+      { name: '3', value: '3' },
+      { name: '4', value: '4' },
+      { name: '5', value: '5' },
+      { name: '6', value: '6' },
+      { name: '7', value: '7' },
+    ],
+
+    selectedSlot: '',
 
   };
 
@@ -70,6 +86,38 @@ class MoovHomepage extends React.Component {
       console.log('Android');
     }
   };
+
+  openSearchModalForMyLocation = () => {
+    RNGooglePlaces.openAutocompleteModal()
+      .then((place) => {
+        console.log(place);
+        this.setState({
+          myLocationLatitude: place.latitude,
+          myLocationLongitude: place.longitude,
+          myLocationName: place.name,
+          error: null,
+        });
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
+
+  openSearchModalForMyDestination = () => {
+    RNGooglePlaces.openAutocompleteModal()
+      .then((place) => {
+        console.log(place);
+        this.setState({
+          myDestinationLatitude: place.latitude,
+          myDestinationLongitude: place.longitude,
+          myDestinationName: place.name,
+        });
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
+
 
   /**
    * componentWillUnmount
@@ -110,21 +158,37 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   getMyLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        console.log("wokeeey");
-        console.log(position);
+    RNGooglePlaces.getCurrentPlace()
+      .then((results) => {
+        console.log(results.length - (results.length - 1))
+        console.log(results[results.length - (results.length - 1)])
+
         this.setState({
-          myLocationLatitude: position.coords.latitude,
-          myLocationLongitude: position.coords.longitude,
+          myLocationLatitude: results[results.length - (results.length - 1)].latitude,
+          myLocationLongitude: results[results.length - (results.length - 1)].longitude,
+          myLocationName: results[results.length - (results.length - 1)].name,
           error: null,
         });
-      },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
-    );
+      })
+      .catch((error) => {
+        console.log(error.message)
+      });
 
-    this.watchLocation();
+    // navigator.geolocation.getCurrentPosition(
+    //   (position) => {
+    //     console.log("wokeeey");
+    //     console.log(position);
+    //     this.setState({
+    //       myLocationLatitude: position.coords.latitude,
+    //       myLocationLongitude: position.coords.longitude,
+    //       error: null,
+    //     });
+    //   },
+    //   (error) => this.setState({ error: error.message }),
+    //   { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
+    // );
+
+    // this.watchLocation();
   };
 
   /**
@@ -284,7 +348,7 @@ class MoovHomepage extends React.Component {
     if (this.state.myLocationLongitude === null) {
       return (
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: 'white'}}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+          <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
           <StatusBarComponent />
           <Card
             title='FETCHING YOUR LOCATION'
@@ -306,98 +370,149 @@ class MoovHomepage extends React.Component {
       );
     }
 
-
     return (
       <View style={styles.container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
-        <View style={{ backgroundColor: '#fff',height: height }}>
-          <Modal
-            modalStyle={{
-              borderRadius: 2,
-              margin: 20,
-              padding: 10,
-              backgroundColor: 'white'
-            }}
-            offset={this.state.offset}
-            open={this.state.showModal}
-            // open={true}
-            modalDidOpen={() => console.log('modal did open')}
-            modalDidClose={() => this.setState({showModal: false})}
-            style={{alignItems: 'center'}}>
-            <View>
-              <PricingCard
-                color='#004a80'
-                title='Fee'
-                price={priceLog}
-                // info={['1 User(s)', 'Basic Support', 'All Core Features']}
-                info={[
-                  `${this.state.requestSlot} User(s)`,
-                  `From ${this.state.myLocationName}`,
-                  `To ${this.state.myDestinationName} `,
-                  `Powered by Symple.tech`
-                ]}
-                button={{ title: 'CONFIRM', icon: 'directions-car' }}
-                onButtonPress={this.verifyFunds}
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            width: width / 1.2,
+            marginBottom: width / 5,
+          }}
+        >
+          <NavigationBar
+
+            leftComponent={
+              <Title
+                onPress={() => this.openSearchModalForMyLocation()}
+              >
+                FROM
+              </Title>
+            }
+
+            centerComponent={
+              <DropDownMenu
+                options={this.state.filters}
+                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+                onOptionSelected={(filter) => this.setState({ selectedSlot: filter })}
+                titleProperty="name"
+                valueProperty="value"
               />
-            </View>
-          </Modal>
-          <View style={{ flexDirection: 'column', ...Platform.select({
-              ios: {
-                marginTop: height / 10
-              },
-              android: {
-                marginTop: height / 25
-              },
-            }),
-            zIndex: -1,
-            alignItems: 'center', justifyContent: 'center'
-          }}>
-            <View style={{ height: height / 4, width: '97%',}}>
-              <GooglePlacesInput
-                text='Change my location'
-                onPress={(data, details = null) => {
-                  console.log(data, details)
-                  this.setUserLocation(details.geometry.location, details.name);
-                }}
-              />
-            </View>
-            <View style={{ height: height / 4, width: '97%'}}>
-              <GooglePlacesInput
-                text='TO'
-                onPress={(data, details = null) => {
-                  // console.log(data, details)
-                  this.setUserDestination(details.geometry.location, details.name);
-                }}
-                text='To'
-              />
-            </View>
-          </View>
-          <View style={{ width: '90%', zIndex: -1, marginLeft: width / 20}}>
-            <Dropdown
-              label='slots'
-              itemColor='blue'
-              data={slots}
-              value='1'
-              onChangeText={ requestSlot => this.setState({ requestSlot }) }
-            />
-          </View>
-          <View style={{ zIndex: -1, marginTop: 10 }}>
-            <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.verifyRoutes}>
-              <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>MOOV</Text>
-            </TouchableOpacity>
+            }
+
+            rightComponent={
+              <Title
+                onPress={() => this.openSearchModalForMyDestination()}
+              >
+                TO
+              </Title>
+            }
+
+          />
+          <View style={{}}>
           </View>
         </View>
+        <View style={{ width: width, height: '100%', backgroundColor: 'blue' }}>
+          <Text>Map will be here</Text>
+        </View>
       </View>
-    );
+    )
+
+    // return (
+    //   <View style={styles.container}>
+    //     <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+    //     <View style={{ backgroundColor: '#fff',height: height }}>
+    //       <Modal
+    //         modalStyle={{
+    //           borderRadius: 2,
+    //           margin: 20,
+    //           padding: 10,
+    //           backgroundColor: 'white'
+    //         }}
+    //         offset={this.state.offset}
+    //         open={this.state.showModal}
+    //         // open={true}
+    //         modalDidOpen={() => console.log('modal did open')}
+    //         modalDidClose={() => this.setState({showModal: false})}
+    //         style={{alignItems: 'center'}}>
+    //         <View>
+    //           <PricingCard
+    //             color='#004a80'
+    //             title='Fee'
+    //             price={priceLog}
+    //             // info={['1 User(s)', 'Basic Support', 'All Core Features']}
+    //             info={[
+    //               `${this.state.requestSlot} User(s)`,
+    //               `From ${this.state.myLocationName}`,
+    //               `To ${this.state.myDestinationName} `,
+    //               `Powered by Symple.tech`
+    //             ]}
+    //             button={{ title: 'CONFIRM', icon: 'directions-car' }}
+    //             onButtonPress={this.verifyFunds}
+    //           />
+    //         </View>
+    //       </Modal>
+    //       <View style={{ flexDirection: 'column', ...Platform.select({
+    //           ios: {
+    //             marginTop: height / 10
+    //           },
+    //           android: {
+    //             marginTop: height / 25
+    //           },
+    //         }),
+    //         zIndex: -1,
+    //         alignItems: 'center', justifyContent: 'center'
+    //       }}>
+    //         <View style={{ height: height / 4, width: '97%',}}>
+    //           <GooglePlacesInput
+    //             text='Change my location'
+    //             onPress={(data, details = null) => {
+    //               console.log(data, details)
+    //               this.setUserLocation(details.geometry.location, details.name);
+    //             }}
+    //           />
+    //         </View>
+    //         <View style={{ height: height / 4, width: '97%'}}>
+    //           <GooglePlacesInput
+    //             text='TO'
+    //             onPress={(data, details = null) => {
+    //               // console.log(data, details)
+    //               this.setUserDestination(details.geometry.location, details.name);
+    //             }}
+    //             text='To'
+    //           />
+    //         </View>
+    //       </View>
+    //       <View style={{ width: '90%', zIndex: -1, marginLeft: width / 20}}>
+    //         <Dropdown
+    //           label='slots'
+    //           itemColor='blue'
+    //           data={slots}
+    //           value='1'
+    //           onChangeText={ requestSlot => this.setState({ requestSlot }) }
+    //         />
+    //       </View>
+    //       <View style={{ zIndex: -1, marginTop: 10 }}>
+    //         <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.verifyRoutes}>
+    //           <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>MOOV</Text>
+    //         </TouchableOpacity>
+    //       </View>
+    //     </View>
+    //   </View>
+    // );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 1,
+    // backgroundColor: '#fff',
     flex: 1,
     backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#b3b4b4',
+    alignItems: 'center',
+    // justifyContent: 'center',
   },
   activityIndicator: {
     flex: 1,

@@ -67,7 +67,7 @@ class WalletHomepage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ flexDirection: 'column'}}>
           <View style={{ flexDirection: 'row', width: '70%'}}>
             <View style={{ paddingTop: width / 12 }}>

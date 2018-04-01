@@ -13,7 +13,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -29,7 +29,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
@@ -61,7 +61,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_light.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/anim_tooltip_enter.xml.flat",
@@ -137,7 +137,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/9ba35b13b6ce1d3c756744bab5168645/res/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-12.0.1.aar/c6f42c5591a24add09fc0a1707c426db/res/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_notification_action.xml.flat",
@@ -177,7 +177,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_com_facebook_activity_layout.xml.flat",
@@ -185,15 +185,19 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_dark_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_narrow_custom.xml.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/7245e95270c7f001b27f48bdf062482d/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_places_ic_search.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-mdpi-v4/places_ic_search.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_light.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -261,7 +265,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/common_full_open_on_phone.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_messenger_bubble_large_blue.png.flat",
@@ -297,7 +301,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_borderless_text_material.xml.flat",
@@ -314,6 +318,14 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/01a76b2accb667b6109151970a030f2c/res/drawable-mdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_places_ic_clear.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxxhdpi-v4/places_ic_clear.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_places_ic_clear.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-hdpi-v4/places_ic_clear.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
@@ -421,7 +433,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_text_dark.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/color/common_google_signin_btn_text_dark.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/color/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_com_facebook_profile_picture_blank_square.png.flat",
@@ -437,7 +449,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_dark_focused.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_dark_focused.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -446,6 +458,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_abc_action_menu_layout.xml.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_place_autocomplete_item_prediction.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/layout/place_autocomplete_item_prediction.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -521,7 +537,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/anim_tooltip_exit.xml.flat",
@@ -538,6 +554,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-mdpi-v4/abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_powered_by_google_light.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxhdpi-v4/powered_by_google_light.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -572,6 +592,10 @@
         "source": "/Users/chineduofor/Desktop/moov/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_places_ic_search.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xhdpi-v4/places_ic_search.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_messenger_bubble_small_white.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/776c6ca171a00745554dc47ec358f16b/res/drawable-xhdpi-v4/messenger_bubble_small_white.png"
     },
@@ -585,7 +609,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -594,6 +618,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/01a76b2accb667b6109151970a030f2c/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_powered_by_google_dark.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxxhdpi-v4/powered_by_google_dark.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_messenger_button_send_round_shadow.png.flat",
@@ -661,7 +689,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
@@ -669,7 +697,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_select_dialog_item_material.xml.flat",
@@ -800,12 +828,20 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/anim/abc_slide_in_top.xml"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_powered_by_google_light.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xhdpi-v4/powered_by_google_light.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_abc_tint_seek_thumb.xml.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_powered_by_google_dark.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xhdpi-v4/powered_by_google_dark.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -908,6 +944,10 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxhdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_powered_by_google_light.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-mdpi-v4/powered_by_google_light.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/65098d3c98e3b702f4398e1f7b282cac/res/drawable-mdpi-v4/com_facebook_tooltip_blue_background.9.png"
     },
@@ -925,7 +965,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_dark.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -933,7 +973,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_bubble_mask.9.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/res/drawable-xhdpi-v4/bubble_mask.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
@@ -989,7 +1033,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_tint.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/color/common_google_signin_btn_tint.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/color/common_google_signin_btn_tint.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
@@ -1001,7 +1045,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_light_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_light_normal.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_abc_btn_check_material.xml.flat",
@@ -1064,8 +1108,16 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-hdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_place_autocomplete_progress.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/layout/place_autocomplete_progress.xml"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xhdpi-v4/abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_places_ic_clear.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-mdpi-v4/places_ic_clear.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
@@ -1157,11 +1209,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_text_light.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/color/common_google_signin_btn_text_light.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/color/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_dark.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_dark.xml.flat",
@@ -1181,7 +1233,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
@@ -1196,8 +1248,20 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-mdpi-v4/abc_text_select_handle_middle_mtrl_dark.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_powered_by_google_light.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxxhdpi-v4/powered_by_google_light.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-hdpi-v4/abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout-v21_place_autocomplete_fragment.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/layout-v21/place_autocomplete_fragment.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_places_ic_clear.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxhdpi-v4/places_ic_clear.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_redbox_item_title.xml.flat",
@@ -1237,11 +1301,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/googleg_disabled_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_light_focused.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
@@ -1249,11 +1313,15 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xhdpi-v4/abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_bubble_shadow.9.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/res/drawable-xxhdpi-v4/bubble_shadow.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -1284,8 +1352,12 @@
         "source": "/Users/chineduofor/Desktop/moov/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_bubble_mask.9.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/res/drawable-xxhdpi-v4/bubble_mask.9.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/googleg_standard_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_messenger_button_send_blue_round.xml.flat",
@@ -1320,6 +1392,10 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/paystack-3.0.9.aar/f21887c22c5c8674be8eede0b2aa36bc/res/layout/co_paystack_android____activity_card.xml"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_place_autocomplete_fragment.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/layout/place_autocomplete_fragment.xml"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
@@ -1337,7 +1413,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -1373,7 +1449,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -1385,7 +1461,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ps_backspace.png.flat",
@@ -1402,6 +1478,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xhdpi-v4/abc_text_select_handle_middle_mtrl_light.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_places_ic_search.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxhdpi-v4/places_ic_search.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_com_facebook_button_icon_white.png.flat",
@@ -1549,7 +1629,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light_focused.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_light_focused.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -1569,11 +1649,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -1589,7 +1669,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/googleg_standard_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -1709,7 +1789,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_light_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -1744,6 +1824,10 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_place_autocomplete_item_powered_by_google.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/layout/place_autocomplete_item_powered_by_google.xml"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
@@ -1768,6 +1852,14 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/7245e95270c7f001b27f48bdf062482d/res/layout/notification_media_cancel_action.xml"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_places_ic_search.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxxhdpi-v4/places_ic_search.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_powered_by_google_dark.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xxhdpi-v4/powered_by_google_dark.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_dark.xml.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/color/abc_hint_foreground_material_dark.xml"
     },
@@ -1778,6 +1870,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_ps_backspace.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/pinpad-1.0.1.aar/ee9f60cd9e7b754e80f63eceb5c7f278/res/drawable-xxxhdpi-v4/ps_backspace.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_powered_by_google_dark.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-mdpi-v4/powered_by_google_dark.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -1836,12 +1932,16 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/c00d4c9f0f7ae78929036453388707fc/res/drawable/com_facebook_auth_dialog_cancel_background.xml"
     },
     {
-        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_text_bubble.xml.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/res/layout/text_bubble.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1853,7 +1953,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/googleg_standard_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_places_ic_search.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-hdpi-v4/places_ic_search.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_abc_cab_background_top_material.xml.flat",
@@ -1905,7 +2009,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/anim_abc_popup_enter.xml.flat",
@@ -1945,7 +2049,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_text_disabled.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -1981,7 +2085,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-watch-v20_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/9ba35b13b6ce1d3c756744bab5168645/res/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-12.0.1.aar/c6f42c5591a24add09fc0a1707c426db/res/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat",
@@ -2017,11 +2121,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-hdpi-v4/common_full_open_on_phone.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-hdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -2037,7 +2141,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-mdpi-v4/googleg_disabled_color_18.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-mdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_messenger_button_send_white_small.xml.flat",
@@ -2045,7 +2149,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-watch-v20_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/9ba35b13b6ce1d3c756744bab5168645/res/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-12.0.1.aar/c6f42c5591a24add09fc0a1707c426db/res/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -2069,7 +2173,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
@@ -2125,7 +2229,11 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable/common_google_signin_btn_icon_disabled.xml"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable/common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_powered_by_google_dark.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-hdpi-v4/powered_by_google_dark.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -2173,7 +2281,7 @@
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/3bf6152af69641e1a7aa036fcfae218e/res/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color-v23_abc_tint_spinner.xml.flat",
@@ -2186,6 +2294,10 @@
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_bubble_shadow.9.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/res/drawable-xhdpi-v4/bubble_shadow.9.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
@@ -2204,12 +2316,20 @@
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/01a76b2accb667b6109151970a030f2c/res/drawable/notification_bg.xml"
     },
     {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_places_ic_clear.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-xhdpi-v4/places_ic_clear.png"
+    },
+    {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/res/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_powered_by_google_light.png.flat",
+        "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/drawable-hdpi-v4/powered_by_google_light.png"
     },
     {
         "merged": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_light.xml.flat",

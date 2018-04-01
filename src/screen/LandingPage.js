@@ -46,11 +46,11 @@ class LandingPage extends React.Component {
   }
 
   componentDidUpdate() {
-    // console.log('yup yup')
-    // const { navigate } = this.props.navigation;
-    // if(this.state.user !== '' && this.state.userToken !== '') {
-    //   navigate('MoovPages');
-    // }
+    console.log('yup yup')
+    const { navigate } = this.props.navigation;
+    if(this.state.user !== '' && this.state.userToken !== '') {
+      navigate('MoovPages');
+    }
   }
 
   /**
@@ -91,7 +91,7 @@ class LandingPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ alignItems: 'center'}}>
           <TouchableOpacity onPress={this.appNavigation}>
             <Animated.Image

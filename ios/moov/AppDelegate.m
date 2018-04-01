@@ -7,6 +7,9 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+@import GooglePlaces;
+@import GoogleMaps;
+
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -41,6 +44,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [GMSPlacesClient provideAPIKey:@"AIzaSyAkSRfO3lP2-3mzeb-IludMk1VHfaKJ9GM"];
+  [GMSServices provideAPIKey:@"AIzaSyAkSRfO3lP2-3mzeb-IludMk1VHfaKJ9GM"];
   
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];

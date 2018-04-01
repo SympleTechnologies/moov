@@ -135,7 +135,7 @@ class SignUpPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ height: height / 10}}>
           <Heading>Get MOOVING.</Heading>
         </View>

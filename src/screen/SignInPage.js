@@ -421,7 +421,7 @@ class SignInPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
 
         {/*Logo*/}
         <View style={{ alignItems: 'center', marginBottom: height / 15}}>
@@ -489,7 +489,8 @@ class SignInPage extends React.Component {
                     }
                   }
                 }
-                onLogoutFinished={() => alert("logout.")}/>
+                // onLogoutFinished={() => alert("logout.")}
+              />
             </View>
             <View stle={{ justifyContent: 'center'}}>
               <GoogleSigninButton
