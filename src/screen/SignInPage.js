@@ -421,7 +421,7 @@ class SignInPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
 
         {/*Logo*/}
         <View style={{ alignItems: 'center', marginBottom: height / 15}}>

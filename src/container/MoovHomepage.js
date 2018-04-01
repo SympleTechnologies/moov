@@ -17,12 +17,13 @@ import {StatusBarComponent} from "../common";
 
 // third-parties libraries
 import RNGooglePlaces from 'react-native-google-places';
+import { NavigationBar, Title, Icon, DropDownMenu } from '@shoutem/ui'
 
 // component
 import { GooglePlacesInput } from "../component";
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
-import { Card,  PricingCard, Button, Icon, ListItem } from 'react-native-elements';
+import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
 import { Heading, Subtitle, Caption } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
@@ -44,6 +45,18 @@ class MoovHomepage extends React.Component {
     requestSlot: 1,
 
     user: [],
+
+    filters: [
+      { name: '1', value: '1' },
+      { name: '2', value: '2' },
+      { name: '3', value: '3' },
+      { name: '4', value: '4' },
+      { name: '5', value: '5' },
+      { name: '6', value: '6' },
+      { name: '7', value: '7' },
+    ],
+
+    selectedSlot: '',
 
   };
 
@@ -74,10 +87,31 @@ class MoovHomepage extends React.Component {
     }
   };
 
-  openSearchModal() {
+  openSearchModalForMyLocation = () => {
     RNGooglePlaces.openAutocompleteModal()
       .then((place) => {
         console.log(place);
+        this.setState({
+          myLocationLatitude: place.latitude,
+          myLocationLongitude: place.longitude,
+          myLocationName: place.name,
+          error: null,
+        });
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
+
+  openSearchModalForMyDestination = () => {
+    RNGooglePlaces.openAutocompleteModal()
+      .then((place) => {
+        console.log(place);
+        this.setState({
+          myDestinationLatitude: place.latitude,
+          myDestinationLongitude: place.longitude,
+          myDestinationName: place.name,
+        });
         // place represents user's selection from the
         // suggestions and it is a simplified Google Place object.
       })
@@ -314,7 +348,7 @@ class MoovHomepage extends React.Component {
     if (this.state.myLocationLongitude === null) {
       return (
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: 'white'}}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+          <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
           <StatusBarComponent />
           <Card
             title='FETCHING YOUR LOCATION'
@@ -338,22 +372,57 @@ class MoovHomepage extends React.Component {
 
     return (
       <View style={styles.container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
-        <Text>Hello world</Text>
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.openSearchModal()}
-          >
-            <Text>Pick a Place</Text>
-          </TouchableOpacity>
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            width: width / 1.2,
+            marginBottom: width / 5,
+          }}
+        >
+          <NavigationBar
+
+            leftComponent={
+              <Title
+                onPress={() => this.openSearchModalForMyLocation()}
+              >
+                FROM
+              </Title>
+            }
+
+            centerComponent={
+              <DropDownMenu
+                options={this.state.filters}
+                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+                onOptionSelected={(filter) => this.setState({ selectedSlot: filter })}
+                titleProperty="name"
+                valueProperty="value"
+              />
+            }
+
+            rightComponent={
+              <Title
+                onPress={() => this.openSearchModalForMyDestination()}
+              >
+                TO
+              </Title>
+            }
+
+          />
+          <View style={{}}>
+          </View>
+        </View>
+        <View style={{ width: width, height: '100%', backgroundColor: 'blue' }}>
+          <Text>Map will be here</Text>
         </View>
       </View>
     )
 
     // return (
     //   <View style={styles.container}>
-    //     <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+    //     <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
     //     <View style={{ backgroundColor: '#fff',height: height }}>
     //       <Modal
     //         modalStyle={{
@@ -443,7 +512,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   activityIndicator: {
     flex: 1,

@@ -10563,7 +10563,7 @@
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
-    <property name="device.picker.selection" value="Nexus_5X_API_27 Copy_of_Nexus_5X_API_27" />
+    <property name="device.picker.selection" value="Copy_of_Nexus_5X_API_27" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

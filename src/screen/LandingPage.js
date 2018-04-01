@@ -91,7 +91,7 @@ class LandingPage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ alignItems: 'center'}}>
           <TouchableOpacity onPress={this.appNavigation}>
             <Animated.Image

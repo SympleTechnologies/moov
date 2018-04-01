@@ -109,7 +109,7 @@ class LoadPage extends React.Component {
 
     return (
       <View style={styles.container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content" />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <Modal
           offset={this.state.offset}
           open={this.state.showModal}
