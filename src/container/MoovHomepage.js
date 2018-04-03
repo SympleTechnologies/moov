@@ -88,7 +88,7 @@ class MoovHomepage extends React.Component {
   };
 
   openSearchModalForMyLocation = () => {
-    RNGooglePlaces.openAutocompleteModal()
+    RNGooglePlaces.openPlacePickerModal()
       .then((place) => {
         console.log(place);
         this.setState({
@@ -101,10 +101,11 @@ class MoovHomepage extends React.Component {
         // suggestions and it is a simplified Google Place object.
       })
       .catch(error => console.log(error.message));  // error is a Javascript Error object
-  }
+  };
 
   openSearchModalForMyDestination = () => {
-    RNGooglePlaces.openAutocompleteModal()
+
+    RNGooglePlaces.openPlacePickerModal()
       .then((place) => {
         console.log(place);
         this.setState({
@@ -116,8 +117,7 @@ class MoovHomepage extends React.Component {
         // suggestions and it is a simplified Google Place object.
       })
       .catch(error => console.log(error.message));  // error is a Javascript Error object
-  }
-
+  };
 
   /**
    * componentWillUnmount
