@@ -158,6 +158,19 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   getMyLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log("wokeeey");
+        console.log(position);
+        this.getUserLocationUsingRN();
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
+    );
+    // this.watchLocation();
+  };
+
+  getUserLocationUsingRN = () => {
     RNGooglePlaces.getCurrentPlace()
       .then((results) => {
         console.log(results.length - (results.length - 1))
@@ -172,24 +185,9 @@ class MoovHomepage extends React.Component {
       })
       .catch((error) => {
         console.log(error.message)
+        this.getMyLocation();
       });
-
-    // navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     console.log("wokeeey");
-    //     console.log(position);
-    //     this.setState({
-    //       myLocationLatitude: position.coords.latitude,
-    //       myLocationLongitude: position.coords.longitude,
-    //       error: null,
-    //     });
-    //   },
-    //   (error) => this.setState({ error: error.message }),
-    //   { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
-    // );
-
-    // this.watchLocation();
-  };
+  }
 
   /**
    * requestLocationPermission
@@ -329,8 +327,8 @@ class MoovHomepage extends React.Component {
    */
   verifyFunds = () => {
     return this.state.price > this.state.user.wallet_amount
-    ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
-    : this.getDriver();
+      ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
+      : this.getDriver();
   };
 
   render() {
@@ -361,7 +359,14 @@ class MoovHomepage extends React.Component {
               />
             </View>
             <View style={{marginBottom: 10, alignItems: 'center', marginTop: 20}}>
-              <Caption>Grant location permission to MOOV.</Caption>
+              {
+                (Platform.OS === 'ios')
+                  ? <Caption>Grant location permission to MOOV then re-open app.</Caption>
+                  : <View>
+                    <Caption>Search on Google for 'Google Play Services'</Caption>
+                    <Caption>download or update then re-open app.</Caption>
+                  </View>
+              }
             </View>
             <Text style={{marginBottom: 10}}>
             </Text>
