@@ -17,16 +17,15 @@ import {StatusBarComponent} from "../common";
 
 // third-parties libraries
 import RNGooglePlaces from 'react-native-google-places';
-import { NavigationBar, Title, Icon, DropDownMenu } from '@shoutem/ui'
-
-// component
-import { GooglePlacesInput } from "../component";
+import { NavigationBar, Title, Icon, DropDownMenu, Subtitle, Caption, Heading } from '@shoutem/ui';
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
-import { Heading, Subtitle, Caption } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
+
+// component
+import { GooglePlacesInput } from "../component";
 
 class MoovHomepage extends React.Component {
   state= {
@@ -47,6 +46,7 @@ class MoovHomepage extends React.Component {
     user: [],
 
     filters: [
+      { name: 'slot(s)', value: '0' },
       { name: '1', value: '1' },
       { name: '2', value: '2' },
       { name: '3', value: '3' },
@@ -56,7 +56,7 @@ class MoovHomepage extends React.Component {
       { name: '7', value: '7' },
     ],
 
-    selectedSlot: '',
+    selectedSlot: false,
 
   };
 
@@ -331,6 +331,38 @@ class MoovHomepage extends React.Component {
       : this.getDriver();
   };
 
+
+
+  /**
+   * verifyUserRoutes
+   *
+   * Verifies user location and destination
+   * @return {void}
+   */
+  verifyUserRoutes = () => {
+    if(this.state.myDestinationLatitude === null) {
+      alert('Kindly select a destination');
+    } else if(this.state.myDestinationLatitude === this.state.myLocationLatitude) {
+      alert('Location and destination cannot be the same');
+    } else if(this.state.selectedSlot === false) {
+      alert('Kindly request for slot(s)');
+    } else {
+      return true;
+    }
+  };
+
+  /**
+   * submitRequest
+   *
+   * Submits user's request
+   */
+  submitRequest = () => {
+    console.log('Yaaay', this.state)
+    if(this.verifyUserRoutes()) {
+      console.log('You can start booking now')
+    }
+  };
+
   render() {
     console.log(this.state);
 
@@ -361,10 +393,10 @@ class MoovHomepage extends React.Component {
             <View style={{marginBottom: 10, alignItems: 'center', marginTop: 20}}>
               {
                 (Platform.OS === 'ios')
-                  ? <Caption>Grant location permission to MOOV then re-open app.</Caption>
+                  ? <Caption>Grant location permission to MOOV then close and re-open app.</Caption>
                   : <View>
                     <Caption>Search on Google for 'Google Play Services'</Caption>
-                    <Caption>download or update then re-open app.</Caption>
+                    <Caption>download or update then close and re-open app.</Caption>
                   </View>
               }
             </View>
@@ -376,7 +408,7 @@ class MoovHomepage extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View
           style={{
@@ -388,7 +420,6 @@ class MoovHomepage extends React.Component {
           }}
         >
           <NavigationBar
-
             leftComponent={
               <Title
                 onPress={() => this.openSearchModalForMyLocation()}
@@ -398,16 +429,6 @@ class MoovHomepage extends React.Component {
             }
 
             centerComponent={
-              <DropDownMenu
-                options={this.state.filters}
-                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
-                onOptionSelected={(filter) => this.setState({ selectedSlot: filter })}
-                titleProperty="name"
-                valueProperty="value"
-              />
-            }
-
-            rightComponent={
               <Title
                 onPress={() => this.openSearchModalForMyDestination()}
               >
@@ -415,12 +436,53 @@ class MoovHomepage extends React.Component {
               </Title>
             }
 
+            rightComponent={
+              <DropDownMenu
+                options={this.state.filters}
+                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+                onOptionSelected={(filter) => this.setState({ selectedSlot: filter })}
+                titleProperty="name"
+                valueProperty="value"
+                visibleOptions={5}
+                vertical
+              />
+            }
           />
-          <View style={{}}>
-          </View>
         </View>
-        <View style={{ width: width, height: '100%', backgroundColor: 'blue' }}>
-          <Text>Map will be here</Text>
+        <View style={{ width: width, height: '100%', backgroundColor: 'white' }}>
+          <View style={{ width: width, height: '60%', backgroundColor: '#333' }}>
+            <Text>Map will be here</Text>
+          </View>
+          <View style={{ width: width, height: '40%', backgroundColor: 'white', flexDirection: 'column' }}>
+            <View style={{  height: '45%' }}>
+              <Caption style={{ color: '#333',
+                textAlign: 'center',
+                marginBottom: 20,
+                backgroundColor: 'white',
+                fontSize: 15,
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 5,
+                marginTop: 20,
+              }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Wallet: ₦ 5000 </Caption>
+            </View>
+            <View>
+              <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.submitRequest}>
+                <Button
+                  title='CONTINUE'
+                  buttonStyle={{
+                    backgroundColor: "rgba(92, 99,216, 1)",
+                    width: 300,
+                    height: 45,
+                    borderColor: "transparent",
+                    borderWidth: 0,
+                    borderRadius: 5
+                  }}
+                  containerStyle={{ marginTop: 20 }}
+                />
+                <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>CONTINUE</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </View>
     )
@@ -518,6 +580,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     // justifyContent: 'center',
+    zIndex: -1
   },
   activityIndicator: {
     flex: 1,
