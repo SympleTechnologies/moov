@@ -113,12 +113,12 @@ class PaymentPage extends React.Component {
         console.log(response.data.data);
         this.saveUserToLocalStorage(response.data.data.transaction.receiver_amount_after_transaction);
         // this.saveUserToLocalStorage(response.data.data);
-        // Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+        Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
       })
       .catch((error) => {
         console.log(error.response);
         this.setState({ loading: !this.state.loading });
-        // Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
 
   };
