@@ -57,6 +57,7 @@ class SignUpPage extends React.Component {
       email: this.state.email,
       password: this.state.password,
       imgURL: '',
+      authentication_type: "email",
     });
   };
 

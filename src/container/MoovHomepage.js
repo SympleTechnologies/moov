@@ -60,6 +60,21 @@ class MoovHomepage extends React.Component {
 
   };
 
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    return {
+      tabBarOnPress({ jumpToIndex, scene }) {
+        // now we have access to Component methods
+        params.onTabFocus();
+        jumpToIndex(scene.index);
+      }
+    };
+  };
+
+    // componentDidUpdate(a){
+  //   console.log(a)
+  // }
+
   /**
    * componentDidMount
    *
@@ -67,6 +82,8 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
+
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
@@ -85,6 +102,34 @@ class MoovHomepage extends React.Component {
         });
       console.log('Android');
     }
+  };
+
+  handleTabFocus = () => {
+    console.log('Focused here')
+    AsyncStorage.getItem("user").then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    }).done();
+  };
+
+  /**
+   * fetchUserDetails
+   *
+   * fetches User transaction from the back end and saves it in local storage
+   * @param newBalance
+   * @return {void}
+   */
+  fetchUserDetails = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
+      .then((response) => {
+        console.log(response.data.data);
+        AsyncStorage.setItem('user', JSON.stringify(response.data.data.user));
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   /**
@@ -157,6 +202,7 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   getPrice = () => {
+    console.log('gert price', this.state);
     let distance = this.getDistance(
       this.state.myLocationLatitude,
       this.state.myLocationLongitude,
@@ -164,7 +210,7 @@ class MoovHomepage extends React.Component {
       this.state.myDestinationLongitude
     );
 
-    let price = Math.floor(distance) *  this.state.requestSlot;
+    let price = Math.floor(distance) *  this.state.selectedSlot.value;
 
     price = price;
 
@@ -381,10 +427,7 @@ class MoovHomepage extends React.Component {
    */
   submitRequest = () => {
     if(this.verifyUserRoutes()) {
-      AsyncStorage.getItem("user").then((value) => {
-        this.setState({ user: JSON.parse(value) }, () => this.verifyFunds());
-      }).done();
-
+      this.verifyFunds()
     }
   };
 

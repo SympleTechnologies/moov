@@ -2,7 +2,7 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View, AsyncStorage, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, Dimensions, ActivityIndicator } from 'react-native';
 
 // third-parties libraries
 import RNPaystack from 'react-native-paystack';
@@ -23,6 +23,8 @@ class TransferPage extends React.Component {
 
     email: '',
     amount: '',
+
+    loading: '',
   };
 
   /**
@@ -69,33 +71,26 @@ class TransferPage extends React.Component {
   };
 
   /**
-   * saveUserToLocalStorage
+   * fetchUserDetails
    *
-   * saves User transaction to the back end
+   * fetches User transaction from the back end and saves it in local storage
    * @param newBalance
    * @return {void}
    */
-  saveUserToLocalStorage = (newBalance) => {
-    let newUser = {
-      authentication_type: this.state.user.authentication_type,
-      authorization_code_status: this.state.user.authorization_code_status,
-      created_at:  this.state.user.created_at,
-      email: this.state.user.email,
-      firstname: this.state.user.firstname,
-      id: this.state.user.id,
-      image_url: this.state.user.image_url,
-      lastname: this.state.user.lastname,
-      mobile_number: this.state.user.mobile_number,
-      modified_at: this.state.user.modified_at,
-      ratings: this.state.user.ratings,
-      set_temporary_password: this.state.user.set_temporary_password,
-      user_type: this.state.user.user_type,
-      wallet_amount: newBalance
-    };
+  fetchUserDetails = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-    AsyncStorage.setItem('user', JSON.stringify(newUser)).then(() => this.goHome());
-
-    this.setState({ loading: !this.state.loading });
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
+      .then((response) => {
+        console.log(response.data.data);
+        this.setState({ loading: !this.state.loading });
+        AsyncStorage.setItem('user', JSON.stringify(response.data.data.user)).then(() => this.goHome());
+      })
+      .catch((error) => {
+        console.log(error.response);
+        this.setState({ loading: !this.state.loading });
+      });
 
   };
 
@@ -106,7 +101,7 @@ class TransferPage extends React.Component {
    * returns User to the Wallet selection homepage
    */
   goHome = () => {
-    console.log('called')
+    console.log('called');
     const { navigate } = this.props.navigation;
     navigate('WalletHomePage');
   };
@@ -118,17 +113,20 @@ class TransferPage extends React.Component {
    */
   transferToEmail = () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
     if(this.verifyDetails()) {
       this.setState({ loading: !this.state.loading });
-      axios.post('https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/transaction', {
-        "type_of_operation": 'transfer',
-        "cost_of_transaction": this.state.amount,
-        "receiver_email": this.state.email
-      })
+      axios.post('https://moov-backend-staging.herokuapp.com/api/v1/transaction',
+        {
+          "type_of_operation": "transfer",
+          "cost_of_transaction": JSON.parse(this.state.amount),
+          "receiver_email": this.state.email
+        }
+      )
         .then((response) => {
           console.log(response.data.data);
-          this.saveUserToLocalStorage(response.data.data.transaction.receiver_amount_after_transaction);
-          // this.saveUserToLocalStorage(response.data.data);
+          this.fetchUserDetails();
           Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
         })
         .catch((error) => {
@@ -144,6 +142,20 @@ class TransferPage extends React.Component {
     let { height, width } = Dimensions.get('window');
     let slots = [ { value: 'LOAD', }, { value: 'TRANSFER', }, { value: 'WITHDRAW', } ];
 
+    // ACTIVITY INDICATOR
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1, backgroundColor: 'white' }}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <ActivityIndicator
+            color = '#004a80'
+            size = "large"
+            style={styles.activityIndicator}
+          />
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
@@ -154,6 +166,7 @@ class TransferPage extends React.Component {
             </View>
             <View style={{ width: '70%'}}>
               <TextInput
+                autoCapitalize='none'
                 placeholder={'john@doe.com'}
                 // onChangeText={...}
                 autoFocus
@@ -199,6 +212,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#b3b4b4',
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20
   },
 });
 

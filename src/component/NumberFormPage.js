@@ -31,6 +31,7 @@ class NumberFormPage extends React.Component {
     imgURL: '',
     socialEmail:'',
     userAuthID: '',
+    authentication_type: '',
 
     loading: false,
 
@@ -52,6 +53,7 @@ class NumberFormPage extends React.Component {
       imgURL: this.props.navigation.state.params.imgURL,
       socialEmail: this.props.navigation.state.params.socialEmail,
       userAuthID: this.props.navigation.state.params.userAuthID,
+      authentication_type: this.props.navigation.state.params.authentication_type,
     })
   }
 
@@ -116,7 +118,8 @@ class NumberFormPage extends React.Component {
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
       "email": this.state.email,
-      "mobile_number": this.state.phoneNumber
+      "mobile_number": this.state.phoneNumber,
+      "authentication_type": this.state.authentication_type
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
@@ -143,6 +146,7 @@ class NumberFormPage extends React.Component {
       "lastname": this.state.lastName,
       "email": this.state.socialEmail,
       "mobile_number": this.state.phoneNumber,
+      "authentication_type": this.state.authentication_type
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });

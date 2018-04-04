@@ -52,6 +52,7 @@ class SignInPage extends React.Component {
     userAuthID: '',
 
     loading: false,
+    authentication_type: '',
   };
 
   /**
@@ -168,6 +169,7 @@ class SignInPage extends React.Component {
       socialEmail: userDetails.email,
       imgURL: userDetails.picture.data['url'],
       userAuthID: userDetails.id,
+      authentication_type: "facebok"
     }, () => {
       this.signInWithSocialAuth();
     });
@@ -210,7 +212,8 @@ class SignInPage extends React.Component {
               lastName: user.familyName,
               socialEmail: user.email,
               imgURL: user.photo,
-              userAuthID: user.id
+              userAuthID: user.id,
+              authentication_type: "google"
             }, () => {
               this.signInWithSocialAuth();
             });
@@ -300,7 +303,8 @@ class SignInPage extends React.Component {
         email: this.state.email,
         socialEmail: this.state.socialEmail,
         imgURL: this.state.imgURL,
-        userAuthID: this.state.userAuthID
+        userAuthID: this.state.userAuthID,
+        authentication_type: this.state.authentication_type
       });
     }
   };

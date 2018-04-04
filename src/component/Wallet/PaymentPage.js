@@ -21,7 +21,6 @@ class PaymentPage extends React.Component {
     userToken: '',
     requestSlot: 'LOAD',
 
-
     cardNumber: '50785078507850784',
     expiryMonth: '',
     expiryYear: '',
@@ -29,6 +28,9 @@ class PaymentPage extends React.Component {
     amount: '',
 
     errorMessage: '',
+
+    requestType: '',
+    originalAmount: '',
   };
 
   /**
@@ -68,7 +70,7 @@ class PaymentPage extends React.Component {
   /**
    * chargeCard
    *
-   * p
+   *
    */
   chargeCard() {
     let amount = this.state.amount * 100;
@@ -104,16 +106,18 @@ class PaymentPage extends React.Component {
    */
   savePaymentToServer = () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
-    console.log(this.state);
-    axios.post('https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/transaction', {
-      "type_of_operation": 'load_wallet',
-      "cost_of_transaction": this.state.originalAmount
-    })
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/transaction',
+      {
+        "type_of_operation": "load_wallet",
+        "cost_of_transaction": JSON.parse(this.state.originalAmount)
+      }
+    )
       .then((response) => {
         console.log(response.data.data);
-        this.saveUserToLocalStorage(response.data.data.transaction.receiver_amount_after_transaction);
-        // this.saveUserToLocalStorage(response.data.data);
         Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+        this.fetchUserDetails();
       })
       .catch((error) => {
         console.log(error.response);
@@ -121,6 +125,29 @@ class PaymentPage extends React.Component {
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
 
+  };
+
+  /**
+   * fetchUserDetails
+   *
+   * fetches User transaction from the back end and saves it in local storage
+   * @param newBalance
+   * @return {void}
+   */
+  fetchUserDetails = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
+      .then((response) => {
+        console.log(response.data.data);
+        this.setState({ loading: !this.state.loading });
+        AsyncStorage.setItem('user', JSON.stringify(response.data.data.user)).then(() => this.goHome());
+      })
+      .catch((error) => {
+        console.log(error.response);
+        this.setState({ loading: !this.state.loading });
+      });
   };
 
   /**
@@ -151,7 +178,6 @@ class PaymentPage extends React.Component {
     AsyncStorage.setItem('user', JSON.stringify(newUser)).then(() => this.goHome());
 
     this.setState({ loading: !this.state.loading });
-
   };
 
   /**
