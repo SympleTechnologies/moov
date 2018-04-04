@@ -20,7 +20,8 @@ class LoadPage extends React.Component {
     userToken: '',
     requestType: 'LOAD',
     amount: '',
-    showModal: false
+    showModal: false,
+    originalAmount: ''
   };
 
   /**
@@ -49,25 +50,35 @@ class LoadPage extends React.Component {
     navigate('PaymentPage', {
       amount: this.state.amount,
       requestType: this.state.requestType,
+      originalAmount: this.state.originalAmount
     });
+  };
+
+  /**
+   * setOriginalAmount
+   *
+   * Sets original amount for the Sever to use
+   * @return {void}
+   */
+  setOriginalAmount = () => {
+    this.setState({
+      originalAmount: this.state.amount,
+    }, () => this.addPayStackFee())
   };
 
   /**
    * addPayStackFee
    */
   addPayStackFee = () => {
-    console.log(this.state, 'here');
 
     let reg = 0.015 * this.state.amount;
 
     let newAmount = parseInt(reg) + parseInt(this.state.amount);
     let extraCharge = parseInt(this.state.amount) + 100 + parseInt(reg);
 
-    console.log(newAmount, extraCharge, 'right here');
-
     if(this.state.amount < 2500) {
       this.setState({
-        amount: newAmount
+        amount: newAmount,
       }, () => {
         this.appNavigation()
       });
@@ -103,7 +114,6 @@ class LoadPage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     let { height, width } = Dimensions.get('window');
     let slots = [ { value: 'LOAD', }, { value: 'TRANSFER', }, { value: 'WITHDRAW', } ];
 
@@ -124,7 +134,7 @@ class LoadPage extends React.Component {
                 style={{margin: 5, marginRight: width / 4}}
               >
                 <ButtonTextComponent
-                  onPress={this.addPayStackFee}
+                  onPress={this.setOriginalAmount}
                   buttonText='YES'
                   iconName='ios-checkmark-circle-outline'
                   iconType='ionicon'

@@ -142,7 +142,7 @@ class NumberFormPage extends React.Component {
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
       "email": this.state.socialEmail,
-      "mobile_number": this.state.phoneNumber
+      "mobile_number": this.state.phoneNumber,
     })
       .then((response) => {
         this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });

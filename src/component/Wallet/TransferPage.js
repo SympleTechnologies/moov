@@ -42,32 +42,31 @@ class TransferPage extends React.Component {
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View style={{ flexDirection: 'column'}}>
           <View style={{ flexDirection: 'row', width: '70%', marginBottom: 10 }}>
-            <View style={{ paddingTop: width / 34 }}>
+            <View style={{ paddingTop: width / 28 }}>
               <Title>Enter Amount: </Title>
             </View>
             <View style={{ width: '70%'}}>
-              <FormInput
-                style={{ flexDirection: 'row', width: 1 }}
-                keyboardType='numeric'
-                placeholder={''}
+              <TextInput
+                placeholder={'0000000'}
                 // onChangeText={...}
+                autoFocus
+                keyboardType='numeric'
+                onChangeText={amount => this.setState({ amount: amount.replace(" ", "") })}
               />
             </View>
           </View>
-          <View style={{ flexDirection: 'row', width: '70%'}}>
-            <View style={{ paddingTop: width / 12 }}>
-              <Title>Transaction: </Title>
+          <View style={{ flexDirection: 'row', width: '70%', marginBottom: 10 }}>
+            <View style={{ paddingTop: width / 28 }}>
+              <Title>Enter Email: </Title>
             </View>
-            <View style={{ width: '80%'}}>
-              <View style={{ width: '70%', zIndex: -1, marginLeft: width / 10}}>
-                <Dropdown
-                  // label='slots'
-                  // itemColor='blue'
-                  data={slots}
-                  value='LOAD'
-                  onChangeText={ requestSlot => this.setState({ requestSlot }) }
-                />
-              </View>
+            <View style={{ width: '70%'}}>
+              <TextInput
+                placeholder={'john@doe.com'}
+                // onChangeText={...}
+                autoFocus
+                keyboardType='email-address'
+                onChangeText={amount => this.setState({ amount: amount.replace(" ", "") })}
+              />
             </View>
           </View>
           <View style={{ marginTop: 40 }}>

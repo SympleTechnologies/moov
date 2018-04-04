@@ -14,17 +14,18 @@ import { NavigationActions } from 'react-navigation';
 
 // common
 import { ButtonTextComponent, StatusBarComponent } from "../../common/index";
+import * as axios from "axios/index";
 
 class PaymentPage extends React.Component {
   state= {
     userToken: '',
     requestSlot: 'LOAD',
 
-    cardNumber: '',
+
+    cardNumber: '50785078507850784',
     expiryMonth: '',
     expiryYear: '',
     cvc: '',
-    email: 'oforchinedukelechi@gmail.com',
     amount: '',
 
     errorMessage: '',
@@ -40,11 +41,17 @@ class PaymentPage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
+    AsyncStorage.getItem("user").then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    }).done();
 
     this.setState({
       amount: this.props.navigation.state.params.amount,
       requestType: this.props.navigation.state.params.requestType,
+      originalAmount: this.props.navigation.state.params.originalAmount,
     });
+
+    // this.savePaymentToServer()
   }
 
   /**
@@ -66,24 +73,18 @@ class PaymentPage extends React.Component {
   chargeCard() {
     let amount = this.state.amount * 100;
 
-    console.log(this.state, 'from state')
-
     RNPaystack.chargeCard({
       cardNumber: this.state.cardNumber,
       expiryMonth: this.state.expiryMonth,
       expiryYear: this.state.expiryYear,
       cvc: this.state.cvc,
-      email: this.state.email,
+      email: this.state.user.email,
       amountInKobo: amount,
     })
       .then(response => {
         console.log(response); // card charged successfully, get reference here
-        Toast.showWithGravity('Success!', Toast.LONG, Toast.TOP)
-        this.setState({
-          loading: false
-        }, () => {
-          this.goHome();
-        });
+        Toast.showWithGravity('Success!', Toast.LONG, Toast.TOP);
+        this.savePaymentToServer();
       })
       .catch(error => {
         console.log(error); // error is a javascript Error object
@@ -95,6 +96,63 @@ class PaymentPage extends React.Component {
         Toast.showWithGravity(`${error.message}`, Toast.LONG, Toast.TOP);
       })
   }
+
+  /**
+   * savePaymentToServer
+   *
+   * Saves user's payment on our server
+   */
+  savePaymentToServer = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    console.log(this.state);
+    axios.post('https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/transaction', {
+      "type_of_operation": 'load_wallet',
+      "cost_of_transaction": this.state.originalAmount
+    })
+      .then((response) => {
+        console.log(response.data.data);
+        this.saveUserToLocalStorage(response.data.data.transaction.receiver_amount_after_transaction);
+        // this.saveUserToLocalStorage(response.data.data);
+        // Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        this.setState({ loading: !this.state.loading });
+        // Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+
+  };
+
+  /**
+   * saveUserToLocalStorage
+   *
+   * saves User transaction to the back end
+   * @param newBalance
+   * @return {void}
+   */
+  saveUserToLocalStorage = (newBalance) => {
+    let newUser = {
+      authentication_type: this.state.user.authentication_type,
+      authorization_code_status: this.state.user.authorization_code_status,
+      created_at:  this.state.user.created_at,
+      email: this.state.user.email,
+      firstname: this.state.user.firstname,
+      id: this.state.user.id,
+      image_url: this.state.user.image_url,
+      lastname: this.state.user.lastname,
+      mobile_number: this.state.user.mobile_number,
+      modified_at: this.state.user.modified_at,
+      ratings: this.state.user.ratings,
+      set_temporary_password: this.state.user.set_temporary_password,
+      user_type: this.state.user.user_type,
+      wallet_amount: newBalance
+    };
+
+    AsyncStorage.setItem('user', JSON.stringify(newUser)).then(() => this.goHome());
+
+    this.setState({ loading: !this.state.loading });
+
+  };
 
   /**
    * _onChange
@@ -139,17 +197,15 @@ class PaymentPage extends React.Component {
   };
 
   render() {
-    // console.log(this.state);
     const { container, activityIndicator } = styles;
 
     // ACTIVITY INDICATOR
     if (this.state.loading) {
       return (
         <View style={{flex: 1, backgroundColor: 'white' }}>
-          <StatusBarComponent />
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <ActivityIndicator
-            color = '#f68d65'
+            color = '#004a80'
             size = "large"
             style={activityIndicator}
           />
