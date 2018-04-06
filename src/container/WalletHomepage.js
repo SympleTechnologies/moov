@@ -39,7 +39,6 @@ class WalletHomepage extends React.Component {
    * @return {void}
    */
   appNavigation = () => {
-    console.log(this.state.requestSlot);
     const { navigate } = this.props.navigation;
 
     if (this.state.requestType === 'LOAD') {
@@ -56,7 +55,6 @@ class WalletHomepage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
 
     const {
       container,

@@ -17,16 +17,15 @@ import {StatusBarComponent} from "../common";
 
 // third-parties libraries
 import RNGooglePlaces from 'react-native-google-places';
-import { NavigationBar, Title, Icon, DropDownMenu } from '@shoutem/ui'
-
-// component
-import { GooglePlacesInput } from "../component";
+import { NavigationBar, Title, Icon, DropDownMenu, Subtitle, Caption, Heading } from '@shoutem/ui';
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
-import { Heading, Subtitle, Caption } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
+
+// component
+import { GooglePlacesInput } from "../component";
 
 class MoovHomepage extends React.Component {
   state= {
@@ -47,6 +46,7 @@ class MoovHomepage extends React.Component {
     user: [],
 
     filters: [
+      { name: 'slot(s)', value: '0' },
       { name: '1', value: '1' },
       { name: '2', value: '2' },
       { name: '3', value: '3' },
@@ -56,9 +56,24 @@ class MoovHomepage extends React.Component {
       { name: '7', value: '7' },
     ],
 
-    selectedSlot: '',
+    selectedSlot: false,
 
   };
+
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    return {
+      tabBarOnPress({ jumpToIndex, scene }) {
+        // now we have access to Component methods
+        params.onTabFocus();
+        jumpToIndex(scene.index);
+      }
+    };
+  };
+
+    // componentDidUpdate(a){
+  //   console.log(a)
+  // }
 
   /**
    * componentDidMount
@@ -67,6 +82,8 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
+    this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
+
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
@@ -87,8 +104,43 @@ class MoovHomepage extends React.Component {
     }
   };
 
+  handleTabFocus = () => {
+    console.log('Focused here')
+    AsyncStorage.getItem("user").then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    }).done();
+  };
+
+  /**
+   * fetchUserDetails
+   *
+   * fetches User transaction from the back end and saves it in local storage
+   * @param newBalance
+   * @return {void}
+   */
+  fetchUserDetails = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
+      .then((response) => {
+        console.log(response.data.data);
+        AsyncStorage.setItem('user', JSON.stringify(response.data.data.user));
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
+  /**
+   * openSearchModalForMyLocation
+   *
+   * Opens modal for user to select location
+   * Saves user location in the state
+   * @return {void}
+   */
   openSearchModalForMyLocation = () => {
-    RNGooglePlaces.openAutocompleteModal()
+    RNGooglePlaces.openPlacePickerModal()
       .then((place) => {
         console.log(place);
         this.setState({
@@ -96,38 +148,104 @@ class MoovHomepage extends React.Component {
           myLocationLongitude: place.longitude,
           myLocationName: place.name,
           error: null,
-        });
+        }, () => this.calculatePrice());
         // place represents user's selection from the
         // suggestions and it is a simplified Google Place object.
       })
       .catch(error => console.log(error.message));  // error is a Javascript Error object
-  }
+  };
 
-  openSearchModalForMyDestination = () => {
-    RNGooglePlaces.openAutocompleteModal()
-      .then((place) => {
-        console.log(place);
-        this.setState({
-          myDestinationLatitude: place.latitude,
-          myDestinationLongitude: place.longitude,
-          myDestinationName: place.name,
-        });
-        // place represents user's selection from the
-        // suggestions and it is a simplified Google Place object.
-      })
-      .catch(error => console.log(error.message));  // error is a Javascript Error object
-  }
-
-
-  /**
-   * componentWillUnmount
+  /**openSearchModalForMyDestination
    *
-   * React life-cycle method sets user token
+   * Opens modal for user to select destination
+   * Saves user destination in the state
    * @return {void}
    */
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchId);
-  }
+  openSearchModalForMyDestination = () => {
+
+    RNGooglePlaces.openPlacePickerModal()
+      .then((place) => {
+        console.log(place);
+        if(this.state.myLocationName === place.name) {
+          if(Platform.OS === 'android') {
+            Toast.showWithGravity(`Location cannot be thesame with destination`, Toast.LONG, Toast.TOP);
+          }
+        } else {
+          this.setState({
+            myDestinationLatitude: place.latitude,
+            myDestinationLongitude: place.longitude,
+            myDestinationName: place.name,
+          }, () => this.calculatePrice());
+        }
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  };
+
+  /**
+   * calculatePrice
+   *
+   * Calls the get price to calculate price and give user real time feeling
+   * @return {void}
+   */
+  calculatePrice = () => {
+    if(this.state.myDestinationLatitude !== null && this.state.selectedSlot !== false) {
+      this.getPrice();
+    }
+  };
+
+  /**
+   * getPrice
+   *
+   * This method gets the distance and calcultes the get Price method
+   * @return {void}
+   */
+  getPrice = () => {
+    console.log('gert price', this.state);
+    let distance = this.getDistance(
+      this.state.myLocationLatitude,
+      this.state.myLocationLongitude,
+      this.state.myDestinationLatitude,
+      this.state.myDestinationLongitude
+    );
+
+    let price = Math.floor(distance) *  this.state.selectedSlot.value;
+
+    price = price;
+
+    // this.setState({ price })
+    return price < 100
+      ? this.setState({ price : 100, showModal: !this.state.showModal })
+      : this.setState({ price, showModal: !this.state.showModal })
+  };
+
+  /**
+   * getDistance
+   *
+   * Calculates the User's distance
+   * @param lat1
+   * @param lon1
+   * @param lat2
+   * @param lon2
+   * @param unit
+   * @return {number}
+   */
+  getDistance = (lat1, lon1, lat2, lon2, unit) =>  {
+    let radlat1 = Math.PI * lat1/180;
+    let radlat2 = Math.PI * lat2/180;
+    let theta = lon1-lon2;
+    let radtheta = Math.PI * theta/180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit === "K") { dist = dist * 1.609344 }
+    if (unit === "N") { dist = dist * 0.8684 }
+
+    return dist * 500
+  };
+
 
   /**
    * watchLocation
@@ -158,6 +276,19 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   getMyLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log("wokeeey");
+        console.log(position);
+        this.getUserLocationUsingRN();
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
+    );
+    this.watchLocation();
+  };
+
+  getUserLocationUsingRN = () => {
     RNGooglePlaces.getCurrentPlace()
       .then((results) => {
         console.log(results.length - (results.length - 1))
@@ -172,23 +303,8 @@ class MoovHomepage extends React.Component {
       })
       .catch((error) => {
         console.log(error.message)
+        this.getMyLocation();
       });
-
-    // navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     console.log("wokeeey");
-    //     console.log(position);
-    //     this.setState({
-    //       myLocationLatitude: position.coords.latitude,
-    //       myLocationLongitude: position.coords.longitude,
-    //       error: null,
-    //     });
-    //   },
-    //   (error) => this.setState({ error: error.message }),
-    //   { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
-    // );
-
-    // this.watchLocation();
   };
 
   /**
@@ -267,58 +383,9 @@ class MoovHomepage extends React.Component {
     }
   };
 
-  /**
-   * getPrice
-   *
-   * This method gets the distance and calcultes the get Price method
-   * @return {void}
-   */
-  getPrice = () => {
-    let distance = this.getDistance(
-      this.state.myLocationLatitude,
-      this.state.myLocationLongitude,
-      this.state.myDestinationLatitude,
-      this.state.myDestinationLongitude
-    );
-
-    let price = Math.floor(distance) *  this.state.requestSlot;
-
-    price = price;
-
-    // this.setState({ price })
-    return price < 100
-      ? this.setState({ price : 100, showModal: !this.state.showModal })
-      : this.setState({ price, showModal: !this.state.showModal })
-  };
-
-  /**
-   * getDistance
-   *
-   * Calculates the User's distance
-   * @param lat1
-   * @param lon1
-   * @param lat2
-   * @param lon2
-   * @param unit
-   * @return {number}
-   */
-  getDistance = (lat1, lon1, lat2, lon2, unit) =>  {
-    let radlat1 = Math.PI * lat1/180;
-    let radlat2 = Math.PI * lat2/180;
-    let theta = lon1-lon2;
-    let radtheta = Math.PI * theta/180;
-    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    dist = Math.acos(dist);
-    dist = dist * 180/Math.PI;
-    dist = dist * 60 * 1.1515;
-    if (unit === "K") { dist = dist * 1.609344 }
-    if (unit === "N") { dist = dist * 0.8684 }
-
-    return dist * 500
-  };
-
   getDriver = () => {
-    this.setState({ showModal: !this.state.showModal })
+    // this.setState({ showModal: !this.state.showModal })
+    Toast.showWithGravity(`Fetching your ride`, Toast.LONG, Toast.TOP)
   };
 
   /**
@@ -329,8 +396,39 @@ class MoovHomepage extends React.Component {
    */
   verifyFunds = () => {
     return this.state.price > this.state.user.wallet_amount
-    ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
-    : this.getDriver();
+      ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
+      : this.getDriver();
+  };
+
+
+
+  /**
+   * verifyUserRoutes
+   *
+   * Verifies user location and destination
+   * @return {void}
+   */
+  verifyUserRoutes = () => {
+    if(this.state.myDestinationLatitude === null) {
+      Toast.showWithGravity(`'Kindly select a destination'`, Toast.LONG, Toast.TOP);
+    } else if(this.state.myDestinationLatitude === this.state.myLocationLatitude) {
+      Toast.showWithGravity(`Location and destination cannot be the same`, Toast.LONG, Toast.TOP);
+    } else if(this.state.selectedSlot === false) {
+      Toast.showWithGravity(`Kindly request for slot(s)`, Toast.LONG, Toast.TOP);
+    } else {
+      return true;
+    }
+  };
+
+  /**
+   * submitRequest
+   *
+   * Submits user's request
+   */
+  submitRequest = () => {
+    if(this.verifyUserRoutes()) {
+      this.verifyFunds()
+    }
   };
 
   render() {
@@ -361,7 +459,14 @@ class MoovHomepage extends React.Component {
               />
             </View>
             <View style={{marginBottom: 10, alignItems: 'center', marginTop: 20}}>
-              <Caption>Grant location permission to MOOV.</Caption>
+              {
+                (Platform.OS === 'ios')
+                  ? <Caption>Grant location permission to MOOV then close and re-open app.</Caption>
+                  : <View>
+                    <Caption>Search on Google for 'Google Play Services'</Caption>
+                    <Caption>download or update then close and re-open app.</Caption>
+                  </View>
+              }
             </View>
             <Text style={{marginBottom: 10}}>
             </Text>
@@ -371,7 +476,7 @@ class MoovHomepage extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View
           style={{
@@ -383,7 +488,6 @@ class MoovHomepage extends React.Component {
           }}
         >
           <NavigationBar
-
             leftComponent={
               <Title
                 onPress={() => this.openSearchModalForMyLocation()}
@@ -393,16 +497,6 @@ class MoovHomepage extends React.Component {
             }
 
             centerComponent={
-              <DropDownMenu
-                options={this.state.filters}
-                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
-                onOptionSelected={(filter) => this.setState({ selectedSlot: filter })}
-                titleProperty="name"
-                valueProperty="value"
-              />
-            }
-
-            rightComponent={
               <Title
                 onPress={() => this.openSearchModalForMyDestination()}
               >
@@ -410,12 +504,102 @@ class MoovHomepage extends React.Component {
               </Title>
             }
 
+            rightComponent={
+              <DropDownMenu
+                options={this.state.filters}
+                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+                onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
+                titleProperty="name"
+                valueProperty="value"
+                visibleOptions={5}
+                vertical
+              />
+            }
           />
-          <View style={{}}>
-          </View>
         </View>
-        <View style={{ width: width, height: '100%', backgroundColor: 'blue' }}>
-          <Text>Map will be here</Text>
+        <View style={{ width: width, height: '100%', backgroundColor: 'white' }}>
+          <View style={{ width: width, height: '60%', backgroundColor: 'white' }}>
+            <Text>Map will be here</Text>
+          </View>
+          <View style={{ width: width, height: '40%', backgroundColor: 'white', flexDirection: 'column' }}>
+            <View style={{  height: '45%' }}>
+              <Caption
+                style={{ color: '#333',
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  fontSize: 15,
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 5,
+                  marginTop: 20,
+                }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+              >
+                Wallet: ₦ {this.state.user.wallet_amount}
+              </Caption>
+              {
+                (this.state.price !== '')
+                  ? <View>
+                    <Caption
+                      style={{ color: '#333',
+                        textAlign: 'center',
+                        backgroundColor: 'white',
+                        fontSize: 15,
+                        textShadowOffset: { width: 1, height: 1 },
+                        textShadowRadius: 5,
+                        marginTop: 20,
+                      }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                    >
+                      From {this.state.myLocationName} To {this.state.myDestinationName}
+                    </Caption>
+                    {
+                      (this.state.user.wallet_amount >= this.state.price)
+                      ? <Caption
+                          style={{ color: 'green',
+                            textAlign: 'center',
+                            backgroundColor: 'white',
+                            fontSize: 15,
+                            textShadowOffset: { width: 1, height: 1 },
+                            textShadowRadius: 5,
+                            marginTop: 10,
+                          }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                        >
+                          Price ₦ {this.state.price}
+                        </Caption>
+                      : <Caption
+                          style={{ color: 'red',
+                            textAlign: 'center',
+                            backgroundColor: 'white',
+                            fontSize: 15,
+                            textShadowOffset: { width: 1, height: 1 },
+                            textShadowRadius: 5,
+                            marginTop: 10,
+                          }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                        >
+                          Price ₦ {this.state.price}
+                        </Caption>
+                    }
+                  </View>
+                : <Text/>
+              }
+            </View>
+            <View>
+              <TouchableOpacity style={{ alignItems: 'center'}}>
+                <Button
+                  title='CONTINUE'
+                  buttonStyle={{
+                    backgroundColor: "rgba(92, 99,216, 1)",
+                    width: 300,
+                    height: 45,
+                    borderColor: "transparent",
+                    borderWidth: 0,
+                    borderRadius: 5
+                  }}
+                  onPress={this.submitRequest}
+                  containerStyle={{ marginTop: 20 }}
+                />
+                <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>CONTINUE</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </View>
     )
@@ -513,6 +697,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     // justifyContent: 'center',
+    zIndex: -1
   },
   activityIndicator: {
     flex: 1,
