@@ -53,7 +53,7 @@ class ProfileHomepage extends React.Component {
    * React life-cycle method sets user token
    * @return {void}
    */
-  componentWillMount() {
+  componentDidMount() {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
@@ -139,7 +139,7 @@ class ProfileHomepage extends React.Component {
     )
       .then((response) => {
         console.log(response.data.data);
-        this.updateLoacalStorage(response.data.data.user);
+        this.setState({ user: response.data.data.user }, () => this.updateLoacalStorage(response.data.data.user));
         Toast.showWithGravity(`${response.data.data.message}`, Toast.LONG, Toast.TOP);
       })
       .catch((error) => {
@@ -156,7 +156,7 @@ class ProfileHomepage extends React.Component {
    * @param {object} user - new user object from the backend
    */
   updateLoacalStorage = (user) => {
-    this.setState({ user }, () => AsyncStorage.setItem('user', JSON.stringify(user)));
+    AsyncStorage.setItem('user', JSON.stringify(user));
     this.setState({ loading: !this.state.loading });
   };
 
@@ -165,11 +165,9 @@ class ProfileHomepage extends React.Component {
     const { container, activityIndicator } = styles;
     let { height, width } = Dimensions.get('window');
 
-    let img = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_1280.png';
+    // let img = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_1280.png';
 
-    if(this.state.user.image_url) {
-      img = this.state.user.image_url;
-    }
+
 
     // ACTIVITY INDICATOR
     if (this.state.loading) {
@@ -192,15 +190,15 @@ class ProfileHomepage extends React.Component {
           <View style={{ height: height / 2.5, backgroundColor: '#004a80', marginTop: (Platform.OS === 'ios') ? 20 : 0 }}>
             <ImageBackground
               style={{width: width, height: '100%'}}
-              blurRadius={2}
-              opacity={2}
-              source={{uri: `${img}`}}
+              blurRadius={1}
+              opacity={0.9}
+              source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
             >
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Avatar
                   xlarge
                   rounded
-                  source={{uri: `${img}`}}
+                  source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
                   onPress={() => this.getImage()}
                   activeOpacity={0.7}
                 />
@@ -208,50 +206,7 @@ class ProfileHomepage extends React.Component {
             </ImageBackground>
           </View>
           <View style={{ height: height / 2.5}}>
-            <Card title="DETAILS">
-              <Card containerStyle={{padding: 0}} >
-                <TouchableOpacity
-                  onPress={() => {
-                    const { navigate } = this.props.navigation;
-                    navigate('BasicInformation');
-                  }}
-                >
-                  <ListItem
-                    roundAvatar
-                    title='Basic Information'
-                    // avatar='https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-                  />
-                </TouchableOpacity>
-              </Card>
-              <Card containerStyle={{padding: 0}} >
-                <TouchableOpacity
-                  onPress={() => {
-                    const { navigate } = this.props.navigation;
-                    navigate('NotificationsPage');
-                  }}
-                >
-                  <ListItem
-                    roundAvatar
-                    title='Notifications'
-                    // avatar='https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-                  />
-                </TouchableOpacity>
-              </Card>
-              <Card containerStyle={{padding: 0}} >
-                <TouchableOpacity
-                  onPress={() => {
-                    const { navigate } = this.props.navigation;
-                    navigate('TransactionsPage');
-                  }}
-                >
-                  <ListItem
-                    roundAvatar
-                    title='Transaction Details'
-                    // avatar='https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-                  />
-                </TouchableOpacity>
-              </Card>
-            </Card>
+
           </View>
         </View>
       </View>
