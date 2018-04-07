@@ -185,7 +185,7 @@ class ProfileHomepage extends React.Component {
 
     return (
       <View style={container}>
-        <StatusBarComponent style={{ height: (Platform.OS === 'ios') ? 60 : 0 }} />
+        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" style={{ height: (Platform.OS === 'ios') ? 60 : 0 }} />
         <View>
           <View style={{ height: height / 2.5, backgroundColor: '#004a80', marginTop: (Platform.OS === 'ios') ? 20 : 0 }}>
             <ImageBackground

@@ -71,7 +71,7 @@ class MoovHomepage extends React.Component {
     };
   };
 
-    // componentDidUpdate(a){
+  // componentDidUpdate(a){
   //   console.log(a)
   // }
 
@@ -447,7 +447,6 @@ class MoovHomepage extends React.Component {
       return (
         <View style={{flex: 1,justifyContent: 'center', backgroundColor: 'white'}}>
           <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-          <StatusBarComponent />
           <Card
             title='FETCHING YOUR LOCATION'
             image={require('../../assets/scene-02.gif')}>
@@ -480,9 +479,6 @@ class MoovHomepage extends React.Component {
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         <View
           style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-around',
             width: width / 1.2,
             marginBottom: width / 5,
           }}
@@ -517,12 +513,12 @@ class MoovHomepage extends React.Component {
             }
           />
         </View>
-        <View style={{ width: width, height: '100%', backgroundColor: 'white' }}>
-          <View style={{ width: width, height: '60%', backgroundColor: 'white' }}>
+        <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
+          <View style={{ width: width, height: '60%', backgroundColor: '#fff', }}>
             <Text>Map will be here</Text>
           </View>
-          <View style={{ width: width, height: '40%', backgroundColor: 'white', flexDirection: 'column' }}>
-            <View style={{  height: '45%' }}>
+          <View style={{ width: width, height: '40%', backgroundColor: '#fff', flexDirection: 'column' }}>
+            <View style={{  backgroundColor: '#fff', width: width, height: '45%', }}>
               <Caption
                 style={{ color: '#333',
                   textAlign: 'center',
@@ -552,7 +548,7 @@ class MoovHomepage extends React.Component {
                     </Caption>
                     {
                       (this.state.user.wallet_amount >= this.state.price)
-                      ? <Caption
+                        ? <Caption
                           style={{ color: 'green',
                             textAlign: 'center',
                             backgroundColor: 'white',
@@ -564,7 +560,7 @@ class MoovHomepage extends React.Component {
                         >
                           Price ₦ {this.state.price}
                         </Caption>
-                      : <Caption
+                        : <Caption
                           style={{ color: 'red',
                             textAlign: 'center',
                             backgroundColor: 'white',
@@ -578,10 +574,10 @@ class MoovHomepage extends React.Component {
                         </Caption>
                     }
                   </View>
-                : <Text/>
+                  : <Text/>
               }
             </View>
-            <View>
+            <View style={{  backgroundColor: '#fff', width: width , height: '25%',}}>
               <TouchableOpacity style={{ alignItems: 'center'}}>
                 <Button
                   title='CONTINUE'
@@ -596,7 +592,6 @@ class MoovHomepage extends React.Component {
                   onPress={this.submitRequest}
                   containerStyle={{ marginTop: 20 }}
                 />
-                <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>CONTINUE</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -691,13 +686,11 @@ class MoovHomepage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: '#fff',
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    // justifyContent: 'center',
-    zIndex: -1
+    zIndex: -1,
+    height: Dimensions.get('window').height
   },
   activityIndicator: {
     flex: 1,
