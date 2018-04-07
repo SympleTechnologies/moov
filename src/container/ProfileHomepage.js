@@ -8,7 +8,7 @@ import {
   View,
   AsyncStorage,
   TouchableOpacity,
-  ImageBackground,
+
   Dimensions,
   Platform,
   ActivityIndicator
@@ -21,6 +21,8 @@ import Toast from "react-native-simple-toast";
 import {StatusBarComponent} from "../common";
 import { Avatar, Card, ListItem, Button } from 'react-native-elements'
 import * as axios from "axios/index";
+import { Title, ImageBackground, Overlay, Tile, Icon, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
+
 
 // More info on all the options is below in the README...just some common use cases shown here
 let options = {
@@ -44,7 +46,9 @@ class ProfileHomepage extends React.Component {
 
     user: {
       image_url: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_1280.png'
-,    }
+,    },
+
+    activeTab: 'notifications',
   };
 
   /**
@@ -189,24 +193,80 @@ class ProfileHomepage extends React.Component {
         <View>
           <View style={{ height: height / 2.5, backgroundColor: '#004a80', marginTop: (Platform.OS === 'ios') ? 20 : 0 }}>
             <ImageBackground
-              style={{width: width, height: '100%'}}
-              blurRadius={1}
-              opacity={0.9}
+              styleName="large"
               source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
             >
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Avatar
-                  xlarge
-                  rounded
-                  source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
-                  onPress={() => this.getImage()}
-                  activeOpacity={0.7}
-                />
-              </View>
+              <Tile>
+                <Overlay>
+                  <Title styleName="md-gutter-bottom">{`${this.state.user.firstname} ${this.state.user.firstname}`}</Title>
+                  <Caption>{`${this.state.user.email}`}</Caption>
+                </Overlay>
+              </Tile>
             </ImageBackground>
           </View>
-          <View style={{ height: height / 2.5}}>
-
+          <View style={{ width: width }}>
+            <Divider styleName="section-header">
+              <TouchableOpacity
+                onPress={() => this.setState({ activeTab: 'notifications' })}
+              >
+                {
+                  (this.state.activeTab === 'notifications')
+                    ? <View style={{ flexDirection: 'column'}}>
+                        <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
+                        <Caption style={{ color: '#333'}}>NOTIFICATIONS</Caption>
+                      </View>
+                    : <View style={{ flexDirection: 'column'}}>
+                        <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
+                        <Caption style={{ color: '#b3b4b4'}}>NOTIFICATIONS</Caption>
+                      </View>
+                }
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ activeTab: 'basic-info' })}
+              >
+                {
+                  (this.state.activeTab === 'basic-info')
+                    ? <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
+                      <Caption style={{ color: '#333'}}>BASIC INFO</Caption>
+                    </View>
+                    : <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
+                      <Caption style={{ color: '#b3b4b4'}}>BASIC INFO</Caption>
+                    </View>
+                }
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ activeTab: 'rides' })}
+              >
+                {
+                  (this.state.activeTab === 'rides')
+                    ? <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
+                      <Caption style={{ color: '#333'}}>RIDES</Caption>
+                    </View>
+                    : <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
+                      <Caption style={{ color: '#b3b4b4'}}>RIDES</Caption>
+                    </View>
+                }
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({ activeTab: 'transactions' })}
+              >
+                {
+                  (this.state.activeTab === 'transactions')
+                    ? <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
+                      <Caption style={{ color: '#333'}}>TRANSACTIONS</Caption>
+                    </View>
+                    : <View style={{ flexDirection: 'column'}}>
+                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
+                      <Caption style={{ color: '#b3b4b4'}}>TRANSACTIONS</Caption>
+                    </View>
+                }
+              </TouchableOpacity>
+            </Divider>
           </View>
         </View>
       </View>

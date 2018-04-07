@@ -477,6 +477,7 @@ class MoovHomepage extends React.Component {
     return (
       <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+
         <View
           style={{
             width: width / 1.2,
@@ -484,6 +485,7 @@ class MoovHomepage extends React.Component {
           }}
         >
           <NavigationBar
+
             leftComponent={
               <Title
                 onPress={() => this.openSearchModalForMyLocation()}
