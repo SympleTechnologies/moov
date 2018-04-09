@@ -19,10 +19,11 @@ import RNFetchBlob from 'react-native-fetch-blob'
 import ImagePicker from 'react-native-image-picker';
 import Toast from "react-native-simple-toast";
 import {StatusBarComponent} from "../common";
-import { Avatar, Card, ListItem, Button } from 'react-native-elements'
+import { Avatar, Card, ListItem, Button, Icon } from 'react-native-elements'
 import * as axios from "axios/index";
-import { Title, ImageBackground, Overlay, Tile, Icon, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
+import { Title, ImageBackground, Overlay, Tile, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
 
+import IconBadge from 'react-native-icon-badge';
 
 // More info on all the options is below in the README...just some common use cases shown here
 let options = {
@@ -49,6 +50,7 @@ class ProfileHomepage extends React.Component {
 ,    },
 
     activeTab: 'notifications',
+    unreadMessagesCount: 30
   };
 
   /**
@@ -197,10 +199,12 @@ class ProfileHomepage extends React.Component {
               source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
             >
               <Tile>
-                <Overlay>
-                  <Title styleName="md-gutter-bottom">{`${this.state.user.firstname} ${this.state.user.firstname}`}</Title>
-                  <Caption>{`${this.state.user.email}`}</Caption>
-                </Overlay>
+                <TouchableOpacity onPress={this.getImage}>
+                  <Overlay>
+                    <Title styleName="md-gutter-bottom">{`${this.state.user.firstname} ${this.state.user.firstname}`}</Title>
+                    <Caption>{`UPLOAD`}</Caption>
+                  </Overlay>
+                </TouchableOpacity>
               </Tile>
             </ImageBackground>
           </View>

@@ -1,9 +1,15 @@
 // react library
 import React from 'react';
 
+// react-native libraries
+import {
+  Text
+} from 'react-native';
+
 // third-party libraries
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import IconBadge from 'react-native-icon-badge';
 
 // containers
 import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage } from '../container';
@@ -82,10 +88,11 @@ export const AskHome = StackNavigator({
 //
 export const ProfileHome = StackNavigator({
   ProfileHomepage: {
-    screen: ProfileHomepage,
+    // screen: ProfileHomepage,
+    screen: props => <ProfileHomepage screenProps={{ unreadMessagesCount: 45 }} />,
     navigationOptions: {
       header: null,
-    }
+    },
   },
   // BasicInformation: {
   // 	screen: BasicInformation,
@@ -106,9 +113,26 @@ export const ProfileHome = StackNavigator({
   // 	}
   // }
 }, {
-  navigationOptions: {
-    // header: '',
-  },
+  // navigationOptions: ({ screenProps }) => ({
+  //   header: null,
+  //   tabBarIcon: ({ focused, tintColor}) =>
+  //     <IconBadge
+  //       MainElement={<Icon name="user-circle" type="font-awesome" size={22} color={ focused ? tintColor : "#b3b4b4" } />}
+  //       BadgeElement={<Text style={{ color: 'white' }}>{screenProps.unreadMessagesCount}</Text>}
+  //       Hidden={screenProps.unreadMessagesCount === 0}
+  //       // badgeNumber={navigation.state.params.badgeCount}
+  //     />
+  //
+  // }),
+  navigationOptions: ({ screenProps }) => ({
+    header: null,
+    tabBarIcon: ({tintColor, focused}) =>
+      <IconBadge
+        MainElement={<Icon name="user-circle" type="font-awesome" size={22} color={ focused ? tintColor : "#b3b4b4" } />}
+        BadgeElement={<Text style={{ color: 'white' }}>{screenProps.unreadMessagesCount}</Text>}
+        Hidden={screenProps.unreadMessagesCount === 0}
+      />
+  })
 });
 
 
@@ -121,10 +145,8 @@ export const Tabs = TabNavigator({
       style: {
         color: '#004a80',
       },
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
-          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+      tabBarIcon: ({ focused, tintColor }) => (
+        <Icon name="ios-car-outline" type="ionicon" color={ focused ? tintColor : "#b3b4b4" } />
       ),
     },
   },
@@ -132,10 +154,8 @@ export const Tabs = TabNavigator({
     screen: WalletHome,
     navigationOptions: {
       tabBarLabel: 'Wallet',
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="credit-card-plus" type="material-community" color="black" />
-          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+      tabBarIcon: ({ focused, tintColor }) => (
+        <Icon name="credit-card-plus" type="material-community" color={ focused ? tintColor : "#b3b4b4" } />
       ),
     },
   },
@@ -143,23 +163,13 @@ export const Tabs = TabNavigator({
     screen: AskHome,
     navigationOptions: {
       tabBarLabel: 'Ask Us',
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="help" type="entypo" color="black" />
-          : <Icon name="help" type="entypo" color="#b3b4b4" />
+      tabBarIcon: ({ focused, tintColor }) => (
+        <Icon name="help" type="entypo" color={ focused ? tintColor : "#b3b4b4" } />
       ),
     },
   },
   Profile: {
     screen: ProfileHome,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="user-circle" type="font-awesome" color="black" />
-          : <Icon name="user-circle" type="font-awesome" color="#b3b4b4" />
-      ),
-    },
     style: {
       color: 'green',
     },
@@ -168,6 +178,8 @@ export const Tabs = TabNavigator({
   // tabBarPosition: 'top',
   animationEnabled: true,
   tabBarOptions: {
+    showIcon: true,
+    showLabel: true,
     style: {
       backgroundColor: 'white',
       padding: 2,

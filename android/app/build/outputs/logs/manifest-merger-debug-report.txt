@@ -4,7 +4,7 @@ ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifes
 INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-47:12
 INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-47:12
 INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:1:1-47:12
-MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.gms:play-services-places:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-location:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-location-12.0.1.aar/c406866f3845825a2ef35cc30b4b30d2/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-auth:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-auth-12.0.1.aar/c6f42c5591a24add09fc0a1707c426db/AndroidManifest.xml:17:1-39:12
@@ -29,7 +29,7 @@ MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/chineduofor/.gr
 MERGED from [co.paystack.android.design.widget:pinpad:1.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/pinpad-1.0.1.aar/ee9f60cd9e7b754e80f63eceb5c7f278/AndroidManifest.xml:2:1-15:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-core:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.1.aar/93a7b07cb3e711e8ccb4874c860d11ed/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:17:1-54:12
 MERGED from [com.google.firebase:firebase-analytics-impl:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-12.0.1.aar/f5710859600c692e752447df66c1b02b/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-iid:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-12.0.1.aar/1ddf870ea34d17a5c56bd7e61aeb7649/AndroidManifest.xml:17:1-59:12
@@ -138,8 +138,8 @@ uses-sdk
 ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
 INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
 INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:17:5-19:41
-MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-places:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-places:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-location-12.0.1.aar/c406866f3845825a2ef35cc30b4b30d2/AndroidManifest.xml:5:5-44
@@ -188,8 +188,8 @@ MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/0cfedc3fd26ad38a88ee92e1cbaaec49/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-core:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.1.aar/93a7b07cb3e711e8ccb4874c860d11ed/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-core:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.1.aar/93a7b07cb3e711e8ccb4874c860d11ed/AndroidManifest.xml:4:5-43
-MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/AndroidManifest.xml:5:5-43
-MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/AndroidManifest.xml:5:5-43
+MERGED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:5:5-43
+MERGED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:5:5-43
 MERGED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics-impl:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-12.0.1.aar/f5710859600c692e752447df66c1b02b/AndroidManifest.xml:20:5-44
@@ -286,8 +286,8 @@ INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidMani
 		INJECTED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:21:5-45:19
-MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
-MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-12:19
+MERGED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:9:5-12:19
 MERGED from [com.google.android.gms:play-services-places:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-places:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-location:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-location-12.0.1.aar/c406866f3845825a2ef35cc30b4b30d2/AndroidManifest.xml:7:5-20
@@ -324,8 +324,8 @@ MERGED from [co.paystack.android.design.widget:pinpad:1.0.1] /Users/chineduofor/
 MERGED from [co.paystack.android.design.widget:pinpad:1.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/pinpad-1.0.1.aar/ee9f60cd9e7b754e80f63eceb5c7f278/AndroidManifest.xml:13:5-20
 MERGED from [com.google.firebase:firebase-core:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.1.aar/93a7b07cb3e711e8ccb4874c860d11ed/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-core:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.1.aar/93a7b07cb3e711e8ccb4874c860d11ed/AndroidManifest.xml:5:5-20
-MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/AndroidManifest.xml:7:5-20
-MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.3.4.aar/592d21df6d28d5fd8b8a3e78f1c6fad0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:7:5-11:19
+MERGED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:7:5-11:19
 MERGED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:27:5-52:19
 MERGED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:27:5-52:19
 MERGED from [com.google.firebase:firebase-analytics-impl:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-12.0.1.aar/f5710859600c692e752447df66c1b02b/AndroidManifest.xml:27:5-38:19
@@ -377,7 +377,7 @@ MERGED from [com.google.firebase:firebase-analytics-impl-license:12.0.1] /Users/
 MERGED from [com.google.firebase:firebase-iid-license:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-12.0.1.aar/34c13dad15fe965cb65b6703517e6c94/AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-iid-license:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-12.0.1.aar/34c13dad15fe965cb65b6703517e6c94/AndroidManifest.xml:22:5-20
 	android:supportsRtl
-		ADDED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:9-35
+		ADDED from [:react-native-google-places] /Users/chineduofor/Documents/moov/node_modules/react-native-google-places/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:9-35
 	android:label
 		ADDED from /Users/chineduofor/Documents/moov/android/app/src/main/AndroidManifest.xml:24:7-39
 	android:icon
@@ -532,6 +532,14 @@ uses-permission#android.permission.VIBRATE
 ADDED from [co.paystack.android.design.widget:pinpad:1.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/pinpad-1.0.1.aar/ee9f60cd9e7b754e80f63eceb5c7f278/AndroidManifest.xml:11:5-66
 	android:name
 		ADDED from [co.paystack.android.design.widget:pinpad:1.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/pinpad-1.0.1.aar/ee9f60cd9e7b754e80f63eceb5c7f278/AndroidManifest.xml:11:22-63
+meta-data#com.google.android.gms.version
+ADDED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:8:9-10:69
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.1.aar/c91d89ab83e233e3fa484b866fc6a01f/AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.1.aar/c91d89ab83e233e3fa484b866fc6a01f/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:10:13-66
+	android:name
+		ADDED from [com.google.maps.android:android-maps-utils:0.5] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.5.aar/02f304c9762b9b4937be726ff305a548/AndroidManifest.xml:9:13-58
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-analytics:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.1.aar/4e650334f2370ab6d46f8431118fb413/AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-analytics-impl:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-12.0.1.aar/f5710859600c692e752447df66c1b02b/AndroidManifest.xml:25:5-68
@@ -658,12 +666,6 @@ ADDED from [com.google.firebase:firebase-common:12.0.1] /Users/chineduofor/.grad
 		ADDED from [com.google.firebase:firebase-common:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-12.0.1.aar/a2bc41769d3814b3a9be94b75964175f/AndroidManifest.xml:12:13-36
 	android:name
 		ADDED from [com.google.firebase:firebase-common:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/firebase-common-12.0.1.aar/a2bc41769d3814b3a9be94b75964175f/AndroidManifest.xml:9:13-77
-meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.1.aar/c91d89ab83e233e3fa484b866fc6a01f/AndroidManifest.xml:23:9-25:69
-	android:value
-		ADDED from [com.google.android.gms:play-services-basement:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.1.aar/c91d89ab83e233e3fa484b866fc6a01f/AndroidManifest.xml:25:13-66
-	android:name
-		ADDED from [com.google.android.gms:play-services-basement:12.0.1] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.1.aar/c91d89ab83e233e3fa484b866fc6a01f/AndroidManifest.xml:24:13-58
 provider#com.facebook.internal.FacebookInitProvider
 ADDED from [com.facebook.android:facebook-core:4.31.0] /Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a7e6932976e676a14f029e7bae4b3534/AndroidManifest.xml:39:9-42:40
 	android:authorities
