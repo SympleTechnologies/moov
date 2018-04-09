@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr/values-fr.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr/values-fr.xml",
             "map": [
                 {
                     "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.1.aar/2301beedc14f62c4f22aab9a11816be2/res/values-fr/values.xml",

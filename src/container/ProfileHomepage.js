@@ -19,9 +19,9 @@ import RNFetchBlob from 'react-native-fetch-blob'
 import ImagePicker from 'react-native-image-picker';
 import Toast from "react-native-simple-toast";
 import {StatusBarComponent} from "../common";
-import { Avatar, Card, ListItem, Button } from 'react-native-elements'
+import { Avatar, Card, ListItem, Button, Icon } from 'react-native-elements'
 import * as axios from "axios/index";
-import { Title, ImageBackground, Overlay, Tile, Icon, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
+import { Title, ImageBackground, Overlay, Tile, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
 
 
 // More info on all the options is below in the README...just some common use cases shown here
@@ -49,6 +49,9 @@ class ProfileHomepage extends React.Component {
 ,    },
 
     activeTab: 'notifications',
+    notifications: [],
+    basicInfo: {},
+    transactions: []
   };
 
   /**
@@ -59,12 +62,126 @@ class ProfileHomepage extends React.Component {
    */
   componentDidMount() {
     AsyncStorage.getItem("token").then((value) => {
-      this.setState({ userToken: value });
+      this.setState({ userToken: value }, () => {
+        this.getNotifications();
+      });
+
     }).done();
     AsyncStorage.getItem("user").then((value) => {
       this.setState({ user: JSON.parse(value) });
     }).done();
   }
+
+  /**
+   * getNotifications
+   *
+   * Get all User's notifications
+   * @return {void}
+   */
+  getNotifications = () => {
+    this.setState({ activeTab: 'notifications' });
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/notification')
+      .then((response) => {
+        this.setState({
+          notifications: response.data.data
+        })
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
+  /**
+   * getBasicInformation
+   *
+   * Get all User's basic information
+   * @return {void}
+   */
+  getBasicInformation = () => {
+    this.setState({ activeTab: 'basic-info' });
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/basic_info')
+      .then((response) => {
+        this.setState({
+          user: response.data.data.user,
+          basicInfo: response.data.data.user
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * getTransaction
+   *
+   * Get all User's transaction
+   * @return {void}
+   */
+  getTransaction = () => {
+    this.setState({ activeTab: 'transactions' });
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/transaction')
+      .then((response) => {
+        console.log(response.data.data, 'cal');
+        this.setState({
+          transactions: response.data.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * renderBody
+   *
+   * reders the body part of the profile page
+   * @return {*}
+   */
+  renderBody = () => {
+    let { height, width } = Dimensions.get('window');
+
+    if(this.state.activeTab === 'notifications' && this.state.notifications.all_count > 0) {
+      return (
+        <Text>Notifications</Text>
+      );
+    }
+
+    if(this.state.activeTab === 'basic-info' && Object.keys(this.state.basicInfo).length > 0) {
+      return (
+        <Text>Basic Information</Text>
+      );
+    }
+
+    if(this.state.activeTab === 'transactions' && this.state.notifications.all_count > 0) {
+      return (
+        <Text>Transactions</Text>
+      );
+    }
+
+    return (
+      <View style={{ marginTop: height / 5,  backgroundColor: 'white' }}>
+        <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+        <ActivityIndicator
+          color = '#004a80'
+          size = "large"
+        />
+      </View>
+    )
+  };
 
   /**
    * uploadImage
@@ -135,7 +252,6 @@ class ProfileHomepage extends React.Component {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-
     axios.put('https://moov-backend-staging.herokuapp.com/api/v1/user',
       {
         "image_url": data.secure_url,
@@ -165,7 +281,7 @@ class ProfileHomepage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.notifications.length);
     const { container, activityIndicator } = styles;
     let { height, width } = Dimensions.get('window');
 
@@ -199,74 +315,103 @@ class ProfileHomepage extends React.Component {
               <Tile>
                 <Overlay>
                   <Title styleName="md-gutter-bottom">{`${this.state.user.firstname} ${this.state.user.firstname}`}</Title>
-                  <Caption>{`${this.state.user.email}`}</Caption>
+                  <Caption>{`UPLOAD`}</Caption>
                 </Overlay>
               </Tile>
             </ImageBackground>
           </View>
           <View style={{ width: width }}>
             <Divider styleName="section-header">
-              <TouchableOpacity
-                onPress={() => this.setState({ activeTab: 'notifications' })}
-              >
-                {
-                  (this.state.activeTab === 'notifications')
-                    ? <View style={{ flexDirection: 'column'}}>
-                        <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
-                        <Caption style={{ color: '#333'}}>NOTIFICATIONS</Caption>
-                      </View>
-                    : <View style={{ flexDirection: 'column'}}>
-                        <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
-                        <Caption style={{ color: '#b3b4b4'}}>NOTIFICATIONS</Caption>
-                      </View>
-                }
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => this.setState({ activeTab: 'basic-info' })}
-              >
-                {
-                  (this.state.activeTab === 'basic-info')
-                    ? <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
-                      <Caption style={{ color: '#333'}}>BASIC INFO</Caption>
-                    </View>
-                    : <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
-                      <Caption style={{ color: '#b3b4b4'}}>BASIC INFO</Caption>
-                    </View>
-                }
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => this.setState({ activeTab: 'rides' })}
-              >
-                {
-                  (this.state.activeTab === 'rides')
-                    ? <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
-                      <Caption style={{ color: '#333'}}>RIDES</Caption>
-                    </View>
-                    : <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
-                      <Caption style={{ color: '#b3b4b4'}}>RIDES</Caption>
-                    </View>
-                }
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => this.setState({ activeTab: 'transactions' })}
-              >
-                {
-                  (this.state.activeTab === 'transactions')
-                    ? <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#333'}}>10</Caption>
-                      <Caption style={{ color: '#333'}}>TRANSACTIONS</Caption>
-                    </View>
-                    : <View style={{ flexDirection: 'column'}}>
-                      <Caption style={{ textAlign: 'center', color: '#b3b4b4'}}>10</Caption>
-                      <Caption style={{ color: '#b3b4b4'}}>TRANSACTIONS</Caption>
-                    </View>
-                }
-              </TouchableOpacity>
+
+              {/*Notification Section*/}
+              <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  onPress={this.getNotifications}
+                >
+                  <Icon
+                    name="notification"
+                    type="entypo"
+                    color={ this.state.activeTab === 'notifications' ? '#333' : "#b3b4b4" }
+                  />
+                  <Caption
+                    style={{
+                      color: this.state.activeTab === 'notifications' ? '#333' :'#b3b4b4',
+                      fontSize: 10
+                    }}
+                  >
+                    NOTIFICATIONS
+                  </Caption>
+                </TouchableOpacity>
+              </View>
+
+              {/*Basic Information*/}
+              <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  onPress={this.getBasicInformation}
+                >
+                  <Icon
+                    name="information"
+                    type="material-community"
+                    color={ this.state.activeTab === 'basic-info' ? '#333' : "#b3b4b4" }
+                  />
+                  <Caption
+                    style={{
+                      color: this.state.activeTab === 'basic-info' ? '#333' :'#b3b4b4',
+                      fontSize: 10
+                    }}
+                  >
+                    BASIC INFO
+                  </Caption>
+                </TouchableOpacity>
+              </View>
+
+              {/*Free rides Section*/}
+              <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  onPress={() => this.setState({ activeTab: 'rides' })}
+                >
+                  <Icon
+                    name="gift"
+                    type="font-awesome"
+                    color={ this.state.activeTab === 'rides' ? '#333' : "#b3b4b4" }
+                  />
+                  <Caption
+                    style={{
+                      color: this.state.activeTab === 'rides' ? '#333' :'#b3b4b4',
+                      fontSize: 10
+                    }}
+                  >
+                    FREE RIDES
+                  </Caption>
+                </TouchableOpacity>
+              </View>
+
+              {/*Transactions Section*/}
+              <View style={{ flexDirection: 'column' }}>
+                <TouchableOpacity
+                  onPress={this.getTransaction}
+                >
+                  <Icon
+                    name="account-balance"
+                    type="material"
+                    color={ this.state.activeTab === 'transactions' ? '#333' : "#b3b4b4" }
+                  />
+                  <Caption
+                    style={{
+                      color: this.state.activeTab === 'transactions' ? '#333' :'#b3b4b4',
+                      fontSize: 10
+                    }}
+                  >
+                    TRANSACTIONS
+                  </Caption>
+                </TouchableOpacity>
+              </View>
             </Divider>
+          </View>
+          <View>
+            {
+              this.renderBody()
+            }
           </View>
         </View>
       </View>

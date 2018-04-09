@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
             "map": [
                 {
                     "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/65098d3c98e3b702f4398e1f7b282cac/res/values-hi/values-hi.xml",
