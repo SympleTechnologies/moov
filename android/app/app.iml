@@ -188,12 +188,12 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-12.0.1" level="project" />
     <orderEntry type="module" module-name="react-native-image-picker" />
     <orderEntry type="module" module-name="react-native-google-places" />
-    <orderEntry type="module" module-name="react-native-vector-icons" />
-    <orderEntry type="module" module-name="react-native-fetch-blob" />
-    <orderEntry type="module" module-name="react-native-paystack" />
-    <orderEntry type="module" module-name="react-native-google-signin" />
     <orderEntry type="module" module-name="react-native-linear-gradient" />
+    <orderEntry type="module" module-name="react-native-fetch-blob" />
     <orderEntry type="module" module-name="react-native-fbsdk" />
+    <orderEntry type="module" module-name="react-native-paystack" />
+    <orderEntry type="module" module-name="react-native-vector-icons" />
     <orderEntry type="module" module-name="react-native-photo-view" />
+    <orderEntry type="module" module-name="react-native-google-signin" />
   </component>
 </module>

@@ -7,9 +7,6 @@ import { StackNavigator } from 'react-navigation';
 // screens
 import { LandingPage, SignUpPage, SignInPage, MoovPages } from './src/screen';
 
-// container
-import { MoovHomepage } from "./src/container/MoovHomepage";
-
 // component
 import { NumberFormPage } from './src/component';
 

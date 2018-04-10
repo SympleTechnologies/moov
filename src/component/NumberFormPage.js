@@ -145,6 +145,7 @@ class NumberFormPage extends React.Component {
       "firstname":  this.state.firstName ,
       "lastname": this.state.lastName,
       "email": this.state.socialEmail,
+      "image_url": this.state.imgURL,
       "mobile_number": this.state.phoneNumber,
       "authentication_type": this.state.authentication_type
     })
