@@ -22,6 +22,7 @@ import {StatusBarComponent} from "../common";
 import { Avatar, Card, ListItem, Button, Icon } from 'react-native-elements'
 import * as axios from "axios/index";
 import { Title, ImageBackground, Overlay, Tile, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
+import { TransactionPage, NotificationPage } from "../component/Profile";
 
 
 // More info on all the options is below in the README...just some common use cases shown here
@@ -92,6 +93,7 @@ class ProfileHomepage extends React.Component {
       })
       .catch((error) => {
         console.log(error.response);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
   };
 
@@ -128,21 +130,6 @@ class ProfileHomepage extends React.Component {
    */
   getTransaction = () => {
     this.setState({ activeTab: 'transactions' });
-
-    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/transaction')
-      .then((response) => {
-        console.log(response.data.data, 'cal');
-        this.setState({
-          transactions: response.data.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error.response);
-        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
-      });
   };
 
   /**
@@ -152,11 +139,13 @@ class ProfileHomepage extends React.Component {
    * @return {*}
    */
   renderBody = () => {
-    let { height, width } = Dimensions.get('window');
+    let { height } = Dimensions.get('window');
 
     if(this.state.activeTab === 'notifications' && this.state.notifications.all_count > 0) {
       return (
-        <Text>Notifications</Text>
+        <View>
+          <NotificationPage notification={this.state.notifications} userToken={this.state.userToken}/>
+        </View>
       );
     }
 
@@ -166,9 +155,11 @@ class ProfileHomepage extends React.Component {
       );
     }
 
-    if(this.state.activeTab === 'transactions' && this.state.notifications.all_count > 0) {
+    if(this.state.activeTab === 'transactions') {
       return (
-        <Text>Transactions</Text>
+        <View>
+          <TransactionPage userEmail={this.state.user.email} />
+        </View>
       );
     }
 
