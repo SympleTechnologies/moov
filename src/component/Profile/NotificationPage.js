@@ -2,18 +2,17 @@
 import React, { Component } from 'react';
 
 // react-native libraries
-import { Dimensions, TouchableOpacity, View, Text, ScrollView, Platform } from 'react-native';
+import { Dimensions, View, Text } from 'react-native';
 
 // third-party libraries
-import { Title, Row, ListView, ImageBackground, Caption, Tile, Subtitle, Divider, Image, Spinner } from '@shoutem/ui';
-import { Button, Icon } from 'react-native-elements'
+import { Row, ListView, Caption, Subtitle, Divider, Image, Spinner } from '@shoutem/ui';
+import { Icon } from 'react-native-elements';
 import Toast from "react-native-simple-toast";
 import * as axios from "axios/index";
 
 class NotificationPage extends Component {
   constructor(props) {
     super(props);
-    // this.renderRow = this.renderRow.bind(this);
     this.state = {
       notificationsArray: [],
       notification:{},
@@ -32,7 +31,7 @@ class NotificationPage extends Component {
     this.setState({
       notification: this.props.notification,
       notificationsArray: this.props.notification.notifications,
-      userToken: this.props.userToken
+      userToken: this.props.userToken;
     })
   }
 
@@ -98,7 +97,7 @@ class NotificationPage extends Component {
    * @return {*}
    */
   renderFooter = () => {
-    let { height, width } = Dimensions.get('window');
+    let { height } = Dimensions.get('window');
     return (
       <View style={{ backgroundColor: 'white', height: height / 10 }}>
         {
@@ -170,7 +169,7 @@ class NotificationPage extends Component {
 
   render () {
     console.log(this.state);
-    let { height, width } = Dimensions.get('window');
+    let { width } = Dimensions.get('window');
     const notificationsArray = this.state.notificationsArray;
 
     return (

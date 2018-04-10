@@ -113,43 +113,43 @@ export const ProfileHome = StackNavigator({
 
 
 export const Tabs = TabNavigator({
-  // Moov: {
-  //   screen: MoovHome,
-  //   navigationOptions: {
-  //     tabBarLabel: 'MOOV',
-  //     color: 'white',
-  //     style: {
-  //       color: '#004a80',
-  //     },
-  //     tabBarIcon: ({ focused }) => (
-  //       focused
-  //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
-  //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
-  //     ),
-  //   },
-  // },
-  // Wallet: {
-  //   screen: WalletHome,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Wallet',
-  //     tabBarIcon: ({ focused }) => (
-  //       focused
-  //         ? <Icon name="credit-card-plus" type="material-community" color="black" />
-  //         : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
-  //     ),
-  //   },
-  // },
-  // AskUs: {
-  //   screen: AskHome,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Ask Us',
-  //     tabBarIcon: ({ focused }) => (
-  //       focused
-  //         ? <Icon name="help" type="entypo" color="black" />
-  //         : <Icon name="help" type="entypo" color="#b3b4b4" />
-  //     ),
-  //   },
-  // },
+  Moov: {
+    screen: MoovHome,
+    navigationOptions: {
+      tabBarLabel: 'MOOV',
+      color: 'white',
+      style: {
+        color: '#004a80',
+      },
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+      ),
+    },
+  },
+  Wallet: {
+    screen: WalletHome,
+    navigationOptions: {
+      tabBarLabel: 'Wallet',
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="credit-card-plus" type="material-community" color="black" />
+          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+      ),
+    },
+  },
+  AskUs: {
+    screen: AskHome,
+    navigationOptions: {
+      tabBarLabel: 'Ask Us',
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="help" type="entypo" color="black" />
+          : <Icon name="help" type="entypo" color="#b3b4b4" />
+      ),
+    },
+  },
   Profile: {
     screen: ProfileHome,
     navigationOptions: {

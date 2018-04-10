@@ -15,13 +15,13 @@ import {
 } from 'react-native';
 
 // third-party libraries
-import RNFetchBlob from 'react-native-fetch-blob'
+import RNFetchBlob from 'react-native-fetch-blob';
 import ImagePicker from 'react-native-image-picker';
 import Toast from "react-native-simple-toast";
 import {StatusBarComponent} from "../common";
-import { Avatar, Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements';
 import * as axios from "axios/index";
-import { Title, ImageBackground, Overlay, Tile, DropDownMenu, Subtitle, Caption, Heading, Image, Divider } from '@shoutem/ui';
+import { Title, ImageBackground, Overlay, Tile, Caption, Divider } from '@shoutem/ui';
 import { TransactionPage, NotificationPage } from "../component/Profile";
 
 
