@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 
 // react-native libraries
-import { Dimensions, TouchableOpacity, View, Text, ScrollView } from 'react-native';
+import { Dimensions, TouchableOpacity, View, Text, ScrollView, Platform } from 'react-native';
 
 // third-party libraries
-import { Title, Row, ListView, ImageBackground, Caption, Tile, Subtitle, Divider } from '@shoutem/ui';
+import { Title, Row, ListView, ImageBackground, Caption, Tile, Subtitle, Divider, Image, Spinner } from '@shoutem/ui';
 import { Button, Icon } from 'react-native-elements'
 import Toast from "react-native-simple-toast";
 import * as axios from "axios/index";
@@ -36,6 +36,11 @@ class NotificationPage extends Component {
     })
   }
 
+  /**
+   * onRefresh
+   *
+   * Fetches the latest notifications
+   */
   onRefresh = () => {
     this.setState({
       loading: true
@@ -49,7 +54,6 @@ class NotificationPage extends Component {
         this.setState({
           notification: response.data.data,
           notificationsArray: response.data.data.notifications,
-          loading: false
         }, () => this.stopSpinner())
       })
       .catch((error) => {
@@ -58,11 +62,15 @@ class NotificationPage extends Component {
       });
   };
 
+  /**
+   * stopSpinner
+   *
+   * stops the onRefresh Spinner by updating state
+   */
   stopSpinner = () => {
-    console.log('called spinnrt');
-    if(this.state.loading === false) {
-      return false
-    }
+    this.setState({
+      loading: false
+    })
   };
 
   /**
@@ -73,8 +81,12 @@ class NotificationPage extends Component {
    */
   renderHeader = () => {
     return (
-      <View>
-        <Caption style={{ textAlign: 'center'}}>Drag</Caption>
+      <View style={{ backgroundColor: 'white' }}>
+        <Icon
+          name="chevron-down"
+          type="entypo"
+          color={ "#b3b4b4" }
+        />
       </View>
     )
   };
@@ -86,15 +98,16 @@ class NotificationPage extends Component {
    * @return {*}
    */
   renderFooter = () => {
-    return this.state.notification.next_url !== null
-
-    ?
-      <View>
-        <Caption style={{ textAlign: 'center'}}>Loading...</Caption>
+    let { height, width } = Dimensions.get('window');
+    return (
+      <View style={{ backgroundColor: 'white', height: height / 10 }}>
+        {
+          this.state.notification.next_url !== null
+          ? <Spinner style={{  marginTop: height / 30 }} />
+          : <Caption style={{ textAlign: 'center', marginTop: height / 30 }}>End</Caption>
+        }
       </View>
-    : <View>
-        <Caption style={{ textAlign: 'center'}}>End</Caption>
-      </View>
+    )
   };
 
   /**
@@ -136,13 +149,19 @@ class NotificationPage extends Component {
   renderRow = (notificationsArray) => {
     return (
       <View>
-        <Tile>
-          <Subtitle styleName="md-gutter-bottom">{notificationsArray.message}</Subtitle>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Caption styleName="sm-gutter-horizontal">{notificationsArray.created_at.substring(0, 10)}</Caption>
-            <Caption styleName="sm-gutter-horizontal">{notificationsArray.created_at.substring(11, 16)}</Caption>
+        <Row>
+          <Image
+            styleName="small rounded-corners"
+            source={{ uri: 'https://avatars0.githubusercontent.com/u/36486485?s=400&u=4d46599fa96042ef9a1aab19acabd1ca978fc955&v=4' }}
+          />
+          <View styleName="vertical stretch space-between">
+            <Subtitle>{notificationsArray.message}</Subtitle>
+            <View style={{ flexDirection: 'row'}}>
+              <Caption style={{ alignItems: 'flex-start'}} styleName="sm-gutter-horizontal">{notificationsArray.created_at.substring(0, 10)}</Caption>
+              <Caption style={{ alignItems: 'center'}} styleName="sm-gutter-horizontal">{notificationsArray.created_at.substring(11, 16)}</Caption>
+            </View>
           </View>
-        </Tile>
+        </Row>
         <Divider styleName="line" />
       </View>
     );
@@ -155,14 +174,14 @@ class NotificationPage extends Component {
     const notificationsArray = this.state.notificationsArray;
 
     return (
-      <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 20, width: width, height: '60%'}}>
+      <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 20, height: '70%', width: width / 1.09}}>
         <ListView
           data={notificationsArray}
           renderRow={this.renderRow}
           onLoadMore={this.onLoadMore}
           renderFooter={this.renderFooter}
           renderHeader={this.renderHeader}
-          autoHideHeader={true}
+          // autoHideHeader={true}
           onRefresh={this.onRefresh}
           loading={this.state.loading}
         />

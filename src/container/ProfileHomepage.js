@@ -298,7 +298,7 @@ class ProfileHomepage extends React.Component {
       <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" style={{ height: (Platform.OS === 'ios') ? 60 : 0 }} />
         <View>
-          <View style={{ height: height / 2.5, backgroundColor: '#004a80', marginTop: (Platform.OS === 'ios') ? 20 : 0 }}>
+          <View style={{ height: height / 3, backgroundColor: '#004a80', marginTop: (Platform.OS === 'ios') ? 20 : 0 }}>
             <ImageBackground
               styleName="large"
               source={{uri: `${this.state.user.image_url}`, cache: 'force-cache'}}
