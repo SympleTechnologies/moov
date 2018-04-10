@@ -31,7 +31,7 @@ class NotificationPage extends Component {
     this.setState({
       notification: this.props.notification,
       notificationsArray: this.props.notification.notifications,
-      userToken: this.props.userToken;
+      userToken: this.props.userToken
     })
   }
 
