@@ -5,23 +5,14 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/moov.iml" filepath="$PROJECT_DIR$/moov.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fbsdk/android/react-native-fbsdk.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fbsdk/android/react-native-fbsdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fbsdk/android/react-native-fbsdk~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fbsdk/android/react-native-fbsdk~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-fetch-blob/android/react-native-fetch-blob~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-places/android/react-native-google-places.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-places/android/react-native-google-places.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-places/android/react-native-google-places~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-places/android/react-native-google-places~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-signin/android/react-native-google-signin.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-signin/android/react-native-google-signin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-signin/android/react-native-google-signin~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-signin/android/react-native-google-signin~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-image-picker/android/react-native-image-picker~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-paystack/android/react-native-paystack.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-paystack/android/react-native-paystack.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-paystack/android/react-native-paystack~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-paystack/android/react-native-paystack~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-photo-view/android/react-native-photo-view.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-photo-view/android/react-native-photo-view.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-photo-view/android/react-native-photo-view~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-photo-view/android/react-native-photo-view~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons~1.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons~1.iml" />
     </modules>
   </component>
 </project>
