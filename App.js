@@ -11,30 +11,30 @@ import { LandingPage, SignUpPage, SignInPage, MoovPages } from './src/screen';
 import { NumberFormPage } from './src/component';
 
 export default MainStack = StackNavigator({
-  LandingPage: {
-  	screen: LandingPage,
-  	navigationOptions: {
-  		header: null,
-  	}
-  },
-  SignUpPage: {
-  	screen: SignUpPage,
-  	navigationOptions: {
-  		header: null,
-  	}
-  },
-  SignInPage: {
-    screen: SignInPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  NumberFormPage: {
-    screen: NumberFormPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
+  // LandingPage: {
+  // 	screen: LandingPage,
+  // 	navigationOptions: {
+  // 		header: null,
+  // 	}
+  // },
+  // SignUpPage: {
+  // 	screen: SignUpPage,
+  // 	navigationOptions: {
+  // 		header: null,
+  // 	}
+  // },
+  // SignInPage: {
+  //   screen: SignInPage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
+  // NumberFormPage: {
+  //   screen: NumberFormPage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
   MoovPages: {
     screen: MoovPages,
     navigationOptions: {
