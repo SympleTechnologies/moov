@@ -23,6 +23,8 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
 import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
+import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 
 // component
 import { GooglePlacesInput } from "../component";
@@ -31,10 +33,12 @@ class MoovHomepage extends React.Component {
   state= {
     userToken: '',
 
+    myLocationAddress: '',
     myLocationLatitude: null,
     myLocationLongitude: null,
     myLocationName: '',
 
+    myDestinationAddress: '',
     myDestinationLatitude: null,
     myDestinationLongitude: null,
     myDestinationName: '',
@@ -147,6 +151,7 @@ class MoovHomepage extends React.Component {
           myLocationLatitude: place.latitude,
           myLocationLongitude: place.longitude,
           myLocationName: place.name,
+          myLocationAddress: place.address,
           error: null,
         }, () => this.calculatePrice());
         // place represents user's selection from the
@@ -175,6 +180,7 @@ class MoovHomepage extends React.Component {
             myDestinationLatitude: place.latitude,
             myDestinationLongitude: place.longitude,
             myDestinationName: place.name,
+            myDestinationAddress: place.address,
           }, () => this.calculatePrice());
         }
         // place represents user's selection from the
@@ -243,7 +249,7 @@ class MoovHomepage extends React.Component {
     if (unit === "K") { dist = dist * 1.609344 }
     if (unit === "N") { dist = dist * 0.8684 }
 
-    return dist * 500
+    return dist * 250
   };
 
 
@@ -291,13 +297,14 @@ class MoovHomepage extends React.Component {
   getUserLocationUsingRN = () => {
     RNGooglePlaces.getCurrentPlace()
       .then((results) => {
-        console.log(results.length - (results.length - 1))
+        console.log(results, 'Hello world');
         console.log(results[results.length - (results.length - 1)])
 
         this.setState({
           myLocationLatitude: results[results.length - (results.length - 1)].latitude,
           myLocationLongitude: results[results.length - (results.length - 1)].longitude,
           myLocationName: results[results.length - (results.length - 1)].name,
+          myLocationAddress: results[results.length - (results.length - 1)].address,
           error: null,
         });
       })
@@ -434,7 +441,20 @@ class MoovHomepage extends React.Component {
   render() {
     console.log(this.state);
 
-    const { container, activityIndicator, buttonTextStyle } = styles;
+    const { region } = this.props;
+    console.log(region);
+
+    const { container, activityIndicator, buttonTextStyle, mapStyle, map } = styles;
+
+    let LocationMarkers;
+
+    if(this.state.myLocationName !== '') {
+      LocationMarkers = {
+        latitude: this.state.myLocationLatitude,
+        longitude: this.state.myLocationLongitude,
+      }
+    }
+
 
     let myDestination, myLocation;
     let { height, width } = Dimensions.get('window');
@@ -518,6 +538,23 @@ class MoovHomepage extends React.Component {
         <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
           <View style={{ width: width, height: '60%', backgroundColor: '#fff', }}>
             <Text>Map will be here</Text>
+            <View style ={mapStyle}>
+              <MapView
+                style={map}
+                region={{
+                  latitude: this.state.myLocationLatitude,
+                  longitude: this.state.myLocationLongitude,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              >
+                <Marker
+                  coordinate={LocationMarkers}
+                  title={`${this.state.myLocationName}`}
+                  description={`${this.state.myLocationAddress}`}
+                />
+              </MapView>
+            </View>
           </View>
           <View style={{ width: width, height: '40%', backgroundColor: '#fff', flexDirection: 'column' }}>
             <View style={{  backgroundColor: '#fff', width: width, height: '45%', }}>
@@ -709,6 +746,16 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 5,
     marginTop: 20,
+  },
+  mapStyle: {
+    ...StyleSheet.absoluteFillObject,
+    height: Dimensions.get('window').height / 2,
+    width: Dimensions.get('window').width,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 
