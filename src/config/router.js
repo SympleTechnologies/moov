@@ -168,6 +168,7 @@ export const Tabs = TabNavigator({
   // tabBarPosition: 'top',
   animationEnabled: true,
   tabBarOptions: {
+    showIcon: true,
     style: {
       backgroundColor: 'white',
       padding: 2,

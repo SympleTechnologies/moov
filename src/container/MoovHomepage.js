@@ -536,7 +536,7 @@ class MoovHomepage extends React.Component {
           />
         </View>
         <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
-          <View style={{ width: width, height: '60%', backgroundColor: '#fff', }}>
+          <View style={{ width: width, height: '58%', backgroundColor: '#fff', }}>
             <Text>Map will be here</Text>
             <View style ={mapStyle}>
               <MapView

@@ -82,7 +82,7 @@ class NotificationPage extends Component {
     return (
       <View style={{ backgroundColor: 'white' }}>
         <Icon
-          name="chevron-down"
+          name="chevron-up"
           type="entypo"
           color={ "#b3b4b4" }
         />
