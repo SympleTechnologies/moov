@@ -21,10 +21,14 @@ import { Heading, Subtitle, Icon } from '@shoutem/ui';
 import PhoneInput from "react-native-phone-input";
 import * as axios from 'axios';
 import Toast from 'react-native-simple-toast';
+import FBSDK from 'react-native-fbsdk';
 
 // common
 import { ButtonComponent, StatusBarComponent} from "../common";
-import firebase from "firebase";
+
+const {
+  ShareDialog,
+} = FBSDK;
 
 class NumberFormPage extends React.Component {
 
@@ -44,7 +48,13 @@ class NumberFormPage extends React.Component {
 
     loading: false,
 
-    userCreated: false,
+    userCreated: true,
+
+    shareLinkContent: {
+      contentType: 'link',
+      contentUrl: "https://symple.tech",
+      contentDescription: 'Wow, check out this great site!',
+    }
   };
 
   /**
@@ -64,6 +74,34 @@ class NumberFormPage extends React.Component {
       userAuthID: this.props.navigation.state.params.userAuthID,
       authentication_type: this.props.navigation.state.params.authentication_type,
     })
+  }
+
+  /**
+   * shareLinkWithShareDialog
+   *
+   * Share the link using the share dialog.
+   */
+  shareLinkWithShareDialog = () => {
+    let tmp = this;
+    ShareDialog.canShow(this.state.shareLinkContent).then(
+      (canShow) => {
+        if (canShow) {
+          return ShareDialog.show(this.state.shareLinkContent);
+        }
+      }
+    ).then(
+      (result) => {
+        if (result.isCancelled) {
+          alert('Share cancelled');
+        } else {
+          alert('Share success with postId: '
+            + result.postId);
+        }
+      },
+      (error) => {
+        alert('Share fail with error: ' + error);
+      }
+    );
   }
 
   /**
