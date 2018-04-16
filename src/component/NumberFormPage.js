@@ -3,8 +3,17 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ActivityIndicator, ImageBackground,
-  AsyncStorage
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  ActivityIndicator,
+  ImageBackground,
+  AsyncStorage,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 
 // third-party libraries
@@ -250,36 +259,41 @@ class NumberFormPage extends React.Component {
     }
 
     return (
-      <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-        <View style={{ height: height / 10}}>
-          <Heading>Some more details.</Heading>
-        </View>
-        <Image
-          style={progressBar}
-          source={require('../../assets/formB.png')}
-        />
-        <View>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={container}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <View style={{ height: height / 10}}>
+            <Heading>Some more details.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formB.png')}
+          />
           <View>
-            <View style={{ height: height / 15, alignItems: 'center'}}>
-              <Subtitle>Enter your phone number:</Subtitle>
-            </View>
-            <View style={{ height: height / 5, width: width / 1.5}}>
-              <View style={stageTwoStyle}>
-                <PhoneInput
-                  ref={ref => {
-                    this.phone = ref;
-                  }}
-                  autoFocus
-                />
+            <View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <Subtitle>Enter your phone number:</Subtitle>
               </View>
+              <View style={{ height: height / 5, width: width / 1.5}}>
+                <View style={stageTwoStyle}>
+                  <PhoneInput
+                    ref={ref => {
+                      this.phone = ref;
+                    }}
+                    initialCountry='ng'
+                    autoFocus
+                    allowZeroAfterCountryCode
+                    textProps={{ placeholder: 'Telephone number' }}
+                  />
+                </View>
+              </View>
+              <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
+                <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
-              <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
-            </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
