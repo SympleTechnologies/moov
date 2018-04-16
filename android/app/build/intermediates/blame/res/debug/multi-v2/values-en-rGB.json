@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.1.aar/85de2bcd3081c20549c748e55a0b5c4c/res/values-en-rGB/values.xml",

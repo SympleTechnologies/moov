@@ -3,8 +3,17 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, ActivityIndicator, ImageBackground,
-  AsyncStorage
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  ActivityIndicator,
+  ImageBackground,
+  AsyncStorage,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 
 // third-party libraries
@@ -12,10 +21,14 @@ import { Heading, Subtitle, Icon } from '@shoutem/ui';
 import PhoneInput from "react-native-phone-input";
 import * as axios from 'axios';
 import Toast from 'react-native-simple-toast';
+import FBSDK from 'react-native-fbsdk';
 
 // common
 import { ButtonComponent, StatusBarComponent} from "../common";
-import firebase from "firebase";
+
+const {
+  ShareDialog,
+} = FBSDK;
 
 class NumberFormPage extends React.Component {
 
@@ -35,7 +48,13 @@ class NumberFormPage extends React.Component {
 
     loading: false,
 
-    userCreated: false,
+    userCreated: true,
+
+    shareLinkContent: {
+      contentType: 'link',
+      contentUrl: "https://symple.tech",
+      contentDescription: 'Wow, check out this great site!',
+    }
   };
 
   /**
@@ -55,6 +74,34 @@ class NumberFormPage extends React.Component {
       userAuthID: this.props.navigation.state.params.userAuthID,
       authentication_type: this.props.navigation.state.params.authentication_type,
     })
+  }
+
+  /**
+   * shareLinkWithShareDialog
+   *
+   * Share the link using the share dialog.
+   */
+  shareLinkWithShareDialog = () => {
+    let tmp = this;
+    ShareDialog.canShow(this.state.shareLinkContent).then(
+      (canShow) => {
+        if (canShow) {
+          return ShareDialog.show(this.state.shareLinkContent);
+        }
+      }
+    ).then(
+      (result) => {
+        if (result.isCancelled) {
+          alert('Share cancelled');
+        } else {
+          alert('Share success with postId: '
+            + result.postId);
+        }
+      },
+      (error) => {
+        alert('Share fail with error: ' + error);
+      }
+    );
   }
 
   /**
@@ -250,36 +297,41 @@ class NumberFormPage extends React.Component {
     }
 
     return (
-      <View style={container}>
-        <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-        <View style={{ height: height / 10}}>
-          <Heading>Some more details.</Heading>
-        </View>
-        <Image
-          style={progressBar}
-          source={require('../../assets/formB.png')}
-        />
-        <View>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={container}>
+          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+          <View style={{ height: height / 10}}>
+            <Heading>Some more details.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formB.png')}
+          />
           <View>
-            <View style={{ height: height / 15, alignItems: 'center'}}>
-              <Subtitle>Enter your phone number:</Subtitle>
-            </View>
-            <View style={{ height: height / 5, width: width / 1.5}}>
-              <View style={stageTwoStyle}>
-                <PhoneInput
-                  ref={ref => {
-                    this.phone = ref;
-                  }}
-                  autoFocus
-                />
+            <View>
+              <View style={{ height: height / 15, alignItems: 'center'}}>
+                <Subtitle>Enter your phone number:</Subtitle>
               </View>
+              <View style={{ height: height / 5, width: width / 1.5}}>
+                <View style={stageTwoStyle}>
+                  <PhoneInput
+                    ref={ref => {
+                      this.phone = ref;
+                    }}
+                    initialCountry='ng'
+                    autoFocus
+                    allowZeroAfterCountryCode
+                    textProps={{ placeholder: 'Telephone number' }}
+                  />
+                </View>
+              </View>
+              <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
+                <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.updateInfo}>
-              <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>Next</Text>
-            </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
