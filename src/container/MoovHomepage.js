@@ -446,12 +446,19 @@ class MoovHomepage extends React.Component {
 
     const { container, activityIndicator, buttonTextStyle, mapStyle, map } = styles;
 
-    let LocationMarkers;
+    let LocationMarkers, DestinationMarker;
 
     if(this.state.myLocationName !== '') {
       LocationMarkers = {
         latitude: this.state.myLocationLatitude,
         longitude: this.state.myLocationLongitude,
+      }
+    }
+
+    if(this.state.myDestinationName !== '') {
+      DestinationMarker = {
+        latitude: this.state.myDestinationLatitude,
+        longitude: this.state.myDestinationLongitude,
       }
     }
 
@@ -507,19 +514,19 @@ class MoovHomepage extends React.Component {
           <NavigationBar
 
             leftComponent={
-              <Title
-                onPress={() => this.openSearchModalForMyLocation()}
-              >
-                FROM
-              </Title>
+              <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
+                <Title>
+                  FROM
+                </Title>
+              </TouchableOpacity>
             }
 
             centerComponent={
-              <Title
-                onPress={() => this.openSearchModalForMyDestination()}
-              >
-                TO
-              </Title>
+              <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
+                <Title>
+                  TO
+                </Title>
+              </TouchableOpacity>
             }
 
             rightComponent={
@@ -553,6 +560,25 @@ class MoovHomepage extends React.Component {
                   title={`${this.state.myLocationName}`}
                   description={`${this.state.myLocationAddress}`}
                 />
+
+                {
+                  (this.state.myDestinationName !== '')
+                  ? <Marker
+                      coordinate={DestinationMarker}
+                      title={`${this.state.myDestinationName}`}
+                      description={`${this.state.myDestinationAddress}`}
+                    />
+                  : <View/>
+                }
+
+                {
+                  (this.state.myDestinationName !== '')
+                  ? <MapView.Polyline
+                      coordinates={[LocationMarkers, DestinationMarker]}
+                      strokeWidth={2}
+                      strokeColor="blue"/>
+                  : <View/>
+                }
               </MapView>
             </View>
           </View>
@@ -565,7 +591,7 @@ class MoovHomepage extends React.Component {
                   fontSize: 15,
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 5,
-                  marginTop: 20,
+                  marginTop: Platform.OS === 'android' ? 10 :0,
                 }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
               >
                 Wallet: ₦ {this.state.user.wallet_amount}
@@ -616,8 +642,8 @@ class MoovHomepage extends React.Component {
                   : <Text/>
               }
             </View>
-            <View style={{  backgroundColor: '#fff', width: width , height: '25%',}}>
-              <TouchableOpacity style={{ alignItems: 'center'}}>
+            <View style={{  backgroundColor: '#fff', width: width , height: '25%', alignItems: 'center'}}>
+              <TouchableOpacity style={{ marginTop: 5 }}>
                 <Button
                   title='CONTINUE'
                   buttonStyle={{
