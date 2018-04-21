@@ -48,7 +48,7 @@ class NumberFormPage extends React.Component {
 
     loading: false,
 
-    userCreated: true,
+    userCreated: false,
 
     shareLinkContent: {
       contentType: 'link',
@@ -214,8 +214,10 @@ class NumberFormPage extends React.Component {
    * @param userDetails
    */
   saveUserToLocalStorage = (userDetails) => {
+    const { navigate } = this.props.navigation;
+    AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
     AsyncStorage.setItem("token", userDetails.token).then(() => {
-      AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
+      this.appNavigation();
     });
   };
 
@@ -258,54 +260,54 @@ class NumberFormPage extends React.Component {
       );
     }
 
-    if(this.state.userCreated) {
-      return (
-        <View style={container}>
-          <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
-          <View style={{ height: height / 20}}>
-            <Heading>One click away.</Heading>
-          </View>
-          <Image
-            style={progressBar}
-            source={require('../../assets/formC.png')}
-          />
-          <View>
-            <View>
-              <View style={{ height: height / 15, alignItems: 'center'}}>
-              </View>
-              <View style={{ height: height / 5, width: width / 1.5}}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Icon name="share-android" />
-                  <Text style={{ fontSize: 20 }}>For a free ride</Text>
-                  <TouchableOpacity>
-                    <Icon style={{ color: '#1ea1f2'}} name="tweet" />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={this.shareLinkWithShareDialog}>
-                    <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <View style={{ height: height / 15, alignItems: 'center'}}>
-                <TouchableOpacity onPress={this.appNavigation}>
-                  <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
-      )
-    }
+    // if(this.state.userCreated) {
+    //   return (
+    //     <View style={container}>
+    //       <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+    //       <View style={{ height: height / 20}}>
+    //         <Heading>One click away.</Heading>
+    //       </View>
+    //       <Image
+    //         style={progressBar}
+    //         source={require('../../assets/formC.png')}
+    //       />
+    //       <View>
+    //         <View>
+    //           <View style={{ height: height / 15, alignItems: 'center'}}>
+    //           </View>
+    //           <View style={{ height: height / 5, width: width / 1.5}}>
+    //             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+    //               <Icon name="share-android" />
+    //               <Text style={{ fontSize: 20 }}>For a free ride</Text>
+    //               <TouchableOpacity>
+    //                 <Icon style={{ color: '#1ea1f2'}} name="tweet" />
+    //               </TouchableOpacity>
+    //               <TouchableOpacity onPress={this.shareLinkWithShareDialog}>
+    //                 <Icon style={{ color: '#4266b2'}} name="facebook" color='blue'/>
+    //               </TouchableOpacity>
+    //             </View>
+    //           </View>
+    //           <View style={{ height: height / 15, alignItems: 'center'}}>
+    //             <TouchableOpacity onPress={this.appNavigation}>
+    //               <Text style={[landingPageBodyText, signInStyle, TextShadowStyle]} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>No Thanks</Text>
+    //             </TouchableOpacity>
+    //           </View>
+    //         </View>
+    //       </View>
+    //     </View>
+    //   )
+    // }
 
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={container}>
           <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
           <View style={{ height: height / 10}}>
-            <Heading>Some more details.</Heading>
+            <Heading>One click away.</Heading>
           </View>
           <Image
             style={progressBar}
-            source={require('../../assets/formB.png')}
+            source={require('../../assets/formC.png')}
           />
           <View>
             <View>
@@ -372,7 +374,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
     backgroundColor: 'white',
-    // textDecorationLine: 'underline',
   },
   TextShadowStyle:
     {

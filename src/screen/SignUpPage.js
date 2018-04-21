@@ -8,6 +8,8 @@ import {
   Dimensions,
   Image,
   ActivityIndicator,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 
 // third-part library
@@ -51,7 +53,15 @@ class SignUpPage extends React.Component {
    */
   appNavigation = () => {
     const { navigate } = this.props.navigation;
-    navigate('NumberFormPage', {
+    // navigate('NumberFormPage', {
+    //   firstName: this.state.firstName,
+    //   lastName: this.state.lastName,
+    //   email: this.state.email,
+    //   password: this.state.password,
+    //   imgURL: '',
+    //   authentication_type: "email",
+    // });
+    navigate('SelectSchool', {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -135,31 +145,33 @@ class SignUpPage extends React.Component {
     }
 
     return (
-      <View style={container}>
-        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-        <View style={{ height: height / 10}}>
-          <Heading>Get MOOVING.</Heading>
-        </View>
-        <Image
-          style={progressBar}
-          source={require('../../assets/formA.png')}
-        />
-        <View>
-          <SignUpForm
-            firstNameValue={this.state.firstName}
-            lastNameValue={this.state.lastName}
-            emailValue={this.state.email}
-            passwordValue={this.state.password}
-            confirmPasswordValue={this.state.confirmPassword}
-            onChangeFirstNameText={firstName => this.setState({ firstName })}
-            onChangeLastNameText={lastName => this.setState({ lastName })}
-            onChangeEmailText={email => this.setState({ email })}
-            onChangePasswordText={password => this.setState({ password })}
-            onChangeConfirmPasswordText={confirmPassword => this.setState({ confirmPassword })}
-            onSubmit={() => this.nextRegistrationForm()}
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={container}>
+          <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+          <View style={{ height: height / 10}}>
+            <Heading>Get MOOVING.</Heading>
+          </View>
+          <Image
+            style={progressBar}
+            source={require('../../assets/formA.png')}
           />
+          <View>
+            <SignUpForm
+              firstNameValue={this.state.firstName}
+              lastNameValue={this.state.lastName}
+              emailValue={this.state.email}
+              passwordValue={this.state.password}
+              confirmPasswordValue={this.state.confirmPassword}
+              onChangeFirstNameText={firstName => this.setState({ firstName })}
+              onChangeLastNameText={lastName => this.setState({ lastName })}
+              onChangeEmailText={email => this.setState({ email })}
+              onChangePasswordText={password => this.setState({ password })}
+              onChangeConfirmPasswordText={confirmPassword => this.setState({ confirmPassword })}
+              onSubmit={() => this.nextRegistrationForm()}
+            />
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
