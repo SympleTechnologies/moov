@@ -297,7 +297,7 @@ class SignInPage extends React.Component {
     }
 
     if (page === 'number') {
-      navigate('NumberFormPage', {
+      navigate('SelectSchool', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,

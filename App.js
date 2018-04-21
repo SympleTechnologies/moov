@@ -8,7 +8,7 @@ import { StackNavigator } from 'react-navigation';
 import { LandingPage, SignUpPage, SignInPage, MoovPages } from './src/screen';
 
 // component
-import { NumberFormPage } from './src/component';
+import { NumberFormPage, SelectSchool } from './src/component';
 
 export default MainStack = StackNavigator({
   LandingPage: {
@@ -31,6 +31,12 @@ export default MainStack = StackNavigator({
   },
   NumberFormPage: {
     screen: NumberFormPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  SelectSchool: {
+    screen: SelectSchool,
     navigationOptions: {
       header: null,
     }
