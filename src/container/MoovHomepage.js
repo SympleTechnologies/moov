@@ -43,14 +43,16 @@ class MoovHomepage extends React.Component {
     myDestinationLongitude: null,
     myDestinationName: '',
 
-    price: '',
+    price: 0,
 
     requestSlot: 1,
 
-    user: [],
+    user: {
+      wallet_amount: 0
+    },
 
     filters: [
-      { name: 'slot(s)', value: '0' },
+      { name: 'SLOT(S)', value: '0' },
       { name: '1', value: '1' },
       { name: '2', value: '2' },
       { name: '3', value: '3' },
@@ -61,6 +63,11 @@ class MoovHomepage extends React.Component {
     ],
 
     selectedSlot: false,
+
+    fetchingRide: false,
+
+    driverDetails: '',
+    driverDistance: null,
 
   };
 
@@ -108,6 +115,11 @@ class MoovHomepage extends React.Component {
     }
   };
 
+  /**
+   * handleTabFocus
+   *
+   * handles on click of the MOOV tab
+   */
   handleTabFocus = () => {
     console.log('Focused here')
     AsyncStorage.getItem("user").then((value) => {
@@ -294,6 +306,11 @@ class MoovHomepage extends React.Component {
     this.watchLocation();
   };
 
+  /**
+   * getUserLocationUsingRN
+   *
+   * gets user location and sets the state
+   */
   getUserLocationUsingRN = () => {
     RNGooglePlaces.getCurrentPlace()
       .then((results) => {
@@ -391,8 +408,77 @@ class MoovHomepage extends React.Component {
   };
 
   getDriver = () => {
-    // this.setState({ showModal: !this.state.showModal })
-    Toast.showWithGravity(`Fetching your ride`, Toast.LONG, Toast.TOP)
+    this.setState({ fetchingRide: !this.state.fetchingRide });
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver?user_location=${this.state.myLocationLatitude},${this.state.myLocationLatitude}&&user_destination=${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}&&slots=${this.state.requestSlot}&&fare_charge=${this.state.price}`)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     this.setState({
+    //       driverDetails: response.data.data.driver,
+    //     });
+    //     this.setState({ fetchingRide: !this.state.fetchingRide });
+    //     Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
+    //     this.getDistanceFromDriver();
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ fetchingRide: !this.state.fetchingRide });
+    //     console.log(error.response);
+    //     Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+    //   });
+
+
+    axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          driverDetails: response.data.data.driver,
+        });
+        this.setState({ fetchingRide: !this.state.fetchingRide });
+        Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
+        this.getDistanceFromDriver();
+      })
+      .catch((error) => {
+        this.setState({ fetchingRide: !this.state.fetchingRide });
+        console.log(error.response);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+  };
+
+  /**
+   * getDistanceFromDriver
+   *
+   * gets distance between driver and user
+   * @return {*}
+   */
+  getDistanceFromDriver = () => {
+    axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${Number(this.state.driverDetails.location_latitude)},${Number(this.state.driverDetails.location_longitude)}&destinations=${(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&key=AIzaSyAJvj05CARolm9AeGjbCaj8N0Jord3j0pc`)
+      .then((response) => {
+        this.getDriverDistanceAndTime(response.data.rows);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  /**
+   * getDriverDistanceAndTime
+   *
+   * gets driver's distance and time
+   * @param {object} row - contains driver distance and time difference
+   * @return {*}
+   */
+  getDriverDistanceAndTime = (row) => {
+    let length = 0;
+    Object.keys(row).forEach((key) => {
+      console.log(key, row[key]["elements"]);
+      console.log(key, row[key]["elements"][key]);
+      console.log(key, row[key]["elements"][key].distance);
+      console.log(key, row[key]["elements"][key].distance.text);
+      console.log(key, row[key]["elements"][key].duration);
+      console.log(key, row[key]["elements"][key].duration.text);
+    });
   };
 
   /**
@@ -438,11 +524,19 @@ class MoovHomepage extends React.Component {
     }
   };
 
+  /**
+   * cancelRequest
+   *
+   * cancel user request
+   */
+  cancelRequest = () => {
+    Toast.showWithGravity(`Your request has been cancelled`, Toast.LONG, Toast.TOP);
+  };
+
   render() {
-    console.log(this.state);
+    console.log(this.state.driverDetails === '', 'hrtr');
 
     const { region } = this.props;
-    console.log(region);
 
     const { container, activityIndicator, buttonTextStyle, mapStyle, map } = styles;
 
@@ -516,7 +610,7 @@ class MoovHomepage extends React.Component {
             leftComponent={
               <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
                 <Title>
-                  FROM
+                  PICK UP
                 </Title>
               </TouchableOpacity>
             }
@@ -524,7 +618,7 @@ class MoovHomepage extends React.Component {
             centerComponent={
               <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
                 <Title>
-                  TO
+                  DROP OFF
                 </Title>
               </TouchableOpacity>
             }
@@ -536,7 +630,7 @@ class MoovHomepage extends React.Component {
                 onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
                 titleProperty="name"
                 valueProperty="value"
-                visibleOptions={5}
+                visibleOptions={10}
                 vertical
               />
             }
@@ -544,7 +638,6 @@ class MoovHomepage extends React.Component {
         </View>
         <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
           <View style={{ width: width, height: '58%', backgroundColor: '#fff', }}>
-            <Text>Map will be here</Text>
             <View style ={mapStyle}>
               <MapView
                 style={map}
@@ -609,7 +702,7 @@ class MoovHomepage extends React.Component {
                         marginTop: 20,
                       }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
                     >
-                      From {this.state.myLocationName} To {this.state.myDestinationName}
+                      FROM {this.state.myLocationName} TO {this.state.myDestinationName}
                     </Caption>
                     {
                       (this.state.user.wallet_amount >= this.state.price)
@@ -639,25 +732,46 @@ class MoovHomepage extends React.Component {
                         </Caption>
                     }
                   </View>
-                  : <Text/>
+                  : <View><Caption
+                    style={{ color: '#333',
+                      textAlign: 'center',
+                      backgroundColor: 'white',
+                      fontSize: 15,
+                      textShadowOffset: { width: 1, height: 1 },
+                      textShadowRadius: 5,
+                      marginTop: 20,
+                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                  >
+                    PICK UP: {this.state.myLocationName}
+                  </Caption></View>
               }
             </View>
             <View style={{  backgroundColor: '#fff', width: width , height: '25%', alignItems: 'center'}}>
-              <TouchableOpacity style={{ marginTop: 5 }}>
-                <Button
-                  title='CONTINUE'
-                  buttonStyle={{
-                    backgroundColor: "rgba(92, 99,216, 1)",
-                    width: 300,
-                    height: 45,
-                    borderColor: "transparent",
-                    borderWidth: 0,
-                    borderRadius: 5
-                  }}
-                  onPress={this.submitRequest}
-                  containerStyle={{ marginTop: 20 }}
-                />
-              </TouchableOpacity>
+              {
+                (this.state.fetchingRide)
+                ? <View style={{ flexDirection: 'row', marginTop: 20}}>
+                    <ActivityIndicator
+                      color = '#004a80'
+                      size = "large"
+                      style={activityIndicator}
+                    />
+                  </View>
+                : <TouchableOpacity style={{ marginTop: 5 }}>
+                    <Button
+                      title={this.state.driverDetails === '' ? 'CONTINUE' : 'CANCEL'}
+                      buttonStyle={{
+                        backgroundColor: this.state.driverDetails === '' ? "rgba(92, 99,216, 1)" : 'red',
+                        width: 300,
+                        height: 45,
+                        borderColor: "transparent",
+                        borderWidth: 0,
+                        borderRadius: 5
+                      }}
+                      onPress={this.state.driverDetails === '' ? this.submitRequest : this.cancelRequest}
+                      containerStyle={{ marginTop: 20 }}
+                    />
+                  </TouchableOpacity>
+              }
             </View>
           </View>
         </View>

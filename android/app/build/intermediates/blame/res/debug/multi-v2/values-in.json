@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/chineduofor/Documents/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-in/values-in.xml",
+            "outputFile": "/Users/chineduofor/Desktop/moov/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-in/values-in.xml",
             "map": [
                 {
                     "source": "/Users/chineduofor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/01a76b2accb667b6109151970a030f2c/res/values-in/values-in.xml",
