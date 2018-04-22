@@ -38,8 +38,11 @@ class LandingPage extends React.Component {
   componentDidMount() {
     const { navigate } = this.props.navigation;
     this.spring();
-    AsyncStorage.removeItem("user");
-    AsyncStorage.removeItem("token")
+    AsyncStorage.getItem("user").then((value) => {
+      if(value !== null) {
+        navigate('MoovPages');
+      }
+    }).done();
   }
 
   /**
