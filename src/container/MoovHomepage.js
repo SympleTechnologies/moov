@@ -11,13 +11,14 @@ import {
   Platform,
   PermissionsAndroid,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import {StatusBarComponent} from "../common";
 
 // third-parties libraries
 import RNGooglePlaces from 'react-native-google-places';
-import { NavigationBar, Title, Icon, DropDownMenu, Subtitle, Caption, Heading } from '@shoutem/ui';
+import { NavigationBar, Title, Icon, DropDownMenu, Subtitle, Caption, Heading, Image, ImagePreview } from '@shoutem/ui';
 import Modal from 'react-native-simple-modal';
 import { Dropdown } from 'react-native-material-dropdown';
 import { Card,  PricingCard, Button, ListItem } from 'react-native-elements';
@@ -25,6 +26,8 @@ import Toast from 'react-native-simple-toast';
 import * as axios from "axios/index";
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
+import { Rating } from 'react-native-elements';
+import { Callout } from 'react-native-maps';
 
 // component
 import { GooglePlacesInput } from "../component";
@@ -66,8 +69,13 @@ class MoovHomepage extends React.Component {
 
     fetchingRide: false,
 
-    driverDetails: '',
-    driverDistance: null,
+    // driverDetails: '',
+    driverDetails: {
+      image_url: 'https://statusandphoto.weebly.com/uploads/6/0/1/5/60158603/8347592_orig.png'
+    },
+    driverDistance: '',
+    driverTimeAway: '',
+
 
   };
 
@@ -470,7 +478,6 @@ class MoovHomepage extends React.Component {
    * @return {*}
    */
   getDriverDistanceAndTime = (row) => {
-    let length = 0;
     Object.keys(row).forEach((key) => {
       console.log(key, row[key]["elements"]);
       console.log(key, row[key]["elements"][key]);
@@ -478,6 +485,10 @@ class MoovHomepage extends React.Component {
       console.log(key, row[key]["elements"][key].distance.text);
       console.log(key, row[key]["elements"][key].duration);
       console.log(key, row[key]["elements"][key].duration.text);
+      this.setState({
+        driverDistance: row[key]["elements"][key].distance.text,
+        driverTimeAway: row[key]["elements"][key].duration.text,
+      })
     });
   };
 
@@ -533,8 +544,141 @@ class MoovHomepage extends React.Component {
     Toast.showWithGravity(`Your request has been cancelled`, Toast.LONG, Toast.TOP);
   };
 
+  appTopView = () => {
+    return this.state.driverDetails === ''
+    ?
+      <View
+        style={{
+          width: width / 1.2,
+          marginBottom: width / 5,
+        }}
+      >
+        <NavigationBar
+
+          leftComponent={
+            <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
+              <Title>
+                PICK UP
+              </Title>
+            </TouchableOpacity>
+          }
+
+          centerComponent={
+            <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
+              <Title>
+                DROP OFF
+              </Title>
+            </TouchableOpacity>
+          }
+
+          rightComponent={
+            <DropDownMenu
+              options={this.state.filters}
+              selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+              onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
+              titleProperty="name"
+              valueProperty="value"
+              visibleOptions={10}
+              vertical
+            />
+          }
+        />
+      </View>
+    :
+      <View/>
+  };
+
+  appMiddleView = () => {
+    let { height, width } = Dimensions.get('window');
+      return this.state.driverDetails === ''
+        ?
+          <View>
+            <Caption
+              style={{ color: '#333',
+                textAlign: 'center',
+                backgroundColor: 'white',
+                fontSize: 15,
+                textShadowOffset: { width: 1, height: 1 },
+                textShadowRadius: 5,
+                marginTop: Platform.OS === 'android' ? 10 :0,
+              }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+            >
+              Wallet: ₦ {this.state.user.wallet_amount}
+            </Caption>
+            <View>
+              <Caption
+                style={{ color: '#333',
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  fontSize: 15,
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 5,
+                  marginTop: 20,
+                }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+              >
+                FROM {this.state.myLocationName} TO {this.state.myDestinationName}
+              </Caption>
+              {
+                (this.state.user.wallet_amount >= this.state.price)
+                  ? <Caption
+                    style={{ color: 'green',
+                      textAlign: 'center',
+                      backgroundColor: 'white',
+                      fontSize: 15,
+                      textShadowOffset: { width: 1, height: 1 },
+                      textShadowRadius: 5,
+                      marginTop: 10,
+                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                  >
+                    Price ₦ {this.state.price}
+                  </Caption>
+                  : <Caption
+                    style={{ color: 'red',
+                      textAlign: 'center',
+                      backgroundColor: 'white',
+                      fontSize: 15,
+                      textShadowOffset: { width: 1, height: 1 },
+                      textShadowRadius: 5,
+                      marginTop: 10,
+                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                  >
+                    Price ₦ {this.state.price}
+                  </Caption>
+              }
+            </View>
+          </View>
+        :
+          <View>
+            <View style={{ marginTop: Platform.OS === 'android' ? 5 :0, justifyContent: 'flex-start',
+              alignItems: 'flex-start', }}>
+              <View style={{ marginLeft: width / 45, flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Image
+                  styleName="medium-avatar"
+                  source={{ uri: `${this.state.driverDetails.image_url}`}}
+                />
+                <View style={{ marginLeft: width / 35, paddingTop: 5, flexDirection: 'column' }}>
+                  <Caption>Hi {this.state.user.firstname} {this.state.user.lastname}, my name is</Caption>
+                  <Subtitle>Solomon Evogbai</Subtitle>
+                  <Caption>and I am {this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Caption>
+                  <Caption></Caption>
+                  <Rating
+                    // showRating
+                    type="star"
+                    fractions={1}
+                    startingValue={3.6}
+                    readonly
+                    imageSize={15}
+                    style={{ paddingVertical: 10 }}
+                  />
+                  <Caption>Toyota Camry - KJA - 193AA </Caption>
+                </View>
+              </View>
+            </View>
+          </View>
+  };
+
   render() {
-    console.log(this.state.driverDetails === '', 'hrtr');
+    console.log(this.state);
 
     const { region } = this.props;
 
@@ -598,153 +742,135 @@ class MoovHomepage extends React.Component {
     return (
       <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-
-        <View
-          style={{
-            width: width / 1.2,
-            marginBottom: width / 5,
-          }}
-        >
-          <NavigationBar
-
-            leftComponent={
-              <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
-                <Title>
-                  PICK UP
-                </Title>
-              </TouchableOpacity>
-            }
-
-            centerComponent={
-              <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
-                <Title>
-                  DROP OFF
-                </Title>
-              </TouchableOpacity>
-            }
-
-            rightComponent={
-              <DropDownMenu
-                options={this.state.filters}
-                selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
-                onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
-                titleProperty="name"
-                valueProperty="value"
-                visibleOptions={10}
-                vertical
-              />
-            }
-          />
-        </View>
+        {
+          this.appTopView()
+        }
         <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
           <View style={{ width: width, height: '58%', backgroundColor: '#fff', }}>
-            <View style ={mapStyle}>
-              <MapView
-                style={map}
-                region={{
-                  latitude: this.state.myLocationLatitude,
-                  longitude: this.state.myLocationLongitude,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
-                }}
-              >
-                <Marker
-                  coordinate={LocationMarkers}
-                  title={`${this.state.myLocationName}`}
-                  description={`${this.state.myLocationAddress}`}
-                />
+            {/*<View style ={mapStyle}>*/}
+              {/*<MapView*/}
+                {/*style={map}*/}
+                {/*region={{*/}
+                  {/*latitude: this.state.myLocationLatitude,*/}
+                  {/*longitude: this.state.myLocationLongitude,*/}
+                  {/*latitudeDelta: 0.015,*/}
+                  {/*longitudeDelta: 0.0121,*/}
+                {/*}}*/}
+              {/*>*/}
+                {/*<Marker*/}
+                  {/*coordinate={LocationMarkers}*/}
+                  {/*title={`${this.state.myLocationName}`}*/}
+                  {/*description={`${this.state.myLocationAddress}`}*/}
+                {/*/>*/}
+                {/*<MapView.Callout*/}
+                  {/*// style={marker.paid ? styles.calloutPremium : styles.callout}*/}
+                  {/*// showCallout={showFacilityDetails}*/}
+                {/*>*/}
+                  {/*<TouchableHighlight*/}
+                    {/*underlayColor="ghostwhite"*/}
+                    {/*// onPress={showFacilityDetails}*/}
+                  {/*>*/}
+                    {/*<View style={{ position: 'absolute', top: 100, left: 50 }}>*/}
+                      {/*<Text >dsdsdsdsdsdsd</Text>*/}
+                      {/*<Text>jjskdhkhsds</Text>*/}
+                    {/*</View>*/}
+                  {/*</TouchableHighlight>*/}
+                {/*</MapView.Callout>*/}
 
-                {
-                  (this.state.myDestinationName !== '')
-                  ? <Marker
-                      coordinate={DestinationMarker}
-                      title={`${this.state.myDestinationName}`}
-                      description={`${this.state.myDestinationAddress}`}
-                    />
-                  : <View/>
-                }
+                {/*{*/}
+                  {/*(this.state.myDestinationName !== '')*/}
+                  {/*? <Marker*/}
+                      {/*coordinate={DestinationMarker}*/}
+                      {/*title={`${this.state.myDestinationName}`}*/}
+                      {/*description={`${this.state.myDestinationAddress}`}*/}
+                    {/*/>*/}
+                  {/*: <View/>*/}
+                {/*}*/}
 
-                {
-                  (this.state.myDestinationName !== '')
-                  ? <MapView.Polyline
-                      coordinates={[LocationMarkers, DestinationMarker]}
-                      strokeWidth={2}
-                      strokeColor="blue"/>
-                  : <View/>
-                }
-              </MapView>
+                {/*{*/}
+                  {/*(this.state.myDestinationName !== '')*/}
+                  {/*? <MapView.Polyline*/}
+                      {/*coordinates={[LocationMarkers, DestinationMarker]}*/}
+                      {/*strokeWidth={2}*/}
+                      {/*strokeColor="blue"/>*/}
+                  {/*: <View/>*/}
+                {/*}*/}
+              {/*</MapView>*/}
+            {/*</View>*/}
+            <View style={StyleSheet.absoluteFillObject}>
+              <MapView style={StyleSheet.absoluteFillObject} />
+              <View style={{ position: 'absolute', top: 100, left: 50 }}>
+                <Text>dskhkshd</Text>
+              </View>
             </View>
           </View>
           <View style={{ width: width, height: '40%', backgroundColor: '#fff', flexDirection: 'column' }}>
-            <View style={{  backgroundColor: '#fff', width: width, height: '45%', }}>
-              <Caption
-                style={{ color: '#333',
-                  textAlign: 'center',
-                  backgroundColor: 'white',
-                  fontSize: 15,
-                  textShadowOffset: { width: 1, height: 1 },
-                  textShadowRadius: 5,
-                  marginTop: Platform.OS === 'android' ? 10 :0,
-                }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-              >
-                Wallet: ₦ {this.state.user.wallet_amount}
-              </Caption>
+            <View style={{  backgroundColor: '#fff', width: width, height: this.state.driverDetails === '' ? '45%' : '80%', }}>
               {
-                (this.state.price !== '')
-                  ? <View>
-                    <Caption
-                      style={{ color: '#333',
-                        textAlign: 'center',
-                        backgroundColor: 'white',
-                        fontSize: 15,
-                        textShadowOffset: { width: 1, height: 1 },
-                        textShadowRadius: 5,
-                        marginTop: 20,
-                      }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                    >
-                      FROM {this.state.myLocationName} TO {this.state.myDestinationName}
-                    </Caption>
-                    {
-                      (this.state.user.wallet_amount >= this.state.price)
-                        ? <Caption
-                          style={{ color: 'green',
-                            textAlign: 'center',
-                            backgroundColor: 'white',
-                            fontSize: 15,
-                            textShadowOffset: { width: 1, height: 1 },
-                            textShadowRadius: 5,
-                            marginTop: 10,
-                          }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                        >
-                          Price ₦ {this.state.price}
-                        </Caption>
-                        : <Caption
-                          style={{ color: 'red',
-                            textAlign: 'center',
-                            backgroundColor: 'white',
-                            fontSize: 15,
-                            textShadowOffset: { width: 1, height: 1 },
-                            textShadowRadius: 5,
-                            marginTop: 10,
-                          }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                        >
-                          Price ₦ {this.state.price}
-                        </Caption>
-                    }
-                  </View>
-                  : <View><Caption
-                    style={{ color: '#333',
-                      textAlign: 'center',
-                      backgroundColor: 'white',
-                      fontSize: 15,
-                      textShadowOffset: { width: 1, height: 1 },
-                      textShadowRadius: 5,
-                      marginTop: 20,
-                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                  >
-                    PICK UP: {this.state.myLocationName}
-                  </Caption></View>
+                this.appMiddleView()
               }
+              {/*{*/}
+                {/*this.getDriverView()*/}
+              {/*}*/}
+              {/*{*/}
+                {/*(this.state.price !== '' && this.state.driverDetails === '')*/}
+                  {/*? <View>*/}
+                    {/*<Caption*/}
+                      {/*style={{ color: '#333',*/}
+                        {/*textAlign: 'center',*/}
+                        {/*backgroundColor: 'white',*/}
+                        {/*fontSize: 15,*/}
+                        {/*textShadowOffset: { width: 1, height: 1 },*/}
+                        {/*textShadowRadius: 5,*/}
+                        {/*marginTop: 20,*/}
+                      {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
+                    {/*>*/}
+                      {/*FROM {this.state.myLocationName} TO {this.state.myDestinationName}*/}
+                    {/*</Caption>*/}
+                    {/*{*/}
+                      {/*(this.state.user.wallet_amount >= this.state.price)*/}
+                        {/*? <Caption*/}
+                          {/*style={{ color: 'green',*/}
+                            {/*textAlign: 'center',*/}
+                            {/*backgroundColor: 'white',*/}
+                            {/*fontSize: 15,*/}
+                            {/*textShadowOffset: { width: 1, height: 1 },*/}
+                            {/*textShadowRadius: 5,*/}
+                            {/*marginTop: 10,*/}
+                          {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
+                        {/*>*/}
+                          {/*Price ₦ {this.state.price}*/}
+                        {/*</Caption>*/}
+                        {/*: <Caption*/}
+                          {/*style={{ color: 'red',*/}
+                            {/*textAlign: 'center',*/}
+                            {/*backgroundColor: 'white',*/}
+                            {/*fontSize: 15,*/}
+                            {/*textShadowOffset: { width: 1, height: 1 },*/}
+                            {/*textShadowRadius: 5,*/}
+                            {/*marginTop: 10,*/}
+                          {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
+                        {/*>*/}
+                          {/*Price ₦ {this.state.price}*/}
+                        {/*</Caption>*/}
+                    {/*}*/}
+                  {/*</View>*/}
+                  {/*:*/}
+                  {/*<View>*/}
+                    {/*<Caption*/}
+                      {/*style={{ color: '#333',*/}
+                        {/*textAlign: 'center',*/}
+                        {/*backgroundColor: 'white',*/}
+                        {/*fontSize: 15,*/}
+                        {/*textShadowOffset: { width: 1, height: 1 },*/}
+                        {/*textShadowRadius: 5,*/}
+                        {/*marginTop: 20,*/}
+                      {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
+                    {/*>*/}
+                      {/*PICK UP: {this.state.myLocationName}*/}
+                    {/*</Caption>*/}
+                  {/*</View>*/}
+              {/*}*/}
             </View>
             <View style={{  backgroundColor: '#fff', width: width , height: '25%', alignItems: 'center'}}>
               {
@@ -760,7 +886,7 @@ class MoovHomepage extends React.Component {
                     <Button
                       title={this.state.driverDetails === '' ? 'CONTINUE' : 'CANCEL'}
                       buttonStyle={{
-                        backgroundColor: this.state.driverDetails === '' ? "rgba(92, 99,216, 1)" : 'red',
+                        backgroundColor: this.state.driverDetails === '' ? "rgba(92, 99,216, 1)" : '#820e0a',
                         width: 300,
                         height: 45,
                         borderColor: "transparent",
