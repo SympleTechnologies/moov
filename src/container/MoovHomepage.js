@@ -28,6 +28,7 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Rating } from 'react-native-elements';
 import { Callout } from 'react-native-maps';
+import LinearGradient from 'react-native-linear-gradient'
 
 // component
 import { GooglePlacesInput } from "../component";
@@ -69,10 +70,10 @@ class MoovHomepage extends React.Component {
 
     fetchingRide: false,
 
-    // driverDetails: '',
-    driverDetails: {
-      image_url: 'https://statusandphoto.weebly.com/uploads/6/0/1/5/60158603/8347592_orig.png'
-    },
+    driverDetails: '',
+    // driverDetails: {
+    //   image_url: 'https://statusandphoto.weebly.com/uploads/6/0/1/5/60158603/8347592_orig.png'
+    // },
     driverDistance: '',
     driverTimeAway: '',
 
@@ -545,47 +546,40 @@ class MoovHomepage extends React.Component {
   };
 
   appTopView = () => {
+    let { height, width } = Dimensions.get('window');
+
+    const list = [
+      {
+        title: this.state.myLocationName ? `${this.state.myLocationName}` :'',
+        icon: 'location-on',
+        type: 'materia'
+      },
+      {
+        title: this.state.myDestinationName ? `${this.state.myDestinationName}` :'',
+        icon: 'location-arrow',
+        type: 'font-awesome'
+      },
+    ];
+
     return this.state.driverDetails === ''
     ?
-      <View
-        style={{
-          width: width / 1.2,
-          marginBottom: width / 5,
-        }}
-      >
-        <NavigationBar
-
-          leftComponent={
-            <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
-              <Title>
-                PICK UP
-              </Title>
-            </TouchableOpacity>
-          }
-
-          centerComponent={
-            <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
-              <Title>
-                DROP OFF
-              </Title>
-            </TouchableOpacity>
-          }
-
-          rightComponent={
-            <DropDownMenu
-              options={this.state.filters}
-              selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
-              onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
-              titleProperty="name"
-              valueProperty="value"
-              visibleOptions={10}
-              vertical
-            />
-          }
-        />
-      </View>
-    :
       <View/>
+    :
+      <View style={{ width: width / 1.25 }}>
+        {
+          list.map((item, i) => (
+            <ListItem
+              key={i}
+              title={item.title}
+              leftIcon={{ name: item.icon, color: '#820e0a', type: item.type }}
+              containerStyle={{
+                backgroundColor: 'white',
+                marginBottom: 10
+              }}
+            />
+          ))
+        }
+      </View>
   };
 
   appMiddleView = () => {
@@ -600,7 +594,7 @@ class MoovHomepage extends React.Component {
                 fontSize: 15,
                 textShadowOffset: { width: 1, height: 1 },
                 textShadowRadius: 5,
-                marginTop: Platform.OS === 'android' ? 10 :0,
+                marginTop: Platform.OS === 'android' ? 10 : 10,
               }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
             >
               Wallet: ₦ {this.state.user.wallet_amount}
@@ -649,7 +643,7 @@ class MoovHomepage extends React.Component {
           </View>
         :
           <View>
-            <View style={{ marginTop: Platform.OS === 'android' ? 5 :0, justifyContent: 'flex-start',
+            <View style={{ marginTop: Platform.OS === 'android' ? 10 : 10, justifyContent: 'flex-start',
               alignItems: 'flex-start', }}>
               <View style={{ marginLeft: width / 45, flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Image
@@ -700,6 +694,19 @@ class MoovHomepage extends React.Component {
       }
     }
 
+    const list = [
+      {
+        title: this.state.myLocationName ? `${this.state.myLocationName}` :'',
+        icon: 'location-on',
+        type: 'materia'
+      },
+      {
+        title: this.state.myDestinationName ? `${this.state.myDestinationName}` :'',
+        icon: 'location-arrow',
+        type: 'font-awesome'
+      },
+    ];
+
 
     let myDestination, myLocation;
     let { height, width } = Dimensions.get('window');
@@ -743,64 +750,89 @@ class MoovHomepage extends React.Component {
       <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         {
-          this.appTopView()
+          this.state.driverDetails === ''
+          ?
+            <View
+              style={{
+                width: width / 1.2,
+                marginBottom: width / 5,
+              }}
+            >
+              <NavigationBar
+
+                leftComponent={
+                  <TouchableOpacity onPress={() => this.openSearchModalForMyLocation()} >
+                    <Title>
+                      PICK UP
+                    </Title>
+                  </TouchableOpacity>
+                }
+
+                centerComponent={
+                  <TouchableOpacity onPress={() => this.openSearchModalForMyDestination()}>
+                    <Title>
+                      DROP OFF
+                    </Title>
+                  </TouchableOpacity>
+                }
+
+                rightComponent={
+                  <DropDownMenu
+                    options={this.state.filters}
+                    selectedOption={this.state.selectedSlot ? this.state.selectedSlot : this.state.filters[0]}
+                    onOptionSelected={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
+                    titleProperty="name"
+                    valueProperty="value"
+                    visibleOptions={10}
+                    vertical
+                  />
+                }
+              />
+            </View>
+          : <View/>
         }
+
         <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
           <View style={{ width: width, height: '58%', backgroundColor: '#fff', }}>
-            {/*<View style ={mapStyle}>*/}
-              {/*<MapView*/}
-                {/*style={map}*/}
-                {/*region={{*/}
-                  {/*latitude: this.state.myLocationLatitude,*/}
-                  {/*longitude: this.state.myLocationLongitude,*/}
-                  {/*latitudeDelta: 0.015,*/}
-                  {/*longitudeDelta: 0.0121,*/}
-                {/*}}*/}
-              {/*>*/}
-                {/*<Marker*/}
-                  {/*coordinate={LocationMarkers}*/}
-                  {/*title={`${this.state.myLocationName}`}*/}
-                  {/*description={`${this.state.myLocationAddress}`}*/}
-                {/*/>*/}
-                {/*<MapView.Callout*/}
-                  {/*// style={marker.paid ? styles.calloutPremium : styles.callout}*/}
-                  {/*// showCallout={showFacilityDetails}*/}
-                {/*>*/}
-                  {/*<TouchableHighlight*/}
-                    {/*underlayColor="ghostwhite"*/}
-                    {/*// onPress={showFacilityDetails}*/}
-                  {/*>*/}
-                    {/*<View style={{ position: 'absolute', top: 100, left: 50 }}>*/}
-                      {/*<Text >dsdsdsdsdsdsd</Text>*/}
-                      {/*<Text>jjskdhkhsds</Text>*/}
-                    {/*</View>*/}
-                  {/*</TouchableHighlight>*/}
-                {/*</MapView.Callout>*/}
-
-                {/*{*/}
-                  {/*(this.state.myDestinationName !== '')*/}
-                  {/*? <Marker*/}
-                      {/*coordinate={DestinationMarker}*/}
-                      {/*title={`${this.state.myDestinationName}`}*/}
-                      {/*description={`${this.state.myDestinationAddress}`}*/}
-                    {/*/>*/}
-                  {/*: <View/>*/}
-                {/*}*/}
-
-                {/*{*/}
-                  {/*(this.state.myDestinationName !== '')*/}
-                  {/*? <MapView.Polyline*/}
-                      {/*coordinates={[LocationMarkers, DestinationMarker]}*/}
-                      {/*strokeWidth={2}*/}
-                      {/*strokeColor="blue"/>*/}
-                  {/*: <View/>*/}
-                {/*}*/}
-              {/*</MapView>*/}
-            {/*</View>*/}
             <View style={StyleSheet.absoluteFillObject}>
-              <MapView style={StyleSheet.absoluteFillObject} />
-              <View style={{ position: 'absolute', top: 100, left: 50 }}>
-                <Text>dskhkshd</Text>
+              <MapView
+                style={[StyleSheet.absoluteFillObject, map]}
+                region={{
+                  latitude: this.state.myLocationLatitude,
+                  longitude: this.state.myLocationLongitude,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              >
+                <Marker
+                  coordinate={LocationMarkers}
+                  title={`${this.state.myLocationName}`}
+                  description={`${this.state.myLocationAddress}`}
+                />
+
+                {
+                  (this.state.myDestinationName !== '')
+                    ? <Marker
+                      coordinate={DestinationMarker}
+                      title={`${this.state.myDestinationName}`}
+                      description={`${this.state.myDestinationAddress}`}
+                    />
+                    : <View/>
+                }
+
+                {
+                  (this.state.myDestinationName !== '')
+                    ? <MapView.Polyline
+                      coordinates={[LocationMarkers, DestinationMarker]}
+                      strokeWidth={2}
+                      strokeColor="blue"/>
+                    : <View/>
+                }
+              </MapView>
+              <View style={{ position: 'absolute', top: Platform.OS === 'android' ? 10 :30, left: 50 }}>
+                {
+                  this.appTopView()
+                }
               </View>
             </View>
           </View>
@@ -809,68 +841,6 @@ class MoovHomepage extends React.Component {
               {
                 this.appMiddleView()
               }
-              {/*{*/}
-                {/*this.getDriverView()*/}
-              {/*}*/}
-              {/*{*/}
-                {/*(this.state.price !== '' && this.state.driverDetails === '')*/}
-                  {/*? <View>*/}
-                    {/*<Caption*/}
-                      {/*style={{ color: '#333',*/}
-                        {/*textAlign: 'center',*/}
-                        {/*backgroundColor: 'white',*/}
-                        {/*fontSize: 15,*/}
-                        {/*textShadowOffset: { width: 1, height: 1 },*/}
-                        {/*textShadowRadius: 5,*/}
-                        {/*marginTop: 20,*/}
-                      {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
-                    {/*>*/}
-                      {/*FROM {this.state.myLocationName} TO {this.state.myDestinationName}*/}
-                    {/*</Caption>*/}
-                    {/*{*/}
-                      {/*(this.state.user.wallet_amount >= this.state.price)*/}
-                        {/*? <Caption*/}
-                          {/*style={{ color: 'green',*/}
-                            {/*textAlign: 'center',*/}
-                            {/*backgroundColor: 'white',*/}
-                            {/*fontSize: 15,*/}
-                            {/*textShadowOffset: { width: 1, height: 1 },*/}
-                            {/*textShadowRadius: 5,*/}
-                            {/*marginTop: 10,*/}
-                          {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
-                        {/*>*/}
-                          {/*Price ₦ {this.state.price}*/}
-                        {/*</Caption>*/}
-                        {/*: <Caption*/}
-                          {/*style={{ color: 'red',*/}
-                            {/*textAlign: 'center',*/}
-                            {/*backgroundColor: 'white',*/}
-                            {/*fontSize: 15,*/}
-                            {/*textShadowOffset: { width: 1, height: 1 },*/}
-                            {/*textShadowRadius: 5,*/}
-                            {/*marginTop: 10,*/}
-                          {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
-                        {/*>*/}
-                          {/*Price ₦ {this.state.price}*/}
-                        {/*</Caption>*/}
-                    {/*}*/}
-                  {/*</View>*/}
-                  {/*:*/}
-                  {/*<View>*/}
-                    {/*<Caption*/}
-                      {/*style={{ color: '#333',*/}
-                        {/*textAlign: 'center',*/}
-                        {/*backgroundColor: 'white',*/}
-                        {/*fontSize: 15,*/}
-                        {/*textShadowOffset: { width: 1, height: 1 },*/}
-                        {/*textShadowRadius: 5,*/}
-                        {/*marginTop: 20,*/}
-                      {/*}} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}*/}
-                    {/*>*/}
-                      {/*PICK UP: {this.state.myLocationName}*/}
-                    {/*</Caption>*/}
-                  {/*</View>*/}
-              {/*}*/}
             </View>
             <View style={{  backgroundColor: '#fff', width: width , height: '25%', alignItems: 'center'}}>
               {
@@ -903,89 +873,6 @@ class MoovHomepage extends React.Component {
         </View>
       </View>
     )
-
-    // return (
-    //   <View style={styles.container}>
-    //     <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-    //     <View style={{ backgroundColor: '#fff',height: height }}>
-    //       <Modal
-    //         modalStyle={{
-    //           borderRadius: 2,
-    //           margin: 20,
-    //           padding: 10,
-    //           backgroundColor: 'white'
-    //         }}
-    //         offset={this.state.offset}
-    //         open={this.state.showModal}
-    //         // open={true}
-    //         modalDidOpen={() => console.log('modal did open')}
-    //         modalDidClose={() => this.setState({showModal: false})}
-    //         style={{alignItems: 'center'}}>
-    //         <View>
-    //           <PricingCard
-    //             color='#004a80'
-    //             title='Fee'
-    //             price={priceLog}
-    //             // info={['1 User(s)', 'Basic Support', 'All Core Features']}
-    //             info={[
-    //               `${this.state.requestSlot} User(s)`,
-    //               `From ${this.state.myLocationName}`,
-    //               `To ${this.state.myDestinationName} `,
-    //               `Powered by Symple.tech`
-    //             ]}
-    //             button={{ title: 'CONFIRM', icon: 'directions-car' }}
-    //             onButtonPress={this.verifyFunds}
-    //           />
-    //         </View>
-    //       </Modal>
-    //       <View style={{ flexDirection: 'column', ...Platform.select({
-    //           ios: {
-    //             marginTop: height / 10
-    //           },
-    //           android: {
-    //             marginTop: height / 25
-    //           },
-    //         }),
-    //         zIndex: -1,
-    //         alignItems: 'center', justifyContent: 'center'
-    //       }}>
-    //         <View style={{ height: height / 4, width: '97%',}}>
-    //           <GooglePlacesInput
-    //             text='Change my location'
-    //             onPress={(data, details = null) => {
-    //               console.log(data, details)
-    //               this.setUserLocation(details.geometry.location, details.name);
-    //             }}
-    //           />
-    //         </View>
-    //         <View style={{ height: height / 4, width: '97%'}}>
-    //           <GooglePlacesInput
-    //             text='TO'
-    //             onPress={(data, details = null) => {
-    //               // console.log(data, details)
-    //               this.setUserDestination(details.geometry.location, details.name);
-    //             }}
-    //             text='To'
-    //           />
-    //         </View>
-    //       </View>
-    //       <View style={{ width: '90%', zIndex: -1, marginLeft: width / 20}}>
-    //         <Dropdown
-    //           label='slots'
-    //           itemColor='blue'
-    //           data={slots}
-    //           value='1'
-    //           onChangeText={ requestSlot => this.setState({ requestSlot }) }
-    //         />
-    //       </View>
-    //       <View style={{ zIndex: -1, marginTop: 10 }}>
-    //         <TouchableOpacity style={{ alignItems: 'center'}} onPress={this.verifyRoutes}>
-    //           <Text style={buttonTextStyle} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}>MOOV</Text>
-    //         </TouchableOpacity>
-    //       </View>
-    //     </View>
-    //   </View>
-    // );
   }
 }
 
