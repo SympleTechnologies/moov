@@ -77,6 +77,8 @@ class MoovHomepage extends React.Component {
     driverDistance: '',
     driverTimeAway: '',
 
+    canCancelRequest: true,
+
 
   };
 
@@ -446,6 +448,7 @@ class MoovHomepage extends React.Component {
         });
         this.setState({ fetchingRide: !this.state.fetchingRide });
         Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
+        this.startTimerCountDown(10);
         this.getDistanceFromDriver();
       })
       .catch((error) => {
@@ -453,6 +456,31 @@ class MoovHomepage extends React.Component {
         console.log(error.response);
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
+  };
+
+  startTimerCountDown = (duration) => {
+    let timer = duration, minutes, seconds;
+
+    setInterval(() => {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      // display.textContent = minutes + ":" + seconds;
+      console.log(seconds);
+      console.log(seconds === '00');
+
+      if(seconds === '00') {
+        this.setState({ canCancelRequest: false })
+      }
+
+      if (--timer < 0) {
+        timer = duration;
+      }
+    }, 500);
+
   };
 
   /**
@@ -542,9 +570,17 @@ class MoovHomepage extends React.Component {
    * cancel user request
    */
   cancelRequest = () => {
-    Toast.showWithGravity(`Your request has been cancelled`, Toast.LONG, Toast.TOP);
+    return this.state.canCancelRequest
+    ? Toast.showWithGravity(`Your request has been cancelled at no charge`, Toast.LONG, Toast.TOP)
+    : Toast.showWithGravity(`You will be charged half the fare for cancelling after 5 minutes`, Toast.LONG, Toast.TOP);
   };
 
+  /**
+   * appTopView
+   *
+   * reders the top view of the MOOV page
+   * @return {*}
+   */
   appTopView = () => {
     let { height, width } = Dimensions.get('window');
 
@@ -582,6 +618,12 @@ class MoovHomepage extends React.Component {
       </View>
   };
 
+  /**
+   * appMiddleView
+   *
+   * renders the middle view of the MOOV page
+   * @return {*}
+   */
   appMiddleView = () => {
     let { height, width } = Dimensions.get('window');
       return this.state.driverDetails === ''
