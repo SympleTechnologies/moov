@@ -78,6 +78,7 @@ class MoovHomepage extends React.Component {
     driverTimeAway: '',
 
     canCancelRequest: true,
+    trip: false,
 
 
   };
@@ -446,7 +447,7 @@ class MoovHomepage extends React.Component {
         this.setState({
           driverDetails: response.data.data.driver,
         });
-        this.setState({ fetchingRide: !this.state.fetchingRide });
+        this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
         Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
         this.startTimerCountDown(10);
         this.getDistanceFromDriver();
@@ -570,9 +571,13 @@ class MoovHomepage extends React.Component {
    * cancel user request
    */
   cancelRequest = () => {
-    return this.state.canCancelRequest
-    ? Toast.showWithGravity(`Your request has been cancelled at no charge`, Toast.LONG, Toast.TOP)
-    : Toast.showWithGravity(`You will be charged half the fare for cancelling after 5 minutes`, Toast.LONG, Toast.TOP);
+    if(this.state.canCancelRequest) {
+      this.setState({
+        trip: false
+      }, Toast.showWithGravity(`Your request has been cancelled at no charge`, Toast.LONG, Toast.TOP))
+    } else {
+      Toast.showWithGravity(`You will be charged half the fare for cancelling after 5 minutes`, Toast.LONG, Toast.TOP);
+    }
   };
 
   /**
@@ -597,7 +602,7 @@ class MoovHomepage extends React.Component {
       },
     ];
 
-    return this.state.driverDetails === ''
+    return this.state.trip === false
     ?
       <View/>
     :
@@ -626,7 +631,7 @@ class MoovHomepage extends React.Component {
    */
   appMiddleView = () => {
     let { height, width } = Dimensions.get('window');
-      return this.state.driverDetails === ''
+      return this.state.trip === false
         ?
           <View>
             <Caption
@@ -792,7 +797,7 @@ class MoovHomepage extends React.Component {
       <View style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
         {
-          this.state.driverDetails === ''
+          this.state.trip === false
           ?
             <View
               style={{
@@ -879,7 +884,7 @@ class MoovHomepage extends React.Component {
             </View>
           </View>
           <View style={{ width: width, height: '40%', backgroundColor: '#fff', flexDirection: 'column' }}>
-            <View style={{  backgroundColor: '#fff', width: width, height: this.state.driverDetails === '' ? '45%' : '80%', }}>
+            <View style={{  backgroundColor: '#fff', width: width, height: this.state.trip === false ? '45%' : '80%', }}>
               {
                 this.appMiddleView()
               }
@@ -896,16 +901,16 @@ class MoovHomepage extends React.Component {
                   </View>
                 : <TouchableOpacity style={{ marginTop: 5 }}>
                     <Button
-                      title={this.state.driverDetails === '' ? 'CONTINUE' : 'CANCEL'}
+                      title={this.state.trip === false ? 'CONTINUE' : 'CANCEL'}
                       buttonStyle={{
-                        backgroundColor: this.state.driverDetails === '' ? "rgba(92, 99,216, 1)" : '#820e0a',
+                        backgroundColor: this.state.trip === false ? "rgba(92, 99,216, 1)" : '#820e0a',
                         width: 300,
                         height: 45,
                         borderColor: "transparent",
                         borderWidth: 0,
                         borderRadius: 5
                       }}
-                      onPress={this.state.driverDetails === '' ? this.submitRequest : this.cancelRequest}
+                      onPress={this.state.trip === false ? this.submitRequest : this.cancelRequest}
                       containerStyle={{ marginTop: 20 }}
                     />
                   </TouchableOpacity>
