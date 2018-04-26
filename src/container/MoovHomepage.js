@@ -45,7 +45,7 @@ class MoovHomepage extends React.Component {
     myDestinationAddress: '',
     myDestinationLatitude: null,
     myDestinationLongitude: null,
-    myDestinationName: '',
+    myDestinationName: 'Covenant University, Ota',
 
     price: 0,
 
@@ -636,22 +636,21 @@ class MoovHomepage extends React.Component {
           <View>
             <Caption
               style={{ color: '#333',
-                textAlign: 'center',
+                // textAlign: 'center',
                 backgroundColor: 'white',
-                fontSize: 15,
                 textShadowOffset: { width: 1, height: 1 },
                 textShadowRadius: 5,
                 marginTop: Platform.OS === 'android' ? 10 : 10,
+                marginLeft: 10
               }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
             >
               Wallet: ₦ {this.state.user.wallet_amount}
             </Caption>
-            <View>
+            <View style={{ width: width / 1.1, justifyContent: 'center', alignItems: 'center' }}>
               <Caption
                 style={{ color: '#333',
                   textAlign: 'center',
                   backgroundColor: 'white',
-                  fontSize: 15,
                   textShadowOffset: { width: 1, height: 1 },
                   textShadowRadius: 5,
                   marginTop: 20,
@@ -659,33 +658,17 @@ class MoovHomepage extends React.Component {
               >
                 FROM {this.state.myLocationName} TO {this.state.myDestinationName}
               </Caption>
-              {
-                (this.state.user.wallet_amount >= this.state.price)
-                  ? <Caption
-                    style={{ color: 'green',
-                      textAlign: 'center',
-                      backgroundColor: 'white',
-                      fontSize: 15,
-                      textShadowOffset: { width: 1, height: 1 },
-                      textShadowRadius: 5,
-                      marginTop: 10,
-                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                  >
-                    Price ₦ {this.state.price}
-                  </Caption>
-                  : <Caption
-                    style={{ color: 'red',
-                      textAlign: 'center',
-                      backgroundColor: 'white',
-                      fontSize: 15,
-                      textShadowOffset: { width: 1, height: 1 },
-                      textShadowRadius: 5,
-                      marginTop: 10,
-                    }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-                  >
-                    Price ₦ {this.state.price}
-                  </Caption>
-              }
+              <Caption
+                style={{ color: this.state.user.wallet_amount >= this.state.price ? 'green' : 'red',
+                  textAlign: 'center',
+                  backgroundColor: 'white',
+                  textShadowOffset: { width: 1, height: 1 },
+                  textShadowRadius: 5,
+                  marginTop: 10,
+                }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+              >
+                Price ₦ {this.state.price}
+              </Caption>
             </View>
           </View>
         :
@@ -701,7 +684,6 @@ class MoovHomepage extends React.Component {
                   <Caption>Hi {this.state.user.firstname} {this.state.user.lastname}, my name is</Caption>
                   <Subtitle>Solomon Evogbai</Subtitle>
                   <Caption>and I am {this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Caption>
-                  <Caption></Caption>
                   <Rating
                     // showRating
                     type="star"
@@ -711,7 +693,18 @@ class MoovHomepage extends React.Component {
                     imageSize={15}
                     style={{ paddingVertical: 10 }}
                   />
+                  <Caption></Caption>
                   <Caption>Toyota Camry - KJA - 193AA </Caption>
+                  <Caption></Caption>
+                  <Image
+                    styleName="medium"
+                    style={{
+                      alignItems: 'center',
+                      height: height / 14,
+                      width: width / 2.7,
+                    }}
+                    source={require('../../assets/moov-car-side.png')}
+                  />
                 </View>
               </View>
             </View>
@@ -725,7 +718,7 @@ class MoovHomepage extends React.Component {
 
     const { container, activityIndicator, buttonTextStyle, mapStyle, map } = styles;
 
-    let LocationMarkers, DestinationMarker;
+    let LocationMarkers, DestinationMarker, DriverMarker;
 
     if(this.state.myLocationName !== '') {
       LocationMarkers = {
@@ -738,6 +731,13 @@ class MoovHomepage extends React.Component {
       DestinationMarker = {
         latitude: this.state.myDestinationLatitude,
         longitude: this.state.myDestinationLongitude,
+      }
+    }
+
+    if(this.state.driverDetails !== '') {
+      DriverMarker = {
+        latitude: this.state.driverDetails.location_latitude,
+        longitude: this.state.driverDetails.location_longitude,
       }
     }
 
@@ -857,22 +857,31 @@ class MoovHomepage extends React.Component {
                   description={`${this.state.myLocationAddress}`}
                 />
 
-                {
-                  (this.state.myDestinationName !== '')
-                    ? <Marker
-                      coordinate={DestinationMarker}
-                      title={`${this.state.myDestinationName}`}
-                      description={`${this.state.myDestinationAddress}`}
-                    />
-                    : <View/>
-                }
+                {/*{*/}
+                  {/*(this.state.myDestinationName !== '')*/}
+                    {/*? <Marker*/}
+                      {/*coordinate={DestinationMarker}*/}
+                      {/*title={`${this.state.myDestinationName}`}*/}
+                      {/*description={`${this.state.myDestinationAddress}`}*/}
+                    {/*/>*/}
+                    {/*: <View/>*/}
+                {/*}*/}
+
+                {/*{*/}
+                  {/*(this.state.myDestinationName !== '')*/}
+                    {/*? <MapView.Polyline*/}
+                      {/*coordinates={[LocationMarkers, DestinationMarker]}*/}
+                      {/*strokeWidth={2}*/}
+                      {/*strokeColor="blue"/>*/}
+                    {/*: <View/>*/}
+                {/*}*/}
 
                 {
-                  (this.state.myDestinationName !== '')
+                  (this.state.driverDetails !== '')
                     ? <MapView.Polyline
-                      coordinates={[LocationMarkers, DestinationMarker]}
+                      coordinates={[LocationMarkers, DriverMarker]}
                       strokeWidth={2}
-                      strokeColor="blue"/>
+                      strokeColor="red"/>
                     : <View/>
                 }
               </MapView>
@@ -903,7 +912,7 @@ class MoovHomepage extends React.Component {
                     <Button
                       title={this.state.trip === false ? 'CONTINUE' : 'CANCEL'}
                       buttonStyle={{
-                        backgroundColor: this.state.trip === false ? "rgba(92, 99,216, 1)" : '#820e0a',
+                        backgroundColor: this.state.trip === false ? "#333" : '#820e0a',
                         width: 300,
                         height: 45,
                         borderColor: "transparent",
@@ -960,3 +969,5 @@ const styles = StyleSheet.create({
 });
 
 export { MoovHomepage };
+
+// rgba(92, 99,216, 1)
