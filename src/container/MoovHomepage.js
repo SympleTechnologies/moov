@@ -45,7 +45,7 @@ class MoovHomepage extends React.Component {
     myDestinationAddress: '',
     myDestinationLatitude: null,
     myDestinationLongitude: null,
-    myDestinationName: 'Covenant University, Ota',
+    myDestinationName: '',
 
     price: 0,
 
@@ -66,13 +66,81 @@ class MoovHomepage extends React.Component {
       { name: '7', value: '7' },
     ],
 
+    // schools: [
+    //   { name: 'CHANGE SCHOOL', value: '0' },
+    //   { name: 'Abia State University', value: 'Abia State University' },
+    //   { name: 'Adekunle Ajasin University', value: 'Adekunle Ajasin University' },
+    //   { name: 'Joseph Ayo Babalola University', value: 'Joseph Ayo Babalola University' },
+    //   { name: 'Redeemer' + 's University Nigeria', value: 'Redeemer' + 's University Nigeria' },
+    //   { name: 'Afe Babalola University', value: 'Afe Babalola University' },
+    //   { name: 'Akwa Ibom State University', value: 'Akwa Ibom State University' },
+    //   { name: 'American University of Nigeria', value: 'American University of Nigeria' },
+    //   { name: 'Abubakar Tafawa Balewa University', value: 'Abubakar Tafawa Balewa University' },
+    //   { name: 'Adamawa State University', value: 'Adamawa State University' },
+    //   { name: 'Achievers University', value: 'Achievers University' },
+    //   { name: 'Ahmadu Bello University', value: 'Ahmadu Bello University' },
+    //   { name: 'Al-Hikmah University', value: 'Al-Hikmah University' },
+    //   { name: 'Ambrose Alli University', value: 'Ambrose Alli University' },
+    //   { name: 'Anambra State University', value: 'Anambra State University' },
+    //   { name: 'Ajayi Crowther University', value: 'Ajayi Crowther University' },
+    //   { name: 'Bayero University', value: 'Bayero University' },
+    //   { name: 'Babcock University', value: 'Babcock University' },
+    //   { name: 'Bells University of Technology', value: 'Bells University of Technology' },
+    //   { name: 'Benson Idahosa University', value: 'Benson Idahosa University' },
+    //   { name: 'Benue State University', value: 'Benue State University' },
+    //   { name: 'ECWA Bingham University', value: 'ECWA Bingham University' },
+    //   { name: 'Bowen University', value: 'Bowen University' },
+    //   { name: 'Bukar Abba Ibrahim University', value: 'Bukar Abba Ibrahim University' },
+    //   { name: 'CETEP City University', value: 'CETEP City University' },
+    //   { name: 'Caleb University', value: 'Caleb University' },
+    //   { name: 'Caritas University', value: 'Caritas University' },
+    //   { name: 'City University', value: 'City University' },
+    //   { name: 'National Open University of Nigeria', value: 'National Open University of Nigeria' },
+    //   { name: 'City University of Technology', value: 'City University of Technology' },
+    //   { name: 'Covenant University', value: 'Covenant University' },
+    //   { name: 'Crawford University', value: 'Crawford University' },
+    //   { name: 'Crescent University', value: 'Crescent University', },
+    //   { name: 'Cross River University of Technology', value: 'Cross River University of Technology' },
+    //   { name: 'Delta State University, Abraka', value: 'Delta State University, Abraka' },
+    //   { name: 'Ebonyi State University', value: 'Ebonyi State University' },
+    //   { name: 'Elizade University', value: 'Elizade University' },
+    //   { name: 'Fountain University, Osogbo', value: 'Fountain University, Osogbo' },
+    //   { name: 'Federal University, Dutsin-Ma', value: 'Federal University, Dutsin-Ma' },
+    //   { name: 'Federal University of Technology Akure', value: 'Federal University of Technology Akure' },
+    //   { name: 'Federal University Ndufe Alike, Ikwo', value: 'Federal University Ndufe Alike, Ikwo' },
+    //   { name: 'Gregory University', value: 'Gregory University' },
+    //   { name: 'Godfrey Okoye University', value: 'Godfrey Okoye University' },
+    //   { name: 'Igbinedion University', value: 'Igbinedion University' },
+    //   { name: 'Koladaisi University', value: 'Koladaisi University' },
+    //   { name: 'Oduduwa University', value: 'Oduduwa University' },
+    //   { name: 'Landmark University', value: 'Landmark University' },
+    //   { name: 'Michael and Cecilia Ibru University', value: 'Michael and Cecilia Ibru University\t' },
+    //   { name: 'Lagos State University', value: 'Lagos State University' },
+    //   { name: 'Nigerian Turkish Nile University', value: 'Nigerian Turkish Nile University' },
+    //   { name: 'Taraba State University', value: 'Taraba State University' },
+    //   { name: 'University of Benin', value: 'University of Benin' },
+    //   { name: 'University of Calabar', value: 'University of Calabar' },
+    //   { name: 'University of Ibadan', value: 'University of Ibadan' },
+    //   { name: 'Umaru Musa Yar' +'adua University Katsina', value: '' },
+    //   { name: 'University of Lagos', value: 'University of Lagos' },
+    //   { name: 'University of Port Harcourt', value: 'University of Port Harcourt' },
+    //   { name: 'University of Nigeria, Nsukka', value: 'University of Nigeria, Nsukka' },
+    //   { name: 'Veritas University', value: 'Veritas University' },
+    // ],
+    schools: [],
+    changedSchool: false,
+
     selectedSlot: false,
 
     fetchingRide: false,
 
     driverDetails: '',
     // driverDetails: {
-    //   image_url: 'https://statusandphoto.weebly.com/uploads/6/0/1/5/60158603/8347592_orig.png'
+    //   image_url: 'https://statusandphoto.weebly.com/uploads/6/0/1/5/60158603/8347592_orig.png',
+    //   location_latitude: 37.420927899999995,
+    //   location_longitude: -122.08269380000002,
+    //   firstname: 'Solomon',
+    //   lastname: 'Dipo'
     // },
     driverDistance: '',
     driverTimeAway: '',
@@ -94,10 +162,6 @@ class MoovHomepage extends React.Component {
     };
   };
 
-  // componentDidUpdate(a){
-  //   console.log(a)
-  // }
-
   /**
    * componentDidMount
    *
@@ -108,7 +172,17 @@ class MoovHomepage extends React.Component {
     this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
 
     AsyncStorage.getItem("token").then((value) => {
-      this.setState({ userToken: value });
+      this.setState({
+        userToken: value,
+        schools: [
+          { name: 'COVENANT UNIVERSITY', value: 'COVENANT UNIVERSITY' },  { name: 'Abia State University', value: 'Abia State University' },
+          { name: 'Adekunle Ajasin University', value: 'Adekunle Ajasin University' },
+          { name: 'Joseph Ayo Babalola University', value: 'Joseph Ayo Babalola University' },
+          { name: 'Redeemer' + 's University Nigeria', value: 'Redeemer' + 's University Nigeria' },
+          { name: 'Afe Babalola University', value: 'Afe Babalola University' },
+          { name: 'Akwa Ibom State University', value: 'Akwa Ibom State University' },
+        ],
+      });
     }).done();
     AsyncStorage.getItem("user").then((value) => {
       this.setState({ user: JSON.parse(value) });
@@ -371,54 +445,6 @@ class MoovHomepage extends React.Component {
     }
   };
 
-  /**
-   * setUserLocation
-   *
-   * sets user location in the state
-   * @param location
-   * @param locationName
-   */
-  setUserLocation = (location, myLocationName) => {
-    this.setState({
-      myLocationLatitude: location.lat,
-      myLocationLongitude: location.lng,
-      myLocationName,
-    });
-  };
-
-  /**
-   * setUserDestination
-   *
-   * sets user destination in the state
-   * @param {number} destination
-   * @param {number} destinationName
-   */
-  setUserDestination = (destination, myDestinationName) => {
-    this.setState({
-      myDestinationLatitude: destination.lat,
-      myDestinationLongitude: destination.lng,
-      myDestinationName,
-    });
-  };
-
-  /**
-   * verifyRoutes
-   *
-   * Verifies user location and destination
-   * @return {void}
-   */
-  verifyRoutes = () => {
-    if(this.state.myDestinationLatitude !== null) {
-      this.getPrice();
-    } else {
-      Toast.showWithGravity(
-        `Kindly select a destination`,
-        Toast.LONG,
-        Toast.TOP,
-      );
-    }
-  };
-
   getDriver = () => {
     this.setState({ fetchingRide: !this.state.fetchingRide });
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
@@ -634,18 +660,35 @@ class MoovHomepage extends React.Component {
       return this.state.trip === false
         ?
           <View>
-            <Caption
-              style={{ color: '#333',
-                // textAlign: 'center',
-                backgroundColor: 'white',
-                textShadowOffset: { width: 1, height: 1 },
-                textShadowRadius: 5,
-                marginTop: Platform.OS === 'android' ? 10 : 10,
-                marginLeft: 10
-              }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-            >
-              Wallet: ₦ {this.state.user.wallet_amount}
-            </Caption>
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+              <View style={{ width: '30%' }}>
+                <Caption
+                  style={{ color: '#333',
+                    // textAlign: 'center',
+                    backgroundColor: 'white',
+                    textShadowOffset: { width: 1, height: 1 },
+                    textShadowRadius: 5,
+                    marginTop: Platform.OS === 'android' ? 10 : 10,
+                    paddingLeft: width / 10
+                    // marginRight: Platform.OS === 'android' ? width / 1.7 : width / 10,
+                  }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                >
+                  Wallet: ₦ {this.state.user.wallet_amount}
+                </Caption>
+              </View>
+              <View style={{ width: '70%', height: height / 20 }}>
+                <DropDownMenu
+                  options={this.state.schools}
+                  selectedOption={this.state.changedSchool ? this.state.changedSchool : this.state.schools[0]}
+                  onOptionSelected={(school) => this.setState({ changedSchool: school })}
+                  titleProperty="name"
+                  valueProperty="value"
+                  visibleOptions={10}
+                  vertical
+                />
+              </View>
+            </View>
+
             <View style={{ width: width / 1.1, justifyContent: 'center', alignItems: 'center' }}>
               <Caption
                 style={{ color: '#333',
@@ -682,7 +725,7 @@ class MoovHomepage extends React.Component {
                 />
                 <View style={{ marginLeft: width / 35, paddingTop: 5, flexDirection: 'column' }}>
                   <Caption>Hi {this.state.user.firstname} {this.state.user.lastname}, my name is</Caption>
-                  <Subtitle>Solomon Evogbai</Subtitle>
+                  <Subtitle>{this.state.driverDetails.firstname} {this.state.driverDetails.lastname}</Subtitle>
                   <Caption>and I am {this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Caption>
                   <Rating
                     // showRating
@@ -857,24 +900,24 @@ class MoovHomepage extends React.Component {
                   description={`${this.state.myLocationAddress}`}
                 />
 
-                {/*{*/}
-                  {/*(this.state.myDestinationName !== '')*/}
-                    {/*? <Marker*/}
-                      {/*coordinate={DestinationMarker}*/}
-                      {/*title={`${this.state.myDestinationName}`}*/}
-                      {/*description={`${this.state.myDestinationAddress}`}*/}
-                    {/*/>*/}
-                    {/*: <View/>*/}
-                {/*}*/}
+                {
+                  (this.state.myDestinationName !== '')
+                    ? <Marker
+                      coordinate={DestinationMarker}
+                      title={`${this.state.myDestinationName}`}
+                      description={`${this.state.myDestinationAddress}`}
+                    />
+                    : <View/>
+                }
 
-                {/*{*/}
-                  {/*(this.state.myDestinationName !== '')*/}
-                    {/*? <MapView.Polyline*/}
-                      {/*coordinates={[LocationMarkers, DestinationMarker]}*/}
-                      {/*strokeWidth={2}*/}
-                      {/*strokeColor="blue"/>*/}
-                    {/*: <View/>*/}
-                {/*}*/}
+                {
+                  (this.state.myDestinationName !== '')
+                    ? <MapView.Polyline
+                      coordinates={[LocationMarkers, DestinationMarker]}
+                      strokeWidth={2}
+                      strokeColor="blue"/>
+                    : <View/>
+                }
 
                 {
                   (this.state.driverDetails !== '')
@@ -882,6 +925,23 @@ class MoovHomepage extends React.Component {
                       coordinates={[LocationMarkers, DriverMarker]}
                       strokeWidth={2}
                       strokeColor="red"/>
+                    : <View/>
+                }
+                {
+                  this.state.driverDetails !== ''
+                    ?
+                    <MapView.Marker
+                      coordinate={DriverMarker}
+                      // title={`${this.state.myLocationName}`}
+                      // description={`${this.state.myLocationAddress}`}
+                      // image={require('../../assets/moov-car-overhead.png')}
+                      // style={{ width: 100, height: 200 }}
+                    >
+                      <Image
+                        styleName="small"
+                        source={{ uri: 'https://shoutem.github.io/img/ui-toolkit/examples/image-3.png'}}
+                      />
+                    </MapView.Marker>
                     : <View/>
                 }
               </MapView>
