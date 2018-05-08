@@ -49,8 +49,6 @@ class MoovHomepage extends React.Component {
 
     price: 0,
 
-    requestSlot: 1,
-
     user: {
       wallet_amount: 0
     },
@@ -172,20 +170,17 @@ class MoovHomepage extends React.Component {
     this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
 
     AsyncStorage.getItem("token").then((value) => {
-      this.setState({
-        userToken: value,
-        schools: [
-          { name: 'COVENANT UNIVERSITY', value: 'COVENANT UNIVERSITY' },  { name: 'Abia State University', value: 'Abia State University' },
-          { name: 'Adekunle Ajasin University', value: 'Adekunle Ajasin University' },
-          { name: 'Joseph Ayo Babalola University', value: 'Joseph Ayo Babalola University' },
-          { name: 'Redeemer' + 's University Nigeria', value: 'Redeemer' + 's University Nigeria' },
-          { name: 'Afe Babalola University', value: 'Afe Babalola University' },
-          { name: 'Akwa Ibom State University', value: 'Akwa Ibom State University' },
-        ],
-      });
+      this.setState({ userToken: value });
     }).done();
+
     AsyncStorage.getItem("user").then((value) => {
-      this.setState({ user: JSON.parse(value) });
+      console.log('khkshdkhskhdhksdhkskhdhksdkhsdk', JSON.parse(value));
+      this.setState({
+        user: JSON.parse(value) ,
+        schools: [
+          { name: JSON.parse(value).school, value: JSON.parse(value).school },
+        ],
+      }, () => this.getAllSchool());
     }).done();
 
     if(Platform.OS === 'ios') {
@@ -199,6 +194,25 @@ class MoovHomepage extends React.Component {
         });
       console.log('Android');
     }
+  };
+
+  /**
+   * getAllSchool
+   *
+   * fetches all school
+   */
+  getAllSchool = () => {
+
+    axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/all_schools`)
+      .then((response) => {
+        console.log(response.data.data.schools);
+        this.setState({
+          schools: this.state.schools.concat(response.data.data.schools)
+        });
+      })
+      .catch((error) => {
+        Toast.showWithGravity(`Unable to fetch available schools`, Toast.LONG, Toast.TOP);
+      });
   };
 
   /**
@@ -445,30 +459,33 @@ class MoovHomepage extends React.Component {
     }
   };
 
+  /**
+   * getDriver
+   *
+   * gets available driver
+   */
   getDriver = () => {
+    let school;
     this.setState({ fetchingRide: !this.state.fetchingRide });
+
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver?user_location=${this.state.myLocationLatitude},${this.state.myLocationLatitude}&&user_destination=${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}&&slots=${this.state.requestSlot}&&fare_charge=${this.state.price}`)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     this.setState({
-    //       driverDetails: response.data.data.driver,
-    //     });
-    //     this.setState({ fetchingRide: !this.state.fetchingRide });
-    //     Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
-    //     this.getDistanceFromDriver();
-    //   })
-    //   .catch((error) => {
-    //     this.setState({ fetchingRide: !this.state.fetchingRide });
-    //     console.log(error.response);
-    //     Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
-    //   });
+    if(this.state.changedSchool === false) {
+      school = this.state.schools[0].name;
+    } else {
+      school = this.state.changedSchool.name;
+    }
 
-
-    axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
-      .then((response) => {
+    axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
+      params: {
+        user_location: `${this.state.myLocationLatitude},${this.state.myLocationLatitude}`,
+        user_destination: `${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`,
+        slots: this.state.selectedSlot.name,
+        fare_charge: this.state.price,
+        school
+      }
+    }).then((response) => {
         console.log(response.data);
         this.setState({
           driverDetails: response.data.data.driver,
@@ -480,7 +497,6 @@ class MoovHomepage extends React.Component {
       })
       .catch((error) => {
         this.setState({ fetchingRide: !this.state.fetchingRide });
-        console.log(error.response);
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
   };
@@ -496,8 +512,8 @@ class MoovHomepage extends React.Component {
       seconds = seconds < 10 ? "0" + seconds : seconds;
 
       // display.textContent = minutes + ":" + seconds;
-      console.log(seconds);
-      console.log(seconds === '00');
+      // console.log(seconds);
+      // console.log(seconds === '00');
 
       if(seconds === '00') {
         this.setState({ canCancelRequest: false })
@@ -555,9 +571,7 @@ class MoovHomepage extends React.Component {
    * @return {*}
    */
   verifyFunds = () => {
-    return this.state.price > this.state.user.wallet_amount
-      ? Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
-      : this.getDriver();
+    return this.state.price > this.state.user.wallet_amount;
   };
 
 
@@ -587,7 +601,12 @@ class MoovHomepage extends React.Component {
    */
   submitRequest = () => {
     if(this.verifyUserRoutes()) {
-      this.verifyFunds()
+      if(this.verifyFunds()) {
+        Toast.showWithGravity(`Insufficient funds, kindly load wallet`, Toast.LONG, Toast.TOP)
+      } else {
+        Toast.showWithGravity(`Fetching...`, Toast.LONG, Toast.TOP);
+        this.getDriver();
+      }
     }
   };
 
@@ -669,11 +688,12 @@ class MoovHomepage extends React.Component {
                     textShadowOffset: { width: 1, height: 1 },
                     textShadowRadius: 5,
                     marginTop: Platform.OS === 'android' ? 10 : 10,
-                    paddingLeft: width / 10
+                    paddingLeft: Platform.OS === 'android' ? width / 8: width / 9
                     // marginRight: Platform.OS === 'android' ? width / 1.7 : width / 10,
                   }} hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
                 >
-                  Wallet: ₦ {this.state.user.wallet_amount}
+                  Wallet: {this.state.user.wallet_amount}
+                  {/*Wallet: ₦ {this.state.user.wallet_amount}*/}
                 </Caption>
               </View>
               <View style={{ width: '70%', height: height / 20 }}>

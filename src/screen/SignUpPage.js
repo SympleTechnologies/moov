@@ -53,14 +53,6 @@ class SignUpPage extends React.Component {
    */
   appNavigation = () => {
     const { navigate } = this.props.navigation;
-    // navigate('NumberFormPage', {
-    //   firstName: this.state.firstName,
-    //   lastName: this.state.lastName,
-    //   email: this.state.email,
-    //   password: this.state.password,
-    //   imgURL: '',
-    //   authentication_type: "email",
-    // });
     navigate('SelectSchool', {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
