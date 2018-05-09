@@ -416,15 +416,8 @@ class MoovHomepage extends React.Component {
       school = this.state.changedSchool.name;
     }
 
-    axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
-      params: {
-        user_location: `${this.state.myLocationLatitude},${this.state.myLocationLatitude}`,
-        user_destination: `${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`,
-        slots: this.state.selectedSlot.name,
-        fare_charge: this.state.price,
-        school
-      }
-    }).then((response) => {
+    axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
+      .then((response) => {
         console.log(response.data);
         this.setState({
           driverDetails: response.data.data.driver,
@@ -438,6 +431,29 @@ class MoovHomepage extends React.Component {
         this.setState({ fetchingRide: !this.state.fetchingRide });
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
+
+    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
+    //   params: {
+    //     user_location: `${this.state.myLocationLatitude},${this.state.myLocationLatitude}`,
+    //     user_destination: `${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`,
+    //     slots: this.state.selectedSlot.name,
+    //     fare_charge: this.state.price,
+    //     school
+    //   }
+    // }).then((response) => {
+    //     console.log(response.data);
+    //     this.setState({
+    //       driverDetails: response.data.data.driver,
+    //     });
+    //     this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
+    //     Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
+    //     this.startTimerCountDown(10);
+    //     this.getDistanceFromDriver();
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ fetchingRide: !this.state.fetchingRide });
+    //     Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+    //   });
   };
 
   startTimerCountDown = (duration) => {
@@ -695,7 +711,7 @@ class MoovHomepage extends React.Component {
                     imageSize={15}
                     style={{ paddingVertical: 10 }}
                   />
-                  <Caption></Caption>
+                  <Caption>{this.state.driverDetails.mobile_number}</Caption>
                   <Caption>Toyota Camry - KJA - 193AA </Caption>
                   <Caption></Caption>
                   <Image
