@@ -44,6 +44,7 @@ class NumberFormPage extends React.Component {
     imgURL: '',
     socialEmail:'',
     userAuthID: '',
+    selectedSchool: '',
     authentication_type: '',
 
     loading: false,
@@ -73,6 +74,7 @@ class NumberFormPage extends React.Component {
       socialEmail: this.props.navigation.state.params.socialEmail,
       userAuthID: this.props.navigation.state.params.userAuthID,
       authentication_type: this.props.navigation.state.params.authentication_type,
+      selectedSchool: this.props.navigation.state.params.selectedSchool,
     })
   }
 
@@ -166,6 +168,7 @@ class NumberFormPage extends React.Component {
       "lastname": this.state.lastName,
       "email": this.state.email,
       "mobile_number": this.state.phoneNumber,
+      "school": this.state.selectedSchool,
       "authentication_type": this.state.authentication_type
     })
       .then((response) => {
@@ -174,6 +177,7 @@ class NumberFormPage extends React.Component {
         this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
+        console.log(error.response.data);
         alert(`${error.response.data.data.message}`);
         this.setState({ loading: !this.state.loading });
       });
@@ -194,6 +198,8 @@ class NumberFormPage extends React.Component {
       "email": this.state.socialEmail,
       "image_url": this.state.imgURL,
       "mobile_number": this.state.phoneNumber,
+      "school": 'default_school',
+      // "school": this.state.selectedSchool,
       "authentication_type": this.state.authentication_type
     })
       .then((response) => {

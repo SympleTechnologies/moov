@@ -99,6 +99,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-main-apk-res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
@@ -190,12 +191,12 @@
     <orderEntry type="module" module-name="react-native-image-picker" />
     <orderEntry type="module" module-name="react-native-maps" />
     <orderEntry type="module" module-name="react-native-google-places" />
-    <orderEntry type="module" module-name="react-native-vector-icons" />
-    <orderEntry type="module" module-name="react-native-fetch-blob" />
-    <orderEntry type="module" module-name="react-native-paystack" />
-    <orderEntry type="module" module-name="react-native-google-signin" />
     <orderEntry type="module" module-name="react-native-linear-gradient" />
+    <orderEntry type="module" module-name="react-native-fetch-blob" />
     <orderEntry type="module" module-name="react-native-fbsdk" />
+    <orderEntry type="module" module-name="react-native-paystack" />
+    <orderEntry type="module" module-name="react-native-vector-icons" />
     <orderEntry type="module" module-name="react-native-photo-view" />
+    <orderEntry type="module" module-name="react-native-google-signin" />
   </component>
 </module>

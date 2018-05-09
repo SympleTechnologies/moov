@@ -17,7 +17,7 @@ import {
 // third-party libraries
 import { Heading, DropDownMenu } from '@shoutem/ui';
 import Toast from 'react-native-simple-toast';
-
+import * as axios from "axios/index";
 
 // common
 import { StatusBarComponent } from "../common";
@@ -38,7 +38,7 @@ class SelectSchool extends React.Component {
 
     loading: false,
 
-    filters: [
+    schools: [
       { name: 'SELECT YOUR SCHOOL', value: '0' },
       { name: 'Abia State University', value: 'Abia State University' },
       { name: 'Adekunle Ajasin University', value: 'Adekunle Ajasin University' },
@@ -120,6 +120,8 @@ class SelectSchool extends React.Component {
       userAuthID: this.props.navigation.state.params.userAuthID,
       authentication_type: this.props.navigation.state.params.authentication_type,
     });
+
+    this.getAllSchool();
   };
 
   /**
@@ -132,6 +134,30 @@ class SelectSchool extends React.Component {
     return this.state.selectedSchool !== ''
       ? this.appNavigator()
       : Toast.showWithGravity(`Select your school`, Toast.LONG, Toast.TOP);
+  };
+
+  /**
+   * getAllSchool
+   *
+   * fetches all school
+   */
+  getAllSchool = () => {
+    this.setState({ loading: !this.state.loading });
+
+    axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/all_schools`)
+      .then((response) => {
+        console.log(response.data.data.schools);
+        this.setState({
+          schools: response.data.data.schools,
+          loading: !this.state.loading
+        });
+      })
+      .catch((error) => {
+        this.setState({ loading: !this.state.loading });
+        Toast.showWithGravity(`Unable to fetch available schools`, Toast.LONG, Toast.TOP);
+        console.log(error.response.data);
+        console.log(error.response);
+      });
   };
 
   /**
@@ -197,8 +223,8 @@ class SelectSchool extends React.Component {
               <View style={{ height: height / 10, width: width / 1.5}}>
                 <View>
                   <DropDownMenu
-                    options={this.state.filters}
-                    selectedOption={this.state.selectedSchool ? this.state.selectedSchool : this.state.filters[0]}
+                    options={this.state.schools}
+                    selectedOption={this.state.selectedSchool ? this.state.selectedSchool : this.state.schools[0]}
                     onOptionSelected={(filter) => this.setState({ selectedSchool: filter })}
                     titleProperty="name"
                     valueProperty="value"
