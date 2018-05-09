@@ -86,7 +86,7 @@ class PaymentPage extends React.Component {
       .then(response => {
         console.log(response); // card charged successfully, get reference here
         Toast.showWithGravity('Success!', Toast.LONG, Toast.TOP);
-        this.savePaymentToServer();
+        this.savePaymentToServer(response.reference);
       })
       .catch(error => {
         console.log(error); // error is a javascript Error object
@@ -104,14 +104,15 @@ class PaymentPage extends React.Component {
    *
    * Saves user's payment on our server
    */
-  savePaymentToServer = () => {
+  savePaymentToServer = (verification_code) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
 
     axios.post('https://moov-backend-staging.herokuapp.com/api/v1/transaction',
       {
         "type_of_operation": "load_wallet",
-        "cost_of_transaction": JSON.parse(this.state.originalAmount)
+        "cost_of_transaction": JSON.parse(this.state.originalAmount),
+        "verification_code": verification_code
       }
     )
       .then((response) => {
