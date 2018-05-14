@@ -2,31 +2,18 @@
 import React, { Component } from 'react';
 
 // react-native library
-import { AsyncStorage, Platform } from 'react-native';
+import { Platform } from 'react-native';
 
 // third-party library
-import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
+import { Container, Content, Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
 
 // container
 import { MoovPage } from "../container";
 
-// common
-import { StatusBarComponent } from "../common";
-
 class Moov extends Component {
 
   state={
-  };
-
-
-  /**
-   * componentDidMount
-   *
-   * React life-cycle method sets user token
-   * @return {void}
-   */
-  componentDidMount() {
-
+    currentTab: 'MOOV'
   };
 
   /**
@@ -85,16 +72,6 @@ class Moov extends Component {
   render() {
     return (
         <Container>
-
-          {/*Header*/}
-          <Header
-            style={{
-              backgroundColor: '#fff'
-            }}
-          >
-            <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-          </Header>
-
           {/*Body*/}
           <Content>
             {this.renderContent()}
@@ -123,9 +100,9 @@ class Moov extends Component {
                 badge
                 vertical
               >
-                <Badge>
+                {/*<Badge>*/}
                   <Text>2</Text>
-                </Badge>
+                {/*</Badge>*/}
                 <Icon
                   // style={{ color: this.state.currentTab === 'MOOV' ? 'black' : '#b3b4b4' }}
                   name="cab"
@@ -157,10 +134,13 @@ class Moov extends Component {
                 badge
                 vertical
               >
-                <Badge>
+                {/*<Badge>*/}
                   <Text>2</Text>
-                </Badge>
-                <Icon name="camera" />
+                {/*</Badge>*/}
+                <Icon
+                  name="wallet"
+                  type="Entypo"
+                />
                 <Text style={{ fontSize: 10 }}>WALLET</Text>
               </Button>
 
@@ -180,10 +160,13 @@ class Moov extends Component {
                 badge
                 vertical
               >
-                <Badge>
+                {/*<Badge>*/}
                   <Text>2</Text>
-                </Badge>
-                <Icon active name="navigate" />
+                {/*</Badge>*/}
+                <Icon
+                  name="email-secure"
+                  type="MaterialCommunityIcons"
+                />
                 <Text style={{ fontSize: 10 }}>ASK</Text>
               </Button>
 
@@ -203,9 +186,9 @@ class Moov extends Component {
                 badge
                 vertical
               >
-                <Badge>
+                {/*<Badge>*/}
                   <Text>2</Text>
-                </Badge>
+                {/*</Badge>*/}
                 <Icon name="person" />
                 <Text style={{ fontSize: 10 }}>PROFILE</Text>
               </Button>
