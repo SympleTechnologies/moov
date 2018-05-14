@@ -106,7 +106,7 @@ class MoovHomepage extends React.Component {
    * @return {void}
    */
   componentDidMount() {
-    this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
+    // this.props.navigation.setParams({ onTabFocus: this.handleTabFocus });
 
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
