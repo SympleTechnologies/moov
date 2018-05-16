@@ -1,11 +1,18 @@
-// react libraries
-import React from 'react';
+// react library
+import React, { Component } from 'react';
 
-// react-native libraries
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+// react-native library
+import { AsyncStorage, StyleSheet } from 'react-native';
 
-class AskHomepage extends React.Component {
-  state= {
+// third-party library
+import { Container, Text, Root } from 'native-base';
+
+// common
+import { HeaderComponent } from "../common";
+
+class AskHomepage extends Component {
+
+  state={
     userToken: '',
   };
 
@@ -19,14 +26,23 @@ class AskHomepage extends React.Component {
     AsyncStorage.getItem("token").then((value) => {
       this.setState({ userToken: value });
     }).done();
-  }
+  };
 
   render() {
     console.log(this.state);
+    const { container } = styles;
+
     return (
-      <View style={styles.container}>
-        <Text>Ask Pages</Text>
-      </View>
+      <Root>
+        <Container style={container}>
+          <HeaderComponent
+            // options={this.state.schoolList}
+            // onValueChange={(filter) => this.setState({ selectedSlot: filter })}
+            // selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.schoolList[0]}
+          />
+          <Text>Ask Page</Text>
+        </Container>
+      </Root>
     );
   }
 }
@@ -35,11 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#b3b4b4'
   },
 });
 
-export { AskHomepage };
+export { AskHomepage }

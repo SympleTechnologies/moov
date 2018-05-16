@@ -290,7 +290,6 @@ class SignInPage extends React.Component {
 
     if (page === 'Homepage') {
       navigate('MoovPages');
-      navigate('MoovPages');
     }
 
     if (page === 'signIn') {
