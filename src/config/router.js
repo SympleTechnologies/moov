@@ -3,13 +3,16 @@ import React from 'react';
 
 // third-party libraries
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { Icon } from 'native-base';
 
 // containers
-import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage } from '../container';
+import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage } from '../container';
 
 // component
 import { LoadPage, TransferPage, WithdrawPage, PaymentPage } from "../component/Wallet";
+
+// common
+import { FooterComponent } from "../common";
 
 export const MoovHome = StackNavigator({
   MoovHomePage: {
@@ -60,25 +63,25 @@ export const WalletHome = StackNavigator({
     header: 'screen',
   },
 });
-//
-export const AskHome = StackNavigator({
-  AskHomepage: {
-    screen: AskHomepage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  // ChatScreen: {
-  //   screen: ChatScreen,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
-}, {
-  navigationOptions: {
-    header: 'screen',
-  },
-});
+// //
+// export const AskHome = StackNavigator({
+//   AskHomepage: {
+//     screen: AskHomepage,
+//     navigationOptions: {
+//       header: null,
+//     }
+//   },
+//   // ChatScreen: {
+//   //   screen: ChatScreen,
+//   //   navigationOptions: {
+//   //     header: null,
+//   //   }
+//   // },
+// }, {
+//   navigationOptions: {
+//     header: 'screen',
+//   },
+// });
 //
 export const ProfileHome = StackNavigator({
   ProfileHomepage: {
@@ -113,8 +116,8 @@ export const ProfileHome = StackNavigator({
 
 
 export const Tabs = TabNavigator({
-  Moov: {
-    screen: MoovHome,
+  MoovPage: {
+    screen: MoovPage,
     navigationOptions: {
       tabBarLabel: 'MOOV',
       color: 'white',
@@ -128,65 +131,103 @@ export const Tabs = TabNavigator({
       ),
     },
   },
-  Wallet: {
-    screen: WalletHome,
+  AskHomepage: {
+    screen: AskHomepage,
     navigationOptions: {
-      tabBarLabel: 'Wallet',
+      tabBarLabel: 'MOOV',
+      color: 'white',
+      style: {
+        color: '#004a80',
+      },
       tabBarIcon: ({ focused }) => (
         focused
-          ? <Icon name="credit-card-plus" type="material-community" color="black" />
-          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
       ),
     },
   },
-  AskUs: {
-    screen: AskHome,
-    navigationOptions: {
-      tabBarLabel: 'Ask Us',
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="help" type="entypo" color="black" />
-          : <Icon name="help" type="entypo" color="#b3b4b4" />
-      ),
-    },
-  },
-  Profile: {
-    screen: ProfileHome,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ focused }) => (
-        focused
-          ? <Icon name="user-circle" type="font-awesome" color="black" />
-          : <Icon name="user-circle" type="font-awesome" color="#b3b4b4" />
-      ),
-    },
-    style: {
-      color: 'green',
-    },
-  },
+  // Moov: {
+  //   screen: MoovHome,
+  //   navigationOptions: {
+  //     tabBarLabel: 'MOOV',
+  //     color: 'white',
+  //     style: {
+  //       color: '#004a80',
+  //     },
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+  //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+  //     ),
+  //   },
+  // },
+  // Wallet: {
+  //   screen: WalletHome,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Wallet',
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="credit-card-plus" type="material-community" color="black" />
+  //         : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+  //     ),
+  //   },
+  // },
+  // // AskUs: {
+  // //   screen: AskHome,
+  // //   navigationOptions: {
+  // //     tabBarLabel: 'Ask Us',
+  // //     tabBarIcon: ({ focused }) => (
+  // //       focused
+  // //         ? <Icon name="help" type="entypo" color="black" />
+  // //         : <Icon name="help" type="entypo" color="#b3b4b4" />
+  // //     ),
+  // //   },
+  // // },
+  // Profile: {
+  //   screen: ProfileHome,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Profile',
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="user-circle" type="font-awesome" color="black" />
+  //         : <Icon name="user-circle" type="font-awesome" color="#b3b4b4" />
+  //     ),
+  //   },
+  //   style: {
+  //     color: 'green',
+  //   },
+  // },
 }, {
-  // tabBarPosition: 'top',
-  animationEnabled: true,
-  tabBarOptions: {
-    showIcon: true,
-    style: {
-      backgroundColor: 'white',
-      padding: 2,
-      // tabBarLabelColor: ''
-      // marginTop: STATUS_BAR_HEIGHT
-    },
-    indicatorStyle: {
-      borderBottomColor: 'black',
-      // borderBottomColor: '#ffffff',
-      // borderBottomWidth: 1,
-      backgroundColor:'black'
-    },
-    tabStyle: {
-      borderRightColor: 'white',
-      borderRightWidth: 1,
-    },
-    activeTintColor: 'black',
-    inactiveTintColor: '#b3b4b4',
-    animationEnabled: true,
+  tabBarComponent: props => {
+    return (
+      <FooterComponent
+        navigation={props.navigation}
+        currentTab={'WALLET'}
+      />
+    );
   },
+  tabBarPosition: 'bottom',
+  // animationEnabled: true,
+  // tabBarOptions: {
+  //   showIcon: true,
+  //   style: {
+  //     backgroundColor: 'white',
+  //     padding: 2,
+  //     // tabBarLabelColor: ''
+  //     // marginTop: STATUS_BAR_HEIGHT
+  //   },
+  //   indicatorStyle: {
+  //     borderBottomColor: 'black',
+  //     // borderBottomColor: '#ffffff',
+  //     // borderBottomWidth: 1,
+  //     backgroundColor:'black'
+  //   },
+  //   tabStyle: {
+  //     borderRightColor: 'white',
+  //     borderRightWidth: 1,
+  //   },
+  //   activeTintColor: 'black',
+  //   inactiveTintColor: '#b3b4b4',
+  //   animationEnabled: true,
+  // },
 });
