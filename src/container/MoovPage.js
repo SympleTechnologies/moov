@@ -8,6 +8,7 @@ import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions } fr
 import { Container, Text, Header, Toast, Root } from 'native-base';
 import * as axios from "axios/index";
 import RNGooglePlaces from "react-native-google-places";
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 
 // common
 import { CardCommon, HeaderComponent, SpinnerCommon, StatusBarComponent } from "../common";
@@ -210,7 +211,7 @@ class MoovPage extends Component {
 
   render() {
     console.log(this.state);
-    const { container } = styles;
+    const { container, map } = styles;
     let { height, width } = Dimensions.get('window');
 
     // Fetching user location
@@ -254,10 +255,19 @@ class MoovPage extends Component {
     return (
       <Root>
         <Container style={container}>
-          <HeaderComponent
-            options={this.state.slotDropDown}
-            onValueChange={(filter) => this.setState({ selectedSlot: filter })}
-            selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.slotDropDown[0]}
+          {/*<HeaderComponent*/}
+            {/*options={this.state.slotDropDown}*/}
+            {/*onValueChange={(filter) => this.setState({ selectedSlot: filter })}*/}
+            {/*selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.slotDropDown[0]}*/}
+          {/*/>*/}
+          <MapView
+            style={[StyleSheet.absoluteFillObject, map]}
+            region={{
+              latitude: this.state.myLocationLatitude,
+              longitude: this.state.myLocationLongitude,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+            }}
           />
         </Container>
       </Root>
@@ -269,6 +279,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

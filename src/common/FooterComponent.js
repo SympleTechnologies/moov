@@ -2,21 +2,105 @@
 import React, { Component } from 'react';
 
 // react-native library
-import { Platform } from 'react-native';
+import {Platform, Image, AsyncStorage, StyleSheet} from 'react-native';
 
 // third-party library
-import { Container, Content, Footer, FooterTab, Button, Text, Root, Badge } from 'native-base';
+import {Container, Content, Footer, FooterTab, Button, Text, Root, Badge, Thumbnail, Toast} from 'native-base';
 
 import { Icon } from 'react-native-elements';
 
 
 // container
 import { MoovPage } from "../container";
+import * as axios from "axios/index";
+import {SpinnerCommon} from "./SpinnerCommon";
+import {StatusBarComponent} from "./StatusBarComponent";
 
 class FooterComponent extends Component {
 
   state={
-    currentTab: 'MOOV'
+    currentTab: 'MOOV',
+    notificationCount: 0,
+    // notificationType: 'MOOV'
+    // notificationType: 'WALLET'
+    notificationType: 'DRIVER',
+    // notificationType: 'ASK'
+    // notificationType: 'MULTIPLE'
+    // notificationType: 'ADVERT',
+
+    loading: false,
+    user: {
+      image_url: ''
+    },
+  };
+
+  // before you set notification state
+  // if you are on profile display red new notification
+  // if you are on moov check notification type if it is DRIVER display toast esle increase notification count
+
+
+  /**
+   * componentDidMount
+   *
+   * React life-cycle method sets user token
+   * @return {void}
+   */
+  componentDidMount() {
+    AsyncStorage.getItem("token").then((value) => {
+      this.setState({ userToken: value }, () => this.fetchUserDetails());
+    }).done();
+  };
+
+  /**
+   * fetchUserDetails
+   *
+   * fetches User transaction from the back end and saves it in local storage
+   * @param newBalance
+   * @return {void}
+   */
+  fetchUserDetails = () => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
+      .then((response) => {
+        console.log(response.data.data);
+        this.setState({
+          user: response.data.data.user,
+        });
+        this.getNotifications()
+      })
+      .catch((error) => {
+        console.log(error.response);
+        Toast.show({ text: "Unable to retrieve user", buttonText: "Okay", type: "danger" })
+      });
+  };
+
+  /**
+   * getNotifications
+   *
+   * Get all User's notifications
+   * @return {void}
+   */
+  getNotifications = () => {
+    this.setState({ activeTab: 'notifications' });
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    axios.get('https://moov-backend-staging.herokuapp.com/api/v1/notification')
+      .then((response) => {
+        console.log(response.data.data);
+        console.log(Object.keys(response.data.data.notifications).length);
+        this.setState({
+          notifications: response.data.data,
+          notificationCount: Object.keys(response.data.data.notifications).length
+        })
+      })
+      .catch((error) => {
+        console.log(error.response);
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
   };
 
   /**
@@ -42,23 +126,27 @@ class FooterComponent extends Component {
     }
 
     if(currentTab === 'PROFILE') {
-      this.setState({ currentTab: 'PROFILE' })
+      this.setState({ currentTab: 'PROFILE' });
+      this.clearNotifications();
     }
   };
 
   /**
-   * componentDidMount
+   * setCurrentTab
    *
-   * React life-cycle method sets user token
+   * clears notification count
    * @return {void}
    */
-  componentDidMount() {
-
-  }
+  clearNotifications = () => {
+    this.setState({
+      notificationCount: 0
+    })
+  };
 
   render() {
-    return (
 
+
+    return (
       <Footer>
         <FooterTab
           style={{
@@ -168,6 +256,7 @@ class FooterComponent extends Component {
           </Button>
 
           {/*Profile*/}
+
           <Button
             style={{
               height: this.state.currentTab === 'PROFILE' ? 70: '100%',
@@ -184,19 +273,32 @@ class FooterComponent extends Component {
             badge
             vertical
           >
-            <Badge>
-              <Text>2</Text>
-            </Badge>
-            <Icon
-              name="person"
-              color={this.state.currentTab === 'PROFILE' ? 'black' : '#b3b4b4'}
-            />
-            <Text
-              style={{
-                fontSize: 10,
-                color: this.state.currentTab === 'PROFILE' ? 'black' : '#b3b4b4'
-              }}
-            >PROFILE</Text>
+            {
+              this.state.notificationCount === 0
+              ? <Thumbnail
+                  small
+                  source={{
+                    uri: this.state.user.image_url === ''
+                    ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_1280.png'
+                    : this.state.user.image_url
+                  }}
+                />
+                : <Content>
+                    <Badge>
+                      <Text style={{
+                        textAlign: 'center'
+                      }}>{this.state.notificationCount}</Text>
+                    </Badge>
+                    <Text
+                      style={{
+                        fontSize: 10,
+                        color: 'red'
+                      }}
+                    >
+                      {this.state.notificationCount > 1 ? 'MULTIPLE' : this.state.notificationType}
+                    </Text>
+                </Content>
+            }
           </Button>
         </FooterTab>
       </Footer>
