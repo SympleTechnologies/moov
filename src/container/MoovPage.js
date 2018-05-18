@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions, Switch } from 'react-native';
 
 // third-party library
-import { Container, Text, Header, Toast, Root, Content, List, ListItem, Icon, Body, Left, Right, Button } from 'native-base';
+import { Container, Text, Header, Toast, Root, Content, List, ListItem, Icon, Body, Left, Right, Button, Thumbnail } from 'native-base';
+import { Icon as RNEIcon } from 'react-native-elements';
 import * as axios from "axios/index";
 import RNGooglePlaces from "react-native-google-places";
 import MapView from 'react-native-maps';
@@ -342,7 +343,50 @@ class MoovPage extends Component {
           </Content>
           <Content>
           </Content>
+          <Content
+            contentContainerStyle={{
+              flexDirection: 'row',
+              alignItems: 'stretch',
+              justifyContent: 'space-around',
 
+            }}>
+            <Button
+              style={{ height: height / 10 }}
+              transparent
+              light>
+              <RNEIcon
+                name='my-location'
+                type='MaterialIcons'
+                color='#ed1768'
+                raised
+                buttonStyle={{
+                  backgroundColor: 'blue'
+                }}
+              />
+            </Button>
+            <Button
+              style={{ height: height / 10 }}
+              transparent
+              light>
+              <RNEIcon
+                name='school'
+                type='MaterialIcons'
+                color='#ed1768'
+                raised
+              />
+            </Button>
+            {/*<Button*/}
+              {/*style={{ height: height / 10 }}*/}
+              {/*transparent*/}
+              {/*light>*/}
+              {/*<RNEIcon*/}
+                {/*name='my-location'*/}
+                {/*type='MaterialIcons'*/}
+                {/*color='#ed1768'*/}
+                {/*raised*/}
+              {/*/>*/}
+            {/*</Button>*/}
+          </Content>
           <Content
             contentContainerStyle={{
               width: '90%',
