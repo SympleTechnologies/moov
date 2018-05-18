@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions } from 'react-native';
 
 // third-party library
-import { Container, Text, Header, Toast, Root } from 'native-base';
+import { Container, Text, Header, Toast, Root, Content } from 'native-base';
 import * as axios from "axios/index";
 import RNGooglePlaces from "react-native-google-places";
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
@@ -42,6 +42,8 @@ class MoovPage extends Component {
     ],
 
     selectedSlot: false,
+
+    price: 0,
   };
 
   /**
@@ -89,7 +91,7 @@ class MoovPage extends Component {
           loading: !this.state.loading
         });
 
-        Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
+        // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
       .catch((error) => {
         // console.log(error.response);
@@ -165,18 +167,25 @@ class MoovPage extends Component {
   getUserLocationUsingRN = () => {
     RNGooglePlaces.getCurrentPlace()
       .then((results) => {
-        console.log(results, 'Hello world');
-        console.log(results[results.length - (results.length - 1)]);
+        // console.log(results, 'Hello world');
+        // console.log(results[results.length - (results.length - 1)]);
         this.setState({
           myLocationLatitude: results[results.length - (results.length - 1)].latitude,
           myLocationLongitude: results[results.length - (results.length - 1)].longitude,
           myLocationName: results[results.length - (results.length - 1)].name,
           myLocationAddress: results[results.length - (results.length - 1)].address,
           error: null,
-        });
+        },
+          Toast.show({
+            text: `Location found: ${results[results.length - (results.length - 1)].name}`,
+            // buttonText: "Okay",
+            duration: 4000,
+            type: "success"
+          })
+        );
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
         this.getMyLocation();
       });
   };
@@ -210,7 +219,7 @@ class MoovPage extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.price > this.state.user.wallet_amount);
     const { container, map } = styles;
     let { height, width } = Dimensions.get('window');
 
@@ -255,11 +264,6 @@ class MoovPage extends Component {
     return (
       <Root>
         <Container style={container}>
-          {/*<HeaderComponent*/}
-            {/*options={this.state.slotDropDown}*/}
-            {/*onValueChange={(filter) => this.setState({ selectedSlot: filter })}*/}
-            {/*selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.slotDropDown[0]}*/}
-          {/*/>*/}
           <MapView
             style={[StyleSheet.absoluteFillObject, map]}
             region={{
@@ -268,6 +272,13 @@ class MoovPage extends Component {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}
+          />
+          <HeaderComponent
+            options={this.state.slotDropDown}
+            onValueChange={(filter) => this.setState({ selectedSlot: filter })}
+            selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.slotDropDown[0]}
+            priceValue={this.state.price}
+            priceColor={this.state.price > this.state.user.wallet_amount ? 'red' : 'green'}
           />
         </Container>
       </Root>

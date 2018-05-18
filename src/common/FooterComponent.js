@@ -65,14 +65,14 @@ class FooterComponent extends Component {
 
     axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         this.setState({
           user: response.data.data.user,
         });
         this.getNotifications()
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         Toast.show({ text: "Unable to retrieve user", buttonText: "Okay", type: "danger" })
       });
   };
@@ -91,15 +91,15 @@ class FooterComponent extends Component {
 
     axios.get('https://moov-backend-staging.herokuapp.com/api/v1/notification')
       .then((response) => {
-        console.log(response.data.data);
-        console.log(Object.keys(response.data.data.notifications).length);
+        // console.log(response.data.data);
+        // console.log(Object.keys(response.data.data.notifications).length);
         this.setState({
           notifications: response.data.data,
-          notificationCount: Object.keys(response.data.data.notifications).length
+          // notificationCount: Object.keys(response.data.data.notifications).length
         })
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
         Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
       });
   };
