@@ -163,8 +163,8 @@ class FooterComponent extends Component {
               borderWidth: this.state.currentTab === 'MOOV' ? 1: 0,
               borderColor: this.state.currentTab === 'MOOV' ? '#b3b4b4' : 'white',
               borderRadius: this.state.currentTab === 'MOOV' ? 35: 0,
-              // backgroundColor: this.state.currentTab === 'MOOV' ? '#fff' : '#fff'
-              backgroundColor: this.state.currentTab === 'MOOV' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
+              backgroundColor: this.state.currentTab === 'MOOV' ? '#fff' : '#fff'
+              // backgroundColor: this.state.currentTab === 'MOOV' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
             }}
             active={this.state.currentTab === 'MOOV'}
             onPress={() => this.setCurrentTab('MOOV')}
@@ -199,8 +199,8 @@ class FooterComponent extends Component {
               borderWidth: this.state.currentTab === 'WALLET' ? 1: 0,
               borderColor: this.state.currentTab === 'WALLET' ? '#b3b4b4' : 'white',
               borderRadius: this.state.currentTab === 'WALLET' ? 35: 0,
-              // backgroundColor: this.state.currentTab === 'WALLET' ? '#fff' : '#fff'
-              backgroundColor: this.state.currentTab === 'WALLET' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
+              backgroundColor: this.state.currentTab === 'WALLET' ? '#fff' : '#fff'
+              // backgroundColor: this.state.currentTab === 'WALLET' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
             }}
             active={this.state.currentTab === 'WALLET'}
             onPress={() => this.setCurrentTab('WALLET')}
@@ -232,8 +232,8 @@ class FooterComponent extends Component {
               borderWidth: this.state.currentTab === 'ASK' ? 1: 0,
               borderColor: this.state.currentTab === 'ASK' ? '#b3b4b4' : 'white',
               borderRadius: this.state.currentTab === 'ASK' ? 35: 0,
-              // backgroundColor: this.state.currentTab === 'ASK' ? '#fff' : '#fff'
-              backgroundColor: this.state.currentTab === 'ASK' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
+              backgroundColor: this.state.currentTab === 'ASK' ? '#fff' : '#fff'
+              // backgroundColor: this.state.currentTab === 'ASK' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
             }}
             active={this.state.currentTab === 'ASK'}
             onPress={() => this.setCurrentTab('ASK')}
@@ -266,8 +266,8 @@ class FooterComponent extends Component {
               borderWidth: this.state.currentTab === 'PROFILE' ? 1: 0,
               borderColor: this.state.currentTab === 'PROFILE' ? '#b3b4b4' : 'white',
               borderRadius: this.state.currentTab === 'PROFILE' ? 35: 0,
-              // backgroundColor: this.state.currentTab === 'PROFILE' ? '#fff' : '#fff'
-              backgroundColor: this.state.currentTab === 'PROFILE' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
+              backgroundColor: this.state.currentTab === 'PROFILE' ? '#fff' : '#fff'
+              // backgroundColor: this.state.currentTab === 'PROFILE' && Platform.OS === 'android' ? '#b3b4b4' : '#fff'
             }}
             active={this.state.currentTab === 'PROFILE'}
             onPress={() => this.setCurrentTab('PROFILE')}

@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 
 // react-native library
-import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions } from 'react-native';
+import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions, Switch } from 'react-native';
 
 // third-party library
-import { Container, Text, Header, Toast, Root, Content } from 'native-base';
+import { Container, Text, Header, Toast, Root, Content, List, ListItem, Icon, Body, Left, Right } from 'native-base';
 import * as axios from "axios/index";
 import RNGooglePlaces from "react-native-google-places";
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
@@ -280,6 +280,46 @@ class MoovPage extends Component {
             priceValue={this.state.price}
             priceColor={this.state.price > this.state.user.wallet_amount ? 'red' : 'green'}
           />
+          <Content>
+
+          </Content>
+          <List>
+            <ListItem icon>
+              <Left>
+                <Icon name="plane" />
+              </Left>
+              <Body>
+              <Text>Airplane Mode</Text>
+              </Body>
+              <Right>
+                <Switch value={false} />
+              </Right>
+            </ListItem>
+            <ListItem icon>
+              <Left>
+                <Icon name="wifi" />
+              </Left>
+              <Body>
+              <Text>Wi-Fi</Text>
+              </Body>
+              <Right>
+                <Text>GeekyAnts</Text>
+                <Icon name="arrow-forward" />
+              </Right>
+            </ListItem>
+            <ListItem icon>
+              <Left>
+                <Icon name="bluetooth" />
+              </Left>
+              <Body>
+              <Text>Bluetooth</Text>
+              </Body>
+              <Right>
+                <Text>On</Text>
+                <Icon name="arrow-forward" />
+              </Right>
+            </ListItem>
+          </List>
         </Container>
       </Root>
     );
