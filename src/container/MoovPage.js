@@ -29,6 +29,11 @@ class MoovPage extends Component {
     myLocationLongitude: null,
     myLocationName: '',
 
+    myDestinationAddress: '',
+    myDestinationLatitude: null,
+    myDestinationLongitude: null,
+    myDestinationName: '',
+
     loading: false,
 
     showToast: false,
@@ -181,7 +186,7 @@ class MoovPage extends Component {
           Toast.show({
             text: `Location found: ${results[results.length - (results.length - 1)].name}`,
             // buttonText: "Okay",
-            duration: 4000,
+            duration: 3000,
             type: "success"
           })
         );
@@ -218,6 +223,136 @@ class MoovPage extends Component {
     } catch (err) {
       console.warn(err)
     }
+  };
+
+  /**openSearchModalForMyDestination
+   *
+   * Opens modal for user to select destination
+   * Saves user destination in the state
+   * @return {void}
+   */
+  openSearchModalForMyDestination = () => {
+
+    RNGooglePlaces.openPlacePickerModal()
+      .then((place) => {
+        console.log(place);
+        if(this.state.myLocationName === place.name) {
+          this.showErrorForRoute();
+        } else {
+          this.setState({
+            myDestinationLatitude: place.latitude,
+            myDestinationLongitude: place.longitude,
+            myDestinationName: place.name,
+            myDestinationAddress: place.address,
+          }, () => this.calculatePrice());
+        }
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  };
+
+  showErrorForRoute = () => {
+    Toast.show({
+      text: "Location cannot be the same with destination",
+      buttonText: "Okay",
+      type: "danger",
+      duration: 3000,
+    });
+  };
+
+  /**
+   * openSearchModalForMyLocation
+   *
+   * Opens modal for user to select location
+   * Saves user location in the state
+   * @return {void}
+   */
+  openSearchModalForMyLocation = () => {
+    RNGooglePlaces.openPlacePickerModal()
+      .then((place) => {
+        if(this.state.myDestinationName === place.name) {
+          this.showErrorForRoute();
+        } else {
+          this.setState({
+            myLocationLatitude: place.latitude,
+            myLocationLongitude: place.longitude,
+            myLocationName: place.name,
+            myLocationAddress: place.address,
+            error: null,
+          }, () => this.calculatePrice());
+        }
+        // place represents user's selection from the
+        // suggestions and it is a simplified Google Place object.
+      })
+      .catch(error => console.log(error.message));  // error is a Javascript Error object
+  };
+
+  /**
+   * calculatePrice
+   *
+   * Calls the get price to calculate price and give user real time feeling
+   * @return {void}
+   */
+  calculatePrice = () => {
+    if(this.state.myDestinationLatitude !== null) {
+      this.getPrice();
+    }
+  };
+
+  /**
+   * getPrice
+   *
+   * This method gets the distance and calcultes the get Price method
+   * @return {void|*}
+   */
+  getPrice = () => {
+    console.log('gert price', this.state);
+    let distance = this.getDistance(
+      this.state.myLocationLatitude,
+      this.state.myLocationLongitude,
+      this.state.myDestinationLatitude,
+      this.state.myDestinationLongitude
+    );
+
+    let price;
+
+    if(this.state.selectedSlot === false) {
+      price = Math.floor(distance);
+    } else {
+      price = Math.floor(distance) *  this.state.selectedSlot.value;
+    }
+
+    // this.setState({ price })
+    return price < 100
+      ? this.setState({ price : 100 })
+      : this.setState({ price })
+  };
+
+  /**
+   * getDistance
+   *
+   * Calculates the User's distance
+   * @param lat1
+   * @param lon1
+   * @param lat2
+   * @param lon2
+   * @param unit
+   * @return {number}
+   */
+  getDistance = (lat1, lon1, lat2, lon2, unit) =>  {
+    let radlat1 = Math.PI * lat1/180;
+    let radlat2 = Math.PI * lat2/180;
+    let theta = lon1-lon2;
+    let radtheta = Math.PI * theta/180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit === "K") { dist = dist * 1.609344 }
+    if (unit === "N") { dist = dist * 0.8684 }
+
+    return dist * 250
   };
 
   render() {
@@ -293,7 +428,7 @@ class MoovPage extends Component {
           </MapView>
           <HeaderComponent
             options={this.state.slotDropDown}
-            onValueChange={(filter) => this.setState({ selectedSlot: filter })}
+            onValueChange={(filter) => this.setState({ selectedSlot: filter }, () => this.calculatePrice())}
             selectedOptions={this.state.selectedSlot ? this.state.selectedSlot : this.state.slotDropDown[0]}
             priceValue={this.state.price}
             priceColor={this.state.price > this.state.user.wallet_amount ? 'red' : 'green'}
@@ -327,6 +462,7 @@ class MoovPage extends Component {
                 </Left>
                 <Body>
                 <Text
+                  onPress={() => this.openSearchModalForMyDestination()}
                   style={{
                     // marginLeft: width / 15,
                   }}
@@ -351,6 +487,7 @@ class MoovPage extends Component {
 
             }}>
             <Button
+              onPress={() => this.openSearchModalForMyLocation()}
               style={{ height: height / 10 }}
               transparent
               light>
@@ -375,17 +512,6 @@ class MoovPage extends Component {
                 raised
               />
             </Button>
-            {/*<Button*/}
-              {/*style={{ height: height / 10 }}*/}
-              {/*transparent*/}
-              {/*light>*/}
-              {/*<RNEIcon*/}
-                {/*name='my-location'*/}
-                {/*type='MaterialIcons'*/}
-                {/*color='#ed1768'*/}
-                {/*raised*/}
-              {/*/>*/}
-            {/*</Button>*/}
           </Content>
           <Content
             contentContainerStyle={{

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="51f1c9ed-880d-41a9-a5cc-630aea182b5b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../ios/moov.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../ios/moov.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/../src/common/HeaderComponent.js" afterPath="$PROJECT_DIR$/../src/common/HeaderComponent.js" />
       <change beforePath="$PROJECT_DIR$/../src/container/MoovPage.js" afterPath="$PROJECT_DIR$/../src/container/MoovPage.js" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
