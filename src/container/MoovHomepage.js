@@ -113,7 +113,6 @@ class MoovHomepage extends React.Component {
     }).done();
 
     AsyncStorage.getItem("user").then((value) => {
-      console.log('khkshdkhskhdhksdhkskhdhksdkhsdk', JSON.parse(value));
       this.setState({
         user: JSON.parse(value) ,
         schools: [
@@ -593,7 +592,7 @@ class MoovHomepage extends React.Component {
       {
         title: this.state.myLocationName ? `${this.state.myLocationName}` :'',
         icon: 'location-on',
-        type: 'materia'
+        type: 'material'
       },
       {
         title: this.state.myDestinationName ? `${this.state.myDestinationName}` :'',
