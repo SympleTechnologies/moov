@@ -355,6 +355,104 @@ class MoovPage extends Component {
     return dist * 250
   };
 
+  /**
+   * submitRequest
+   *
+   * Submits user's request
+   */
+  submitRequest = () => {
+    if(this.verifyUserRoutes()) {
+      if(this.verifyFunds()) {
+        Toast.show({ text: "Insufficient funds, kindly load wallet", buttonText: "Okay", type: "danger", position: "top" })
+      } else {
+        Toast.show({ text: "Fetching...", buttonText: "Okay", type: "success", position: "top" });
+        this.getDriver();
+      }
+    }
+  };
+
+  /**
+   * verifyUserRoutes
+   *
+   * Verifies user location and destination
+   * @return {boolean}
+   */
+  verifyUserRoutes = () => {
+    if(this.state.myDestinationLatitude === null) {
+      Toast.show({ text: "Kindly select a destination", buttonText: "Okay", type: "danger", position: "top" })
+    } else {
+      return true;
+    }
+  };
+
+  /**
+   * verifyFunds
+   *
+   * checks if user has sufficient funds to order a cab
+   * @return {*}
+   */
+  verifyFunds = () => {
+    return this.state.price > this.state.user.wallet_amount;
+  };
+
+  /**
+   * getDriver
+   *
+   * gets available driver
+   */
+  getDriver = () => {
+    let school;
+    this.setState({ fetchingRide: !this.state.fetchingRide });
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+
+    // if(this.state.changedSchool === false) {
+    //   school = this.state.schools[0].name;
+    // } else {
+    //   school = this.state.changedSchool.name;
+    // }
+
+    axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({
+          driverDetails: response.data.data.driver,
+        });
+        this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
+        Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
+        // this.startTimerCountDown(10);
+        // this.getDistanceFromDriver();
+      })
+      .catch((error) => {
+        this.setState({ fetchingRide: !this.state.fetchingRide });
+        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+      });
+
+    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
+    //   params: {
+    //     user_location: `${this.state.myLocationLatitude},${this.state.myLocationLatitude}`,
+    //     user_destination: `${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`,
+    //     slots: this.state.selectedSlot.name,
+    //     fare_charge: this.state.price,
+    //     school
+    //   }
+    // }).then((response) => {
+    //     console.log(response.data);
+    //     this.setState({
+    //       driverDetails: response.data.data.driver,
+    //     });
+    //     this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
+    //     Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
+    //     this.startTimerCountDown(10);
+    //     this.getDistanceFromDriver();
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ fetchingRide: !this.state.fetchingRide });
+    //     Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
+    //   });
+  };
+
   render() {
     console.log(this.state);
     const { container, map } = styles;
@@ -458,6 +556,9 @@ class MoovPage extends Component {
                   <Icon
                     name="location-arrow"
                     type="FontAwesome"
+                    style={{
+                      color: this.state.myDestinationName === '' ? 'black' : 'green'
+                    }}
                   />
                 </Left>
                 <Body>
@@ -466,7 +567,7 @@ class MoovPage extends Component {
                   style={{
                     // marginLeft: width / 15,
                   }}
-                >Where to ?</Text>
+                >{this.state.myDestinationName === '' ? 'Where to ?' : `${this.state.myDestinationName}`}</Text>
                 </Body>
                 <Right>
                   <Switch value={false} />
@@ -519,7 +620,7 @@ class MoovPage extends Component {
               marginLeft: width / 20
             }}
           >
-            <Button block dark><Text> REQUEST MOOV </Text></Button>
+            <Button block dark onPress={this.submitRequest}><Text> REQUEST MOOV </Text></Button>
           </Content>
 
         </Container>
