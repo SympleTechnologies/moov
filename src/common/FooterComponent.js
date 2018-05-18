@@ -30,7 +30,8 @@ class FooterComponent extends Component {
 
     loading: false,
     user: {
-      image_url: ''
+      image_url: '',
+      wallet_amount: ''
     },
   };
 
@@ -144,7 +145,7 @@ class FooterComponent extends Component {
   };
 
   render() {
-
+    console.log(this.state, 'current state from profile');
 
     return (
       <Footer>
@@ -219,7 +220,7 @@ class FooterComponent extends Component {
                 fontSize: 10,
                 color: this.state.currentTab === 'WALLET' ? 'black' : '#b3b4b4'
               }}
-            >WALLET</Text>
+            >{this.state.user.wallet_amount}</Text>
           </Button>
 
           {/*Ask*/}
