@@ -5,10 +5,11 @@ import React, { Component } from 'react';
 import { AsyncStorage, PermissionsAndroid, Platform, StyleSheet, Dimensions, Switch } from 'react-native';
 
 // third-party library
-import { Container, Text, Header, Toast, Root, Content, List, ListItem, Icon, Body, Left, Right } from 'native-base';
+import { Container, Text, Header, Toast, Root, Content, List, ListItem, Icon, Body, Left, Right, Button } from 'native-base';
 import * as axios from "axios/index";
 import RNGooglePlaces from "react-native-google-places";
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 
 // common
 import { CardCommon, HeaderComponent, SpinnerCommon, StatusBarComponent } from "../common";
@@ -219,9 +220,18 @@ class MoovPage extends Component {
   };
 
   render() {
-    console.log(this.state.price > this.state.user.wallet_amount);
+    console.log(this.state);
     const { container, map } = styles;
     let { height, width } = Dimensions.get('window');
+
+    let LocationMarkers, DestinationMarker, DriverMarker;
+
+    if(this.state.myLocationName !== '') {
+      LocationMarkers = {
+        latitude: this.state.myLocationLatitude,
+        longitude: this.state.myLocationLongitude,
+      }
+    }
 
     // Fetching user location
     if (this.state.myLocationLongitude === null) {
@@ -272,7 +282,14 @@ class MoovPage extends Component {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}
-          />
+          >
+            <Marker
+              coordinate={LocationMarkers}
+              title={`${this.state.myLocationName}`}
+              description={`${this.state.myLocationAddress}`}
+              pinColor='#820e0a'
+            />
+          </MapView>
           <HeaderComponent
             options={this.state.slotDropDown}
             onValueChange={(filter) => this.setState({ selectedSlot: filter })}
@@ -281,45 +298,60 @@ class MoovPage extends Component {
             priceColor={this.state.price > this.state.user.wallet_amount ? 'red' : 'green'}
           />
           <Content>
-
+            <List
+              style={{
+                alignItems: 'center',
+                marginTop: 40,
+              }}
+            >
+              <ListItem
+                icon
+                style={{
+                  backgroundColor: '#fff',
+                  width: width / 1.3,
+                  shadowOpacity: 0.75,
+                  shadowRadius: 5,
+                  // shadowColor: '#b3b4b4',
+                  shadowOffset: { height: 0, width: 0 },
+                }}>
+                <Left
+                  style={{
+                    backgroundColor: '#fff',
+                    marginLeft: width / 20,
+                  }}>
+                  <Icon
+                    name="location-arrow"
+                    type="FontAwesome"
+                  />
+                </Left>
+                <Body>
+                <Text
+                  style={{
+                    // marginLeft: width / 15,
+                  }}
+                >Where to ?</Text>
+                </Body>
+                <Right>
+                  <Switch value={false} />
+                </Right>
+              </ListItem>
+            </List>
           </Content>
-          <List>
-            <ListItem icon>
-              <Left>
-                <Icon name="plane" />
-              </Left>
-              <Body>
-              <Text>Airplane Mode</Text>
-              </Body>
-              <Right>
-                <Switch value={false} />
-              </Right>
-            </ListItem>
-            <ListItem icon>
-              <Left>
-                <Icon name="wifi" />
-              </Left>
-              <Body>
-              <Text>Wi-Fi</Text>
-              </Body>
-              <Right>
-                <Text>GeekyAnts</Text>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-            <ListItem icon>
-              <Left>
-                <Icon name="bluetooth" />
-              </Left>
-              <Body>
-              <Text>Bluetooth</Text>
-              </Body>
-              <Right>
-                <Text>On</Text>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-          </List>
+
+          <Content>
+          </Content>
+          <Content>
+          </Content>
+
+          <Content
+            contentContainerStyle={{
+              width: '90%',
+              marginLeft: width / 20
+            }}
+          >
+            <Button block dark><Text> REQUEST MOOV </Text></Button>
+          </Content>
+
         </Container>
       </Root>
     );
