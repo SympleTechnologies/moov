@@ -113,22 +113,31 @@ class FooterComponent extends Component {
    */
   setCurrentTab = (currentTab) => {
     if(currentTab === 'MOOV') {
-      this.setState({ currentTab: 'MOOV' });
-      this.props.navigation.navigate("MoovPage")
+      if(this.state.currentTab !== currentTab) {
+        this.setState({ currentTab: 'MOOV' });
+        this.props.navigation.navigate("MoovPage")
+      }
     }
 
     if(currentTab === 'WALLET') {
-      this.setState({ currentTab: 'WALLET' })
+      if(this.state.currentTab !== currentTab) {
+        this.setState({ currentTab: 'WALLET' })
+        this.props.navigation.navigate("Wallet")
+      }
     }
 
     if(currentTab === 'ASK') {
-      this.setState({ currentTab: 'ASK' });
-      this.props.navigation.navigate("AskHomepage")
+      if(this.state.currentTab !== currentTab) {
+        this.setState({ currentTab: 'ASK' });
+        this.props.navigation.navigate("AskHomepage")
+      }
     }
 
     if(currentTab === 'PROFILE') {
-      this.setState({ currentTab: 'PROFILE' });
-      this.clearNotifications();
+      if(this.state.currentTab !== currentTab) {
+        this.setState({ currentTab: 'PROFILE' });
+        this.clearNotifications();
+      }
     }
   };
 

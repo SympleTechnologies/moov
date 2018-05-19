@@ -6,13 +6,14 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'native-base';
 
 // containers
-import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage } from '../container';
+import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage, Wallet } from '../container';
 
 // component
 import { LoadPage, TransferPage, WithdrawPage, PaymentPage } from "../component/Wallet";
 
 // common
 import { FooterComponent } from "../common";
+import { LoadWallet } from "../component/Wallet/LoadWallet";
 
 export const MoovHome = StackNavigator({
   MoovHomePage: {
@@ -28,8 +29,14 @@ export const MoovHome = StackNavigator({
 });
 //
 export const WalletHome = StackNavigator({
-  WalletHomePage: {
-    screen: WalletHomepage,
+  Wallet: {
+    screen: Wallet,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  LoadWallet: {
+    screen: LoadWallet,
     navigationOptions: {
       header: null,
     }
@@ -116,18 +123,29 @@ export const ProfileHome = StackNavigator({
 
 
 export const Tabs = TabNavigator({
-  MoovPage: {
-    screen: MoovPage,
+  // MoovPage: {
+  //   screen: MoovPage,
+  //   navigationOptions: {
+  //     tabBarLabel: 'MOOV',
+  //     color: 'white',
+  //     style: {
+  //       color: '#004a80',
+  //     },
+  //     tabBarIcon: ({ focused }) => (
+  //       focused
+  //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
+  //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+  //     ),
+  //   },
+  // },
+  Wallet: {
+    screen: WalletHome,
     navigationOptions: {
-      tabBarLabel: 'MOOV',
-      color: 'white',
-      style: {
-        color: '#004a80',
-      },
+      tabBarLabel: 'Wallet',
       tabBarIcon: ({ focused }) => (
         focused
-          ? <Icon name="ios-car-outline" type="ionicon" color="black" />
-          : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
+          ? <Icon name="credit-card-plus" type="material-community" color="black" />
+          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
       ),
     },
   },
@@ -158,17 +176,6 @@ export const Tabs = TabNavigator({
   //       focused
   //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
   //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
-  //     ),
-  //   },
-  // },
-  // Wallet: {
-  //   screen: WalletHome,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Wallet',
-  //     tabBarIcon: ({ focused }) => (
-  //       focused
-  //         ? <Icon name="credit-card-plus" type="material-community" color="black" />
-  //         : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
   //     ),
   //   },
   // },
