@@ -47,11 +47,11 @@ class PaymentPage extends React.Component {
       this.setState({ user: JSON.parse(value) });
     }).done();
 
-    this.setState({
-      amount: this.props.navigation.state.params.amount,
-      requestType: this.props.navigation.state.params.requestType,
-      originalAmount: this.props.navigation.state.params.originalAmount,
-    });
+    // this.setState({
+    //   amount: this.props.navigation.state.params.amount,
+    //   requestType: this.props.navigation.state.params.requestType,
+    //   originalAmount: this.props.navigation.state.params.originalAmount,
+    // });
 
     // this.savePaymentToServer()
   }

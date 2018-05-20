@@ -5,7 +5,23 @@ import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, Dimensions } from 'react-native';
 
 // third-party library
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Segment, Content, Text, Toast, Root, Item, Input } from 'native-base';
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Icon,
+  Title,
+  Segment,
+  Content,
+  Text,
+  Toast,
+  Root,
+  Item,
+  Input
+} from 'native-base';
 
 // common
 import {SegmentHeader, StatusBarComponent} from "../common";
@@ -27,6 +43,8 @@ class Wallet extends Component {
     currentTab: 'Load',
 
     amount: '',
+    requestType: 'LOAD',
+    originalAmount: '',
 
     error: false
   };
@@ -88,6 +106,7 @@ class Wallet extends Component {
     }
   };
 
+
   /**
    * submitAmount
    *
@@ -100,6 +119,7 @@ class Wallet extends Component {
       if (!this.state.amount.match(/[a-z]/i) && /^[a-zA-Z0-9- ]*$/.test(this.state.amount) === true && this.state.amount.length >= 3) {
         this.setState({ error: false });
         Toast.show({ text: "Good to go ", buttonText: "Okay", type: "success", position: 'top' });
+        this.setOriginalAmount()
       }
       else {
         Toast.show({ text: "Amount should contain only numbers", buttonText: "Okay", type: "danger", position: 'top' });
@@ -108,6 +128,60 @@ class Wallet extends Component {
     else {
       Toast.show({ text: "Amount should be 3 digits or more", buttonText: "Okay", type: "danger", position: 'top' });
     }
+  };
+
+  /**
+   * setOriginalAmount
+   *
+   * Sets original amount for the Sever to use
+   * @return {void}
+   */
+  setOriginalAmount = () => {
+    this.setState({
+      originalAmount: this.state.amount,
+    }, () => this.addPayStackFee())
+  };
+
+  /**
+   * addPayStackFee
+   */
+  addPayStackFee = () => {
+
+    let reg = 0.015 * this.state.amount;
+
+    let newAmount = parseInt(reg) + parseInt(this.state.amount);
+    let extraCharge = parseInt(this.state.amount) + 100 + parseInt(reg);
+
+    if(this.state.amount < 2500) {
+      this.setState({
+        amount: newAmount,
+      }, () => {
+        this.appNavigation()
+      });
+    } else if (this.state.amount >= 2500) {
+      this.setState({
+        amount: extraCharge
+      }, () => {
+        this.appNavigation()
+      });
+    }
+  };
+
+  /**
+   * appNavigation
+   *
+   * navigates user to payment page
+   * @return {void}
+   */
+  appNavigation = () => {
+    const { navigate } = this.props.navigation;
+
+    navigate('Paystack', {
+      amount: this.state.amount,
+      requestType: this.state.requestType,
+      originalAmount: this.state.originalAmount,
+      userToken: this.state.userToken
+    });
   };
 
   /**
@@ -136,25 +210,6 @@ class Wallet extends Component {
     this.setState({ amount: '', error: false })
   };
 
-
-  returnComponent = () => {
-    // const { navigate } = this.props.navigation;
-    //
-    // if (this.state.currentTab === 'Load') {
-    //   navigate('LoadWallet')
-    // }
-    if(this.state.currentTab === 'Load') {
-      return (
-        <Root>
-          <LoadWallet />
-        </Root>
-      )
-    } else {
-      return (
-        <Text>not sjdbsbd</Text>
-      )
-    }
-  };
 
   render() {
     console.log(this.state);
@@ -257,7 +312,7 @@ class Wallet extends Component {
                       keyboardType='numeric'
                       style={{ textAlign: 'center' }}
                       placeholder="Enter the amount"
-                      value={this.state.amount}
+                      value={this.state.amount.toString()}
                       onChangeText={amount => this.setState({ amount: amount.replace(" ", "")}, () => this.verifyAmount())}
                     />
                     {
@@ -296,7 +351,7 @@ class Wallet extends Component {
                       }}
                       onPress={() => this.submitAmount()}
                     >
-                      <Text>Next</Text>
+                      <Text>NEXT</Text>
                     </Button>
                   </Content>
                 </Content>

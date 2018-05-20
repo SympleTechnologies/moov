@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51f1c9ed-880d-41a9-a5cc-630aea182b5b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../src/component/Wallet/Paystack.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/../ios/moov.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../ios/moov.xcworkspace/xcuserdata/chineduofor.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/../src/common/FooterComponent.js" afterPath="$PROJECT_DIR$/../src/common/FooterComponent.js" />
-      <change beforePath="$PROJECT_DIR$/../src/common/index.js" afterPath="$PROJECT_DIR$/../src/common/index.js" />
+      <change beforePath="$PROJECT_DIR$/../src/component/Wallet/LoadWallet.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../src/component/Wallet/PaymentPage.js" afterPath="$PROJECT_DIR$/../src/component/Wallet/PaymentPage.js" />
       <change beforePath="$PROJECT_DIR$/../src/component/Wallet/index.js" afterPath="$PROJECT_DIR$/../src/component/Wallet/index.js" />
       <change beforePath="$PROJECT_DIR$/../src/config/router.js" afterPath="$PROJECT_DIR$/../src/config/router.js" />
-      <change beforePath="$PROJECT_DIR$/../src/container/index.js" afterPath="$PROJECT_DIR$/../src/container/index.js" />
+      <change beforePath="$PROJECT_DIR$/../src/container/Wallet.js" afterPath="$PROJECT_DIR$/../src/container/Wallet.js" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

@@ -3,17 +3,17 @@ import React from 'react';
 
 // third-party libraries
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import { Icon } from 'native-base';
+import { Icon, Root } from 'native-base';
+
 
 // containers
 import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage, Wallet } from '../container';
 
 // component
-import { LoadPage, TransferPage, WithdrawPage, PaymentPage } from "../component/Wallet";
+import { LoadPage, TransferPage, WithdrawPage, PaymentPage, Paystack } from "../component/Wallet";
 
 // common
 import { FooterComponent } from "../common";
-import { LoadWallet } from "../component/Wallet/LoadWallet";
 
 export const MoovHome = StackNavigator({
   MoovHomePage: {
@@ -35,12 +35,20 @@ export const WalletHome = StackNavigator({
       header: null,
     }
   },
-  LoadWallet: {
-    screen: LoadWallet,
+
+  Paystack: {
+    screen: Paystack,
     navigationOptions: {
       header: null,
     }
   },
+  PaymentPage: {
+    screen: PaymentPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+
   LoadPage: {
     screen: LoadPage,
     navigationOptions: {
@@ -55,12 +63,6 @@ export const WalletHome = StackNavigator({
   },
   WithdrawPage: {
     screen: WithdrawPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  PaymentPage: {
-    screen: PaymentPage,
     navigationOptions: {
       header: null,
     }

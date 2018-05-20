@@ -3,4 +3,4 @@ export * from './TransferPage';
 export * from './WithdrawPage';
 export * from './PaymentPage';
 
-export * from './LoadWallet';
+export * from './Paystack';
