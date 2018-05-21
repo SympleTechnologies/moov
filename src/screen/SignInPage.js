@@ -4,7 +4,7 @@ import React from 'react';
 // react-native libraries
 import {
   StyleSheet, View, TouchableOpacity, Dimensions, Animated, ActivityIndicator,
-  AsyncStorage, Platform, ImageBackground, Image
+  AsyncStorage, Platform, ImageBackground, Image, ScrollView
 } from 'react-native';
 
 // third-party libraries
@@ -425,13 +425,12 @@ class SignInPage extends React.Component {
     }
 
     return (
-      <Container>
+      <Container style={container}>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
           <ImageBackground
             style={{
               height: height,
               width: width,
-              flex: 1
             }}
             source={require('../../assets/moovBG.jpg')}
           >
@@ -439,9 +438,9 @@ class SignInPage extends React.Component {
               <Animated.Image
                 style={{
                   alignItems: 'center',
-                  height: height / 5.5,
+                  height: height / 5.7,
                   width: width / 3,
-                  marginTop: height / 10,
+                  marginTop: height / 7,
                   transform: [{scale: this.springValue}],
                   borderRadius: 25
                 }}
@@ -457,16 +456,18 @@ class SignInPage extends React.Component {
                 <Text style={{ fontSize: 35, color: '#ffc653' }}>Welcome</Text>
                 <Text style={{ fontSize: 35, color: '#d3000d' }}> Back</Text>
               </Content>
-              <Content
-                contentContainerStyle={{
+              <ScrollView
+                scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
+                keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
+                enableAutoAutomaticScroll={false}
+                style={{
                   marginLeft: width / 40,
                   marginTop: height / 25,
                   width: width / 1.5,
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   borderWidth: 1,
                   borderColor: '#b3b4b4',
-                  borderRadius: 10
+                  borderRadius: 10,
+                  backgroundColor: 'white'
                 }}>
                 <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
                   <Icon
@@ -482,17 +483,19 @@ class SignInPage extends React.Component {
                 </Item>
                 <Item>
                   <Icon
-                    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
                     active
+                    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
                     name='user-secret'
                     type="FontAwesome"
+                    returnKeyType='next'
                   />
                   <Input
                     placeholder='Password'
                     placeholderTextColor='#b3b4b4'
+                    secureTextEntry
                   />
                 </Item>
-              </Content>
+              </ScrollView>
               <Button
                 style={{
                   width: width / 1.5,
@@ -510,7 +513,7 @@ class SignInPage extends React.Component {
                   marginTop: height / 50,
                 }}
               >
-                <Text style={{ color: '#b3b4b4', fontSize: 18 }}>Sign in with</Text>
+                <Text style={{ color: '#b3b4b4', fontSize: 18, fontWeight: '300' }}>Sign in with</Text>
               </Content>
               <Content
                 contentContainerStyle={{
@@ -537,9 +540,9 @@ class SignInPage extends React.Component {
                   dark>
                   <Image
                     style={{
-                      borderRadius: 11,
+                      borderRadius: 10,
                       alignItems: 'center',
-                      height: Platform.OS === 'ios' ? height / 15.5 : height / 15,
+                      height: Platform.OS === 'ios' ? 43 : 43.5,
                       width: width / 11,
                       borderColor: 'red',
                       marginLeft: Platform.OS === 'ios' ? width / 35 : width / 70
@@ -556,7 +559,7 @@ class SignInPage extends React.Component {
                     marginLeft: width / 40,
                     marginTop: height / 50,
                     backgroundColor: '#ffffff',
-                    borderWidth: 1,
+                    borderWidth: 2,
                     borderColor: '#b3b4b4',
                     borderRadius: 12
                   }}
@@ -564,15 +567,31 @@ class SignInPage extends React.Component {
                   dark>
                   <Image
                     style={{
+                      borderRadius: 10,
                       alignItems: 'center',
-                      height: height / 25,
+                      height: height / 30,
                       width: width / 17,
-                      borderColor: 'blue',
-                      marginLeft: width / 60
+                      marginLeft: width / 30,
                     }}
                     source={require('../../assets/google_logo.png')}
                   />
-                  <Text style={{ color: '#9b9b9b', fontWeight: '900', fontSize: 13 }}>Google</Text>
+                  <View style={{
+                    borderRadius: 35,
+                    alignItems: 'center',
+                    height: 45,
+                    width: 10,
+                    borderRightColor: '#b4b4b4',
+                    borderLeftColor: 'white',
+                    borderTopColor: '#b4b4b4',
+                    borderBottomColor: '#b4b4b4',
+                    borderLeftWidth: 0,
+                    borderTopWidth: 0,
+                    borderBottomWidth: 0,
+                    // marginLeft: width / 70,
+
+                    borderWidth: 1,
+                  }}/>
+                  <Text style={{ color: '#9b9b9b', fontWeight: '800', fontSize: 14, textAlign: 'center' }}>Google</Text>
                 </Button>
               </Content>
               <Content
@@ -586,6 +605,7 @@ class SignInPage extends React.Component {
                 <Text style={{ color: '#f00266', fontWeight: '800' }}> Sign up</Text>
               </Content>
             </Content>
+
           </ImageBackground>
       </Container>
     )

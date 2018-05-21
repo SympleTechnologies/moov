@@ -98,6 +98,7 @@ class LandingPage extends React.Component {
           source={require('../../assets/moovBG.jpg')}
         >
           <Content contentContainerStyle={{ alignItems: 'center'}}>
+            <TouchableOpacity onPress={this.appNavigation}>
             <Animated.Image
               style={{
                 alignItems: 'center',
@@ -109,19 +110,20 @@ class LandingPage extends React.Component {
               }}
               source={require('../../assets/appLogo.png')}
             />
+            </TouchableOpacity>
           </Content>
           <Content/>
+          <TouchableOpacity onPress={this.appNavigation}>
           <Image
             styleName="medium"
             style={{
-              marginLeft: width / 3.4,
-              height: Platform.OS === 'ios' ? height / 7.8 :  height / 7.3,
-              width:  width / 1.5,
-              // height: height / 7.3,
-              // width: width / 1.5,
+              marginLeft: Platform.OS === 'ios' ? width / 4 : width / 3.3,
+              height: Platform.OS === 'ios' ? 90 :  height / 7.3,
+              width:  Platform.OS === 'ios' ? 270 : width / 1.5,
             }}
             source={require('../../assets/moov-car-side.png')}
           />
+          </TouchableOpacity>
         </ImageBackground>
       </Container>
     );
