@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 // third-party libraries
-import { Container, Content, Footer, FooterTab, Button, Root, Badge, Thumbnail, Toast } from 'native-base';
+import { Container, Content } from 'native-base';
 
 import {StatusBarComponent} from "../common";
 
@@ -86,79 +86,44 @@ class LandingPage extends React.Component {
     } = styles;
     let { height, width } = Dimensions.get('window');
 
-    // return (
-    //   <Container>
-    //     <ImageBackground
-    //       style={{ height, width }}
-    //       source={require('../../assets/moov_background.png')}
-    //     >
-    //       <Content contentContainerStyle={{ alignItems: 'center', justifyContent: 'center'}}>
-    //         <Animated.Image
-    //           style={{
-    //             alignItems: 'center',
-    //             height: height / 10,
-    //             width: width / 2,
-    //             transform: [{scale: this.springValue}],
-    //             borderRadius: 25
-    //           }}
-    //           source={require('../../assets/appLogo.png')}
-    //         />
-    //       </Content>
-    //       {/*<Image*/}
-    //         {/*style={{*/}
-    //           {/*marginTop: height / 1.14,*/}
-    //           {/*marginLeft: width / 3.5,*/}
-    //           {/*height: height / 8,*/}
-    //           {/*width: width / 1.5*/}
-    //         {/*}}*/}
-    //         {/*source={require('../../assets/moov-car-side.png')}*/}
-    //       {/*/>*/}
-    //     </ImageBackground>
-    //   </Container>
-    // );
-
     return (
-      <View style={container}>
+      <Container>
         <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-        <View style={{ alignItems: 'center'}}>
-          <TouchableOpacity onPress={this.appNavigation}>
-            <ImageBackground
+        <ImageBackground
+          style={{
+            height: height,
+            width: width,
+            flex: 1
+          }}
+          source={require('../../assets/moovBG.jpg')}
+        >
+          <Content contentContainerStyle={{ alignItems: 'center'}}>
+            <Animated.Image
               style={{
-                height: height,
-                width: width,
-                flex: 1
+                alignItems: 'center',
+                height: height / 5.5,
+                width: width / 3,
+                marginTop: height / 10,
+                transform: [{scale: this.springValue}],
+                borderRadius: 25
               }}
-              source={require('../../assets/moovBG.jpg')}
-            >
-              <Content contentContainerStyle={{ alignItems: 'center'}}>
-                <Animated.Image
-                  style={{
-                    alignItems: 'center',
-                    height: height / 5.5,
-                    width: width / 3,
-                    marginTop: height / 10,
-                    transform: [{scale: this.springValue}],
-                    borderRadius: 25
-                  }}
-                  source={require('../../assets/appLogo.png')}
-                />
-              </Content>
-              <Content/>
-              <Image
-                styleName="medium"
-                style={{
-                  marginLeft: width / 3.4,
-                  height: Platform.OS === 'ios' ? height / 8 :  height / 7.3,
-                  width:  width / 1.5,
-                  // height: height / 7.3,
-                  // width: width / 1.5,
-                }}
-                source={require('../../assets/moov-car-side.png')}
-              />
-            </ImageBackground>
-          </TouchableOpacity>
-        </View>
-      </View>
+              source={require('../../assets/appLogo.png')}
+            />
+          </Content>
+          <Content/>
+          <Image
+            styleName="medium"
+            style={{
+              marginLeft: width / 3.4,
+              height: Platform.OS === 'ios' ? height / 7.8 :  height / 7.3,
+              width:  width / 1.5,
+              // height: height / 7.3,
+              // width: width / 1.5,
+            }}
+            source={require('../../assets/moov-car-side.png')}
+          />
+        </ImageBackground>
+      </Container>
     );
 
 
