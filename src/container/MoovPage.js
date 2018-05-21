@@ -620,7 +620,7 @@ class MoovPage extends Component {
               marginLeft: width / 20
             }}
           >
-            <Button block dark onPress={this.submitRequest}><Text> REQUEST MOOV </Text></Button>
+            <Button block dark onPress={this.submitRequest}><Text>LET's MOOV </Text></Button>
           </Content>
 
         </Container>
