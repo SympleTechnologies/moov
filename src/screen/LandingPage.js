@@ -3,14 +3,20 @@ import React from 'react';
 
 // react-native libraries
 import {
-  StyleSheet, Text, View, Dimensions, Animated, TouchableOpacity, ActivityIndicator, Platform,
-  AsyncStorage, ImageBackground, Image
+  Dimensions,
+  Animated,
+  TouchableOpacity,
+  Platform,
+  ImageBackground,
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 // third-party libraries
 import { Container, Content } from 'native-base';
 
-import {StatusBarComponent} from "../common";
+// common
+import { StatusBarComponent } from "../common";
 
 class LandingPage extends React.Component {
   /**
@@ -20,18 +26,6 @@ class LandingPage extends React.Component {
     super();
     this.springValue = new Animated.Value(0.3);
   }
-
-  state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    imgURL: '',
-    loading: false,
-    userAuthID: '',
-
-    user: '',
-    userToken: '',
-  };
 
   /**
    * componentDidMount
@@ -69,21 +63,16 @@ class LandingPage extends React.Component {
   /**
    * appNavigation
    *
-   * @param {string} page - The page the user wants to navigate to
+   * Navigates user to SignIn page
    * @return {void}
    */
   appNavigation = () => {
-    console.log('Was clicked')
     const { navigate } = this.props.navigation;
     navigate('SignInPage');
   };
 
   render() {
     console.log(this.state, 'Entire state');
-    const resizeMode = 'center';
-    const {
-      container,
-    } = styles;
     let { height, width } = Dimensions.get('window');
 
     return (
@@ -127,37 +116,7 @@ class LandingPage extends React.Component {
         </ImageBackground>
       </Container>
     );
-
-
-    // return (
-    //   <View style={container}>
-    //     <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-    //     <View style={{ alignItems: 'center'}}>
-    //       <TouchableOpacity onPress={this.appNavigation}>
-    //         <Animated.Image
-    //           style={{
-    //             alignItems: 'center',
-    //             height: height / 3.5,
-    //             width: width / 2,
-    //             transform: [{scale: this.springValue}],
-    //             borderRadius: 25
-    //           }}
-    //           source={require('../../assets/appLogo.png')}
-    //         />
-    //       </TouchableOpacity>
-    //     </View>
-    //   </View>
-    // );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    height: Dimensions.get('window').height
-  },
-});
 
 export { LandingPage };
