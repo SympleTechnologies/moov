@@ -205,7 +205,7 @@ class SignInPage extends React.Component {
    * return {void}
    */
   errorMessage = (errorMessage) => {
-    Toast.show({ text: `${errorMessage}`, buttonText: "Okay", type: "danger", position: 'top' })
+    Toast.show({ text: `${errorMessage}`, type: "danger", position: 'top' })
   };
 
   /**
@@ -216,7 +216,7 @@ class SignInPage extends React.Component {
    * return {void}
    */
   successMessage = (successMessage) => {
-    Toast.show({ text: `${successMessage}`, buttonText: "Okay", type: "success", position: 'top' })
+    Toast.show({ text: `${successMessage}`, type: "success", position: 'top' })
   };
 
   /**

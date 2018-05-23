@@ -12,7 +12,7 @@ import { Root } from 'native-base';
 
 // component
 import { NumberFormPage, SelectSchool } from './src/component';
-import { FirstPage } from "./src/component/Registration";
+import {FirstPage, SecondPage} from "./src/component/Registration";
 
 const AppNavigator = StackNavigator({
   LandingPage: {
@@ -35,6 +35,12 @@ const AppNavigator = StackNavigator({
   },
   FirstPage: {
     screen: FirstPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  SecondPage: {
+    screen: SecondPage,
     navigationOptions: {
       header: null,
     }
