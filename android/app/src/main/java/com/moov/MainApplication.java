@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.arttitude360.reactnative.rngoogleplaces.RNGooglePlacesPackage;
 import com.arttitude360.reactnative.rnpaystack.RNPaystackPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -44,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
             new RNGooglePlacesPackage(),
             new RNPaystackPackage(),
             new RNFetchBlobPackage(),
@@ -52,7 +54,6 @@ public class MainApplication extends Application implements ReactApplication {
             new FBSDKPackage(mCallbackManager),
             new PhotoViewPackage(),
             new LinearGradientPackage(),
-            new VectorIconsPackage(),
             new MapsPackage()
       );
     }

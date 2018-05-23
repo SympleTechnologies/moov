@@ -84,7 +84,7 @@ class LandingPage extends React.Component {
             width: width,
             flex: 1
           }}
-          source={require('../../assets/moovBG.jpg')}
+          source={require('../../assets/moovBG2.png')}
         >
           <Content contentContainerStyle={{ alignItems: 'center'}}>
             <TouchableOpacity onPress={this.appNavigation}>

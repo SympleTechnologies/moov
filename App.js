@@ -7,24 +7,34 @@ import { StackNavigator } from 'react-navigation';
 // screens
 import { LandingPage, SignUpPage, SignInPage, MoovPages } from './src/screen';
 
+// third-party libraries
+import { Root } from 'native-base';
+
 // component
 import { NumberFormPage, SelectSchool } from './src/component';
+import { FirstPage } from "./src/component/Registration";
 
-export default MainStack = StackNavigator({
-  // LandingPage: {
-  // 	screen: LandingPage,
-  // 	navigationOptions: {
-  // 		header: null,
-  // 	}
-  // },
-  // SignUpPage: {
-  // 	screen: SignUpPage,
-  // 	navigationOptions: {
-  // 		header: null,
-  // 	}
-  // },
+const AppNavigator = StackNavigator({
+  LandingPage: {
+  	screen: LandingPage,
+  	navigationOptions: {
+  		header: null,
+  	}
+  },
+  SignUpPage: {
+  	screen: SignUpPage,
+  	navigationOptions: {
+  		header: null,
+  	}
+  },
   SignInPage: {
     screen: SignInPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  FirstPage: {
+    screen: FirstPage,
     navigationOptions: {
       header: null,
     }
@@ -52,3 +62,8 @@ export default MainStack = StackNavigator({
     header: 'screen',
   }
 });
+
+export default () =>
+  <Root>
+    <AppNavigator />
+  </Root>;
