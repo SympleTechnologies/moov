@@ -14,15 +14,15 @@ import {
 } from 'react-native';
 
 // third-party library
-import { Container, Toast, Root, Content, Text, Item, Icon, Button, Picker } from 'native-base';
-import { NavigationActions } from 'react-navigation';
+import { Container, Toast, Content, Text, Button } from 'native-base';
+import PhoneInput from "react-native-phone-input";
 
 // common
 import { StatusBarComponent } from "../../common";
 import { Fonts } from "../../utils/Font";
 import * as axios from "axios/index";
 
-class SecondPage extends Component {
+class FinalPage extends Component {
 
   state={
     firstName: '',
@@ -33,13 +33,13 @@ class SecondPage extends Component {
     socialEmail: '',
     userAuthID: '',
     authentication_type: '',
+    selectedSchool: '',
 
-    schools: [
-      { name: 'BABCOCK UNIVERSITY', value: 'BABCOCK UNIVERSITY' },
-      { name: 'COVENANT UNIVERSITY', value: 'COVENANT UNIVERSITY' },
-    ],
+    isValidPhoneNumber: '',
+    type: '',
+    phoneNumber: '',
 
-    selectedSchool: "BABCOCK UNIVERSITY",
+    loading: false
   };
 
   /**
@@ -80,9 +80,8 @@ class SecondPage extends Component {
       socialEmail: this.props.navigation.state.params.socialEmail,
       userAuthID: this.props.navigation.state.params.userAuthID,
       authentication_type: this.props.navigation.state.params.authentication_type,
-    });
-
-    this.getAllSchool();
+      selectedSchool: this.props.navigation.state.params.selectedSchool,
+    })
   };
 
   /**
@@ -103,43 +102,156 @@ class SecondPage extends Component {
   };
 
   /**
-   * getAllSchool
+   * updateInfo
    *
-   * fetches all school
+   * Updates phone number details
+   * @return {void}
    */
-  getAllSchool = () => {
+  updateInfo = () => {
     this.setState({ loading: !this.state.loading });
+    this.setState({
+      isValidPhoneNumber: this.phone.isValidNumber(),
+      type: this.phone.getNumberType(),
+      phoneNumber: this.phone.getValue()
+    }, () => {
+      this.createUser()
+    });
+  };
 
-    axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/all_schools`)
+  /**
+   * createUser
+   *
+   * Creates user in the databse
+   * @return {void}
+   */
+  createUser = () => {
+    if(this.state.isValidPhoneNumber){
+      this.checkTypeOfAccount();
+      this.setState({ isValidPhoneNumber: false })
+    }
+
+    if(this.state.isValidPhoneNumber === false) {
+      this.setState({ isValidPhoneNumber: false, loading: !this.state.loading});
+      this.errorMessage('The number supplied is invalid')
+    }
+  };
+
+  /**
+   * errorMessage
+   *
+   * displays error message to user using toast
+   * @param errorMessage
+   * return {void}
+   */
+  errorMessage = (errorMessage) => {
+    Toast.show({ text: `${errorMessage}`, type: "danger", position: 'top' })
+  };
+
+  /**
+   * successMessage
+   *
+   * displays success message to user using toast
+   * @param successMessage
+   * return {void}
+   */
+  successMessage = (successMessage) => {
+    Toast.show({ text: `${successMessage}`, type: "success", position: 'top' })
+  };
+
+  /**
+   *checkTypeOfAccount
+   *
+   * Checks for account type, e.g Social auth or email
+   */
+  checkTypeOfAccount = () => {
+    if(this.state.userAuthID) {
+      this.signUpWithSocialAuth();
+    } else {
+      this.signUpWithEmailAndPassword();
+    }
+  };
+
+  /**
+   * signUpWithSocialAuth
+   *
+   * signs up users using social auth
+   * @return {void}
+   */
+  signUpWithSocialAuth  = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "password": this.state.userAuthID,
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.socialEmail,
+      "image_url": this.state.imgURL,
+      "mobile_number": this.state.phoneNumber,
+      "school": this.state.selectedSchool,
+      "authentication_type": this.state.authentication_type
+    })
       .then((response) => {
-        this.setState({
-          schools: response.data.data.schools,
-        });
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        this.successMessage(`${response.data.data.message}`)
+        this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
+        this.errorMessage(`${error.response.data.data.message}`)
         this.setState({ loading: !this.state.loading });
       });
   };
 
   /**
-   * appNavigator
+   * signUpWithEmailAndPassword
    *
-   * navigates user to second registration screen
+   * signs up users using email and password
+   * @return {void}
    */
-  appNavigator = () => {
-    Toast.show({ text: `Yay!`, type: "success", position: 'top' })
+  signUpWithEmailAndPassword  = () => {
+    axios.post('https://moov-backend-staging.herokuapp.com/api/v1/signup', {
+      "password": this.state.password,
+      "user_type": "student",
+      "firstname":  this.state.firstName ,
+      "lastname": this.state.lastName,
+      "email": this.state.email,
+      "mobile_number": this.state.phoneNumber,
+      "school": this.state.selectedSchool,
+      "authentication_type": this.state.authentication_type
+    })
+      .then((response) => {
+        this.setState({ loading: !this.state.loading, userCreated: !this.state.userCreated });
+        this.successMessage(`${response.data.data.message}`);
+        this.saveUserToLocalStorage(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        this.errorMessage(`${error.response.data.data.message}`);
+        this.setState({ loading: !this.state.loading });
+      });
+  };
+
+  /**
+   * saveUserToLocalStorage
+   *
+   * Saves user details to local storage
+   * @param userDetails
+   */
+  saveUserToLocalStorage = (userDetails) => {
     const { navigate } = this.props.navigation;
-    navigate('NumberFormPage', {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password,
-      imgURL: this.state.imgURL,
-      socialEmail: this.state.socialEmail,
-      userAuthID: this.state.userAuthID,
-      authentication_type: this.state.authentication_type,
-      selectedSchool: this.state.selectedSchool
+    AsyncStorage.setItem('user', JSON.stringify(userDetails.user))
+    AsyncStorage.setItem("token", userDetails.token).then(() => {
+      this.appNavigation();
     });
+  };
+
+  /**
+   * appNavigation
+   *
+   * navigates user to MOOV Homepage
+   * @return {void}
+   */
+  appNavigation = () => {
+    const { navigate } = this.props.navigation;
+    navigate('MoovPages');
   };
 
   render() {
@@ -177,8 +289,8 @@ class SecondPage extends Component {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-              <Text style={getText}> Few</Text>
-              <Text style={moovingText}> details!</Text>
+              <Text style={getText}>Let's</Text>
+              <Text style={moovingText}> moov!</Text>
             </Content>
             <Content
               contentContainerStyle={{
@@ -193,7 +305,7 @@ class SecondPage extends Component {
                   borderColor: '#ffc653',
                   marginTop: 10,
                   marginBottom: 10,
-                  width: width / 2
+                  width: width / 1.4
                 }}>
               </Content>
               <Button
@@ -206,18 +318,10 @@ class SecondPage extends Component {
                   borderColor: '#b3b4b4',
                   borderWidth: 0.2,
                   marginBottom: 10,
+                  marginRight: 5,
                 }}>
-                <Text style={{ color: '#ffc653', fontWeight: '800', }}>2</Text>
+                <Text style={{ color: '#ffc653', fontWeight: '800', }}>3</Text>
               </Button>
-              <Content
-                contentContainerStyle={{
-                  borderWidth: 0.4,
-                  borderColor: '#b3b4b4',
-                  marginTop: 10,
-                  marginBottom: 10,
-                  width: width / 2
-                }}>
-              </Content>
             </Content>
             <Content
               contentContainerStyle={{
@@ -237,7 +341,7 @@ class SecondPage extends Component {
                     fontFamily: Fonts.GothamRoundedLight,
                     fontWeight: '100',
                   }}
-                >Select Preferred Institution</Text>
+                >Enter Mobile Phone Number</Text>
                 <Content
                   contentContainerStyle={{
                     marginTop: 20,
@@ -250,51 +354,20 @@ class SecondPage extends Component {
                     justifyContent: 'center'
                   }}
                 >
-                  <Icon
-                    style={{
-                      marginLeft: Platform.OS === 'ios' ? 10 : 10,
-                      color: '#b3b4b4'
-                    }}
-                    color={'b3b4b4'}
-                    active
-                    name='school'
-                    type='MaterialIcons'
-                  />
-
-                  {
-                    this.state.schools.length < 3
-                      ?
-                      <Picker
-                        mode="dropdown"
-                        textStyle={{ fontSize: 12, color:'#b3b4b4'}}
-                        iosHeader="Available"
-                        iosIcon={<Icon name="ios-arrow-down-outline" color="#d3000d" />}
-                        style={{ width: undefined }}
-                        selectedValue={this.state.selectedSchool}
-                        onValueChange={this.onValueChange.bind(this)}
-                      >
-                        <Picker.Item label="BABCOCK UNIVERSITY" value="BABCOCK UNIVERSITY" />
-                        <Picker.Item label="COVENANT UNIVERSITY" value="COVENANT UNIVERSITY" />
-                      </Picker>
-
-                      : <Picker
-                        mode="dropdown"
-                        textStyle={{ fontSize: 12, color:'#b3b4b4'}}
-                        iosHeader="Available"
-                        iosIcon={<Icon name="ios-arrow-down-outline" />}
-                        placeholderIconColor="#d3000d"
-                        style={{ width: undefined }}
-                        selectedValue={this.state.selectedSchool}
-                        onValueChange={this.onValueChange.bind(this)}
-                      >
-                        {
-                          this.state.schools.map((value) => (
-                            <Picker.Item key={value} label={value.name} value={value.name} />
-                          ))
-                        }
-                      </Picker>
-                  }
-
+                  <ScrollView
+                    contentContainerStyle={{
+                      marginLeft: 10
+                    }}>
+                    <PhoneInput
+                      ref={ref => {
+                        this.phone = ref;
+                      }}
+                      initialCountry='ng'
+                      autoFocus
+                      allowZeroAfterCountryCode
+                      textProps={{ placeholder: 'Telephone number' }}
+                    />
+                  </ScrollView>
                 </Content>
               </Content>
             </Content>
@@ -307,12 +380,22 @@ class SecondPage extends Component {
                 borderWidth: 1,
                 borderColor: '#d3000d',
               }}
-              onPress={this.appNavigator}
+              onPress={this.updateInfo}
               block
               dark>
-              <Text style={{ color: '#d3000d', fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>
-                Next
-              </Text>
+              {
+                this.state.loading
+                  ?
+                  <ActivityIndicator
+                    color = '#d3000d'
+                    size = "large"
+                    style={activityIndicator}
+                  />
+                  :
+                  <Text style={{ color: '#d3000d', fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>
+                    Next
+                  </Text>
+              }
             </Button>
           </Content>
         </ImageBackground>
@@ -340,4 +423,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { SecondPage }
+export { FinalPage }

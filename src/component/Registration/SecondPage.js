@@ -3,19 +3,16 @@ import React, { Component } from 'react';
 
 // react-native library
 import {
-  AsyncStorage,
   StyleSheet,
   ImageBackground,
   Dimensions,
   TouchableOpacity,
-  Animated, ScrollView,
-  ActivityIndicator,
+  Animated,
   Platform,
 } from 'react-native';
 
 // third-party library
-import { Container, Toast, Root, Content, Text, Item, Icon, Button, Picker } from 'native-base';
-import { NavigationActions } from 'react-navigation';
+import { Container, Toast, Content, Text, Icon, Button, Picker } from 'native-base';
 
 // common
 import { StatusBarComponent } from "../../common";
@@ -127,9 +124,9 @@ class SecondPage extends Component {
    * navigates user to second registration screen
    */
   appNavigator = () => {
-    Toast.show({ text: `Yay!`, type: "success", position: 'top' })
+    Toast.show({ text: `Yay!`, type: "success", position: 'top' });
     const { navigate } = this.props.navigation;
-    navigate('NumberFormPage', {
+    navigate('FinalPage', {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -143,7 +140,7 @@ class SecondPage extends Component {
   };
 
   render() {
-    const { container, getText, moovingText, activityIndicator } = styles;
+    const { container, getText, moovingText } = styles;
     let { height, width } = Dimensions.get('window');
 
     return (
@@ -177,7 +174,7 @@ class SecondPage extends Component {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-              <Text style={getText}> Few</Text>
+              <Text style={getText}>Few</Text>
               <Text style={moovingText}> details!</Text>
             </Content>
             <Content

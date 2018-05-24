@@ -360,7 +360,7 @@ class SignInPage extends React.Component {
     })
       .then((response) => {
         this.successMessage(`${response.data.data.message}`)
-        // this.saveUserToLocalStorage(response.data.data);
+        this.saveUserToLocalStorage(response.data.data);
       })
       .catch((error) => {
         this.checkErrorMessage(error.response.data.data.message);
@@ -425,15 +425,15 @@ class SignInPage extends React.Component {
     }
 
     if (page === 'signUp') {
-      // navigate('SelectSchool', {
-      //   firstName: this.state.firstName,
-      //   lastName: this.state.lastName,
-      //   email: this.state.email,
-      //   socialEmail: this.state.socialEmail,
-      //   imgURL: this.state.imgURL,
-      //   userAuthID: this.state.userAuthID,
-      //   authentication_type: this.state.authentication_type
-      // });
+      navigate('SecondPage', {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        socialEmail: this.state.socialEmail,
+        imgURL: this.state.imgURL,
+        userAuthID: this.state.userAuthID,
+        authentication_type: this.state.authentication_type
+      });
     }
   };
 
