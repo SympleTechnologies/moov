@@ -141,7 +141,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-vector-icons')
+    implementation project(':react-native-vector-icons')
     implementation project(':react-native-maps')
     implementation(project(':react-native-google-places')){
         exclude group: 'com.google.android.gms', module: 'play-services-base'
@@ -168,6 +168,7 @@ dependencies {
     }
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.google.android.gms:play-services-auth:12.0.1'
+    implementation project(':mapbox-react-native-mapbox-gl')
 }
 
 apply plugin: 'com.google.gms.google-services'

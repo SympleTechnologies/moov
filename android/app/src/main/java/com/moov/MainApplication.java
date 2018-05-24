@@ -24,6 +24,7 @@ import com.facebook.CallbackManager;
 
 import java.util.Arrays;
 import java.util.List;
+import com.mapbox.rctmgl.RCTMGLPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -54,7 +55,8 @@ public class MainApplication extends Application implements ReactApplication {
             new FBSDKPackage(mCallbackManager),
             new PhotoViewPackage(),
             new LinearGradientPackage(),
-            new MapsPackage()
+            new MapsPackage(),
+            new RCTMGLPackage()
       );
     }
 
