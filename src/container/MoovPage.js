@@ -87,6 +87,7 @@ class MoovPage extends Component {
    */
   fetchUserDetails = () => {
     this.setState({ loading: !this.state.loading });
+
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
 
@@ -101,7 +102,7 @@ class MoovPage extends Component {
         // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
       .catch((error) => {
-        // console.log(error.response);
+        console.log(error.response.data);
         this.setState({
           loading: !this.state.loading
         });
@@ -620,7 +621,7 @@ class MoovPage extends Component {
               marginLeft: width / 20
             }}
           >
-            <Button block dark onPress={this.submitRequest}><Text> REQUEST MOOV </Text></Button>
+            <Button block dark onPress={this.submitRequest}><Text>LET's MOOV </Text></Button>
           </Content>
 
         </Container>

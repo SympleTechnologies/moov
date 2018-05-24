@@ -9,3 +9,4 @@ export * from './SpinnerCommon';
 export * from './HeaderComponent';
 export * from './SlotPicker';
 export * from './FooterComponent';
+export * from './SegmentHeader';

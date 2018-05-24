@@ -3,13 +3,14 @@ import React from 'react';
 
 // third-party libraries
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import { Icon } from 'native-base';
+import { Icon, Root } from 'native-base';
+
 
 // containers
-import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage } from '../container';
+import { MoovHomepage, WalletHomepage, AskHomepage, ProfileHomepage, MoovPage, Wallet } from '../container';
 
 // component
-import { LoadPage, TransferPage, WithdrawPage, PaymentPage } from "../component/Wallet";
+import { LoadPage, TransferPage, WithdrawPage, PaymentPage, Paystack } from "../component/Wallet";
 
 // common
 import { FooterComponent } from "../common";
@@ -28,12 +29,26 @@ export const MoovHome = StackNavigator({
 });
 //
 export const WalletHome = StackNavigator({
-  WalletHomePage: {
-    screen: WalletHomepage,
+  Wallet: {
+    screen: Wallet,
     navigationOptions: {
       header: null,
     }
   },
+
+  Paystack: {
+    screen: Paystack,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  PaymentPage: {
+    screen: PaymentPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+
   LoadPage: {
     screen: LoadPage,
     navigationOptions: {
@@ -48,12 +63,6 @@ export const WalletHome = StackNavigator({
   },
   WithdrawPage: {
     screen: WithdrawPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  PaymentPage: {
-    screen: PaymentPage,
     navigationOptions: {
       header: null,
     }
@@ -131,6 +140,17 @@ export const Tabs = TabNavigator({
       ),
     },
   },
+  Wallet: {
+    screen: WalletHome,
+    navigationOptions: {
+      tabBarLabel: 'Wallet',
+      tabBarIcon: ({ focused }) => (
+        focused
+          ? <Icon name="credit-card-plus" type="material-community" color="black" />
+          : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
+      ),
+    },
+  },
   AskHomepage: {
     screen: AskHomepage,
     navigationOptions: {
@@ -158,17 +178,6 @@ export const Tabs = TabNavigator({
   //       focused
   //         ? <Icon name="ios-car-outline" type="ionicon" color="black" />
   //         : <Icon name="ios-car-outline" type="ionicon" color="#b3b4b4" />
-  //     ),
-  //   },
-  // },
-  // Wallet: {
-  //   screen: WalletHome,
-  //   navigationOptions: {
-  //     tabBarLabel: 'Wallet',
-  //     tabBarIcon: ({ focused }) => (
-  //       focused
-  //         ? <Icon name="credit-card-plus" type="material-community" color="black" />
-  //         : <Icon name="credit-card-plus" type="material-community" color="#b3b4b4" />
   //     ),
   //   },
   // },
