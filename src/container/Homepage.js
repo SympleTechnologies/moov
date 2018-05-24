@@ -11,7 +11,7 @@ import Mapbox from '@mapbox/react-native-mapbox-gl';
 // common
 import { StatusBarComponent } from "../common";
 
-Mapbox.setAccessToken('pk.eyJ1IjoibW9vdiIsImEiOiJjamZqdjBkMXQwbWIxMndxOGRnM2ZrYnJ5In0.gIfbbgRAXH-OVjeZ14HVjA');
+Mapbox.setAccessToken('pk.eyJ1IjoibW9vdiIsImEiOiJjamhrcnB2bzcycmt1MzZvNmw5eTIxZW9mIn0.3fn0qfWAXnou1v500tRRZA');
 
 class Homepage extends Component {
 
