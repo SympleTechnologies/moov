@@ -251,7 +251,7 @@ class FinalPage extends Component {
    */
   appNavigation = () => {
     const { navigate } = this.props.navigation;
-    navigate('MoovPages');
+    navigate('Homepage');
   };
 
   render() {

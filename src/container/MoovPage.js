@@ -396,64 +396,6 @@ class MoovPage extends Component {
     return this.state.price > this.state.user.wallet_amount;
   };
 
-  /**
-   * getDriver
-   *
-   * gets available driver
-   */
-  getDriver = () => {
-    let school;
-    this.setState({ fetchingRide: !this.state.fetchingRide });
-
-    axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-    // if(this.state.changedSchool === false) {
-    //   school = this.state.schools[0].name;
-    // } else {
-    //   school = this.state.changedSchool.name;
-    // }
-
-    axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
-      .then((response) => {
-        console.log(response.data);
-        this.setState({
-          driverDetails: response.data.data.driver,
-        });
-        this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-        Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-        // this.startTimerCountDown(10);
-        // this.getDistanceFromDriver();
-      })
-      .catch((error) => {
-        this.setState({ fetchingRide: !this.state.fetchingRide });
-        Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
-      });
-
-    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
-    //   params: {
-    //     user_location: `${this.state.myLocationLatitude},${this.state.myLocationLatitude}`,
-    //     user_destination: `${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`,
-    //     slots: this.state.selectedSlot.name,
-    //     fare_charge: this.state.price,
-    //     school
-    //   }
-    // }).then((response) => {
-    //     console.log(response.data);
-    //     this.setState({
-    //       driverDetails: response.data.data.driver,
-    //     });
-    //     this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-    //     Toast.showWithGravity(`YAY Driver found!`, Toast.LONG, Toast.TOP);
-    //     this.startTimerCountDown(10);
-    //     this.getDistanceFromDriver();
-    //   })
-    //   .catch((error) => {
-    //     this.setState({ fetchingRide: !this.state.fetchingRide });
-    //     Toast.showWithGravity(`${error.response.data.data.message}`, Toast.LONG, Toast.TOP);
-    //   });
-  };
-
   render() {
     console.log(this.state);
     const { container, map } = styles;

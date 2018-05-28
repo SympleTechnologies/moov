@@ -14,7 +14,7 @@ const HeaderComponent =  ({ onPress }) => {
   return (
     <Header
       style={{
-        backgroundColor: '#fff'
+        backgroundColor: '#fafafa'
       }}
     >
       <Left>
@@ -24,7 +24,7 @@ const HeaderComponent =  ({ onPress }) => {
           <Icon
             name="menu"
             style={{
-              color: 'black'
+              color: '#4b4f59'
             }}
             raised={10}
           />
@@ -39,6 +39,9 @@ const HeaderComponent =  ({ onPress }) => {
         <Icon
           name="notifications-none"
           type="MaterialIcons"
+          style={{
+            color: '#4b4f59'
+          }}
         />
         {/*<Badge>*/}
           {/*<Text style={{*/}
