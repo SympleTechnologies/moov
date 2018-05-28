@@ -183,44 +183,29 @@ class Homepage extends Component {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
     );
   }
-
+  /**
+   * closeDrawer
+   *
+   * closes the side bar
+   */
   closeDrawer = () => {
     this.drawer._root.close()
   };
 
+  /**
+   * openDrawer
+   *
+   * opens side bar
+   */
   openDrawer = () => {
     this.drawer._root.open()
   };
 
   /**
-   * openSearchModalForMyLocation
+   * guessLocation
    *
-   * Opens modal for user to select location
-   * Saves user location in the state
-   * @return {void}
+   * predicts user's location using RNGooglePlaces getAutocompletePredictions
    */
-  openSearchModalForMyLocation = () => {
-    RNGooglePlaces.openPlacePickerModal()
-      .then((place) => {
-        if(this.state.myDestinationName === place.name) {
-          this.showErrorForRoute();
-        } else {
-          this.setState({
-            myLocationLatitude: place.latitude,
-            myLocationLongitude: place.longitude,
-            myLocationName: place.name,
-            myLocationAddress: place.address,
-            error: null,
-          },
-            // () => this.calculatePrice()
-          );
-        }
-        // place represents user's selection from the
-        // suggestions and it is a simplified Google Place object.
-      })
-      .catch(error => console.log(error.message));  // error is a Javascript Error object
-  };
-
   guessLocation = () => {
     console.log('Yaay!', this.state.locationSearchQuery);
     if(this.state.locationSearchQuery.length >= 3) {
@@ -236,6 +221,11 @@ class Homepage extends Component {
     }
   };
 
+  /**
+   * guessDestination
+   *
+   * predicts destinations using RNGooglePlaces getAutocompletePredictions
+   */
   guessDestination = () => {
     console.log('Yaay!', this.state.locationSearchQuery);
     if(this.state.destinationSearchQuery.length >= 3) {
@@ -247,6 +237,12 @@ class Homepage extends Component {
     }
   };
 
+  /**
+   * getSelectedLocation
+   *
+   * gets user's selected location
+   * @param userSelectedDestination
+   */
   getSelectedLocation = (userSelectedDestination) => {
     console.log(userSelectedDestination, 'User Selected Location')
     RNGooglePlaces.lookUpPlaceByID(userSelectedDestination.placeID)
@@ -258,11 +254,17 @@ class Homepage extends Component {
           myLocationName: results.name,
           locationSearchQuery: results.name,
           onTextFocus: ''
-        })
+        }, () => this.calculatePrice())
       })
       .catch((error) => console.log(error.message));
   };
 
+  /**
+   * getSelectedDestination
+   *
+   * gets user's selected destination
+   * @param userSelectedLocation
+   */
   getSelectedDestination = (userSelectedLocation) => {
     console.log(userSelectedLocation, 'User Selected Location')
     RNGooglePlaces.lookUpPlaceByID(userSelectedLocation.placeID)
@@ -275,13 +277,75 @@ class Homepage extends Component {
           destinationSearchQuery: results.name,
           onTextFocus: '',
           showPriceAndConfirmButton: true
-        })
+        }, () => this.calculatePrice())
       })
       .catch((error) => console.log(error.message));
   };
 
+  /**
+   * calculatePrice
+   *
+   * Calls the get price to calculate price and give user real time feeling
+   * @return {void}
+   */
+  calculatePrice = () => {
+    if(this.state.myDestinationLatitude !== null) {
+      this.getPrice();
+    }
+  };
+
+  /**
+   * getPrice
+   *
+   * This method gets the distance and calcultes the get Price method
+   * @return {void|*}
+   */
+  getPrice = () => {
+    console.log('gert price', this.state);
+    let distance = this.getDistance(
+      this.state.myLocationLatitude,
+      this.state.myLocationLongitude,
+      this.state.myDestinationLatitude,
+      this.state.myDestinationLongitude
+    );
+
+    let price = Math.floor(distance) *  this.state.selectedSlot;
+
+    // this.setState({ price })
+    return price < 100
+      ? this.setState({ price : 100 })
+      : this.setState({ price })
+  };
+
+  /**
+   * getDistance
+   *
+   * Calculates the User's distance
+   * @param lat1
+   * @param lon1
+   * @param lat2
+   * @param lon2
+   * @param unit
+   * @return {number}
+   */
+  getDistance = (lat1, lon1, lat2, lon2, unit) =>  {
+    let radlat1 = Math.PI * lat1/180;
+    let radlat2 = Math.PI * lat2/180;
+    let theta = lon1-lon2;
+    let radtheta = Math.PI * theta/180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist);
+    dist = dist * 180/Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (unit === "K") { dist = dist * 1.609344 }
+    if (unit === "N") { dist = dist * 0.8684 }
+
+    return dist * 250
+  };
+
   render() {
-    const { container, map } = styles;
+    console.log(this.state, 'what you are looking for');
+    const { map } = styles;
     let { height, width } = Dimensions.get('window');
 
     return (
