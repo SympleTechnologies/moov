@@ -1,6 +1,9 @@
 // react library
 import React, { Component } from 'react';
 
+// react-native library
+import { Platform } from 'react-native';
+
 // third-part libraries
 import { Header, Left, Body, Right, Button, Text, Icon, Badge } from 'native-base';
 
