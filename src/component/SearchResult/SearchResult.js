@@ -16,10 +16,11 @@ const SearchResult =  ({ predictions, onPress }) => {
   return (
     <View style={styles.searchResultsWrapper}>
       <List
+        keyboardShouldPersistTaps='handled'
         dataArray={predictions}
         renderRow={(item) =>(
-          <View>
-            <ListItem keyboardShouldPersistTaps='always' keyboardDismissMode='on-drag' button avatar>
+          <View >
+            <ListItem button avatar>
             {/*<ListItem onPress={() => onPress(item)} button avatar>*/}
               <Left style={styles.leftContainer}>
                 <Icon Icon style={styles.leftIcon} name="location-on" type="MaterialIcons" />

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // react-native library
-import {AsyncStorage, StyleSheet, View, Dimensions, Platform, PermissionsAndroid} from 'react-native';
+import { AsyncStorage, StyleSheet, View, Dimensions, Platform, PermissionsAndroid, ScrollView } from 'react-native';
 
 // third-party library
 import { Container, Drawer, Content, Icon, Input, Text, Picker } from 'native-base';
@@ -51,6 +51,8 @@ class Homepage extends Component {
 
     onTextFocus: '',
     predictions: [],
+
+    showPriceAndConfirmButton: false
   };
 
   /**
@@ -249,7 +251,6 @@ class Homepage extends Component {
     console.log(userSelectedDestination, 'User Selected Location')
     RNGooglePlaces.lookUpPlaceByID(userSelectedDestination.placeID)
       .then((results) => {
-        console.log(results);
         this.setState({
           myLocationAddress: results.address,
           myLocationLatitude: results.latitude,
@@ -266,7 +267,6 @@ class Homepage extends Component {
     console.log(userSelectedLocation, 'User Selected Location')
     RNGooglePlaces.lookUpPlaceByID(userSelectedLocation.placeID)
       .then((results) => {
-        console.log(results);
         this.setState({
           myDestinationAddress: results.address,
           myDestinationLatitude: results.latitude,
@@ -274,13 +274,13 @@ class Homepage extends Component {
           myDestinationName: results.name,
           destinationSearchQuery: results.name,
           onTextFocus: '',
+          showPriceAndConfirmButton: true
         })
       })
       .catch((error) => console.log(error.message));
   };
 
   render() {
-    console.log(this.state);
     const { container, map } = styles;
     let { height, width } = Dimensions.get('window');
 
@@ -312,14 +312,14 @@ class Homepage extends Component {
                 {
                   this.state.onTextFocus === 'destination'  && this.state.destinationSearchQuery.length >= 3
                   ?
-                    <View style={{ top: 120 }}>
+                    <View keyboardShouldPersistTaps='always' style={{ top: 120 }}>
                       <SearchResult predictions={this.state.predictions} onPress={this.getSelectedDestination} />
                     </View>
                   :
                     <Text/>
                 }
                 <Content>
-                  <Content
+                  <ScrollView
                     // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
                     // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
                     // enableAutoAutomaticScroll={true}
@@ -353,11 +353,11 @@ class Homepage extends Component {
                       autoCapitalize='none'
                       style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
                     />
-                  </Content>
+                  </ScrollView>
                   {
                     this.state.myLocationName !== '' && this.state.onTextFocus !== 'location'
                       ?
-                      <Content
+                      <ScrollView
                         // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
                         // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
                         enableAutoAutomaticScroll={true}
@@ -395,7 +395,7 @@ class Homepage extends Component {
                             onTextFocus: 'destination'
                           })}
                         />
-                      </Content>
+                      </ScrollView>
                       : <Text/>
                   }
                 </Content>
