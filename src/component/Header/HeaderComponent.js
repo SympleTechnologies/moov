@@ -32,7 +32,7 @@ const HeaderComponent =  ({ onPress }) => {
       </Left>
       <Body>
       <Button transparent>
-        <Text style={{ color: '#d3000d', fontWeight: '900' }}>Moov</Text>
+        <Text style={{ color: '#ed1368', fontWeight: '900' }}>Moov</Text>
       </Button>
       </Body>
       <Right>

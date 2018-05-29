@@ -8,6 +8,8 @@ import { AsyncStorage, StyleSheet, View, Dimensions, Platform, PermissionsAndroi
 import {Container, Drawer, Content, Icon, Input, Text, Picker, Left, Right, Button, Toast} from 'native-base';
 import { Rating, Divider } from 'react-native-elements';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
+import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import Polyline from '@mapbox/polyline';
 import MapView from 'react-native-maps';
 // import Sea from '../component/SearchResult'
 
@@ -280,7 +282,10 @@ class Homepage extends Component {
           myLocationName: results.name,
           locationSearchQuery: results.name,
           onTextFocus: ''
-        }, () => this.calculatePrice())
+        }, () => {
+          this.calculatePrice();
+          this.getDirections()
+        })
       })
       .catch((error) => console.log(error.message));
   };
@@ -302,9 +307,100 @@ class Homepage extends Component {
           destinationSearchQuery: results.name,
           onTextFocus: '',
           showPriceAndConfirmButton: true
-        }, () => this.calculatePrice())
+        }, () => {
+          this.calculatePrice();
+          this.getDirections(`${this.state.myLocationLatitude},${this.state.myLocationLongitude}`,`${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}`)
+        })
       })
       .catch((error) => console.log(error.message));
+  };
+
+  async getDirections(startLoc, destinationLoc) {
+    console.log('Called');
+    // let concatLoc =  JSON.parse(this.state.myLocationLatitude) + "," +  JSON.parse(this.state.myLocationLongitude);
+    // let concatDes =  JSON.parse(this.state.myDestinationLatitude) +","+ JSON.parse(this.state.myDestinationLongitude);
+
+    if (this.state.myLocationLatitude != null && this.state.myDestinationLatitude!=null) {
+      axios.get(`https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=${Number(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&destination=${Number(this.state.myDestinationLatitude)},${Number(this.state.myDestinationLongitude)}&mode=driving`)
+        .then((response) => {
+          console.log(response);
+          this.mapsPoints(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // try {
+      //   let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ destinationLoc }`);
+      //   console.log(resp);
+      //   let respJson = await resp.json();
+      //   console.log(respJson);
+      //   Toast.show({ text: "Fetching...", type: "success", position: "top" });
+      //   let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+      //   let coords = points.map((point, index) => {
+      //     return  {
+      //       latitude : point[0],
+      //       longitude : point[1]
+      //     }
+      //   });
+      //   this.setState({coords: coords}, () => console.log(this.state));
+      //   return coords
+      // } catch(error) {
+      //   console.log(error);
+      //   return error
+      // }
+
+      // try {
+      //   let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=${Number(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&destination=${Number(this.state.myDestinationLatitude)},${Number(this.state.myDestinationLongitude)}`);
+      //   let respJson = await resp.json();
+      //   let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+      //   let coords = points.map((point, index) => {
+      //     return  {
+      //       latitude : point[0],
+      //       longitude : point[1]
+      //     }
+      //   });
+      //   this.setState({coords: coords})
+      //   return coords
+      // } catch(error) {
+      //   console.log(error)
+      //   console.log(error.message)
+      //   return error
+      // }
+    }
+
+  }
+
+  mapsPoints = (response) => {
+    console.log(response, 'what I got');
+    let points = Polyline.decode(response.routes["0"].overview_polyline.points)
+    let coords = points.map((point, index) => {
+      return  {
+        latitude : point[0],
+        longitude : point[1]
+      }
+    });
+
+    this.setState({
+      coords: coords
+    }, () => this.returnStringEncodedPolyline());
+
+  };
+
+  returnStringEncodedPolyline = () => {
+    let routes = {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          this.state.coords
+        ]
+      }
+    };
+
+    this.setState({
+      routes
+    });
   };
 
   /**
@@ -530,13 +626,6 @@ class Homepage extends Component {
             backgroundColor: '#fafafa'
           }}>
             <View style={StyleSheet.absoluteFillObject}>
-              {/*<Mapbox.MapView*/}
-                {/*style={[StyleSheet.absoluteFillObject, map, Mapbox.StyleURL.Light]}*/}
-                {/*zoomLevel={15}*/}
-                {/*centerCoordinate={myLocation}*/}
-                {/*style={styles.container}>*/}
-                {/*/!*{this.renderAnnotations()}*!/*/}
-              {/*</Mapbox.MapView>*/}
               <Mapbox.MapView
                 styleURL={Mapbox.StyleURL.Light}
                 zoomLevel={15}
@@ -575,6 +664,17 @@ class Homepage extends Component {
                       <Mapbox.Callout title={`${this.state.myDestinationAddress}`} />
                     </Mapbox.PointAnnotation>
                     : <View/>
+                }
+
+                {
+                  this.state.routes
+                  ?
+                    <MapboxGL.ShapeSource
+
+                      shape={this.state.routes}
+                    />
+
+                  : <View/>
                 }
 
 
@@ -618,7 +718,7 @@ class Homepage extends Component {
                       justifyContent: 'center',
                     }}>
                     <Icon
-                      style={{ marginLeft: width / 20, color: '#d1011b' }}
+                      style={{ marginLeft: width / 20, color: '#057cff' }}
                       active
                       name='location-on'
                       type='MaterialIcons'
@@ -632,7 +732,7 @@ class Homepage extends Component {
                         locationSearchQuery => this.setState({ locationSearchQuery }, () => this.guessLocation())
                       }
                       autoCapitalize='none'
-                      style={{ color: '#cbcbcb', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
+                      style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
                     />
                   </ScrollView>
                   {
@@ -671,7 +771,7 @@ class Homepage extends Component {
                             destinationSearchQuery => this.setState({ destinationSearchQuery }, () => this.guessDestination())
                           }
                           autoCapitalize='none'
-                          style={{ color: '#cbcbcb', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
+                          style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
                           onFocus={() => this.setState({
                             onTextFocus: 'destination'
                           })}
@@ -947,7 +1047,7 @@ class Homepage extends Component {
                         justifyContent: 'center',
                       }}>
                       <Icon
-                        style={{ color: '#ffc653' }}
+                        style={{ color: '#ed1368' }}
                         active
                         name='airline-seat-recline-extra'
                         type='MaterialIcons'
@@ -1014,7 +1114,7 @@ class Homepage extends Component {
                       }}>
                       <Left>
                         <Icon
-                          style={{ marginLeft: 7, color: '#ffc653' }}
+                          style={{ marginLeft: 7, color: '#ed1368' }}
                           active
                           name='price-tag'
                           type='Entypo'
@@ -1068,32 +1168,35 @@ class Homepage extends Component {
                     </View>
                   : <Text/>
               }
+
               {
                 this.state.price > 0 && this.state.driverDetails === ''
                   ?
-                    <Button
-                      style={{
-                        width: width / 1.5,
-                        marginLeft: width / 5.6,
-                        marginTop: height / 50,
-                        backgroundColor: '#ed1768',
-                        borderRadius: 8
-                      }}
-                      onPress={this.submitRequest}
-                      block
-                      dark>
-                      {
-                        this.state.loading
-                          ? <ActivityIndicator
-                            color='#fff'
-                            size="large"
-                            style={activityIndicator}
-                          />
-                          : <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>Moov</Text>
-                      }
-                    </Button>
+                  <Button
+                    style={{
+                      width: width / 1.5,
+                      marginLeft: width / 5.6,
+                      marginTop: height / 50,
+                      backgroundColor: '#ed1768',
+                      borderRadius: 8
+                    }}
+                    onPress={this.submitRequest}
+                    block
+                    dark>
+                    {
+                      this.state.loading
+                        ? <ActivityIndicator
+                          color='#fff'
+                          size="large"
+                          style={activityIndicator}
+                        />
+                        : <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
+                          { this.state.price > this.state.user.wallet_amount ? 'Load' : 'Moov' }
+                          </Text>
+                    }
+                  </Button>
                   :
-                    <Text/>
+                  <Text/>
               }
             </View>
           </View>
