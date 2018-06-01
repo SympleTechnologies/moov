@@ -12,7 +12,7 @@ import FBSDK from 'react-native-fbsdk';
 import { LoginManager } from 'react-native-fbsdk'
 import * as axios from "axios/index";
 import { GoogleSignin } from 'react-native-google-signin';
-import { Content, Container, Text, Item, Input, Icon, Button, Toast } from 'native-base';
+import { Content, Text, Item, Input, Icon, Button, Toast, Root } from 'native-base';
 
 // common
 import {StatusBarComponent} from "../common";
@@ -226,9 +226,11 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   handleFacebookLogin = () => {
+	  this.setState({ loading: !this.state.loading });
     LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']).then((result) => {
         if (result.isCancelled) {
           console.log('Login cancelled')
+	        this.setState({ loading: !this.state.loading });
         } else {
           AccessToken.getCurrentAccessToken()
             .then((data) => {
@@ -236,6 +238,7 @@ class SignInPage extends React.Component {
             })
             .catch((error) => {
               this.errorMessage('Unable to fetch user details!')
+	            this.setState({ loading: !this.state.loading });
             })
         }
       },
@@ -253,7 +256,6 @@ class SignInPage extends React.Component {
    * @return {void}
    */
   getFacebookUser = (token) => {
-    this.setState({ loading: !this.state.loading });
     const infoRequest = new GraphRequest(
       '/me',
       {
@@ -325,14 +327,14 @@ class SignInPage extends React.Component {
         GoogleSignin.signIn()
           .then((user) => {
             console.log(user);
-
             this.setState({
               firstName: user.givenName,
               lastName: user.familyName,
               socialEmail: user.email,
               imgURL: user.photo,
               userAuthID: user.id,
-              authentication_type: "google"
+              authentication_type: "google",
+	            loading: !this.state.loading
             }, () => {
               this.googleSignOut();
               this.signInWithSocialAuth();
@@ -340,6 +342,7 @@ class SignInPage extends React.Component {
             this.successMessage('Google signup was successful')
           })
           .catch((err) => {
+	          console.log(err);
             this.setState({ loading: !this.state.loading });
             this.errorMessage('Google sign-up was unsuccessful');
           })
@@ -395,6 +398,7 @@ class SignInPage extends React.Component {
    * @param userDetails
    */
   saveUserToLocalStorage = (userDetails) => {
+	  this.setState({ loading: !this.state.loading });
     AsyncStorage.setItem("token", userDetails.token);
     AsyncStorage.setItem('user', JSON.stringify(userDetails.data)).then(() => {
       this.appNavigation('Homepage');
@@ -441,221 +445,222 @@ class SignInPage extends React.Component {
     console.log(this.state)
     const { container, activityIndicator, welcomeText, backText } = styles;
     let { height, width } = Dimensions.get('window');
+	
+	  // ACTIVITY INDICATOR
+	  if (this.state.loading) {
+		  return (
+			  <Root>
+				  <View style={{ flex: 1, backgroundColor: 'white' }}>
+					  <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+					  <ActivityIndicator
+						  color = '#004a80'
+						  size = "large"
+						  style={activityIndicator}
+					  />
+				  </View>
+			  </Root>
+		  );
+	  }
 
     return (
-      <Container style={container}>
-        <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-        <ImageBackground
-          style={{
-            height: height,
-            width: width,
-          }}
-          source={require('../../assets/moovBG1.png')}
-        >
-          <Content contentContainerStyle={{ alignItems: 'center'}}>
-            <TouchableOpacity onPress={this.spring}>
-              <Animated.Image
-                style={{
-                  alignItems: 'center',
-                  height: height / 6,
-                  width: width / 3.5,
-                  marginTop: height / 9,
-                  transform: [{scale: this.springValue}],
-                  borderRadius: 20
-                }}
-                source={require('../../assets/appLogo.png')}
-              />
-            </TouchableOpacity>
-            <Content
-              contentContainerStyle={{
-                marginTop: height / 25,
-                flexDirection: 'row',
+	    <ImageBackground
+		    style={{
+			    height: '100%',
+			    width: '100%',
+		    }}
+		    source={require('../../assets/moovBG1.png')}
+	    >
+		    <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
+		    <Content contentContainerStyle={{ alignItems: 'center'}}>
+          <TouchableOpacity onPress={this.spring}>
+            <Animated.Image
+              style={{
                 alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-              <Text style={welcomeText}>Welcome</Text>
-              <Text style={backText }> Back</Text>
-            </Content>
-            <ScrollView
-              scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
-              keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
-              enableAutoAutomaticScroll={false}
-              style={{
-                marginLeft: width / 40,
-                marginTop: height / 25,
-                width: width / 1.5,
-                borderWidth: 1,
-                borderColor: '#b3b4b4',
-                borderRadius: 10,
-                backgroundColor: 'white'
-              }}>
-              <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
-                <Icon
-                  style={{ marginLeft: width / 20, color: '#b3b4b4' }}
-                  color={'b3b4b4'}
-                  active name='ios-mail-outline'
-                  type='Ionicons'
-                />
-                <Input
-                  placeholder='Username/Email'
-                  placeholderTextColor='#b3b4b4'
-                  value={this.state.email}
-                  onChangeText={email => this.setState({ email })}
-                  autoCapitalize='none'
-                  style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
-                />
-              </Item>
-              <Item>
-                <Icon
-                  active
-                  style={{ marginLeft: width / 20, color: '#b3b4b4' }}
-                  name='user-secret'
-                  type="FontAwesome"
-                  returnKeyType='next'
-                />
-                <Input
-                  placeholder='Password'
-                  placeholderTextColor='#b3b4b4'
-                  secureTextEntry
-                  onChangeText={password => this.setState({ password })}
-                  value={this.state.password}
-                  autoCapitalize='none'
-                  style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
-                />
-              </Item>
-            </ScrollView>
-            <Button
-              style={{
-                width: width / 1.5,
-                marginLeft: width / 5.6,
-                marginTop: height / 50,
-                backgroundColor: '#ed1768',
+                height: 80,
+                width: 80,
+                marginTop: Platform.OS === 'ios' ? 80 : 35,
+                transform: [{scale: this.springValue}],
+                borderRadius: 10
               }}
-              onPress={this.submitForm}
-              block
-              dark>
-              {
-                this.state.loading
-                  ? <ActivityIndicator
-                      color = '#fff'
-                      size = "large"
-                      style={activityIndicator}
-                    />
-                  : <Text style={{ fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>Sign in</Text>
-              }
-            </Button>
-            <Content
-              style={{
-                marginTop: height / 50,
-              }}
-            >
-              <TouchableOpacity onPress={this.resetPassword}>
-                <Text style={{ color: '#f00266', fontSize: 18, fontWeight: '300', fontFamily: Fonts.GothamRoundedLight }}>Forgot password</Text>
-              </TouchableOpacity>
-            </Content>
-            <Content
-              style={{
-                marginTop: height / 50,
-              }}
-            >
-              <Text style={{ color: '#b3b4b4', fontSize: 18, fontWeight: '400', fontFamily: Fonts.GothamRoundedLight }}>Sign in with</Text>
-            </Content>
-            <Content
-              contentContainerStyle={{
-                marginTop: height / 300,
-                flexDirection: 'row',
-                alignItems: 'stretch',
-                justifyContent: 'space-around'
-              }}
-            >
-              <Button
-                onPress={this.handleFacebookLogin}
-                iconLeft
-                bordered
-                style={{
-                  borderWidth: 1,
-                  width: width / 3.1,
-                  marginLeft: width / 35,
-                  marginTop: height / 50,
-                  backgroundColor: '#ffffff',
-                  borderColor: '#4065b4',
-                  borderRadius: 12
-                  // height:
-                }}
-                block
-                dark>
-                <Image
-                  style={{
-                    borderRadius: 10,
-                    alignItems: 'center',
-                    height: Platform.OS === 'ios' ? 43 : 43.5,
-                    width: width / 11,
-                    borderColor: 'red',
-                    marginLeft: Platform.OS === 'ios' ? width / 35 : width / 70
-                  }}
-                  source={require('../../assets/facebook_logo.png')}
-                />
-                <Text style={{  color: '#4065b4', fontWeight: '900', fontSize: 13 }}>Facebook</Text>
-              </Button>
-              <Button
-                onPress={this.googleSignIn}
-                iconLeft
-                bordered
-                style={{
-                  width: width / 3.1,
-                  marginLeft: width / 40,
-                  marginTop: height / 50,
-                  backgroundColor: '#ffffff',
-                  borderWidth: 2,
-                  borderColor: '#b3b4b4',
-                  borderRadius: 12
-                }}
-                block
-                dark>
-                <Image
-                  style={{
-                    borderRadius: 10,
-                    alignItems: 'center',
-                    height: height / 30,
-                    width: width / 17,
-                    marginLeft: width / 30,
-                  }}
-                  source={require('../../assets/google_logo.png')}
-                />
-                <View style={{
-                  borderRadius: 35,
-                  alignItems: 'center',
-                  height: 45,
-                  width: 10,
-                  borderRightColor: '#b4b4b4',
-                  borderLeftColor: 'white',
-                  borderTopColor: '#b4b4b4',
-                  borderBottomColor: '#b4b4b4',
-                  borderLeftWidth: 0,
-                  borderTopWidth: 0,
-                  borderBottomWidth: 0,
-                  // marginLeft: width / 70,
-
-                  borderWidth: 1,
-                }}/>
-                <Text style={{ color: '#9b9b9b', fontWeight: '800', fontSize: 14, textAlign: 'center' }}>Google</Text>
-              </Button>
-            </Content>
-            <Content
-              contentContainerStyle={{
-                marginTop: height / 25,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-              <Text style={{ color: '#9b9b9b', fontFamily: Fonts.GothamRounded }}>You don't have an account?</Text>
-              <TouchableOpacity onPress={this.signUpPage}>
-                <Text style={{ color: '#f00266', fontWeight: '900', fontFamily: Fonts.GothamRounded }}> Sign up</Text>
-              </TouchableOpacity>
-            </Content>
-          </Content>
-        </ImageBackground>
-      </Container>
+              source={require('../../assets/appLogo.png')}
+            />
+          </TouchableOpacity>
+			    <Content
+				    contentContainerStyle={{
+					    marginTop: 20,
+					    flexDirection: 'row',
+					    alignItems: 'center',
+					    justifyContent: 'center'
+				    }}>
+				    <Text style={welcomeText}>Welcome</Text>
+				    <Text style={backText }> Back</Text>
+			    </Content>
+			    <Content
+				    scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
+				    keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
+				    enableAutoAutomaticScroll={false}
+				    style={{
+					    // marginLeft: width / 40,
+					    marginTop: 25,
+					    width: width / 1.5,
+					    borderWidth: 1,
+					    borderColor: '#b3b4b4',
+					    borderRadius: 10,
+					    backgroundColor: 'white'
+				    }}>
+				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
+					    <Icon
+						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
+						    color={'b3b4b4'}
+						    active name='ios-mail-outline'
+						    type='Ionicons'
+					    />
+					    <Input
+						    placeholder='Username/Email'
+						    placeholderTextColor='#b3b4b4'
+						    value={this.state.email}
+						    onChangeText={email => this.setState({ email })}
+						    autoCapitalize='none'
+						    style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
+					    />
+				    </Item>
+				    <Item>
+					    <Icon
+						    active
+						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
+						    name='user-secret'
+						    type="FontAwesome"
+						    returnKeyType='next'
+					    />
+					    <Input
+						    placeholder='Password'
+						    placeholderTextColor='#b3b4b4'
+						    secureTextEntry
+						    onChangeText={password => this.setState({ password })}
+						    value={this.state.password}
+						    autoCapitalize='none'
+						    style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
+					    />
+				    </Item>
+			    </Content>
+			    <Content
+				    contentContainerStyle={{
+					    marginTop: 30,
+					    flexDirection: 'column',
+					    alignItems: 'center',
+					    justifyContent: 'center',
+				    }}
+			    >
+				    <Button
+					    style={{
+						    width: 200,
+						    backgroundColor: '#ed1768',
+					    }}
+					    onPress={this.submitForm}
+					    block
+					    dark>
+					    <Text style={{ fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>Sign in</Text>
+				    </Button>
+				    <TouchableOpacity onPress={this.resetPassword}>
+					    <Text style={{ marginTop: 10, color: '#f00266', fontSize: 18, fontWeight: '300', fontFamily: Fonts.GothamRoundedLight }}>Forgot password</Text>
+				    </TouchableOpacity>
+				    <Text style={{ marginTop: 10, color: '#b3b4b4', fontSize: 18, fontWeight: '400', fontFamily: Fonts.GothamRoundedLight }}>Sign in with</Text>
+			    </Content>
+			
+			    <Content
+				    contentContainerStyle={{
+					    marginTop: height / 300,
+					    flexDirection: 'row',
+					    alignItems: 'stretch',
+					    justifyContent: 'space-around'
+				    }}
+			    >
+				    <Button
+					    onPress={this.handleFacebookLogin}
+					    iconLeft
+					    bordered
+					    style={{
+						    borderWidth: 1,
+						    width: width / 3.1,
+						    marginLeft: width / 35,
+						    marginTop: height / 50,
+						    backgroundColor: '#ffffff',
+						    borderColor: '#4065b4',
+						    borderRadius: 12
+					    }}
+					    block
+					    dark>
+					    <Image
+						    style={{
+							    borderRadius: 10,
+							    alignItems: 'center',
+							    height: Platform.OS === 'ios' ? 43 : 43.5,
+							    width: Platform.OS === 'ios' ? 35: 25,
+							    borderColor: 'red',
+							    marginLeft: Platform.OS === 'ios' ? width / 35 : width / 70
+						    }}
+						    source={require('../../assets/facebook_logo.png')}
+					    />
+					    <Text style={{  color: '#4065b4', fontWeight: '900', fontSize: 13 }}>Facebook</Text>
+				    </Button>
+				    <Button
+					    onPress={this.googleSignIn}
+					    iconLeft
+					    bordered
+					    style={{
+						    width: width / 3.1,
+						    marginLeft: width / 40,
+						    marginTop: height / 50,
+						    backgroundColor: '#ffffff',
+						    borderWidth: 2,
+						    borderColor: '#b3b4b4',
+						    borderRadius: 12
+					    }}
+					    block
+					    dark>
+					    <Image
+						    style={{
+							    borderRadius: 10,
+							    alignItems: 'center',
+							    height: 20,
+							    width: 20,
+							    marginLeft: 10,
+						    }}
+						    source={require('../../assets/google_logo.png')}
+					    />
+					    <View style={{
+						    borderRadius: 35,
+						    alignItems: 'center',
+						    height: 45,
+						    width: 10,
+						    borderRightColor: '#b4b4b4',
+						    borderLeftColor: 'white',
+						    borderTopColor: '#b4b4b4',
+						    borderBottomColor: '#b4b4b4',
+						    borderLeftWidth: 0,
+						    borderTopWidth: 0,
+						    borderBottomWidth: 0,
+						    // marginLeft: width / 70,
+				    
+						    borderWidth: 1,
+					    }}/>
+					    <Text style={{ color: '#9b9b9b', fontWeight: '800', fontSize: 14, textAlign: 'center' }}>Google</Text>
+				    </Button>
+			    </Content>
+			    <Content
+				    contentContainerStyle={{
+					    marginTop: height / 25,
+					    flexDirection: 'row',
+					    alignItems: 'center',
+					    justifyContent: 'center'
+				    }}>
+				    <Text style={{ color: '#9b9b9b', fontFamily: Fonts.GothamRounded }}>You don't have an account?</Text>
+				    <TouchableOpacity onPress={this.signUpPage}>
+					    <Text style={{ color: '#f00266', fontWeight: '900', fontFamily: Fonts.GothamRounded }}> Sign up</Text>
+				    </TouchableOpacity>
+			    </Content>
+        </Content>
+	    </ImageBackground>
     )
   }
 }
@@ -674,10 +679,10 @@ const styles = StyleSheet.create({
       height: 20
   },
   welcomeText: {
-    fontSize: 35, color: '#ffc653', fontWeight: '400', fontFamily: Fonts.GothamRounded
+    fontSize: 25, color: '#ffc653', fontWeight: '400', fontFamily: Fonts.GothamRounded
   },
   backText: {
-    fontSize: 35, color: '#d3000d', fontWeight: '400', fontFamily: Fonts.GothamRounded
+    fontSize: 25, color: '#d3000d', fontWeight: '400', fontFamily: Fonts.GothamRounded
   }
 });
 

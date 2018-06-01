@@ -71,17 +71,17 @@ class FinalPage extends Component {
   componentDidMount() {
     this.spring();
 
-    this.setState({
-      firstName: this.props.navigation.state.params.firstName,
-      lastName: this.props.navigation.state.params.lastName,
-      email: this.props.navigation.state.params.email,
-      password: this.props.navigation.state.params.password,
-      imgURL: this.props.navigation.state.params.imgURL,
-      socialEmail: this.props.navigation.state.params.socialEmail,
-      userAuthID: this.props.navigation.state.params.userAuthID,
-      authentication_type: this.props.navigation.state.params.authentication_type,
-      selectedSchool: this.props.navigation.state.params.selectedSchool,
-    })
+    // this.setState({
+    //   firstName: this.props.navigation.state.params.firstName,
+    //   lastName: this.props.navigation.state.params.lastName,
+    //   email: this.props.navigation.state.params.email,
+    //   password: this.props.navigation.state.params.password,
+    //   imgURL: this.props.navigation.state.params.imgURL,
+    //   socialEmail: this.props.navigation.state.params.socialEmail,
+    //   userAuthID: this.props.navigation.state.params.userAuthID,
+    //   authentication_type: this.props.navigation.state.params.authentication_type,
+    //   selectedSchool: this.props.navigation.state.params.selectedSchool,
+    // })
   };
 
   /**
@@ -269,22 +269,9 @@ class FinalPage extends Component {
           source={require('../../../assets/moovBG1.png')}
         >
           <Content contentContainerStyle={{ alignItems: 'center'}}>
-            <TouchableOpacity onPress={this.spring}>
-              <Animated.Image
-                style={{
-                  alignItems: 'center',
-                  height: height / 10.4,
-                  width: width / 5.4,
-                  marginTop: Platform.OS === 'ios' ? height / 9 : height / 10,
-                  transform: [{scale: this.springValue}],
-                  borderRadius: 10
-                }}
-                source={require('../../../assets/appLogo.png')}
-              />
-            </TouchableOpacity>
             <Content
               contentContainerStyle={{
-                marginTop: height / 25,
+	              marginTop: Platform.OS === 'ios' ? 120 : 70,
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center'

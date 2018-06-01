@@ -1,35 +1,39 @@
 {
   "project_info": {
-    "project_number": "365082073509",
-    "firebase_url": "https://moov-project.firebaseio.com",
-    "project_id": "moov-project",
-    "storage_bucket": "moov-project.appspot.com"
+    "project_number": "1050975255216",
+    "firebase_url": "https://moov-68c37.firebaseio.com",
+    "project_id": "moov-68c37",
+    "storage_bucket": "moov-68c37.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:365082073509:android:2755bf58b0cbad18",
+        "mobilesdk_app_id": "1:1050975255216:android:2755bf58b0cbad18",
         "android_client_info": {
           "package_name": "com.moov"
         }
       },
       "oauth_client": [
         {
-          "client_id": "365082073509-gekfqcg3ml1ucmj0li7id4c4o099deod.apps.googleusercontent.com",
+          "client_id": "1050975255216-f9k1uibe970dh9pl50an4mt6j3dj13jh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moov",
-            "certificate_hash": "5fee1adf48810b7c424d0cc6a719aa29467399b0"
+            "certificate_hash": "59ddb4a70395c0b3836e9c5e7b2293c212e325c4"
           }
         },
         {
-          "client_id": "365082073509-dqkja123tvec74d2rl4om958ch8ntvoq.apps.googleusercontent.com",
+          "client_id": "1050975255216-iege6b7n36njodi79l73ebqhdvhmtr8l.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1050975255216-iege6b7n36njodi79l73ebqhdvhmtr8l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyANSBeN3IiJAFcsih3h2wqCrWOqFNATjqw"
+          "current_key": "AIzaSyC5eyxv_lAjlRSYHjVorJ70ivqW5eUgJHM"
         }
       ],
       "services": {
@@ -40,11 +44,11 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "365082073509-dqkja123tvec74d2rl4om958ch8ntvoq.apps.googleusercontent.com",
+              "client_id": "1050975255216-iege6b7n36njodi79l73ebqhdvhmtr8l.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "365082073509-5071c4nc1306fh1mu7ka4hj0evhr85e4.apps.googleusercontent.com",
+              "client_id": "1050975255216-bu201o7nb886rj65jmn190u0tn2c3tc6.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "org.reactjs.native.chineduofor.moov"
