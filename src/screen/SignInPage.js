@@ -333,8 +333,7 @@ class SignInPage extends React.Component {
               socialEmail: user.email,
               imgURL: user.photo,
               userAuthID: user.id,
-              authentication_type: "google",
-	            loading: !this.state.loading
+              authentication_type: "google"
             }, () => {
               this.googleSignOut();
               this.signInWithSocialAuth();

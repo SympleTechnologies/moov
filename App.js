@@ -41,18 +41,18 @@ const AppNavigator = StackNavigator({
   //     header: null,
   //   }
   // },
-  FinalPage: {
-    screen: FinalPage,
-    navigationOptions: {
-      header: null,
-    }
-  },
-  MoovPages: {
-    screen: MoovPages,
-    navigationOptions: {
-      header: null,
-    }
-  },
+  // FinalPage: {
+  //   screen: FinalPage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
+  // MoovPages: {
+  //   screen: MoovPages,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
   Homepage: {
     screen: Homepage,
     navigationOptions: {

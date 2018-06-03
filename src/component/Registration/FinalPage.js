@@ -71,17 +71,17 @@ class FinalPage extends Component {
   componentDidMount() {
     this.spring();
 
-    // this.setState({
-    //   firstName: this.props.navigation.state.params.firstName,
-    //   lastName: this.props.navigation.state.params.lastName,
-    //   email: this.props.navigation.state.params.email,
-    //   password: this.props.navigation.state.params.password,
-    //   imgURL: this.props.navigation.state.params.imgURL,
-    //   socialEmail: this.props.navigation.state.params.socialEmail,
-    //   userAuthID: this.props.navigation.state.params.userAuthID,
-    //   authentication_type: this.props.navigation.state.params.authentication_type,
-    //   selectedSchool: this.props.navigation.state.params.selectedSchool,
-    // })
+    this.setState({
+      firstName: this.props.navigation.state.params.firstName,
+      lastName: this.props.navigation.state.params.lastName,
+      email: this.props.navigation.state.params.email,
+      password: this.props.navigation.state.params.password,
+      imgURL: this.props.navigation.state.params.imgURL,
+      socialEmail: this.props.navigation.state.params.socialEmail,
+      userAuthID: this.props.navigation.state.params.userAuthID,
+      authentication_type: this.props.navigation.state.params.authentication_type,
+      selectedSchool: this.props.navigation.state.params.selectedSchool,
+    })
   };
 
   /**

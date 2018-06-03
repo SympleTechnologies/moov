@@ -14,7 +14,7 @@ const HeaderComponent =  ({ onPress }) => {
   return (
     <Header
       style={{
-        backgroundColor: '#fafafa'
+        backgroundColor: '#fff'
       }}
     >
       <Left>
