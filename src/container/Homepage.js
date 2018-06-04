@@ -90,9 +90,9 @@ class Homepage extends Component {
     if(Platform.OS === 'android') {
       this.requestLocationPermission()
         .then((response) => {
-          console.log(response, 'RESPONSE');
+          // console.log(response, 'RESPONSE');
         });
-      console.log('Android');
+      // console.log('Android');
     }
   };
 
@@ -110,7 +110,7 @@ class Homepage extends Component {
 
     axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         this.setState({
           user: response.data.data.user,
         });
@@ -118,7 +118,7 @@ class Homepage extends Component {
         // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
 
         Toast.show({ text: "Unable to retrieve user", buttonText: "Okay", type: "danger" })
       });
@@ -141,11 +141,11 @@ class Homepage extends Component {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use the location");
+        // console.log("You can use the location");
 	      
         this.getMyLocation();
       } else {
-        console.log("Location permission denied");
+        // console.log("Location permission denied");
         this.requestLocationPermission();
       }
     } catch (err) {
@@ -174,7 +174,6 @@ class Homepage extends Component {
   getMyLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position, 'khvhkfhcvh h  h h h ');
 	      this.setState({
 		      latitude: position.coords.latitude,
 		      longitude: position.coords.longitude,
@@ -339,22 +338,23 @@ class Homepage extends Component {
     if (this.state.myLocationLatitude != null && this.state.myDestinationLatitude!=null) {
       axios.get(`https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=${Number(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&destination=${Number(this.state.myDestinationLatitude)},${Number(this.state.myDestinationLongitude)}&mode=driving`)
         .then((response) => {
-          console.log(response);
           this.mapsPoints(response.data);
         })
         .catch((error) => {
-          console.log(error);
         });
     }
 
   }
-
+	
+	/**
+	 * mapsPoints
+	 *
+	 * maps each location point to state
+	 * @param response
+	 */
   mapsPoints = (response) => {
-    console.log(response, 'what I got');
     let points = Polyline.decode(response.routes["0"].overview_polyline.points)
     let coords = points.map((point, index) => {
-      console.log(point);
-      // return  point
       return  [ point[1], point[0] ]
     });
 
@@ -363,9 +363,13 @@ class Homepage extends Component {
     }, () => this.returnStringEncodedPolyline());
 
   };
-
-  returnStringEncodedPolyline = () => {
-    console.log(this.state, 'fdfdfdfdfdfd');
+	
+	/**
+	 * returnStringEncodedPolyline
+	 *
+	 * returns an object of routes
+	 */
+	returnStringEncodedPolyline = () => {
 	  let shape = {
 		  type: 'Feature',
 		  properties: {},
@@ -488,18 +492,15 @@ class Homepage extends Component {
         school: this.state.user.school,
       }
     }).then((response) => {
-        console.log(response.data);
 	    this.setState({
 		    driverDetails: response.data.data.driver,
 		    loading: !this.state.loading
 	    }, () => this.getDistanceFromDriver());
 	    this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-	    Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
+	    Toast.show({ text: "YAY Driver found!.", type: "success", position: "top", duration: 3000 });
         // this.startTimerCountDown(10);
       })
       .catch((error) => {
-        console.log(error.response);
-        console.log(error.response.data);
         this.setState({ loading: !this.state.loading });
 	      Toast.show({ text: `${error.response.data.data.message} :(`, type: "danger", position: "top", duration: 3000 });
       });
@@ -517,7 +518,6 @@ class Homepage extends Component {
         this.getDriverDistanceAndTime(response.data.rows);
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -530,12 +530,6 @@ class Homepage extends Component {
    */
   getDriverDistanceAndTime = (row) => {
     Object.keys(row).forEach((key) => {
-      console.log(key, row[key]["elements"]);
-      console.log(key, row[key]["elements"][key]);
-      console.log(key, row[key]["elements"][key].distance);
-      console.log(key, row[key]["elements"][key].distance.text);
-      console.log(key, row[key]["elements"][key].duration);
-      console.log(key, row[key]["elements"][key].duration.text);
       this.setState({
         driverDistance: row[key]["elements"][key].distance.text,
         driverTimeAway: row[key]["elements"][key].duration.text,
@@ -543,6 +537,12 @@ class Homepage extends Component {
     });
   };
 	
+	/**
+	 * renderAnnotationsForAndroid
+	 *
+	 * Android location problem fixed using temporary location anotation
+	 * @return {*}
+	 */
 	renderAnnotationsForAndroid () {
 		return (
 			<Mapbox.PointAnnotation
@@ -572,7 +572,6 @@ class Homepage extends Component {
 		const { navigate } = this.props.navigation;
 		navigate('Wallet');
 	};
-
 
   render() {
     console.log(this.state, 'knfdkndfn');

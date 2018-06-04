@@ -53,12 +53,12 @@ const AppNavigator = StackNavigator({
   //     header: null,
   //   }
   // },
-  // Homepage: {
-  //   screen: Homepage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
+  Homepage: {
+    screen: Homepage,
+    navigationOptions: {
+      header: null,
+    }
+  },
 	Wallet: {
 		screen: Wallet,
 		navigationOptions: {

@@ -35,11 +35,11 @@ class LandingPage extends React.Component {
 	componentDidMount() {
 		const { navigate } = this.props.navigation;
 		this.spring();
-		// AsyncStorage.getItem("user").then((value) => {
-		//   if(value !== null) {
-		//     navigate('MoovPages');
-		//   }
-		// }).done();
+		AsyncStorage.getItem("user").then((value) => {
+		  if(value !== null) {
+		    navigate('MoovPages');
+		  }
+		}).done();
 	}
 	
 	/**
