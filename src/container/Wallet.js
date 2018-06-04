@@ -7,26 +7,22 @@ import { AsyncStorage, StyleSheet, Dimensions } from 'react-native';
 // third-party library
 import {
   Container,
-  Header,
-  Left,
-  Body,
-  Right,
   Button,
   Icon,
-  Title,
   Segment,
   Content,
   Text,
   Toast,
-  Root,
   Item,
-  Input
+  Input,
+	Drawer
 } from 'native-base';
 
 // common
 import {SegmentHeader, StatusBarComponent} from "../common";
 import * as axios from "axios/index";
 import {LoadPage, LoadWallet} from "../component/Wallet";
+import {HeaderComponent, SideBar} from "../component/Header";
 
 class Wallet extends Component {
 
@@ -209,7 +205,24 @@ class Wallet extends Component {
   clearAmount = () => {
     this.setState({ amount: '', error: false })
   };
-
+	
+	/**
+	 * closeDrawer
+	 *
+	 * closes the side bar
+	 */
+	closeDrawer = () => {
+		this.drawer._root.close()
+	};
+	
+	/**
+	 * openDrawer
+	 *
+	 * opens side bar
+	 */
+	openDrawer = () => {
+		this.drawer._root.open()
+	};
 
   render() {
     console.log(this.state);
@@ -217,146 +230,127 @@ class Wallet extends Component {
     let { height, width } = Dimensions.get('window');
 
     return (
-        <Container>
-          <Root>
-            <Header
-              hasTabs
+	    <Drawer
+		    ref={(ref) => { this.drawer = ref; }}
+		    content={<SideBar navigator={this.navigator} />}
+		    onClose={() => this.closeDrawer()} >
+        <Container style={container}>
+	        <HeaderComponent onPress={() => this.openDrawer()} />
+          <Segment
+            style={{
+              backgroundColor: '#fff',
+              marginTop: 20
+            }}
+          >
+            <Button
               style={{
-                backgroundColor: '#fff'
+                borderWidth: 1,
+                borderColor: '#b3b4b4',
+                backgroundColor: this.state.currentTab === 'Load' ? '#b3b4b4' : '#fff'
               }}
+              onPress={() => this.setCurrentTab('Load')}
+              active={this.state.currentTab === 'Load'}
+              first>
+              <Text style={{ color: this.state.currentTab === 'Load' ? '#fff' : '#333' }}>Load</Text>
+            </Button>
+            <Button
+              style={{
+                borderWidth: 1,
+                borderColor: '#b3b4b4',
+                backgroundColor: this.state.currentTab === 'Transfer' ? '#b3b4b4' : '#fff'
+              }}
+              active={this.state.currentTab === 'Transfer'}
+              onPress={() =>this.setCurrentTab('Transfer')}
             >
-              <Left>
-                <Button transparent>
-                  {/*<Icon name="arrow-back" />*/}
-                </Button>
-              </Left>
-              <Body>
-              <Title style={{ color: 'black' }}>WALLET</Title>
-              </Body>
-              <Right>
-                <Button
-                  transparent
+              <Text style={{ color: this.state.currentTab === 'Transfer' ? '#fff' : '#333' }}>Transfer</Text>
+            </Button>
+            <Button
+              style={{
+                borderWidth: 1,
+                borderColor: '#b3b4b4',
+                backgroundColor: this.state.currentTab === 'Withdraw' ? '#b3b4b4' : '#fff'
+              }}
+              active={this.state.currentTab === 'Withdraw'}
+              onPress={() =>this.setCurrentTab('Withdraw')}
+              last>
+              <Text style={{ color: this.state.currentTab === 'Withdraw' ? '#fff' : '#333' }}>Withdraw</Text>
+            </Button>
+          </Segment>
+          <Content
+            style={{
+              backgroundColor: '#fff'
+            }}
+            padder>
+            {
+              // this.returnComponent()
+              this.state.currentTab === 'Load'
+                ? <Content
+                  contentContainerStyle={{
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                  }}
                 >
-                  {/*<Icon name="search" />*/}
-                  <Text style={{ color: 'black' }}>{this.state.user.wallet_amount}</Text>
-                </Button>
-              </Right>
-              <StatusBarComponent backgroundColor='#fff' barStyle="dark-content" />
-            </Header>
-            <Segment
-              style={{
-                backgroundColor: '#fff'
-              }}
-            >
-              <Button
-                style={{
-                  borderWidth: 1,
-                  borderColor: '#b3b4b4',
-                  backgroundColor: this.state.currentTab === 'Load' ? '#b3b4b4' : '#fff'
-                }}
-                onPress={() => this.setCurrentTab('Load')}
-                active={this.state.currentTab === 'Load'}
-                first>
-                <Text style={{ color: this.state.currentTab === 'Load' ? '#fff' : '#333' }}>Load</Text>
-              </Button>
-              <Button
-                style={{
-                  borderWidth: 1,
-                  borderColor: '#b3b4b4',
-                  backgroundColor: this.state.currentTab === 'Transfer' ? '#b3b4b4' : '#fff'
-                }}
-                active={this.state.currentTab === 'Transfer'}
-                onPress={() =>this.setCurrentTab('Transfer')}
-              >
-                <Text style={{ color: this.state.currentTab === 'Transfer' ? '#fff' : '#333' }}>Transfer</Text>
-              </Button>
-              <Button
-                style={{
-                  borderWidth: 1,
-                  borderColor: '#b3b4b4',
-                  backgroundColor: this.state.currentTab === 'Withdraw' ? '#b3b4b4' : '#fff'
-                }}
-                active={this.state.currentTab === 'Withdraw'}
-                onPress={() =>this.setCurrentTab('Withdraw')}
-                last>
-                <Text style={{ color: this.state.currentTab === 'Withdraw' ? '#fff' : '#333' }}>Withdraw</Text>
-              </Button>
-            </Segment>
-            <Content
-              style={{
-                backgroundColor: '#fff'
-              }}
-              padder>
-              {
-                // this.returnComponent()
-                this.state.currentTab === 'Load'
-                  ? <Content
+                  <Item
+                    error={this.state.error}
+                    success={!this.state.error && this.state.amount.length >= 3}
+                    rounded
+                    style={{
+                      marginTop: height / 8,
+                      width: width / 1.2
+                    }}>
+                    <Input
+                      keyboardType='numeric'
+                      style={{ textAlign: 'center' }}
+                      placeholder="Enter the amount"
+                      value={this.state.amount.toString()}
+                      onChangeText={amount => this.setState({ amount: amount.replace(" ", "")}, () => this.verifyAmount())}
+                    />
+                    {
+                      this.state.error
+                        ? <Icon
+                          name={'close-circle'}
+                          onPress={() => this.clearAmount()}
+                        />
+                        : <Text/>
+                    }
+
+                    {
+                      this.state.error === false && this.state.amount.length >= 3
+                        ? <Icon
+                          name={'checkmark-circle'}
+                          onPress={() => this.submitAmount()}
+                          // onPress={() => this.submitAmount()}
+                          // onPress={this.state.error ? this.setState({ amount: '' }) : this.submitAmount}
+                        />
+                        : <Text/>
+                    }
+                  </Item>
+                  <Content
                     contentContainerStyle={{
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'space-around',
                     }}
                   >
-                    <Item
-                      error={this.state.error}
-                      success={!this.state.error && this.state.amount.length >= 3}
-                      rounded
+                    <Button
+                      block
+                      dark
                       style={{
-                        marginTop: height / 8,
-                        width: width / 1.2
-                      }}>
-                      <Input
-                        keyboardType='numeric'
-                        style={{ textAlign: 'center' }}
-                        placeholder="Enter the amount"
-                        value={this.state.amount.toString()}
-                        onChangeText={amount => this.setState({ amount: amount.replace(" ", "")}, () => this.verifyAmount())}
-                      />
-                      {
-                        this.state.error
-                          ? <Icon
-                            name={'close-circle'}
-                            onPress={() => this.clearAmount()}
-                          />
-                          : <Text/>
-                      }
-
-                      {
-                        this.state.error === false && this.state.amount.length >= 3
-                          ? <Icon
-                            name={'checkmark-circle'}
-                            onPress={() => this.submitAmount()}
-                            // onPress={() => this.submitAmount()}
-                            // onPress={this.state.error ? this.setState({ amount: '' }) : this.submitAmount}
-                          />
-                          : <Text/>
-                      }
-                    </Item>
-                    <Content
-                      contentContainerStyle={{
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'space-around',
+                        marginTop: height / 10,
+                        width: width / 2
                       }}
+                      onPress={() => this.submitAmount()}
                     >
-                      <Button
-                        block
-                        dark
-                        style={{
-                          marginTop: height / 10,
-                          width: width / 2
-                        }}
-                        onPress={() => this.submitAmount()}
-                      >
-                        <Text>NEXT</Text>
-                      </Button>
-                    </Content>
+                      <Text>NEXT</Text>
+                    </Button>
                   </Content>
-                  : <Text/>
-              }
-            </Content>
-          </Root>
+                </Content>
+                : <Text/>
+            }
+          </Content>
         </Container>
+      </Drawer>
     );
   }
 }

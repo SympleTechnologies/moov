@@ -11,7 +11,7 @@ import { LandingPage, SignUpPage, SignInPage, MoovPages } from './src/screen';
 import { Root } from 'native-base';
 
 // container
-import {Homepage} from "./src/container";
+import { Homepage, Wallet } from "./src/container";
 
 // component
 import {FinalPage, FirstPage, SecondPage} from "./src/component/Registration";
@@ -53,12 +53,18 @@ const AppNavigator = StackNavigator({
   //     header: null,
   //   }
   // },
-  Homepage: {
-    screen: Homepage,
-    navigationOptions: {
-      header: null,
-    }
-  },
+  // Homepage: {
+  //   screen: Homepage,
+  //   navigationOptions: {
+  //     header: null,
+  //   }
+  // },
+	Wallet: {
+		screen: Wallet,
+		navigationOptions: {
+			header: null,
+		}
+	},
 }, {
   navigationOptions: {
     header: 'screen',

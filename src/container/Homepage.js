@@ -228,7 +228,8 @@ class Homepage extends Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
-  }
+  };
+  
   /**
    * closeDrawer
    *
@@ -329,12 +330,12 @@ class Homepage extends Component {
       })
       .catch((error) => console.log(error.message));
   };
-
-  async getDirections(startLoc, destinationLoc) {
-    console.log('Called');
-    // let concatLoc =  JSON.parse(this.state.myLocationLatitude) + "," +  JSON.parse(this.state.myLocationLongitude);
-    // let concatDes =  JSON.parse(this.state.myDestinationLatitude) +","+ JSON.parse(this.state.myDestinationLongitude);
-
+	
+	/**
+	 *
+	 * @return {Promise<void>}
+	 */
+  async getDirections() {
     if (this.state.myLocationLatitude != null && this.state.myDestinationLatitude!=null) {
       axios.get(`https://maps.googleapis.com/maps/api/directions/json?units=imperial&origin=${Number(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&destination=${Number(this.state.myDestinationLatitude)},${Number(this.state.myDestinationLongitude)}&mode=driving`)
         .then((response) => {
@@ -353,8 +354,8 @@ class Homepage extends Component {
     let points = Polyline.decode(response.routes["0"].overview_polyline.points)
     let coords = points.map((point, index) => {
       console.log(point);
-      return  point
-      // return  [ point[0], point[1] ]
+      // return  point
+      return  [ point[1], point[0] ]
     });
 
     this.setState({
@@ -476,60 +477,6 @@ class Homepage extends Component {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.state.userToken}`;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-    // if(this.state.changedSchool === false) {
-    //   school = this.state.schools[0].name;
-    // } else {
-    //   school = this.state.changedSchool.name;
-    // }
-
-    // axios.get(`https://private-1d8110-moovbackendv1.apiary-mock.com/api/v1/driver?user_location=lat,lon&&user_destination=lat,lon&&slots=2&&fare_charge=500`)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     this.setState({
-    //       driverDetails: response.data.data.driver,
-    //       loading: !this.state.loading
-    //     }, () => this.getDistanceFromDriver());
-    //     this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-    //     Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.response.data.data.message);
-    //     this.setState({ loading: !this.state.loading  });
-	   //    Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-    //   });
-    
-    // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver?user_location=${this.state.myLocationLatitude},${this.state.myLocationLongitude}&user_location_name=1st Benue&user_destination_name=muyibi street&user_destination=${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}&slots=2&fare_charge=100&school=covenant university`)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     this.setState({
-    //       driverDetails: response.data.data.driver,
-    //       loading: !this.state.loading
-    //     }, () => this.getDistanceFromDriver());
-    //     this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-    //     Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.response.data.data.message);
-    //     this.setState({ loading: !this.state.loading  });
-	   //    Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-    //   });
-	
-	  // axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver?user_location=${this.state.myLocationLatitude},${this.state.myLocationLongitude}&user_destination=${this.state.myDestinationLatitude},${this.state.myDestinationLongitude}&slots=${this.state.selectedSlot}&fare_charge=${this.state.price}`)
-		 //  .then((response) => {
-			//   console.log(response.data);
-			//   this.setState({
-			// 	  driverDetails: response.data.data.driver,
-			// 	  loading: !this.state.loading
-			//   }, () => this.getDistanceFromDriver());
-			//   this.setState({ fetchingRide: !this.state.fetchingRide, trip: true });
-			//   Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-		 //  })
-		 //  .catch((error) => {
-			//   console.log(error.response.data.data.message);
-			//   this.setState({ loading: !this.state.loading  });
-			//   Toast.show({ text: "YAY Driver found!.", buttonText: "Okay", type: "success", position: "top", duration: 3000 });
-		 //  });
-
     axios.get(`https://moov-backend-staging.herokuapp.com/api/v1/driver`,{
       params: {
         user_location: `${this.state.myLocationLatitude},${this.state.myLocationLongitude}`,
@@ -615,6 +562,16 @@ class Homepage extends Component {
 			</Mapbox.PointAnnotation>
 		)
 	}
+	
+	/**
+	 * navigateToWalletPage
+	 *
+	 * navigates user to  wallet page
+	 */
+	navigateToWalletPage = () => {
+		const { navigate } = this.props.navigation;
+		navigate('Wallet');
+	};
 
 
   render() {
@@ -1189,7 +1146,7 @@ class Homepage extends Component {
 						          backgroundColor: '#ed1768',
 						          borderRadius: 8
 					          }}
-					          onPress={this.submitRequest}
+					          onPress={this.state.price > this.state.user.wallet_amount ? this.navigateToWalletPage :this.submitRequest}
 					          block
 					          dark>
                     <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
@@ -1221,21 +1178,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 20
   },
-  // annotationContainer: {
-  //   width: 30,
-  //   height: 30,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: 'white',
-  //   borderRadius: 15,
-  // },
-  // annotationFill: {
-  //   width: 30,
-  //   height: 30,
-  //   borderRadius: 15,
-  //   backgroundColor: 'orange',
-  //   transform: [{ scale: 0.6 }],
-  // }
 	annotationContainer: {
 		width: 30,
 		height: 30,
@@ -1255,7 +1197,7 @@ const styles = StyleSheet.create({
 
 const layerStyles = {
 	route: {
-		lineColor: '#01c0ff',
+		lineColor: '#f76b1c',
 		lineWidth: 5,
 		lineOpacity: 0.3,
 	},

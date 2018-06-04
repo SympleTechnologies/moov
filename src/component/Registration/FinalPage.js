@@ -7,14 +7,14 @@ import {
   StyleSheet,
   ImageBackground,
   Dimensions,
-  TouchableOpacity,
   Animated, ScrollView,
   ActivityIndicator,
   Platform,
+	View
 } from 'react-native';
 
 // third-party library
-import { Container, Toast, Content, Text, Button } from 'native-base';
+import { Container, Toast, Content, Text, Button, Root } from 'native-base';
 import PhoneInput from "react-native-phone-input";
 
 // common
@@ -257,6 +257,22 @@ class FinalPage extends Component {
   render() {
     const { container, getText, moovingText, activityIndicator } = styles;
     let { height, width } = Dimensions.get('window');
+	
+	  // ACTIVITY INDICATOR
+	  if (this.state.loading) {
+		  return (
+			  <Root>
+				  <View style={{ flex: 1, backgroundColor: 'white' }}>
+					  <StatusBarComponent backgroundColor='white' barStyle="dark-content"/>
+					  <ActivityIndicator
+						  color = '#004a80'
+						  size = "large"
+						  style={activityIndicator}
+					  />
+				  </View>
+			  </Root>
+		  );
+	  }
 
     return (
       <Container style={container}>
@@ -370,19 +386,9 @@ class FinalPage extends Component {
               onPress={this.updateInfo}
               block
               dark>
-              {
-                this.state.loading
-                  ?
-                  <ActivityIndicator
-                    color = '#d3000d'
-                    size = "large"
-                    style={activityIndicator}
-                  />
-                  :
-                  <Text style={{ color: '#d3000d', fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>
-                    Next
-                  </Text>
-              }
+                <Text style={{ color: '#d3000d', fontWeight: '900', fontFamily: Fonts.GothamRoundedLight }}>
+                  Next
+                </Text>
             </Button>
           </Content>
         </ImageBackground>

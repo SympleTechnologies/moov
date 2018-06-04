@@ -228,8 +228,6 @@ class FirstPage extends Component {
 				    </Content>
 			    </Content>
 			    <ScrollView
-            // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
-            // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
 				    enableAutoAutomaticScroll={true}
 				    style={{
 					    marginLeft: width / 40,
@@ -240,7 +238,7 @@ class FirstPage extends Component {
 					    borderRadius: 10,
 					    backgroundColor: 'white'
 				    }}>
-				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4', height: 45 }}>
+				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4'}}>
 					    <Icon
 						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
 						    color={'b3b4b4'}
@@ -274,7 +272,7 @@ class FirstPage extends Component {
 						    style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
 					    />
 				    </Item>
-				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4', height: 45 }}>
+				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
 					    <Icon
 						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
 						    color={'b3b4b4'}
@@ -290,10 +288,10 @@ class FirstPage extends Component {
 						    style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
 					    />
 				    </Item>
-				    <Item>
+				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
 					    <Icon
 						    active
-						    style={{ marginLeft: width / 20, color: '#b3b4b4', height: 45 }}
+						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
 						    name='user-secret'
 						    type="FontAwesome"
 						    returnKeyType='next'
@@ -308,10 +306,10 @@ class FirstPage extends Component {
 						    style={{ fontWeight: '100', fontFamily: Fonts.GothamRounded}}
 					    />
 				    </Item>
-				    <Item>
+				    <Item style={{ borderWidth: 1, borderColor: '#b3b4b4' }}>
 					    <Icon
 						    active
-						    style={{ marginLeft: width / 20, color: '#b3b4b4', height: 45 }}
+						    style={{ marginLeft: width / 20, color: '#b3b4b4' }}
 						    name='user-secret'
 						    type="FontAwesome"
 						    returnKeyType='next'
