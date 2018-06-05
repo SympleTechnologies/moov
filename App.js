@@ -47,12 +47,6 @@ const AppNavigator = StackNavigator({
   //     header: null,
   //   }
   // },
-  // MoovPages: {
-  //   screen: MoovPages,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
   Homepage: {
     screen: Homepage,
     navigationOptions: {

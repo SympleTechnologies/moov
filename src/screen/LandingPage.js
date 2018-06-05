@@ -37,7 +37,7 @@ class LandingPage extends React.Component {
 		this.spring();
 		AsyncStorage.getItem("user").then((value) => {
 		  if(value !== null) {
-		    navigate('MoovPages');
+		    navigate('Homepage');
 		  }
 		}).done();
 	}

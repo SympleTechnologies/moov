@@ -259,7 +259,7 @@ class Homepage extends Component {
       });
 
       RNGooglePlaces.getAutocompletePredictions(`${this.state.locationSearchQuery}`, {
-        country: 'NG'
+        // country: 'NG'
       })
         .then((results) => this.setState({ predictions: results }))
         .catch((error) => console.log(error.message));
@@ -274,7 +274,7 @@ class Homepage extends Component {
   guessDestination = () => {
     if(this.state.destinationSearchQuery.length >= 3) {
       RNGooglePlaces.getAutocompletePredictions(`${this.state.destinationSearchQuery}`, {
-        country: 'NG'
+        // country: 'NG'
       })
         .then((results) => this.setState({ predictions: results }))
         .catch((error) => console.log(error.message));
@@ -492,6 +492,7 @@ class Homepage extends Component {
         school: this.state.user.school,
       }
     }).then((response) => {
+    	console.log(response.data.data.driver)
 	    this.setState({
 		    driverDetails: response.data.data.driver,
 		    loading: !this.state.loading
@@ -513,7 +514,10 @@ class Homepage extends Component {
    * @return {*}
    */
   getDistanceFromDriver = () => {
-    axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${Number(this.state.driverDetails.location_latitude)},${Number(this.state.driverDetails.location_longitude)}&destinations=${(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&key=AIzaSyAJvj05CARolm9AeGjbCaj8N0Jord3j0pc`)
+  	console.log(this.state.driverDetails)
+  	console.log(this.state.driverDetails.driver_location[0]);
+  	console.log(this.state.driverDetails.driver_location[1]);
+    axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${Number(this.state.driverDetails.driver_location[0])},${Number(this.state.driverDetails.driver_location[1])}&destinations=${(this.state.myLocationLatitude)},${Number(this.state.myLocationLongitude)}&key=AIzaSyAJvj05CARolm9AeGjbCaj8N0Jord3j0pc`)
       .then((response) => {
         this.getDriverDistanceAndTime(response.data.rows);
       })
@@ -529,6 +533,7 @@ class Homepage extends Component {
    * @return {*}
    */
   getDriverDistanceAndTime = (row) => {
+  	console.log('called', row)
     Object.keys(row).forEach((key) => {
       this.setState({
         driverDistance: row[key]["elements"][key].distance.text,
@@ -811,11 +816,16 @@ class Homepage extends Component {
 								          }}>
 								          <Text
 									          style={{ color: '#d3000d', fontSize: 15, fontWeight: '900', fontFamily: Fonts.GothamRounded, }}>
-									          Femi Kelechi
+									          { this.state.driverDetails.firstname } { this.state.driverDetails.lastname }
+									          
 								          </Text>
 								          <Text
 									          style={{ marginBottom: 5, color: '#c5c5c5', fontSize: 10, fontWeight: '500', fontFamily: Fonts.GothamRounded }}
-								          >Toyota Corolla</Text>
+								          >
+									          {
+										          this.state.driverDetails.car_model
+								            }
+								          </Text>
 								          <Rating
 									          type="star"
                             // startingValue={3}
@@ -943,7 +953,9 @@ class Homepage extends Component {
 										          fontWeight: '600',
 										          fontFamily: Fonts.GothamRoundedLight
 									          }}
-								          >ABJ 93CL</Text>
+								          >{
+									          this.state.driverDetails.plate_number
+								          }</Text>
 							          </View>
 							
 							          <View
@@ -963,7 +975,7 @@ class Homepage extends Component {
 										          fontSize: Platform.OS === 'ios' ? 7 :  9,
 										          fontWeight: '700'
 									          }}>
-									          Payment Type
+									          Payment
 								          </Text>
 								          <Text
 									          style={{
