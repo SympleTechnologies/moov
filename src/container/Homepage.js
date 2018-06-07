@@ -126,7 +126,7 @@ class Homepage extends Component {
         this.setState({
           user: response.data.data.user,
 	        driverDetails: response.data.data.user.current_ride.driver_info
-        }, () => console.log(this.state, 'new state'));
+        });
 
         // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
@@ -272,7 +272,7 @@ class Homepage extends Component {
       });
 
       RNGooglePlaces.getAutocompletePredictions(`${this.state.locationSearchQuery}`, {
-        // country: 'NG'
+        country: 'NG'
       })
         .then((results) => this.setState({ predictions: results }))
         .catch((error) => console.log(error.message));
@@ -287,7 +287,7 @@ class Homepage extends Component {
   guessDestination = () => {
     if(this.state.destinationSearchQuery.length >= 3) {
       RNGooglePlaces.getAutocompletePredictions(`${this.state.destinationSearchQuery}`, {
-        // country: 'NG'
+        country: 'NG'
       })
         .then((results) => this.setState({ predictions: results }))
         .catch((error) => console.log(error.message));
@@ -706,7 +706,7 @@ class Homepage extends Component {
 				      elevation:0
 			      }}>
 				      <CardItem style={{
-					      borderColor: '#b3b4b4',
+					      borderColor: '#d4d4d4',
 					      borderRadius: 8,
 					      borderWidth: 1,
 					      borderBottomWidth: 0.5,
@@ -738,7 +738,7 @@ class Homepage extends Component {
 					      </Body>
 				      </CardItem>
 				      <CardItem style={{
-					      borderColor: '#b3b4b4',
+					      borderColor: '#d4d4d4',
 					      borderRadius: 8,
 					      borderWidth: 1,
 					      borderTopWidth: 0.5,
@@ -792,156 +792,176 @@ class Homepage extends Component {
 							      flexDirection: 'row',
 							      alignItems: 'center',
 							      justifyContent: 'center',
-							      marginLeft: 25.5
+							      marginLeft: 45,
+							      marginTop: 15,
 						      }}>
 						
-						      <Content
-							      enableAutoAutomaticScroll={true}
-							      contentContainerStyle={{
-								      marginTop: 15,
-								      width: width / 2.1,
-								      height: height / 11.5,
-								      backgroundColor: '#fff',
+						      <Body
+							      style={{
 								      flexDirection: 'row',
 								      alignItems: 'center',
-								      justifyContent: 'center',
 							      }}>
-							      <Icon
-								      style={{ color: '#ed1368' }}
-								      active
-								      name='airline-seat-recline-extra'
-								      type='MaterialIcons'
-								      icon
-							      />
-							      <Text style={{
-								      fontWeight: '100',
-								      fontFamily: Fonts.GothamRounded,
-								      color: '#b3b4b4',
-								      marginLeft: 7,
-								      fontSize: 16.5,
-							      }}>Number of Seats</Text>
-						      </Content>
-						
-						      <Content
-							      contentContainerStyle={{
-								      marginTop: 15,
-								      width: width / 3.5,
-								      marginLeft: width / 10,
-								      borderWidth: 1,
-								      borderColor: '#b3b4b4',
-								      borderRadius: 8,
-								      height: height / 11.5,
+							      <Left style={{
+								      flexDirection: 'row',
+								      alignItems: 'center',
+								      // justifyContent: 'flex-start',
 							      }}>
-							      <Picker
-								      mode="dropdown"
-								      textStyle={{ fontSize: 18, color:'#b3b4b4', fontWeight: '100' }}
-								      iosHeader="Available"
-								      iosIcon={<Icon style={{ marginLeft: width / 10 }} name="ios-arrow-down-outline" />}
-								      placeholderIconColor="#d3000d"
-								      style={{ width: undefined }}
-								      selectedValue={this.state.selectedSlot}
-								      onValueChange={this.onValueChange.bind(this)}
-							      >
-								      <Picker.Item label="1" value="1" />
-								      <Picker.Item label="2" value="2" />
-								      <Picker.Item label="3" value="3" />
-								      <Picker.Item label="4" value="4" />
-								      <Picker.Item label="5" value="5" />
-								      <Picker.Item label="6" value="6" />
-								      <Picker.Item label="7" value="7" />
-							      </Picker>
-						      </Content>
-					      </View>
-					      {
-						      this.state.price > 0
-							      ?
-							      <View
-								      style={{
-									      flexDirection: 'row',
-									      alignItems: 'center',
-									      marginLeft: Platform.OS === 'ios' ? 20 : 35,
-									      marginTop: 15,
-									      width: Platform.OS === 'ios' ? width / 1.15 : width / 1.2,
-									      borderWidth: 1,
-									      borderColor: '#b3b4b4',
-									      borderRadius: 8,
-									      height: height / 11.5,
-									      backgroundColor: 'white',
-								      }}>
-								      <Left>
-									      <Icon
-										      style={{ marginLeft: 7, color: '#ed1368' }}
-										      active
-										      name='price-tag'
-										      type='Entypo'
-										      icon
-									      />
-								      </Left>
+								      <Icon
+									      style={{ color: '#ed1368' }}
+									      active
+									      name='airline-seat-recline-extra'
+									      type='MaterialIcons'
+									      icon
+								      />
 								      <Text style={{
 									      fontWeight: '100',
 									      fontFamily: Fonts.GothamRounded,
 									      color: '#b3b4b4',
-									      fontSize: 16.5,
-									      marginRight:  Platform.OS === 'ios' ? width / 1.9 : width / 2.1
-								      }}>{this.state.price}</Text>
-								      <Right>
-									      {
-										      this.state.price > this.state.user.wallet_amount
-											      ?
-											      <View
-												      style={{
-													      backgroundColor: '#d3000d',
-													      flexDirection: 'row',
-													      alignItems: 'center',
-													      justifyContent: 'center',
-													      width: 30,
-													      height: 30,
-													      borderRadius: 30/2,
-													      marginRight: 10,
-												      }}>
-												      <Text style={{
-													      fontWeight: '900',
-													      fontFamily: Fonts.GothamRounded,
-													      color: '#fff',
-													      fontSize: 16.5,
-													      marginTop: Platform.OS === 'ios' ? 5 : 0,
-												      }}>!</Text>
-											      </View>
-											      :
-											      <Icon
-												      style={{ color: 'green', marginRight: 10, }}
-												      active
-												      name='ios-checkmark-circle'
-												      type='Ionicons'
-												      icon
-											      />
-									      }
-								      </Right>
-							      </View>
-							      : <View/>
-					      }
-					
-					
+									      fontSize: 16,
+									      textAlign: 'center',
+									      marginLeft: 15,
+								      }}>Number of Seat(s)</Text>
+							      </Left>
+							      <Body>
+								      <CardItem style={{
+									      borderColor: '#d4d4d4',
+									      borderRadius: 8,
+									      borderWidth: 1,
+									      height: height / 12,
+									      width: width / 3.9,
+									      marginLeft: 10,
+								      }}>
+									      <Picker
+										      mode="dropdown"
+										      textStyle={{ fontSize: 18, color:'#b3b4b4', fontWeight: '100' }}
+										      iosHeader="Available"
+										      iosIcon={<Icon name="ios-arrow-down-outline" />}
+										      placeholderIconColor="#d3000d"
+										      style={{ width: undefined }}
+										      selectedValue={this.state.selectedSlot}
+										      onValueChange={this.onValueChange.bind(this)}
+									      >
+										      <Picker.Item label="1" value="1" />
+										      <Picker.Item label="2" value="2" />
+										      <Picker.Item label="3" value="3" />
+										      <Picker.Item label="4" value="4" />
+										      <Picker.Item label="5" value="5" />
+										      <Picker.Item label="6" value="6" />
+										      <Picker.Item label="7" value="7" />
+									      </Picker>
+								      </CardItem>
+							      </Body>
+						      </Body>
+					      </View>
 					      {
 						      this.state.price > 0
 							      ?
-							      <Button
-								      style={{
-									      width: width / 1.5,
-									      marginLeft: width / 5.6,
-									      marginTop: 30,
-									      backgroundColor: '#ed1768',
-									      borderRadius: 8
-								      }}
-								      onPress={this.state.price > this.state.user.wallet_amount ? this.navigateToWalletPage :this.submitRequest}
-								      block
-								      dark>
-								      <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
-									      { this.state.price > this.state.user.wallet_amount ? 'Load' : 'Moov' }
-								      </Text>
-							      </Button>
-							      :
-							      <View/>
+							      <Content>
+							      <Card style={{
+								      borderWidth: 0,
+								      borderColor: 'rgba(0,0,0,0)',
+								      backgroundColor: 'rgba(0,0,0,0)',
+								      shadowOffset: { height: 0, width: 0 },
+								      shadowOpacity: 0,
+								      elevation:0,
+								      marginTop: 20,
+							      }}>
+								      <CardItem style={{
+									      borderColor: '#d4d4d4',
+									      borderRadius: 8,
+									      borderWidth: 1,
+									      height: height / 12,
+									      width: width / 1.18,
+									      marginLeft: 25,
+								      }}>
+									      <Body
+										      style={{
+											      flexDirection: 'row',
+											      alignItems: 'center',
+											      // justifyContent: 'flex-start',
+										      }}>
+									      <Left style={{
+										      flexDirection: 'row',
+										      alignItems: 'center',
+									      }}>
+										      <Icon
+											      style={{ color: '#ed1368' }}
+											      active
+											      name='price-tag'
+											      type='Entypo'
+											      icon
+										      />
+										      <Text style={{
+											      fontWeight: '100',
+											      fontFamily: Fonts.GothamRounded,
+											      color: '#b3b4b4',
+											      fontSize: 16,
+											      textAlign: 'center',
+											      marginLeft: 15,
+											    }}>
+											      {this.state.price}
+										      </Text>
+									      </Left>
+									      <Right>
+										      {
+											      this.state.price > this.state.user.wallet_amount
+												      ?
+												      <View
+													      style={{
+														      backgroundColor: '#d3000d',
+														      flexDirection: 'row',
+														      alignItems: 'center',
+														      justifyContent: 'center',
+														      width: 30,
+														      height: 30,
+														      borderRadius: 30/2,
+														      marginRight: 10,
+													      }}>
+													      <Text style={{
+														      fontWeight: '900',
+														      fontFamily: Fonts.GothamRounded,
+														      color: '#fff',
+														      fontSize: 16.5,
+														      marginTop: Platform.OS === 'ios' ? 5 : 0,
+													      }}>!</Text>
+												      </View>
+												      :
+												      <Icon
+													      style={{ color: 'green', marginRight: 10, }}
+													      active
+													      name='ios-checkmark-circle'
+													      type='Ionicons'
+													      icon
+												      />
+										      }
+									      </Right>
+									      </Body>
+								      </CardItem>
+							      </Card>
+								      {
+									      this.state.price > 0
+										      ?
+										      <Button
+											      style={{
+												      width: width / 1.5,
+												      marginLeft: width / 5.6,
+												      marginTop: 20,
+												      backgroundColor: '#ed1768',
+												      borderRadius: 8
+											      }}
+											      onPress={this.state.price > this.state.user.wallet_amount ? this.navigateToWalletPage :this.submitRequest}
+											      block
+											      dark>
+											      <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
+												      { this.state.price > this.state.user.wallet_amount ? 'Load' : 'Moov' }
+											      </Text>
+										      </Button>
+										      :
+										      <View/>
+								      }
+							      </Content>
+							      
+							      : <Text/>
 					      }
 				
 				      </View>
