@@ -21,8 +21,7 @@ import {
 // common
 import {SegmentHeader, StatusBarComponent} from "../common";
 import * as axios from "axios/index";
-import {LoadPage, LoadWallet} from "../component/Wallet";
-import {HeaderComponent, SideBar} from "../component/Header";
+import { HeaderComponent, SideBar} from "../component/Header";
 
 class Wallet extends Component {
 
@@ -223,7 +222,18 @@ class Wallet extends Component {
 	openDrawer = () => {
 		this.drawer._root.open()
 	};
-
+	
+	/**
+	 * navigateToProfilePage
+	 *
+	 * navigates to profile page
+	 * @return {void}
+	 */
+	navigateToTabPage = (page) => {
+		const { navigate } = this.props.navigation;
+		navigate(page);
+	};
+	
   render() {
     console.log(this.state);
     const { container } = styles;
@@ -232,7 +242,7 @@ class Wallet extends Component {
     return (
 	    <Drawer
 		    ref={(ref) => { this.drawer = ref; }}
-		    content={<SideBar navigator={this.navigator} />}
+		    content={<SideBar tab={'Wallet'} navigateToTabPage={this.navigateToTabPage}  />}
 		    onClose={() => this.closeDrawer()} >
         <Container style={container}>
 	        <HeaderComponent onPress={() => this.openDrawer()} />

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, View, Dimensions, Platform, PermissionsAndroid, ScrollView, ActivityIndicator, Image } from 'react-native';
 
 // third-party library
-import {Container, Drawer, Content, Icon, Input, Text, Picker, Left, Right, Button, Toast, Root} from 'native-base';
+import {Container, Drawer, Content, Icon, Input, Text, Picker, Left, Right, Button, Toast, Root, Card, CardItem, Body } from 'native-base';
 import { Rating, Divider } from 'react-native-elements';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
@@ -33,7 +33,7 @@ class Homepage extends Component {
 		this.state = {
 			userToken: '',
 			user: {
-				wallet_amount: 20000
+				wallet_amount: 0
 			},
 			
 			loading: false,
@@ -95,6 +95,17 @@ class Homepage extends Component {
       // console.log('Android');
     }
   };
+	
+	/**
+	 * navigateToProfilePage
+	 *
+	 * navigates to profile page
+	 * @return {void}
+	 */
+	navigateToTabPage = (page) => {
+		const { navigate } = this.props.navigation;
+		navigate(page);
+	};
 
   /**
    * fetchUserDetails
@@ -110,10 +121,12 @@ class Homepage extends Component {
 
     axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
       .then((response) => {
-        // console.log(response.data.data);
+        console.log(response.data.data);
+        console.log(response.data.data.user.current_ride.driver_info);
         this.setState({
           user: response.data.data.user,
-        });
+	        driverDetails: response.data.data.user.current_ride.driver_info
+        }, () => console.log(this.state, 'new state'));
 
         // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
@@ -610,567 +623,333 @@ class Homepage extends Component {
     return (
       <Drawer
         ref={(ref) => { this.drawer = ref; }}
-        content={<SideBar navigator={this.navigator} />}
+        content={<SideBar tab={'Homepage'} navigateToTabPage={this.navigateToTabPage} />}
         onClose={() => this.closeDrawer()} >
-        <HeaderComponent onPress={() => this.openDrawer()} />
-        <View style={{ width: width , backgroundColor: '#fff', height: '100%' }}>
-          <View style={{
-            width: '100%',
-            height: this.state.driverDetails === '' ? '89%' : height,
-            backgroundColor: 'white'
-          }}>
-	          <View style={StyleSheet.absoluteFillObject}>
-		          <Mapbox.MapView
-			          styleURL={Mapbox.StyleURL.Light}
-			          zoomLevel={15}
-			          centerCoordinate={myLocation.length <  1 ? [11.256, 43.770] : myLocation}
-			          style={styles.container}
-			          showUserLocation={Platform.OS === 'ios'}
-		          >
-			          {
-				          Platform.OS === 'ios' ? <View/> : this.renderAnnotationsForAndroid()
-			          }
-			          
-                {
-                  this.state.shape !== ''
-                  ?
-	                  <Mapbox.ShapeSource
-		                  id='myRoute'
-		                  shape={this.state.shape}
-	                  >
-		                  <Mapbox.LineLayer
-			                  id='routeFill'
-			                  style={layerStyles.route}
-		                  />
-	                  </Mapbox.ShapeSource>
-                  :
-                    <View/>
-                }
-			          
-			          {
-				          this.state.myDestinationLatitude !== null
-					          ?
-					          <Mapbox.PointAnnotation
-						          key='pointAnnotation1'
-						          id='pointAnnotation1'
-						          coordinate={myDestination}>
-						
-						          <View style={styles.annotationContainer}>
-							          <View style={styles.annotationFill} />
-						          </View>
-						          <Mapbox.Callout title={`${this.state.myDestinationAddress}`} />
-					          </Mapbox.PointAnnotation>
-					          : <View/>
-			          }
-    
-              </Mapbox.MapView>
-		          <View style={{ position: 'absolute' }}>
-			          {
-				          this.state.onTextFocus === 'location' && this.state.locationSearchQuery.length >= 3
-					          ?
-					          <View style={{ top: 76 }}>
-						          <SearchResult predictions={this.state.predictions} onPress={this.getSelectedLocation} />
-					          </View>
-					          :
-					          <Text/>
-			          }
-			          {
-				          this.state.onTextFocus === 'destination'  && this.state.destinationSearchQuery.length >= 3
-					          ?
-					          <View keyboardShouldPersistTaps='always' style={{ top: 120 }}>
-						          <SearchResult predictions={this.state.predictions} onPress={this.getSelectedDestination} />
-					          </View>
-					          :
-					          <Text/>
-			          }
-			          <Content>
-				          <ScrollView
-                    // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
-                    // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
-                    // enableAutoAutomaticScroll={true}
-					          contentContainerStyle={{
-						          marginLeft: width / 20,
-						          width: width / 1.1,
-						          borderWidth: 1,
-						          borderColor: '#b3b4b4',
-						          borderRadius: 8,
-						          borderBottomWidth: 0.5,
-						          height: height / 11.5,
-						          backgroundColor: 'white',
-						          flexDirection: 'row',
-						          alignItems: 'center',
-						          justifyContent: 'center',
-					          }}>
-					          <Icon
-						          style={{ marginLeft: width / 20, color: '#057cff' }}
-						          active
-						          name='location-on'
-						          type='MaterialIcons'
-						          icon
-					          />
-					          <Input
-						          value={this.state.locationSearchQuery}
-						          placeholder={this.state.myLocationName === '' ? 'Enter Location' :`${this.state.myLocationName}`}
-						          placeholderTextColor='#b3b4b4'
-						          onChangeText={
-							          locationSearchQuery => this.setState({ locationSearchQuery }, () => this.guessLocation())
-						          }
-						          autoCapitalize='none'
-						          style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
-					          />
-				          </ScrollView>
-				          {
-					          this.state.myLocationName !== '' && this.state.onTextFocus !== 'location'
-						          ?
-						          <ScrollView
-                        // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
-                        // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
-							          enableAutoAutomaticScroll={true}
-							          contentContainerStyle={{
-								          marginLeft: width / 20,
-								          marginBottom: height / 100000,
-								          width: width / 1.1,
-								          borderWidth: 1,
-								          borderTopWidth: 0.5,
-								          borderColor: '#b3b4b4',
-								          borderRadius: 8,
-								          height: height / 11.5,
-								          backgroundColor: 'white',
-								          flexDirection: 'row',
-								          alignItems: 'center',
-								          justifyContent: 'center',
-							          }}>
-							          <Icon
-								          style={{ marginLeft: width / 20, color: '#f5a623' }}
-								          active
-								          name='location-on'
-								          type='MaterialIcons'
-							
-							          />
-							          <Input
-								          value={this.state.destinationSearchQuery}
-								          placeholder={this.state.myDestinationName === '' ? 'Enter Destination' : `${this.state.myDestinationName}`}
-								          placeholderTextColor='#b3b4b4'
-								          onChangeText={
-									          destinationSearchQuery => this.setState({ destinationSearchQuery }, () => this.guessDestination())
-								          }
-								          autoCapitalize='none'
-								          style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: width / 20 }}
-								          onFocus={() => this.setState({
-									          onTextFocus: 'destination'
-								          })}
-							          />
-						          </ScrollView>
-						          : <Text/>
-				          }
-			          </Content>
+	      <View style={StyleSheet.absoluteFillObject}>
+		      <Mapbox.MapView
+			      styleURL={Mapbox.StyleURL.Light}
+			      zoomLevel={15}
+			      centerCoordinate={myLocation.length <  1 ? [11.256, 43.770] : myLocation}
+			      style={styles.container}
+			      showUserLocation={Platform.OS === 'ios'}
+		      >
+			      {
+				      Platform.OS === 'ios' ? <View/> : this.renderAnnotationsForAndroid()
+			      }
 			
-			          {
-				          this.state.driverDetails !== ''
-					          ?
-					          <Content
-						          contentContainerStyle={{
-							          marginTop: height / 2.7,
-							          marginLeft: width / 20,
-							          height: height / 3.7,
-							          width: width / 1.1,
-							          borderWidth: 0.5,
-							          borderColor: '#b3b4b4',
-							          borderRadius: 8,
-							          backgroundColor: '#fff',
-						          }}
-					
-					          >
-						          <Content
-							          contentContainerStyle={{
-								          marginTop: 15,
-								          marginLeft: 10,
-								          flexDirection: 'row',
-							          }}
-						
-						          >
-							          <Image
-								          style={{
-									          alignItems: 'center',
-									          width: width / 5,
-									          height: height / 10,
-									          borderRadius: 8,
-									          shadowOpacity: 0.75,
-									          shadowRadius: 5,
-									          shadowColor: '#b3b4b4',
-									          shadowOffset: { height: 0, width: 0 },
-								          }}
-								          source={{uri: `${this.state.driverDetails.image_url}`}}
-							          />
-							          <View
-								          style={{
-									          flexDirection: 'column',
-									          // alignItems: 'center',
-									          justifyContent: 'center',
-									          marginLeft: 10,
-									          marginTop: 5,
-									          width: width / 3,
-									          borderRadius: 8,
-									          height: height / 11.5,
-									          backgroundColor: '#fafafa',
-								          }}>
-								          <Text
-									          style={{ color: '#d3000d', fontSize: 15, fontWeight: '900', fontFamily: Fonts.GothamRounded, }}>
-									          { this.state.driverDetails.firstname } { this.state.driverDetails.lastname }
-									          
-								          </Text>
-								          <Text
-									          style={{ marginBottom: 5, color: '#c5c5c5', fontSize: 10, fontWeight: '500', fontFamily: Fonts.GothamRounded }}
-								          >
-									          {
-										          this.state.driverDetails.car_model
-								            }
-								          </Text>
-								          <Rating
-									          type="star"
-                            // startingValue={3}
-									          imageSize={10}
-								          />
-							          </View>
-							          <Button
-								          style={{
-									          width: width / 3.5,
-									          marginTop: 9,
-									          backgroundColor: '#ed1368',
-									          borderRadius: 8
-								          }}
-                          // onPress={this.submitRequest}
-								          block
-								          dark>
-								          {
-									          this.state.loading
-										          ? <ActivityIndicator
-											          color='#fff'
-											          size="large"
-											          style={activityIndicator}
-										          />
-										          : <Text style={{fontSize: 13, fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>Cancel ride</Text>
-								          }
-							          </Button>
-						          </Content>
-						
-						          <Content
-							          contentContainerStyle={{
-								          width: width / 1.2,
-								          marginTop: 20,
-								          marginLeft: 15,
-								          borderWidth: 0.25,
-								          borderTopColor: '#cbcbcb',
-								          borderColor: '#fff',
-								          flexDirection: 'row',
-							          }}
-						
-						          >
-							          <View
-								          style={{
-									          flexDirection: 'column',
-									          // alignItems: 'center',
-									          justifyContent: 'center',
-									          marginLeft: 10,
-									          width: width / 5,
-									          height: height / 11.5,
-									          backgroundColor: '#fff',
-								          }}>
-								          <Text
-									          style={{
-										          fontFamily: Fonts.GothamRoundedLight,
-										          marginBottom: 5, color: '#b3b4b4',
-										          fontSize: Platform.OS === 'ios' ? 7 :  9,
-										          fontWeight: '700'
-									          }}>
-									          Phone Number
-								          </Text>
-								          <Text
-									          style={{
-										          marginBottom: 5,
-										          color: '#d3000d',
-										          fontSize: Platform.OS === 'ios' ? 7 : 9,
-										          fontWeight: '600',
-										          fontFamily: Fonts.GothamRoundedLight
-									          }}
-								          >{this.state.driverDetails.mobile_number}</Text>
-							          </View>
-							
-							          <View
-								          style={{
-									          flexDirection: 'column',
-									          // alignItems: 'center',
-									          justifyContent: 'center',
-									          marginLeft: 10,
-									          width: width / 5,
-									          height: height / 11.5,
-									          backgroundColor: '#fff',
-								          }}>
-								          <Text
-									          style={{
-										          fontFamily: Fonts.GothamRoundedLight,
-										          marginBottom: 5, color: '#b3b4b4',
-										          fontSize: Platform.OS === 'ios' ? 7 :  9,
-										          fontWeight: '700'
-									          }}>
-									          Estimated Time
-								          </Text>
-								          <Text
-									          style={{
-										          marginBottom: 5,
-										          color: '#d3000d',
-										          fontSize: Platform.OS === 'ios' ? 7 : 9,
-										          fontWeight: '600',
-										          fontFamily: Fonts.GothamRoundedLight
-									          }}
-								          >{this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Text>
-							          </View>
-							
-							          <View
-								          style={{
-									          flexDirection: 'column',
-									          // alignItems: 'center',
-									          justifyContent: 'center',
-									          marginLeft: 10,
-									          width: width / 5,
-									          height: height / 11.5,
-									          backgroundColor: '#fff',
-								          }}>
-								          <Text
-									          style={{
-										          fontFamily: Fonts.GothamRoundedLight,
-										          marginBottom: 5, color: '#b3b4b4',
-										          fontSize: Platform.OS === 'ios' ? 7 :  9,
-										          fontWeight: '700'
-									          }}>
-									          Plate Number
-								          </Text>
-								          <Text
-									          style={{
-										          marginBottom: 5,
-										          color: '#d3000d',
-										          fontSize: Platform.OS === 'ios' ? 7 : 9,
-										          fontWeight: '600',
-										          fontFamily: Fonts.GothamRoundedLight
-									          }}
-								          >{
-									          this.state.driverDetails.plate_number
-								          }</Text>
-							          </View>
-							
-							          <View
-								          style={{
-									          flexDirection: 'column',
-									          // alignItems: 'center',
-									          justifyContent: 'center',
-									          marginLeft: 10,
-									          width: width / 5,
-									          height: height / 11.5,
-									          backgroundColor: '#fff',
-								          }}>
-								          <Text
-									          style={{
-										          fontFamily: Fonts.GothamRoundedLight,
-										          marginBottom: 5, color: '#b3b4b4',
-										          fontSize: Platform.OS === 'ios' ? 7 :  9,
-										          fontWeight: '700'
-									          }}>
-									          Payment
-								          </Text>
-								          <Text
-									          style={{
-										          marginBottom: 5,
-										          color: '#d3000d',
-										          fontSize: Platform.OS === 'ios' ? 7 : 9,
-										          fontWeight: '600',
-										          fontFamily: Fonts.GothamRoundedLight
-									          }}
-								          >WALLET</Text>
-							          </View>
-						
-						
-						          </Content>
-					
-					
-					          </Content>
-					          :
-					          <Text/>
-			          }
-		          </View>
-		          {
-			          this.state.driverDetails === ''
-				          ?
-				          <View
-					          style={{
-						          flexDirection: 'row',
-						          alignItems: 'center',
-						          justifyContent: 'center',
-						          marginLeft: 25.5
-					          }}>
-					          <Content
-                      // scrollEnabled={false} // the view itself doesn't scroll up/down (only if all fields fit into the screen)
-                      // keyboardShouldPersistTaps='always' // make keyboard not disappear when tapping outside of input
-						          enableAutoAutomaticScroll={true}
-						          contentContainerStyle={{
-							          marginTop: 15,
-							          width: width / 2.1,
-							          // borderWidth: 1,
-							          // borderColor: '#b3b4b4',
-							          // borderRadius: 8,
-							          height: height / 11.5,
-							          backgroundColor: '#fff',
-							          flexDirection: 'row',
-							          alignItems: 'center',
-							          justifyContent: 'center',
-						          }}>
-						          <Icon
-							          style={{ color: '#ed1368' }}
-							          active
-							          name='airline-seat-recline-extra'
-							          type='MaterialIcons'
-							          icon
-						          />
-						          <Text style={{
-							          fontWeight: '100',
-							          fontFamily: Fonts.GothamRounded,
-							          color: '#b3b4b4',
-							          marginLeft: 7,
-							          fontSize: 16.5,
-						          }}>Number of Seats</Text>
-					          </Content>
-					          <Content
-						          contentContainerStyle={{
-							          marginTop: 15,
-							          width: width / 3.5,
-							          marginLeft: width / 10,
-							          borderWidth: 1,
-							          borderColor: '#b3b4b4',
-							          borderRadius: 8,
-							          height: height / 11.5,
-						          }}>
-						          <Picker
-							          mode="dropdown"
-							          textStyle={{ fontSize: 18, color:'#b3b4b4', fontWeight: '100' }}
-							          iosHeader="Available"
-							          iosIcon={<Icon style={{ marginLeft: width / 10 }} name="ios-arrow-down-outline" />}
-							          placeholderIconColor="#d3000d"
-							          style={{ width: undefined }}
-							          selectedValue={this.state.selectedSlot}
-							          onValueChange={this.onValueChange.bind(this)}
-						          >
-							          <Picker.Item label="1" value="1" />
-							          <Picker.Item label="2" value="2" />
-							          <Picker.Item label="3" value="3" />
-							          <Picker.Item label="4" value="4" />
-							          <Picker.Item label="5" value="5" />
-							          <Picker.Item label="6" value="6" />
-							          <Picker.Item label="7" value="7" />
-						          </Picker>
-					          </Content>
-				          </View>
-				          :
-				          <Text/>
+			      {
+				      this.state.shape !== ''
+					      ?
+					      <Mapbox.ShapeSource
+						      id='myRoute'
+						      shape={this.state.shape}
+					      >
+						      <Mapbox.LineLayer
+							      id='routeFill'
+							      style={layerStyles.route}
+						      />
+					      </Mapbox.ShapeSource>
+					      :
+					      <View/>
+			      }
 			
-		          }
+			      {
+				      this.state.myDestinationLatitude !== null
+					      ?
+					      <Mapbox.PointAnnotation
+						      key='pointAnnotation1'
+						      id='pointAnnotation1'
+						      coordinate={myDestination}>
+						
+						      <View style={styles.annotationContainer}>
+							      <View style={styles.annotationFill} />
+						      </View>
+						      <Mapbox.Callout title={`${this.state.myDestinationAddress}`} />
+					      </Mapbox.PointAnnotation>
+					      : <View/>
+			      }
 		
-		          {
-			          this.state.price > 0 && this.state.driverDetails === ''
-				          ?
-				          <View
-					          style={{
-						          flexDirection: 'row',
-						          alignItems: 'center',
-						          marginLeft: Platform.OS === 'ios' ? 20 : 35,
-						          marginTop: 15,
-						          width: Platform.OS === 'ios' ? width / 1.15 : width / 1.2,
-						          borderWidth: 1,
-						          borderColor: '#b3b4b4',
-						          borderRadius: 8,
-						          height: height / 11.5,
-						          backgroundColor: 'white',
-					          }}>
-					          <Left>
-						          <Icon
-							          style={{ marginLeft: 7, color: '#ed1368' }}
-							          active
-							          name='price-tag'
-							          type='Entypo'
-							          icon
-						          />
-					          </Left>
-					          <Text style={{
-						          fontWeight: '100',
-						          fontFamily: Fonts.GothamRounded,
-						          color: '#b3b4b4',
-						          fontSize: 16.5,
-						          marginRight:  Platform.OS === 'ios' ? width / 1.9 : width / 2.1
-					          }}>{this.state.price}</Text>
-					          <Right>
-						          {
-							          this.state.price > this.state.user.wallet_amount
-								          ?
-								          <View
-									          style={{
-										          // marginTop: 10,
-										          // height: height / 20,
-										          // width: width / 10,
-										          backgroundColor: '#d3000d',
-										          flexDirection: 'row',
-										          alignItems: 'center',
-										          justifyContent: 'center',
-										          // borderRadius: 30
-										          width: 30,
-										          height: 30,
-										          borderRadius: 30/2,
-										          marginRight: 10,
-									          }}>
-									          <Text style={{
-										          fontWeight: '900',
-										          fontFamily: Fonts.GothamRounded,
-										          color: '#fff',
-										          fontSize: 16.5,
-										          marginTop: Platform.OS === 'ios' ? 5 : 0,
-									          }}>!</Text>
-								          </View>
-								          :
-								          <Icon
-									          style={{ color: 'green', marginRight: 10, }}
-									          active
-									          name='ios-checkmark-circle'
-									          type='Ionicons'
-									          icon
-								          />
-						          }
-					          </Right>
-				          </View>
-				          : <Text/>
-		          }
+		      </Mapbox.MapView>
+	      </View>
+	      <HeaderComponent onPress={() => this.openDrawer()} />
+	      <View style={{ position: 'absolute', marginTop: 60 }}>
+		      {
+			      this.state.onTextFocus === 'location' && this.state.locationSearchQuery.length >= 3
+				      ?
+				      <View style={{ top: Platform.OS === 'ios' ? 130 : 126 }}>
+					      <SearchResult predictions={this.state.predictions} onPress={this.getSelectedLocation} />
+				      </View>
+				      :
+				      <Text/>
+		      }
+		      {
+			      this.state.onTextFocus === 'destination'  && this.state.destinationSearchQuery.length >= 3
+				      ?
+				      <View keyboardShouldPersistTaps='always' style={{ top: Platform.OS === 'ios' ? 115 : 120 }}>
+					      <SearchResult predictions={this.state.predictions} onPress={this.getSelectedDestination} />
+				      </View>
+				      :
+				      <Text/>
+		      }
+		      <ScrollView
+			      contentContainerStyle={{
+				      width: width / 1.15,
+				      marginLeft: 25,
+			      }}
+		      >
+			      <Card style={{
+				      borderWidth: 0,
+				      borderColor: 'rgba(0,0,0,0)',
+				      backgroundColor: 'rgba(0,0,0,0)',
+				      shadowOffset: { height: 0, width: 0 },
+				      shadowOpacity: 0,
+				      elevation:0
+			      }}>
+				      <CardItem style={{
+					      borderColor: '#b3b4b4',
+					      borderRadius: 8,
+					      borderWidth: 1,
+					      borderBottomWidth: 0.5,
+					      height: height / 12
+				      }}>
+					      <Body
+						      style={{
+							      flexDirection: 'row',
+							      alignItems: 'center',
+							      justifyContent: 'center',
+						      }}>
+					      <Icon
+						      style={{ marginLeft: 10, color: '#057cff' }}
+						      active
+						      name='location-on'
+						      type='MaterialIcons'
+						      icon
+					      />
+					      <Input
+						      value={this.state.locationSearchQuery}
+						      placeholder={this.state.myLocationName === '' ? 'Enter Location' :`${this.state.myLocationName}`}
+						      placeholderTextColor='#b3b4b4'
+						      onChangeText={
+							      locationSearchQuery => this.setState({ locationSearchQuery }, () => this.guessLocation())
+						      }
+						      autoCapitalize='none'
+						      style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: 10 }}
+					      />
+					      </Body>
+				      </CardItem>
+				      <CardItem style={{
+					      borderColor: '#b3b4b4',
+					      borderRadius: 8,
+					      borderWidth: 1,
+					      borderTopWidth: 0.5,
+					      height: height / 12
+				      }}>
+					      <Body
+						      style={{
+							      flexDirection: 'row',
+							      alignItems: 'center',
+							      justifyContent: 'center',
+						      }}
+					      >
+					      <Icon
+						      style={{ marginLeft: 10, color: '#f5a623' }}
+						      active
+						      name='location-on'
+						      type='MaterialIcons'
+					
+					      />
+					      <Input
+						      value={this.state.destinationSearchQuery}
+						      placeholder={this.state.myDestinationName === '' ? 'Enter Destination' : `${this.state.myDestinationName}`}
+						      placeholderTextColor='#b3b4b4'
+						      onChangeText={
+							      destinationSearchQuery => this.setState({ destinationSearchQuery }, () => this.guessDestination())
+						      }
+						      autoCapitalize='none'
+						      style={{ color: '#333', fontWeight: '100', fontFamily: Fonts.GothamRounded, marginLeft: 10 }}
+						      onFocus={() => this.setState({
+							      onTextFocus: 'destination'
+						      })}
+					      />
+					      </Body>
+				      </CardItem>
+			      </Card>
+		      </ScrollView>
 		
-		          {
-			          this.state.price > 0 && this.state.driverDetails === ''
-				          ?
-				          <Button
-					          style={{
-						          width: width / 1.5,
-						          marginLeft: width / 5.6,
-						          marginTop: height / 50,
-						          backgroundColor: '#ed1768',
-						          borderRadius: 8
-					          }}
-					          onPress={this.state.price > this.state.user.wallet_amount ? this.navigateToWalletPage :this.submitRequest}
-					          block
-					          dark>
-                    <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
-								          { this.state.price > this.state.user.wallet_amount ? 'Load' : 'Moov' }
-                    </Text>
-				          </Button>
-				          :
-				          <Text/>
-		          }
-		          
-	          </View>
-          </View>
-        </View>
+		      {
+			      this.state.driverDetails === '' && this.state.myDestinationName !== ''
+			        ?
+				        <View
+					      style={{
+						      backgroundColor: '#fff',
+						      height: this.state.price > 0 ? height / 2.5 : height / 8,
+						      width: width,
+						      marginTop: this.state.price > 0 ? height / 3 : Platform.OS === 'ios' ? height / 1.8 : height / 1.8
+					      }}
+				      >
+					      <View
+						      style={{
+							      flexDirection: 'row',
+							      alignItems: 'center',
+							      justifyContent: 'center',
+							      marginLeft: 25.5
+						      }}>
+						
+						      <Content
+							      enableAutoAutomaticScroll={true}
+							      contentContainerStyle={{
+								      marginTop: 15,
+								      width: width / 2.1,
+								      height: height / 11.5,
+								      backgroundColor: '#fff',
+								      flexDirection: 'row',
+								      alignItems: 'center',
+								      justifyContent: 'center',
+							      }}>
+							      <Icon
+								      style={{ color: '#ed1368' }}
+								      active
+								      name='airline-seat-recline-extra'
+								      type='MaterialIcons'
+								      icon
+							      />
+							      <Text style={{
+								      fontWeight: '100',
+								      fontFamily: Fonts.GothamRounded,
+								      color: '#b3b4b4',
+								      marginLeft: 7,
+								      fontSize: 16.5,
+							      }}>Number of Seats</Text>
+						      </Content>
+						
+						      <Content
+							      contentContainerStyle={{
+								      marginTop: 15,
+								      width: width / 3.5,
+								      marginLeft: width / 10,
+								      borderWidth: 1,
+								      borderColor: '#b3b4b4',
+								      borderRadius: 8,
+								      height: height / 11.5,
+							      }}>
+							      <Picker
+								      mode="dropdown"
+								      textStyle={{ fontSize: 18, color:'#b3b4b4', fontWeight: '100' }}
+								      iosHeader="Available"
+								      iosIcon={<Icon style={{ marginLeft: width / 10 }} name="ios-arrow-down-outline" />}
+								      placeholderIconColor="#d3000d"
+								      style={{ width: undefined }}
+								      selectedValue={this.state.selectedSlot}
+								      onValueChange={this.onValueChange.bind(this)}
+							      >
+								      <Picker.Item label="1" value="1" />
+								      <Picker.Item label="2" value="2" />
+								      <Picker.Item label="3" value="3" />
+								      <Picker.Item label="4" value="4" />
+								      <Picker.Item label="5" value="5" />
+								      <Picker.Item label="6" value="6" />
+								      <Picker.Item label="7" value="7" />
+							      </Picker>
+						      </Content>
+					      </View>
+					      {
+						      this.state.price > 0
+							      ?
+							      <View
+								      style={{
+									      flexDirection: 'row',
+									      alignItems: 'center',
+									      marginLeft: Platform.OS === 'ios' ? 20 : 35,
+									      marginTop: 15,
+									      width: Platform.OS === 'ios' ? width / 1.15 : width / 1.2,
+									      borderWidth: 1,
+									      borderColor: '#b3b4b4',
+									      borderRadius: 8,
+									      height: height / 11.5,
+									      backgroundColor: 'white',
+								      }}>
+								      <Left>
+									      <Icon
+										      style={{ marginLeft: 7, color: '#ed1368' }}
+										      active
+										      name='price-tag'
+										      type='Entypo'
+										      icon
+									      />
+								      </Left>
+								      <Text style={{
+									      fontWeight: '100',
+									      fontFamily: Fonts.GothamRounded,
+									      color: '#b3b4b4',
+									      fontSize: 16.5,
+									      marginRight:  Platform.OS === 'ios' ? width / 1.9 : width / 2.1
+								      }}>{this.state.price}</Text>
+								      <Right>
+									      {
+										      this.state.price > this.state.user.wallet_amount
+											      ?
+											      <View
+												      style={{
+													      backgroundColor: '#d3000d',
+													      flexDirection: 'row',
+													      alignItems: 'center',
+													      justifyContent: 'center',
+													      width: 30,
+													      height: 30,
+													      borderRadius: 30/2,
+													      marginRight: 10,
+												      }}>
+												      <Text style={{
+													      fontWeight: '900',
+													      fontFamily: Fonts.GothamRounded,
+													      color: '#fff',
+													      fontSize: 16.5,
+													      marginTop: Platform.OS === 'ios' ? 5 : 0,
+												      }}>!</Text>
+											      </View>
+											      :
+											      <Icon
+												      style={{ color: 'green', marginRight: 10, }}
+												      active
+												      name='ios-checkmark-circle'
+												      type='Ionicons'
+												      icon
+											      />
+									      }
+								      </Right>
+							      </View>
+							      : <View/>
+					      }
+					
+					
+					      {
+						      this.state.price > 0
+							      ?
+							      <Button
+								      style={{
+									      width: width / 1.5,
+									      marginLeft: width / 5.6,
+									      marginTop: 30,
+									      backgroundColor: '#ed1768',
+									      borderRadius: 8
+								      }}
+								      onPress={this.state.price > this.state.user.wallet_amount ? this.navigateToWalletPage :this.submitRequest}
+								      block
+								      dark>
+								      <Text style={{fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>
+									      { this.state.price > this.state.user.wallet_amount ? 'Load' : 'Moov' }
+								      </Text>
+							      </Button>
+							      :
+							      <View/>
+					      }
+				
+				      </View>
+				      :
+					      <View/>
+		      }
+		      
+	      </View>
       </Drawer>
     );
   }

@@ -6,11 +6,11 @@ let width = Dimensions.get("window").width;
 const styles = {
   searchResultsWrapper: {
     position: "absolute",
-    width: width / 1.12,
+    width: width / 1.18,
     height: 1000,
     backgroundColor: '#fff',
     opacity: 0.9,
-    marginLeft: width / 17
+    marginLeft: 29
   },
   primaryText: {
     fontWeight: "bold",
