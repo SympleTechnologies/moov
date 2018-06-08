@@ -139,16 +139,20 @@ class Homepage extends Component {
     axios.get('https://moov-backend-staging.herokuapp.com/api/v1/user')
       .then((response) => {
         console.log(response.data.data);
-        console.log(response.data.data.user.current_ride.driver_info);
         this.setState({
           user: response.data.data.user,
-	        driverDetails: response.data.data.user.current_ride.driver_info
-        }, () => this.getDistanceFromDriver());
+	        driverDetails: response.data.data.user.current_ride ? response.data.data.user.current_ride.driver_info : ''
+        }, () => response.data.data.user.current_ride ? this.getDistanceFromDriver() : '');
+	
+	      // this.setState({
+		     //  user: response.data.data.user,
+		     //  driverDetails: response.data.data.user.current_ride.driver_info ? response.data.data.user.current_ride.driver_info : ''
+	      // }, () => this.getDistanceFromDriver());
 
         // Toast.show({ text: "User retrieved successfully !", buttonText: "Okay", type: "success" })
       })
       .catch((error) => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
 
         Toast.show({ text: "Unable to retrieve user", buttonText: "Okay", type: "danger" })
       });
@@ -548,7 +552,21 @@ class Homepage extends Component {
   	console.log(this.state.driverDetails)
   	console.log(this.state.driverDetails.driver_location[0]);
   	console.log(this.state.driverDetails.driver_location[1]);
-    axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${Number(this.state.driverDetails.driver_location[0])},${Number(this.state.driverDetails.driver_location[1])}&destinations=${(this.state.user.current_ride.user_location[0])},${Number(this.state.user.current_ride.user_location[1])}&key=AIzaSyAJvj05CARolm9AeGjbCaj8N0Jord3j0pc`)
+  	
+  	let userLocationLatitude;
+  	let userLocationLongitude;
+	
+	  if(this.state.user.current_ride)  {
+		  userLocationLatitude = this.state.user.current_ride.user_location[0];
+		  userLocationLongitude = this.state.user.current_ride.user_location[1];
+	  } else {
+		  userLocationLatitude = this.state.myLocationLatitude;
+		  userLocationLongitude = this.state.myLocationLongitude;
+	  }
+	  
+	  console.log(userLocationLatitude, userLocationLongitude)
+  	
+    axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${Number(this.state.driverDetails.driver_location[0])},${Number(this.state.driverDetails.driver_location[1])}&destinations=${(userLocationLatitude)},${Number(userLocationLongitude)}&key=AIzaSyAJvj05CARolm9AeGjbCaj8N0Jord3j0pc`)
       .then((response) => {
         this.getDriverDistanceAndTime(response.data.rows);
       })
@@ -991,244 +1009,249 @@ class Homepage extends Component {
 				
 				      </View>
 				      :
-				      <Content
-				        contentContainerStyle={{
-					        marginTop: height / 3,
-					        height: height / 3.3,
-				        }}
-				      >
-					      <Card
-						      style={{
-							      marginLeft: 15,
-							      width: width / 1.08,
-							      borderRadius: 8,
-						      }}>
-						      
-						      <CardItem style={{
-							      borderRadius: 8,
-							      // borderWidth: 1,
-							      height: height / 5,
-						      }}>
-							      <Left
+				      <View/>
+		      }
+		
+		      {
+			      this.state.driverDetails.image_url &&
+			      <Content
+				      contentContainerStyle={{
+					      marginTop: height / 3,
+					      height: height / 3.3,
+				      }}
+			      >
+				      <Card
+					      style={{
+						      marginLeft: 15,
+						      width: width / 1.08,
+						      borderRadius: 8,
+					      }}>
+					
+					      <CardItem style={{
+						      borderRadius: 8,
+						      // borderWidth: 1,
+						      height: height / 5,
+					      }}>
+						      <Left
+							      style={{
+								      borderRadius: 10,
+								      flexDirection: 'row',
+								      alignItems: 'center',
+								      width: width / 2
+							      }}>
+							      {
+								      this.state.driverDetails.image_url &&
+								      <Image
+									      style={{
+										      width: width / 5,
+										      height: height / 9,
+										      borderRadius: 8,
+										      shadowOpacity: 0.75,
+										      shadowRadius: 5,
+										      shadowColor: '#b3b4b4',
+										      shadowOffset: { height: 0, width: 0 },
+									      }}
+									      source={{
+										      uri: `${this.state.driverDetails.image_url}`}}
+								      />
+							      }
+							      <Body>
+							      <Text
 								      style={{
-									      borderRadius: 10,
-									      flexDirection: 'row',
-									      alignItems: 'center',
-									      width: width / 2
-								      }}>
+									      color: '#d3000d',
+									      fontSize: Platform.OS === 'ios' ? 14 : 17,
+									      fontWeight: '900',
+									      fontFamily: Fonts.GothamRounded,
+									      width: width / 3,
+								      }}
+							      >
+								      {driverName}
+							      </Text>
+							      <Text
+								      style={{
+									      marginBottom: 5,
+									      color: '#c5c5c5',
+									      fontSize: Platform.OS === 'ios' ? 12 : 13,
+									      fontWeight: '500',
+									      fontFamily: Fonts.GothamRounded
+								      }}
+							      >
 								      {
-								      	this.state.driverDetails.image_url &&
-									      <Image
-										      style={{
-											      width: width / 5,
-											      height: height / 9,
-											      borderRadius: 8,
-											      shadowOpacity: 0.75,
-											      shadowRadius: 5,
-											      shadowColor: '#b3b4b4',
-											      shadowOffset: { height: 0, width: 0 },
-										      }}
-										      source={{
-											      uri: `${this.state.driverDetails.image_url}`}}
-									      />
+									      this.state.driverDetails.car_model
 								      }
-								      <Body>
-									      <Text
-										      style={{
-											      color: '#d3000d',
-											      fontSize: Platform.OS === 'ios' ? 14 : 17,
-											      fontWeight: '900',
-											      fontFamily: Fonts.GothamRounded,
-											      width: width / 3,
-										      }}
-									      >
-										      {driverName}
-									      </Text>
-									      <Text
-										      style={{
-										        marginBottom: 5,
-											      color: '#c5c5c5',
-											      fontSize: Platform.OS === 'ios' ? 12 : 13,
-											      fontWeight: '500',
-											      fontFamily: Fonts.GothamRounded
-										      }}
-									      >
-										      {
-											      this.state.driverDetails.car_model
-										      }
-									      </Text>
-									      <Rating
-										      type="star"
-										      // startingValue={3}
-										      imageSize={12}
-									      />
-								      </Body>
-								      <Right>
-									      <Button
-										      style={{
-											      width: width / 3.7,
-											      marginBottom: 10,
-											      marginLeft: 10,
-											      backgroundColor: '#ed1368',
-											      borderRadius: 8
-										      }}
-										      // onPress={this.submitRequest}
-										      block
-										      dark>
-										      {
-											      this.state.loading
-												      ? <ActivityIndicator
-													      color='#fff'
-													      size="large"
-													      style={activityIndicator}
-												      />
-												      : <Text style={{fontSize: 12, fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>Cancel ride</Text>
-										      }
-									      </Button>
-								      </Right>
-							      </Left>
-						      </CardItem>
+							      </Text>
+							      <Rating
+								      type="star"
+								      // startingValue={3}
+								      imageSize={12}
+							      />
+							      </Body>
+							      <Right>
+								      <Button
+									      style={{
+										      width: width / 3.7,
+										      marginBottom: 10,
+										      marginLeft: 10,
+										      backgroundColor: '#ed1368',
+										      borderRadius: 8
+									      }}
+									      // onPress={this.submitRequest}
+									      block
+									      dark>
+									      {
+										      this.state.loading
+											      ? <ActivityIndicator
+												      color='#fff'
+												      size="large"
+												      style={activityIndicator}
+											      />
+											      : <Text style={{fontSize: 12, fontWeight: '900', fontFamily: Fonts.GothamRoundedLight}}>Cancel ride</Text>
+									      }
+								      </Button>
+							      </Right>
+						      </Left>
+					      </CardItem>
+					
+					      <CardItem style={{
+						      borderWidth: 0.25,
+						      height: height / 10,
+						      borderTopColor: '#cbcbcb',
+						      borderColor: '#fff',
+						      flexDirection: 'row',
+						      width: width / 1.2,
+						      marginLeft: 15,
+						      backgroundColor: 'rgba(0,0,0,0)',
+						      borderLeftColor: 'rgba(0,0,0,0)',
+					      }}>
 						
-						      <CardItem style={{
-							      borderWidth: 0.25,
-							      height: height / 10,
-							      borderTopColor: '#cbcbcb',
-							      borderColor: '#fff',
-							      flexDirection: 'row',
-							      width: width / 1.2,
-							      marginLeft: 15,
-							      backgroundColor: 'rgba(0,0,0,0)',
-							      borderLeftColor: 'rgba(0,0,0,0)',
-						      }}>
-							
-							      <View
+						      <View
+							      style={{
+								      flexDirection: 'column',
+								      // alignItems: 'center',
+								      justifyContent: 'center',
+								      width: width / 5,
+								      height: height / 11.5,
+								      backgroundColor: 'rgba(0,0,0,0)',
+							      }}>
+							      <Text
 								      style={{
-									      flexDirection: 'column',
-									      // alignItems: 'center',
-									      justifyContent: 'center',
-									      width: width / 5,
-									      height: height / 11.5,
-									      backgroundColor: 'rgba(0,0,0,0)',
+									      fontFamily: Fonts.GothamRoundedLight,
+									      marginBottom: 5, color: '#b3b4b4',
+									      fontSize: Platform.OS === 'ios' ? 7 :  9,
+									      fontWeight: '700'
 								      }}>
-								      <Text
-									      style={{
-										      fontFamily: Fonts.GothamRoundedLight,
-										      marginBottom: 5, color: '#b3b4b4',
-										      fontSize: Platform.OS === 'ios' ? 7 :  9,
-										      fontWeight: '700'
-									      }}>
-									      Phone Number
-								      </Text>
-								      <Text
-									      style={{
-										      marginBottom: 5,
-										      color: '#d3000d',
-										      fontSize: Platform.OS === 'ios' ? 7 : 9,
-										      fontWeight: '600',
-										      fontFamily: Fonts.GothamRoundedLight
-									      }}
-								      >{this.state.driverDetails.mobile_number}</Text>
-							      </View>
-							
-							      <View
+								      Phone Number
+							      </Text>
+							      <Text
 								      style={{
-									      flexDirection: 'column',
-									      // alignItems: 'center',
-									      justifyContent: 'center',
-									      marginLeft: 10,
-									      width: width / 5,
-									      height: height / 11.5,
-									      backgroundColor: 'rgba(0,0,0,0)',
-								      }}>
-								      <Text
-									      style={{
-										      fontFamily: Fonts.GothamRoundedLight,
-										      marginBottom: 5, color: '#b3b4b4',
-										      fontSize: Platform.OS === 'ios' ? 7 :  9,
-										      fontWeight: '700'
-									      }}>
-									      Estimated Time
-								      </Text>
-								      <Text
-									      style={{
-										      marginBottom: 5,
-										      color: '#d3000d',
-										      fontSize: Platform.OS === 'ios' ? 7 : 9,
-										      fontWeight: '600',
-										      fontFamily: Fonts.GothamRoundedLight
-									      }}
-								      >{this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Text>
-							      </View>
-							
-							      <View
+									      marginBottom: 5,
+									      color: '#d3000d',
+									      fontSize: Platform.OS === 'ios' ? 7 : 9,
+									      fontWeight: '600',
+									      fontFamily: Fonts.GothamRoundedLight
+								      }}
+							      >{this.state.driverDetails.mobile_number}</Text>
+						      </View>
+						
+						      <View
+							      style={{
+								      flexDirection: 'column',
+								      // alignItems: 'center',
+								      justifyContent: 'center',
+								      marginLeft: 10,
+								      width: width / 5,
+								      height: height / 11.5,
+								      backgroundColor: 'rgba(0,0,0,0)',
+							      }}>
+							      <Text
 								      style={{
-									      flexDirection: 'column',
-									      // alignItems: 'center',
-									      justifyContent: 'center',
-									      marginLeft: 10,
-									      width: width / 5,
-									      height: height / 11.5,
-									      backgroundColor: 'rgba(0,0,0,0)',
+									      fontFamily: Fonts.GothamRoundedLight,
+									      marginBottom: 5, color: '#b3b4b4',
+									      fontSize: Platform.OS === 'ios' ? 7 :  9,
+									      fontWeight: '700'
 								      }}>
-								      <Text
-									      style={{
-										      fontFamily: Fonts.GothamRoundedLight,
-										      marginBottom: 5, color: '#b3b4b4',
-										      fontSize: Platform.OS === 'ios' ? 7 :  9,
-										      fontWeight: '700'
-									      }}>
-									      Plate Number
-								      </Text>
-								      <Text
-									      style={{
-										      marginBottom: 5,
-										      color: '#d3000d',
-										      fontSize: Platform.OS === 'ios' ? 7 : 9,
-										      fontWeight: '600',
-										      fontFamily: Fonts.GothamRoundedLight
-									      }}
-								      >{
-									      this.state.driverDetails.plate_number
-								      }</Text>
-							      </View>
-							
-							      <View
+								      Estimated Time
+							      </Text>
+							      <Text
 								      style={{
-									      flexDirection: 'column',
-									      // alignItems: 'center',
-									      justifyContent: 'center',
-									      marginLeft: 10,
-									      width: width / 5,
-									      height: height / 11.5,
-									      backgroundColor: 'rgba(0,0,0,0)',
+									      marginBottom: 5,
+									      color: '#d3000d',
+									      fontSize: Platform.OS === 'ios' ? 7 : 9,
+									      fontWeight: '600',
+									      fontFamily: Fonts.GothamRoundedLight
+								      }}
+							      >{this.state.driverTimeAway ? this.state.driverTimeAway : 'few mins'} away.</Text>
+						      </View>
+						
+						      <View
+							      style={{
+								      flexDirection: 'column',
+								      // alignItems: 'center',
+								      justifyContent: 'center',
+								      marginLeft: 10,
+								      width: width / 5,
+								      height: height / 11.5,
+								      backgroundColor: 'rgba(0,0,0,0)',
+							      }}>
+							      <Text
+								      style={{
+									      fontFamily: Fonts.GothamRoundedLight,
+									      marginBottom: 5, color: '#b3b4b4',
+									      fontSize: Platform.OS === 'ios' ? 7 :  9,
+									      fontWeight: '700'
 								      }}>
-								      <Text
-									      style={{
-										      fontFamily: Fonts.GothamRoundedLight,
-										      marginBottom: 5, color: '#b3b4b4',
-										      fontSize: Platform.OS === 'ios' ? 7 :  9,
-										      fontWeight: '700'
-									      }}>
-									      Payment
-								      </Text>
-								      <Text
-									      style={{
-										      marginBottom: 5,
-										      color: '#d3000d',
-										      fontSize: Platform.OS === 'ios' ? 7 : 9,
-										      fontWeight: '600',
-										      fontFamily: Fonts.GothamRoundedLight
-									      }}
-								      >WALLET</Text>
-							      </View>
-							     
-						      </CardItem>
-						      
-						      
-						      
-						      
-					      </Card>
-				      </Content>
+								      Plate Number
+							      </Text>
+							      <Text
+								      style={{
+									      marginBottom: 5,
+									      color: '#d3000d',
+									      fontSize: Platform.OS === 'ios' ? 7 : 9,
+									      fontWeight: '600',
+									      fontFamily: Fonts.GothamRoundedLight
+								      }}
+							      >{
+								      this.state.driverDetails.plate_number
+							      }</Text>
+						      </View>
+						
+						      <View
+							      style={{
+								      flexDirection: 'column',
+								      // alignItems: 'center',
+								      justifyContent: 'center',
+								      marginLeft: 10,
+								      width: width / 5,
+								      height: height / 11.5,
+								      backgroundColor: 'rgba(0,0,0,0)',
+							      }}>
+							      <Text
+								      style={{
+									      fontFamily: Fonts.GothamRoundedLight,
+									      marginBottom: 5, color: '#b3b4b4',
+									      fontSize: Platform.OS === 'ios' ? 7 :  9,
+									      fontWeight: '700'
+								      }}>
+								      Payment
+							      </Text>
+							      <Text
+								      style={{
+									      marginBottom: 5,
+									      color: '#d3000d',
+									      fontSize: Platform.OS === 'ios' ? 7 : 9,
+									      fontWeight: '600',
+									      fontFamily: Fonts.GothamRoundedLight
+								      }}
+							      >WALLET</Text>
+						      </View>
+					
+					      </CardItem>
+				
+				
+				
+				
+				      </Card>
+			      </Content>
 		      }
 		      
 	      </View>
