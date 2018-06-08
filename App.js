@@ -23,30 +23,30 @@ const AppNavigator = StackNavigator({
   // 		header: null,
   // 	}
   // },
-  // SignInPage: {
-  //   screen: SignInPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
-  // FirstPage: {
-  //   screen: FirstPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
-  // SecondPage: {
-  //   screen: SecondPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
-  // FinalPage: {
-  //   screen: FinalPage,
-  //   navigationOptions: {
-  //     header: null,
-  //   }
-  // },
+  SignInPage: {
+    screen: SignInPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  FirstPage: {
+    screen: FirstPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  SecondPage: {
+    screen: SecondPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  FinalPage: {
+    screen: FinalPage,
+    navigationOptions: {
+      header: null,
+    }
+  },
   Homepage: {
     screen: Homepage,
     navigationOptions: {

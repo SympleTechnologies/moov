@@ -50,7 +50,8 @@ class Homepage extends Component {
 		this.state = {
 			userToken: '',
 			user: {
-				wallet_amount: 0
+				wallet_amount: 0,
+				current_ride: null
 			},
 			
 			loading: false,
@@ -556,7 +557,7 @@ class Homepage extends Component {
   	let userLocationLatitude;
   	let userLocationLongitude;
 	
-	  if(this.state.user.current_ride)  {
+	  if(this.state.user.current_ride !== null)  {
 		  userLocationLatitude = this.state.user.current_ride.user_location[0];
 		  userLocationLongitude = this.state.user.current_ride.user_location[1];
 	  } else {
